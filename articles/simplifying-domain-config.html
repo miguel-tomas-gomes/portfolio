@@ -64,17 +64,19 @@
 	  <p>The same principle applied to expired states. Originally, users who missed the 72-hour window were left staring at a system message that offered no path forward. We replaced it with: "The security certificate for this domain has expired. To reuse this domain, delete it and add it again."</p>
 	  <p>This avoided blame, stated the issue in clear terms, and gave users a direct recovery path. We also added helpful empty states at key points.</p>
 	      <img src="../assets/domain-journey.png" alt="screen showing domain journey" class="article-image-spaced" />
-        <p>When no domain had been added yet, the interface clearly explained why the section was blank and how to get started. When a certificate expired, the message no longer left users guessing, but guided them to resolution.</p>
+        <p>To clarify the purpose of custom domains, we added an empty state for users first discovering the feature. When no domain had been added yet, the interface now clearly explained why the section was blank and how to get started.</p> 
+        <img src="../assets/domain-empty-state.png" alt="screen showing domain empty state" class="article-image-spaced" />
+        <p>If, for whatever reason, users weren't able to complete setup and one of the certificates assigned to a domain expired, users would now see another empty state explaining what happened and how to fix it. This prevented users from getting stuck.</p>
         <img src="../assets/domain-certificate-expired.png" alt="screen showing domain certificate expired" class="article-image-spaced" />
         <p>We also added confirmation modals for users attempting to leave the configuration before completion. This prevented certificate expiration and gave users a chance to reconsider.</p>
     <img src="../assets/domain-exit-confirmation.png" alt="screen showing domain exit confirmation" class="article-image-spaced" />
         <h2>Outcome</h2>
-	  <p>The new copy and structure made the domain configuration process less intimidating and far easier to complete.</p>
-	  <p>Customers no longer felt blocked by technical jargon or hidden deadlines. The product gained a consistent voice in error states and flows, aligning with our conversational tone.</p>
+	  <p>The copy and structure made the domain configuration process easy to complete and less intimidating than it would seem at first glance.</p>
+	  <p>Customers didn't feel blocked by technical jargon or hidden deadlines. The product also gained a consistent voice in error states and flows, aligning with our conversational tone.</p>
           
           <h2>Results</h2>
-	  <p>In usability tests, participants reported that the flow felt more approachable and easier to follow. Users were now able to complete the configuration with minimal guidance.</p>
-          <p>Support data backed this up. Tickets related to SSL and DNS setup dropped by about 31% in the weeks following the rollout, giving the support team space to focus on more complex technical issues.</p>
+	        <p>In usability tests, participants reported that the flow felt approachable and easy to follow. Users were able to complete the configuration with minimal guidance.</p>
+          <p>Support data backed this up. I contacted the support team to learn that few to no tickets related to SSL and DNS setup were being filed in the weeks following the rollout, giving the support team space to focus on more complex technical issues.</p>
           <p>By restructuring the flow into simple steps we turned a fragile, failure-prone process into a guided experience. It was a reminder that even in highly technical features, words carry the weight of the experience.</p>
         </section>
 
