@@ -49,13 +49,18 @@
           
           <h2>Forming the Hypothesis</h2>
 	  <p>To A/B test this, I started with an assumption about user behavior. I contacted the support team and requested access to call recordings and transcripts. It seemed that users weren't exactly confused about what went wrong, they understood there was an authentication issue. The biggest frustration was not knowing what to do next.</p>
-	  <p>So I shaped the hypothesis: if the error message explained the issue in plain language and gave a clear next step, more users would reconnect GitHub on their own.</p>
-	  <p>In testing terms, the "null hypothesis" (H₀) was that there would be no difference between the two error messages. My job was to see whether the new copy produced results that were unlikely to happen if that null hypothesis were true.</p>
+	  <p>So I shaped the hypothesis: if the error message explained the issue and gave a clear next step, more users would reconnect GitHub on their own.</p>
+	  <p>This seemed like a reasonable assumption. However, in A/B testing, we start with a null hypothesis.</p>
+	  <p>In layman's terms, the null hypothesis (H₀) was that there would be no difference between the two error messages. If there was, I could reject the null hypothesis.</p>
+	  <p>This distinction isn't pedantic. We test the null hypothesis rather than the alternative (H₁) because H₀ is simple, precise, and easy to calculate. Testing H₁ directly would require heavier assumptions and a different statistical framework, which is less practical in most applied settings.</p>
+	  <p>In essence, my job was to see whether the new copy produced results that were unlikely to happen if that null hypothesis were true.</p>
           
           <h2>Designing the Test</h2>
 	  <p>The proposed message was: "There was an issue with authentication. Please reconnect your GitHub account."</p>
 	  <img src="../assets/ux-error-improved.png" alt="Example of a good UI screen error" class="article-image-spaced">
-	  <p>With the new copy ready, I then partnered with a data scientist and an engineer to get the test set up. We split traffic so that half of users encountering the error saw the old message, and half saw the new one. To avoid stopping early (and to avoid p-hacking), we planned sample size and duration up front.</p>
+	  <p>With the new copy ready, I then partnered with a data scientist and an engineer to get the test set up. We split traffic so that half of users encountering the error saw the old message, and half saw the new one.</p>
+	  <p>In A/B testing, the p-value tells us the probability of seeing results this extreme if there were actually no difference (the null hypothesis). A smaller p-value means the result is less likely due to chance.</p>
+	  <p>The usual threshold for significance is 0.05, meaning there's a 5% chance of seeing results this extreme if the null hypothesis were true. To avoid stopping the test early (and to avoid p-hacking), we planned sample size and duration up front.</p>
 	  <p>Using Evan Miller's calculator, I set the minimum detectable effect at about +7 to 10 percentage points, power at 80%, and significance at 0.05 (5%). That told us how many users we needed to hit per group before making a call.</p>
 	  <p>Given the rate of GitHub errors, that meant about two weeks of live traffic.</p>
           
@@ -75,8 +80,8 @@
           <h2>Outcome</h2>
 	  <p>After rolling out the friendlier copy to all GitHub users, we applied the same approach to other integrations like Bitbucket and GitLab. Each time, the principle held: clear, actionable copy helped more users solve problems without help.</p>
 	  <p>This wasn't a flashy homepage copy or a major design overhaul. It was a single string buried in an error state.</p>
-	  <p>Across two weeks of live traffic, more than 1,700 people hit this error. With the old message, almost half gave up or filed a support ticket. With the new message, 92 more users were able to resolve the issue on their own, about 184 additional recoveries each month.</p>
-	  <p>The statistics backed it up: a +10.1 pp lift in recovery, a p-value under 0.05, and a confidence interval that stayed positive. More importantly, the story behind the numbers showed how UX writing directly reduced support load and improved user experience.</p>
+	  <p>Across two weeks of live traffic, more than 1,700 people hit this error. With the old message, almost half gave up or filed a support ticket. With the new message, 92 more users were able to resolve the issue on their own, translating to about 184 additional recoveries each month.</p>
+	  <p>The statistics backed it up: a +10.1 point lift in recovery, a p-value under 0.05, and a confidence interval that stayed positive. More importantly, the story behind the numbers showed how UX writing directly reduced support load and improved user experience.</p>
 	  <p>This goes to show that the smallest words can have measurable business impact.</p>
         </section>
 
