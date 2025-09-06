@@ -15,7 +15,7 @@
         <ul class="nav-links">
           <li><a href="../index.html#about">About</a></li>
           <li><a href="./index.html">Work Samples</a></li>
-          <li><a href="..//index.html#contact">Contact</a></li>
+          <li><a href="../index.html#contact">Contact</a></li>
         </ul>
       </nav>
     </div>
@@ -48,14 +48,14 @@
 	  <p>I needed to find out if better copy could reduce frustration and help more users get back on track without support.</p>
           
           <h2>Forming the Hypothesis</h2>
-	  <p>To A/B test this, I started with an assumption about user behavior. Support calls and transcripts seemed to suggest users weren't exactly confused about what went wrong, but more so on what they should do next.</p>
+	  <p>To A/B test this, I started with an assumption about user behavior. I contacted the support team and requested access to call recordings and transcripts. It seemed that users weren't exactly confused about what went wrong, they understood there was an authentication issue. The biggest frustration was not knowing what to do next.</p>
 	  <p>So I shaped the hypothesis: if the error message explained the issue in plain language and gave a clear next step, more users would reconnect GitHub on their own.</p>
-	  <p>In testing terms, the "null hypothesis" (H₀) was that there would be no difference between the two error messages. My job was to see whether the new copy produced results that were unlikely to happen if that null assumption were true.</p>
+	  <p>In testing terms, the "null hypothesis" (H₀) was that there would be no difference between the two error messages. My job was to see whether the new copy produced results that were unlikely to happen if that null hypothesis were true.</p>
           
           <h2>Designing the Test</h2>
 	  <p>The proposed message was: "There was an issue with authentication. Please reconnect your GitHub account."</p>
 	  <img src="../assets/ux-error-improved.png" alt="Example of a good UI screen error" class="article-image-spaced">
-	  <p>With the new copy ready, I then partnered with a Data Scientist and we got to work. We split traffic so that half of users encountering the error saw the old message, and half saw the new one. To avoid stopping early (and to avoid p-hacking), we planned sample size and duration up front.</p>
+	  <p>With the new copy ready, I then partnered with a data scientist and an engineer to get the test set up. We split traffic so that half of users encountering the error saw the old message, and half saw the new one. To avoid stopping early (and to avoid p-hacking), we planned sample size and duration up front.</p>
 	  <p>Using Evan Miller's calculator, I set the minimum detectable effect at about +7 to 10 percentage points, power at 80%, and significance at 0.05 (5%). That told us how many users we needed to hit per group before making a call.</p>
 	  <p>Given the rate of GitHub errors, that meant about two weeks of live traffic.</p>
           
@@ -69,7 +69,7 @@
 	  <p>We also looked at the confidence interval (CI). For the +10.1 point lift, the 95% CI stretched from about +3.5 to +16.7, which told us two things:</p>
 	  <p>At the low end (+3.5), the effect was still real and positive. At the high end, the impact could be way stronger than the average.</p>
 	  <p>Because we had planned for 80% power, we knew the test wasn't under-sampled. The results were both reliable and meaningful.</p>
-	  <p>Midway through the test, our support team pinged engineering, asking if they had fixed the bug. Ticket volume for GitHub errors had dropped and that they assumed a patch had gone out. In reality, nothing about the integration had changed. The only change was the copy.</p>
+	  <p>Midway through the test, our support team pinged engineering, asking if they had fixed the bug. Ticket volume for GitHub errors had dropped and they assumed a patch had gone out. In reality, nothing about the integration had changed. The only change was the copy.</p>
 	  <p>That reaction was evidence enough that words alone had shifted outcomes.</p>
           
           <h2>Outcome</h2>
