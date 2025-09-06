@@ -28,7 +28,7 @@
         <!-- TITLE AND META -->
         <div class="article-header">
           <h1>Simplifying Domain Configuration</h1>
-          <p class="article-meta">UX Writing • Work Sample • 2024 • 6 min read</p>
+          <p class="article-meta">UX Writing • Work Sample • 2024 • 5 min read</p>
         </div>
         
         <!-- IMAGE WITHIN MARGINS -->
@@ -40,7 +40,7 @@
           <p>Sometimes UX writing has to bridge the gap between deeply technical processes and the people asked to use them. Domain configuration was one of those cases.</p>
           
           <h2>Context</h2>
-	  <p>As one of the UX writers at a fast-moving low-code software company, I was asked to design the experience for customers setting up custom domains. On the surface, this sounded straightforward. It seemed like a simple process of walking users through adding and verifying a domain. In practice, it turned out to be far more complex.</p>
+	  <p>As one of the UX writers at a fast-moving low-code software company, I was asked to design the experience for customers setting custom domains to the apps they built. On the surface, this sounded straightforward. It seemed like a simple process of walking users through adding and verifying a domain. In practice, it turned out to be far more complex.</p>
 	  <p>The Product Designer assigned to the feature was unavailable, as was the case with the Product Manager. I was left with vague directions and no clear blueprint for how the flow should work.</p>
           
           <h3>From Uncertainty to Clarity</h3>
@@ -48,9 +48,10 @@
 	  <p>With that foundation in place, I partnered with another Designer who happened to be available. Together we began shaping the experience into a step-by-step flow that would feel effortless for users, even if the underlying process was highly technical.</p>
           
           <h3>The Technical Process</h3>
-	  <p>For customers to connect a custom domain, they needed to add their domain to the platform, verify ownership by adding a CNAME record, point the domain to their application with a second CNAME, and then ensure SSL validation completed within 72 hours to avoid expiration.</p>
-	  <p>The trouble was that only more advanced users were familiar with DNS or SSL concepts.</p>
-	  <p>On top of that, the 72-hour window for SSL validation was critical. If users missed it, they had to start the process over.</p>
+	  <p>Our experience came with some technical restraints that couldn't be changed. Because we were issuing SSL certificates for the domains being added to the platform, we had a limited window to ensure the SSL validation process was completed within 72 hours.</p>
+	  <p>This meant that customers needed to add their domain to the platform, verify ownership, and point the domain to their app within that time frame to avoid certificate expiration.</p>
+	  <p>The steps weren't exactly intuitive, either. Customers had to add CNAME records to their domain's DNS settings. While this may sound simple to experienced users, it could be a foreign concept to many.</p>
+	  <p>On top of that, the 72-hour window for SSL validation was critical. If users missed it, they had to restart from scratch. In other words, users would have to delete the domain from the platform and add it again, only to repeat the same steps.</p>
 	  <p>Instead of piling more jargon into the UI, we set out to design a flow that guided users through these constraints without overwhelming them.</p>
           
           <h2>The Approach</h2>
