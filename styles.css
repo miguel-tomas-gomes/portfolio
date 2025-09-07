@@ -735,3 +735,36 @@ h1{
     padding: 0.5rem;
   }
 }
+
+/* Methodology Note Box */
+.methodology-note {
+  background-color: #f8f9fa;
+  border-left: 4px solid #6c757d;
+  padding: 1rem 1.5rem;
+  margin: 1.5rem 0;
+  border-radius: 4px;
+  font-size: 0.9rem;
+}
+
+.methodology-note h4 {
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+  color: #495057;
+  font-size: 0.9rem;
+  letter-spacing: 0.25px;
+  font-weight: 600;
+}
+
+.methodology-note ul {
+  margin-bottom: 0;
+  padding-left: 1.2rem;
+}
+
+.methodology-note li {
+  margin-bottom: 0.5rem;
+  line-height: 1.4;
+}
+
+.methodology-note li:last-child {
+  margin-bottom: 0;
+}
