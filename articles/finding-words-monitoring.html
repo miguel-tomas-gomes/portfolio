@@ -60,25 +60,52 @@
           
           <h2>The Challenge</h2>
 	  <p>The Monitoring feature was designed to display logs and system traces. Some of these terms had roots in industry standards, others were unique to our product. None, however, worked consistently across our users.</p>
-	  <p>Developers leaned toward precision, while Product owners cared more about accessible language. Admins, on the other hand, wanted both.</p>
+	  <p>Developers leaned toward precision, while product owners cared more about accessible language. Admins, on the other hand, wanted both.</p>
           <p>In our product, the concept of a trace was labeled as "Activity". Additionally, what is commonly known as spans appeared in the UI as "Activity details". Industry-wise, however, these words have more precise meanings.</p>
-	  <p>For instance, a trace is the complete record of how an application executes logic across services, while a span is a single sub-operation within that trace, defined by its start and end time, duration, and metadata.</p>
+	  <p>For instance, a trace is the complete record of how an application executes logic across services, while a span is a single sub-operation within that trace. Spans are defined by their start and end time, duration, and metadata. As such, they provide context to a trace.</p>
 	  <img src="../assets/monitoring-terms.png" alt="screen showing a trace and spans" class="article-image-spaced" />
-	  <p>The mismatch between our nomenclature and industry-wide terminology created ambiguity for technical and non-technical users, making it clear that both needed to be reconsidered.</p>
+	  <p>The mismatch between our nomenclature and industry-wide terminology created ambiguity for technical and non-technical users, making it clear to us that both needed to be reconsidered.</p>
 	  <p>Even internally, teams didn't fully agree on what each term meant. This inconsistency made its way into the UI and documentation, creating friction and confusion.</p>
 	  <p>I needed to find terminology that was natural, widely understood, and still accurate enough to preserve credibility with technical users.</p>
 	  <h2>The Approach</h2>
-	  <p>As the only UX Writer assigned to this project, I developed and ran two rounds of testing with a total of 40 participants of varied technical roles. Each session followed the same pattern: first, participants answered a free-input prompt to capture their natural vocabulary. Then, they saw a randomized multiple-choice set of four options, including their own input when possible. Finally, they explained their reasoning in a free-input field.</p>
+	  <p>As the only UX Writer assigned to this project, I developed and ran two rounds of unmoderated testing with a total of 40 participants of varied technical roles. Each session followed the same pattern: first, participants answered a free-input prompt to capture their natural vocabulary.</p>
+    <p>Then, they saw a randomized multiple-choice set of four options, including their own input when possible. Finally, they were instructed to explain their reasoning in a free-input field.</p>
 	  <h3>Methodology</h3>	  
-	  <p>To control for context bias, I split the work into two rounds: one with text-only prompts and one with UI mockups. This way, I could see whether a term felt natural in isolation but confusing in the interface, or vice versa. Because the sample size was relatively small, I added rigor in two ways.</p>
-	  <p>First, I used one-sample exact binomial tests to check whether the leading term was chosen more often than chance would predict. For example, with four possible terms, the baseline probability of any one term being picked at random was 25%; with three options, it was 33%; with two options, it was 50%.</p>
-	  <p>Second, for head-to-head contrasts, I ran pairwise Fisher's exact tests, which handle small sample sizes more reliably than chi-square.</p>
-	  <p>I also introduced a weighted scoring system: terms recognized as industry standards received a multiplier of +1.25, while terms understood across both technical and non-technical roles received a smaller multiplier of +1.15. </p>
-	  <p>Terms that caused hesitation or confusion were penalized with a –0.85 factor. This blend ensured that the final choices weren't driven by raw percentages alone, but by a balance of clarity and accuracy.</p>
+	  <p>Splitting the test into two rounds helped control for context bias. The first round used text-only prompts and the second used UI mockups. Text-only prompts asked users to pick the most intuitive option for a given definition, while UI mockups added visual cues and a missing term with multiple options.</p>
+    <p>This way, I could see whether a term felt natural in isolation but confusing in the interface, or vice versa. Because the sample size was relatively small, I added rigor in two ways.</p>
+	  <p>First, I used chi-square tests to check whether the overall preference patterns differed from random chance, then binomial tests to validate specific choices. For example, with four possible terms, random selection would predict 25% each; with three options, 33% each; with two options, 50% each.</p>
+	  <p>Second, I used binomial tests to compare the top two options in each category, testing whether the leading choice significantly outperformed its closest competitor.</p>
+	  <p>I also introduced a weighted scoring system: terms we internally found to be widespread and recognized as industry standards received a multiplier of +1.25. </p>
+	  <p>Terms that caused hesitation or confusion were penalized with a 0.9 factor (-10%). This blend ensured that the final choices weren't driven by raw percentages alone, but by a balance of clarity and business strategy.</p>
+
+	  <p>To illustrate how this worked in practice, here's an example calculation:</p>
+
+	  <table class="scoring-table">
+	    <thead>
+	      <tr>
+	        <th>Criterion</th>
+	        <th>Base Score (Percentage)</th>
+	        <th>Industry Multiplier</th>
+	        <th>After Multiplier</th>
+	        <th>Confusion Penalty</th>
+	        <th>Final Score</th>
+	      </tr>
+	    </thead>
+	    <tbody>
+	      <tr>
+	        <td>Example Term</td>
+	        <td>6.0 (60%)</td>
+	        <td>×1.25</td>
+	        <td>7.5</td>
+	        <td>×0.9</td>
+	        <td>6.75</td>
+	      </tr>
+	    </tbody>
+	  </table>
  	  <h2>Findings</h2>
 	  <p>The first question was whether "Monitoring" worked as the umbrella term. Other options included Debugging, Analytics, and Insights. Out of 40 participants, 24 chose "Monitoring" (60%), followed by 8 for "Debugging" (20%), 6 for "Analytics" (15%), and 2 for "Insights" (5%).</p>
 	  <img src="../assets/monitoring-term.png" alt="monitoring results pie chart" class="article-image-spaced" />
-	  <p>A binomial test showed that "Monitoring" was significantly higher than the 25% baseline expected under chance (p < 0.001; 95% CI for the difference vs. baseline +26 to +52 percentage points). With its industry-standard multiplier, "Monitoring" clearly outperformed all alternatives.</p>
+	  <p>A chi-square test confirmed that preferences weren't random (p < 0.001), and a binomial test showed "Monitoring" significantly outperformed "Debugging" (24 vs. 8, p < 0.001). With its industry-standard multiplier, "Monitoring" clearly outperformed all alternatives.</p>
 	  <p><b>Decision</b>: Keep "Monitoring" as the umbrella term. Reserve "Debugging" for troubleshooting contexts</p>
 	  <h3>Logs</h3>
 	  <p>The next test was simpler. Participants were asked what they would call a system-generated record of events. Thirty-six out of forty chose "Logs" (90%), with only four choosing anything else.</p>
@@ -89,7 +116,7 @@
 	  <p>Our UI, however, labeled this concept "Activities". On paper, the word sounded approachable. In practice, it was vague. Some participants assumed it meant audit logs of end-user actions, others were unsure whether it referred to system-level events.</p>
 	  <p>In text-only prompts, many leaned toward “Events,” finding it intuitive and less technical than either Activities or Traces. But once shown UI mockups, comprehension shifted. With context, “Traces” gained ground. By the end of the second round, 24 of 40 participants (60%) favored “Traces”, compared with 2 for “Activities” (5%) and 14 (35%) for “Events”.</p>
 	  <img src="../assets/monitoring-pie-chart.png" alt="traces results pie chart" class="article-image-spaced" />
-	  <p>A binomial test against a 33% baseline confirmed that this majority was highly unlikely under chance (p < 0.001; 95% CI for the difference vs. baseline +14 to +40 percentage points).</p>
+	  <p>A chi-square test confirmed that preferences weren't random (p < 0.01), and "Traces" was chosen significantly more often than "Events" in head-to-head comparison (24 vs. 14, p < 0.05).</p>
 	  <p>"Events" remained useful in specific contexts. Product owners found it approachable, and admins saw it as a good fit for user-facing occurrences. But under the scoring model, "Traces" carried the industry-standard multiplier, which pushed it above "Events" in the final evaluation.</p>
 	  <p><b>Decision</b>: Retire "Activities". Keep "Traces" as the canonical industry term, supported by UI context and documentation. Use "Events" only for user-facing occurrences, not system-level tracing.</p>
 	  <h3>Spans</h3>
@@ -97,7 +124,7 @@
 	  <p>But the term span proved nearly unusable at first. Few participants recognized it. Non-technical users confused it with HTML tags, and only a handful of developers understood it correctly.</p>
 	  <p>When participants were asked what they would call this unit, 28 out of 40 chose Operation (70%), 8 chose Job (20%), and only 4 chose Span (10%).</p>
 	  <img src="../assets/span-chart.png" alt="spans results pie chart" class="article-image-spaced" />
-	  <p>A binomial test confirmed that Operation's share was significantly higher than the 33% baseline expected under chance (p < 0.001; 95% CI for the difference vs. baseline +23 to +57 percentage points). Fisher's exact test of "Operation" vs. "Span" (28 vs. 4) gave p < 0.001, with a 95% CI for the difference of +39 to +77 percentage points.</p>
+	  <p>A chi-square test showed clear preferences beyond chance (p < 0.001), with "Operation" dominating the field. A binomial test confirmed "Operation" significantly outperformed "Job" (28 vs. 8, p < 0.001).</p>
 	  <p>Under the scoring model, "Span" was penalized heavily for lack of comprehension, while Operation gained both industry credibility and cross-role clarity.</p>
 	  <p>To preserve accuracy without alienating users, I recommended renaming it to "Sub-operation (span)" in the UI, paired with a tooltip explanation to educate gradually.</p>
 	  <img src="../assets/span-tooltip.png" alt="screen showing tooltip on a span visual element" class="article-image-spaced" />
@@ -113,7 +140,7 @@
           <p>This consistency carried through the UI, documentation, and support, reducing ambiguity and improving usability. Developers, admins, and product owners now had a shared language.</p>
           <h3>Results</h3>
 	          <p>In follow-up interviews, participants described the revised terms as more natural and easier to navigate. I touched base with support management three months after the changes went live. They reported up to 27% drop in tickets related to Monitoring.</p>
-            <p>More importantly, the methodology set a precedent. By combining free input with multiple choice, text-only prompts with UI context, and validating results through exact binomial tests, pairwise Fisher's comparisons, and weighted scoring, the team gained a repeatable model for terminology research.</p>
+            <p>More importantly, the methodology set a precedent. By combining free input with multiple choice, text-only prompts with UI context, and validating results through statistical testing and weighted scoring, the team gained a repeatable model for terminology research.</p>
             <p>This outcome proved that words are not surface-level. They are fundamental to how everyone understands and interacts with a system.</p>
         </section>
 

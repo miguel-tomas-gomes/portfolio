@@ -688,3 +688,50 @@ h1{
   border-radius: var(--radius) !important;
   box-shadow: var(--shadow) !important;
 }
+
+/* Scoring Table Styles */
+.scoring-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+  font-size: 0.9rem;
+  background: white;
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+
+.scoring-table th,
+.scoring-table td {
+  border: 1px solid #e5e7eb;
+  padding: 0.75rem;
+  text-align: left;
+}
+
+.scoring-table th {
+  background-color: #f9fafb;
+  font-weight: 600;
+  color: #374151;
+  font-size: 0.85rem;
+  letter-spacing: 0.025em;
+}
+
+.scoring-table td {
+  color: #4b5563;
+}
+
+.scoring-table tbody tr:hover {
+  background-color: #f9fafb;
+}
+
+/* Mobile responsiveness for scoring table */
+@media (max-width: 640px) {
+  .scoring-table {
+    font-size: 0.8rem;
+  }
+
+  .scoring-table th,
+  .scoring-table td {
+    padding: 0.5rem;
+  }
+}
