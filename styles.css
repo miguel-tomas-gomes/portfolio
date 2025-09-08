@@ -180,18 +180,22 @@ h1{
   color: #fff;
 }
 
+.actions .status-label,
+span.status-label,
 .status-label{
-  display: inline-flex;
-  align-items: center;
-  padding: 2px 4px;
-  border-radius: 999px;
-  background: rgba(34, 197, 94, 0.15);
-  color: #16a34a;
-  border: 1px solid rgba(34, 197, 94, 0.3);
-  font-size: 11px;
-  font-weight: 500;
-  cursor: default;
-  line-height: 1;
+  display: inline-flex !important;
+  align-items: center !important;
+  padding: 0px 1px !important;
+  margin: 0 !important;
+  border-radius: 999px !important;
+  background: rgba(34, 197, 94, 0.15) !important;
+  color: #16a34a !important;
+  border: 1px solid rgba(34, 197, 94, 0.3) !important;
+  font-size: 7px !important;
+  font-weight: 500 !important;
+  cursor: default !important;
+  line-height: 1 !important;
+  box-sizing: border-box !important;
 }
 
 /* SECTIONS */
