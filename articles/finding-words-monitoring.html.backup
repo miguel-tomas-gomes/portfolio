@@ -30,11 +30,11 @@
   <header class="site-header">
     <div class="container">
       <nav class="nav" aria-label="Primary">
-        <a href="../" class="brand">Miguel&nbsp;Tomás&nbsp;Gomes</a>
+        <a href="../index.html" class="brand">Miguel&nbsp;Tomás&nbsp;Gomes</a>
         <ul class="nav-links">
-          <li><a href="../#about">About</a></li>
-          <li><a href="./">Work Samples</a></li>
-          <li><a href="../#contact">Contact</a></li>
+          <li><a href="../index.html#about">About</a></li>
+          <li><a href="./index.html">Work Samples</a></li>
+          <li><a href="../index.html#contact">Contact</a></li>
         </ul>
       </nav>
     </div>
@@ -164,7 +164,7 @@
         </section>
 
         <footer class="article-footer">
-          <p><strong>Enjoyed reading? </strong><a href="../#contact">Get in touch</a> with me or see more of <a href="./">my work</a>.</p>
+          <p><strong>Enjoyed reading? </strong><a href="../index.html#contact">Get in touch</a> with me or see more of <a href="./index.html">my work</a>.</p>
         </footer>
       </div>
     </article>
@@ -172,7 +172,7 @@
 
 <footer class="site-footer">
     <div class="container footer-grid">
-      <a class="link" href="./">View Work Samples</a>
+      <a class="link" href="./index.html">View Work Samples</a>
       <p>© 2025 Miguel Tomás Gomes</p>
     </div>
   </footer>

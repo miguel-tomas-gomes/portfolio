@@ -9,26 +9,6 @@
     .center{min-height:70vh; display:grid; place-items:center; text-align:center}
     .glyph{font-size: clamp(5rem, 10vw, 10rem); line-height:1; color:#e5e7eb}
   </style>
-  <script>
-    // Handle redirects for .html versions to clean URLs
-    (function() {
-      const path = window.location.pathname;
-      
-      // Redirect index.html to root
-      if (path === '/index.html') {
-        window.location.replace('/');
-        return;
-      }
-      
-      // Redirect articles/index.html to articles/
-      if (path === '/articles/index.html') {
-        window.location.replace('/articles/');
-        return;
-      }
-      
-      // Show 404 page for other cases
-    })();
-  </script>
 </head>
 <body>
   <main class="center">

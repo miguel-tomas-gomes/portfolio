@@ -31,10 +31,10 @@
   <header class="site-header">
     <div class="container">
       <nav class="nav" aria-label="Primary">
-        <a href="/" class="brand">Miguel&nbsp;Tomás&nbsp;Gomes</a>
+        <a href="index.html" class="brand">Miguel&nbsp;Tomás&nbsp;Gomes</a>
         <ul class="nav-links">
           <li><a href="#about">About</a></li>
-          <li><a href="articles/">Work Samples</a></li>
+          <li><a href="articles/index.html">Work Samples</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
       </nav>
@@ -55,7 +55,7 @@
           <h1>Hey, I'm Miguel. UX Writer.</h1>
           <p class="lede">Bridging the gap between what systems do and what people understand. Based in Lisbon, working with teams worldwide.</p>
           <div class="actions">
-            <a class="btn" href="articles/">View Work Samples</a>
+            <a class="btn" href="articles/index.html">View Work Samples</a>
             <span class="status-label" style="padding: 4px 6px !important; margin: 0 !important; font-size: 11px !important; background: rgba(34, 197, 94, 0.15) !important; color: #16a34a !important; line-height: 0.8 !important; border: 1px solid rgba(34, 197, 94, 0.3) !important; border-radius: 8px !important; display: inline-block !important; letter-spacing: -0.2px !important; height: 20px !important; overflow: hidden !important; vertical-align: baseline !important; margin-top: 14px !important;">Available for new projects</span>
           </div>
         </div>
@@ -101,7 +101,7 @@
             </div>
           </article>
         </div>
-        <p class="more"><a class="link" href="articles/">View all</a></p>
+        <p class="more"><a class="link" href="articles/index.html">View all</a></p>
       </div>
     </section>
 
@@ -166,7 +166,7 @@
   <footer class="site-footer">
     <div class="container footer-grid">
       <p>© <span id="year">2025</span> Miguel Tomás Gomes. All rights reserved.</p>
-      <a class="link" href="articles/">Work Samples</a>
+      <a class="link" href="articles/index.html">Work Samples</a>
     </div>
   </footer>
 </body>
