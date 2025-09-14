@@ -1,3 +1,4 @@
+/* SIMPLEFOLIO EXACT MATCH — image above text, smaller fonts */
 @import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap");
 
 :root{
@@ -13,11 +14,13 @@
   --container: 1040px;
   --shadow: 0 4px 12px rgba(15,23,42,.06);
 
+  /* SMALLER TYPOGRAPHY - More like reference */
   --step--1: clamp(0.75rem, calc(0.7rem + 0.1vw), 0.8rem);
   --step-0: clamp(0.875rem, calc(0.85rem + 0.15vw), 0.95rem);
   --step-1: clamp(1rem, calc(0.95rem + 0.25vw), 1.125rem);
   --step-2: clamp(1.25rem, calc(1.15rem + 0.5vw), 1.5rem);
   --step-3: clamp(1.5rem, calc(1.3rem + 1vw), 2.2rem);
+}
 
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -28,6 +31,7 @@ body{
   background: var(--bg);
   line-height:1.5;
   font-size: var(--step-0);
+}
 
 img{max-width:100%; display:block; border-radius: calc(var(--radius) - 2px);}
 a{color: var(--link); text-decoration: none}
@@ -45,19 +49,23 @@ p{color: var(--text);}
   background: rgba(255,255,255,0.8);
   backdrop-filter: blur(8px);
   border-bottom:1px solid var(--border);
+}
 .nav{display:flex; align-items:center; justify-content:space-between; min-height:60px}
 .brand{font-family: Manrope, sans-serif; font-weight:700; font-size: var(--step-1); color: var(--text)}
 .nav-links{display:flex; gap:24px; list-style:none; padding:0; margin:0}
 .nav-links a{color: var(--text); opacity:.8; font-weight:500; font-size: var(--step--1)}
 .nav-links a:hover{opacity:1}
 
+/* HERO SECTION - Image ABOVE text */
 .hero.light{
   padding: 80px 0 60px;
   border-bottom:1px solid var(--border);
   background: var(--bg);
   position: relative;
   overflow: hidden;
+}
 
+/* Triangular pyramid shape in bottom-right */
 .hero.light::before {
   content: '';
   position: absolute;
@@ -68,7 +76,9 @@ p{color: var(--text);}
   background: linear-gradient(135deg, rgba(34, 197, 94, 0.3) 0%, rgba(11, 87, 208, 0.25) 100%);
   clip-path: polygon(100% 0%, 100% 100%, 0% 100%);
   z-index: 1;
+}
 
+/* Circular shadow under the avatar, creeping to the left */
 .hero-media::after {
   content: '';
   position: absolute;
@@ -80,6 +90,7 @@ p{color: var(--text);}
   border-radius: 50%;
   transform: translate(-30px, -10px);
   z-index: -1;
+}
 
 .hero-grid{
   max-width: 600px;
@@ -87,11 +98,14 @@ p{color: var(--text);}
   text-align: left;
   position: relative;
   z-index: 2;
+}
 
+/* Profile image at the TOP */
 .hero-media{
   margin: 32px 0;
   order: -1; /* Force image to appear first */
   position: relative;
+}
 
 .avatar{
   border-radius: 9999px; 
@@ -101,11 +115,16 @@ p{color: var(--text);}
   box-shadow: var(--shadow); 
   border: 3px solid #fff; 
   margin: 0;
+}
 
+/* Text content below image */
 .hero-copy{
+  /* This comes after the image */
+}
 
 .eyebrow{
   display: none;
+}
 
 h1{
   font-family: Manrope, sans-serif; 
@@ -114,6 +133,7 @@ h1{
   margin: 0 0 24px;
   font-weight: 700;
   letter-spacing: -0.01em;
+}
 
 .lede{
   font-size: var(--step-1); 
@@ -121,12 +141,14 @@ h1{
   max-width: 50ch; 
   line-height: 1.5; 
   margin: 32px 0;
+}
 
 .actions{
   display: flex; 
   gap: 12px; 
   margin-top: 0;
   flex-wrap: wrap;
+}
 
 .btn{
   display: inline-block; 
@@ -139,20 +161,24 @@ h1{
   border: 1px solid #0f172a;
   font-size: var(--step-0);
   transition: all 0.2s ease;
+}
 
 .btn:hover{
   transform: translateY(-1px); 
   box-shadow: 0 6px 16px rgba(15,23,42,.1);
+}
 
 .btn.ghost{
   background: var(--accent); 
   color: var(--text); 
   border: 1px solid var(--accent); 
   box-shadow: none;
+}
 
 .btn.ghost:hover{
   background: #16a34a;
   color: #fff;
+}
 
 .actions .status-label,
 span.status-label,
@@ -170,13 +196,16 @@ span.status-label,
   cursor: default !important;
   line-height: 1 !important;
   box-sizing: border-box !important;
+}
 
+/* SECTIONS */
 .section{padding: 60px 0}
 .section.alt{background: var(--bg-alt); border-top:1px solid var(--border); border-bottom:1px solid var(--border)}
 
 .section-head h2{font-size: var(--step-2); margin:0 0 12px; font-weight:700; font-family: Manrope, sans-serif}
 .section-head p{margin:0 0 32px; color: var(--muted); font-size: var(--step-0)}
 
+/* WORK SAMPLES GRID */
 .samples-grid{display:grid; gap:24px; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr))}
 .sample-card{
   background: #fff;
@@ -186,6 +215,7 @@ span.status-label,
   border: 1px solid var(--border);
   display: flex;
   flex-direction: column;
+}
 .sample-card:hover{transform: translateY(-2px); box-shadow: 0 8px 20px rgba(15,23,42,.06)}
 .sample-image{
   height: 160px;
@@ -197,23 +227,29 @@ span.status-label,
   font-size: var(--step--1);
   font-weight:500;
   overflow: hidden;
+}
 .sample-image img{
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
+}
 .sample-content{
   padding: 20px;
   display: flex;
   flex-direction: column;
   flex-grow: 1;
+}
 .sample-card h3{margin:0 0 8px; font-size: var(--step-1); font-weight:600}
 .sample-card p{margin:0 0 12px; color: var(--muted); font-size: var(--step--1); line-height:1.4}
 .sample-card a{color: var(--link); font-weight:500; font-size: var(--step--1)}
 
+/* Push action links to bottom of cards */
 .sample-content a:last-child {
   margin-top: auto;
+}
 
+/* TESTIMONIALS */
 .testimonials-grid{display:grid; gap:32px; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); margin-top: 48px}
 .testimonial{display:flex; gap:16px; align-items:flex-start}
 .testimonial-avatar{flex-shrink:0}
@@ -223,17 +259,21 @@ span.status-label,
   border-radius: 50%;
   object-fit: cover;
   display: block;
+}
 .testimonial-content p{
   margin:0 0 12px;
   font-size: var(--step-0);
   line-height:1.6;
   font-style: italic;
+}
 .testimonial-content cite{
   font-size: var(--step--1);
   color: var(--muted);
   font-style: normal;
   font-weight:500;
+}
 
+/* ABOUT SECTION */
 .about-grid{
   display: grid;
   grid-template-columns: 1fr auto;
@@ -241,22 +281,28 @@ span.status-label,
   align-items: center;
   max-width: 1000px;
   margin: 0 auto;
+}
 .about-content{
   max-width: 600px;
+}
 .about-content h2{
   font-size: var(--step-2);
   margin: 0 0 24px;
   font-weight: 700;
   font-family: Manrope, sans-serif;
+}
 .about-content p{
   margin: 0 0 20px;
   font-size: var(--step-0);
   line-height: 1.6;
   color: var(--text);
+}
 .about-content p:last-child{
   margin-bottom: 0;
+}
 .about-image{
   flex-shrink: 0;
+}
 .about-image img{
   width: 280px;
   height: 280px;
@@ -264,19 +310,25 @@ span.status-label,
   object-fit: cover;
   display: block;
   box-shadow: var(--shadow);
+}
 
 @media (max-width: 768px) {
   .about-grid{
     grid-template-columns: 1fr;
     gap: 32px;
     text-align: center;
+  }
   .about-image{
     order: -1;
+  }
   .about-image img{
     width: 200px;
     height: 200px;
     margin: 0 auto;
+  }
+}
 
+/* POSTS/ARTICLES */
 .posts{display:grid; gap:20px}
 .post{padding: 16px 0; border-bottom:1px solid var(--border)}
 .post:last-child{border-bottom:none}
@@ -295,6 +347,7 @@ span.status-label,
   font-weight:500;
   font-size: var(--step--1);
   transition: all 0.2s ease;
+}
 .chip:hover{background: var(--bg-alt); border-color: var(--muted)}
 
 .post-head h1{font-size: var(--step-2); margin:0 0 12px; font-weight:700}
@@ -303,6 +356,7 @@ span.status-label,
 .site-footer{border-top:1px solid var(--border); padding:32px 0; color: var(--muted); font-size: var(--step--1)}
 .footer-grid{display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap}
 
+/* RESPONSIVE */
 @media (max-width: 980px){
   .hero-grid{max-width: 100%; padding: 0 20px}
   .avatar{width: 128px; height: 128px}
@@ -310,25 +364,36 @@ span.status-label,
   .container{padding: 0 20px}
   .section{padding: 45px 0}
 
+  /* Adjust background shapes for tablet */
   .hero.light::before {
     width: 250px;
     height: 160px;
+  }
 
+  /* Adjust circular shadow for medium avatar */
   .hero-media::after {
     width: 128px;
     height: 128px;
     transform: translate(-25px, -8px);
+  }
 
+  /* Better tablet spacing */
   .testimonials-grid {
     grid-template-columns: 1fr;
     gap: 28px;
     margin-top: 40px;
+  }
 
+  /* Tablet navigation improvements */
   .nav-links {
     gap: 20px;
+  }
 
+  /* Tablet button improvements */
   .actions {
     gap: 10px;
+  }
+}
 
 @media (max-width: 640px){
   .avatar{width: 112px; height: 112px}
@@ -340,111 +405,162 @@ span.status-label,
   .container{padding: 0 16px}
   .hero-grid{padding: 0; max-width: 100%; text-align: center}
 
+  /* Center main content on mobile */
   .hero-copy {
     text-align: center;
+  }
 
+  /* Center section headers on mobile */
   .section-head {
     text-align: center;
+  }
 
+  /* Resize background shapes for mobile */
   .hero.light::before {
     width: 200px;
     height: 120px;
+  }
 
+  /* Hide circular shadow on mobile */
   .hero-media::after {
     display: none;
+  }
 
+  /* Improve mobile typography */
   h1 {
     font-size: var(--step-2);
     margin: 0 0 16px;
     line-height: 1.1;
+  }
 
   .lede {
     font-size: var(--step-0);
     margin: 20px 0;
+  }
 
+  /* Better mobile spacing */
   .hero-media {
     margin: 20px 0;
+  }
 
+  /* Center avatar on mobile only */
   
+  /* Center hero-media container on mobile */
   .hero-media {
     display: flex;
     justify-content: center;
   }  .avatar {
     margin: 0 auto;
+  }
 
+  /* Mobile-friendly testimonials */
   .testimonials-grid {
     grid-template-columns: 1fr;
     gap: 24px;
     margin-top: 32px;
+  }
 
+  /* Improve mobile cards */
   .sample-content {
     padding: 16px;
+  }
 
   .sample-card h3 {
     font-size: var(--step-0);
+  }
+}
 
+/* Extra small mobile devices */
 @media (max-width: 480px){
   .hero.light{padding: 40px 0 24px}
   .section{padding: 24px 0}
   .container{padding: 0 12px}
 
+  /* Enhanced centering for very small screens */
   .hero-grid {
     text-align: center;
+  }
 
   .actions {
     align-items: center;
     justify-content: center;
+  }
 
+  /* Very small background shapes */
   .hero.light::before {
     width: 150px;
     height: 100px;
+  }
 
+  /* Hide circular shadow on very small mobile */
   .hero-media::after {
     display: none;
+  }
 
+  /* Compact typography */
   h1 {
     font-size: var(--step-1);
     margin: 0 0 12px;
+  }
 
   .lede {
     font-size: var(--step--1);
     margin: 16px 0;
+  }
 
+  /* Compact avatar */
   .avatar {
     width: 100px;
     height: 100px;
     margin: 0 auto;
+  }
 
+  /* Compact hero spacing */
   .hero-media {
     margin: 16px 0;
+  }
 
+  /* Compact buttons */
   .btn {
     padding: 10px 20px;
     min-width: 160px;
     font-size: 14px;
+  }
 
 
 
+  /* Compact navigation */
   .nav-links {
     gap: 12px;
+  }
 
   .nav-links a {
     font-size: 13px;
+  }
 
+  /* Compact testimonials */
   .testimonial {
     gap: 12px;
+  }
 
   .testimonial-avatar img {
     width: 50px;
     height: 50px;
+  }
 
+  /* Compact about section */
   .about-image img {
     width: 180px;
     height: 180px;
+  }
+}
 
+/* ARTICLE PAGE STYLES */
+}
 
 .article-image{
   margin: 32px 0;
+}
 
 .article-image img{
   display: block;
@@ -453,7 +569,9 @@ span.status-label,
   object-fit: contain;
   border-radius: var(--radius);
   box-shadow: var(--shadow);
+}
 
+/* Slight spacing below images in article text - constrain to article body width */
 .article-body .article-image-spaced {
   margin-bottom: 16px;
   max-width: 100%;
@@ -463,6 +581,7 @@ span.status-label,
   border-radius: var(--radius);
   box-shadow: var(--shadow);
   box-sizing: border-box;
+}
 
 .article-header h1{
   font-family: Manrope, sans-serif;
@@ -471,19 +590,23 @@ span.status-label,
   line-height: 1.2;
   margin: 0 0 12px;
   color: var(--text);
+}
 
 .article-meta{
   color: var(--muted);
   font-size: var(--step--1);
   margin: 0;
   font-weight: 500;
+}
 
 .article-content{
   padding: 60px 0;
+}
 
 .article-body{
   max-width: 700px;
   margin: 0 auto;
+}
 
 .article-body h2{
   font-family: Manrope, sans-serif;
@@ -491,6 +614,7 @@ span.status-label,
   font-weight: 700;
   margin: 40px 0 16px;
   color: var(--text);
+}
 
 .article-body h3{
   font-family: Manrope, sans-serif;
@@ -498,31 +622,39 @@ span.status-label,
   font-weight: 600;
   margin: 32px 0 12px;
   color: var(--text);
+}
 
 .article-body p{
   margin: 0 0 20px;
   line-height: 1.6;
+}
 
 .article-body ul, .article-body ol{
   margin: 0 0 20px;
   padding-left: 24px;
+}
 
 .article-body li{
   margin-bottom: 8px;
   line-height: 1.5;
+}
 
 .article-footer{
   margin-top: 60px;
   padding-top: 32px;
   border-top: 1px solid var(--border);
+}
 
 .article-footer p{
   color: var(--muted);
   font-size: var(--step-0);
+}
 
+/* Ensure article image is truly 100% width */
 .article-body .article-image {
   width: 100%;
   margin: 32px 0;
+}
 
 .article-body .article-image img {
   width: 100% !important;
@@ -531,11 +663,14 @@ span.status-label,
   border-radius: var(--radius);
   box-shadow: var(--shadow);
   display: block;
+}
 
+/* Force image to be 100% width of content area */
 .article-image {
   width: 100% !important;
   margin: 32px 0 !important;
   padding: 0 !important;
+}
 
 .article-image img {
   width: 100% !important;
@@ -547,7 +682,9 @@ span.status-label,
   display: block !important;
   margin: 0 !important;
   padding: 0 !important;
+}
 
+/* Override for spaced images - 5px right indent */
 .article-body img.article-image-spaced {
   max-width: 695px !important;  /* 5px less than article-body (700px) */
   width: 100% !important;
@@ -558,7 +695,9 @@ span.status-label,
   display: block !important;
   border-radius: var(--radius) !important;
   box-shadow: var(--shadow) !important;
+}
 
+/* Scoring Table Styles */
 .scoring-table {
   width: 100%;
   border-collapse: collapse;
@@ -568,12 +707,14 @@ span.status-label,
   border-radius: var(--radius);
   overflow: hidden;
   box-shadow: var(--shadow);
+}
 
 .scoring-table th,
 .scoring-table td {
   border: 1px solid #e5e7eb;
   padding: 0.75rem;
   text-align: left;
+}
 
 .scoring-table th {
   background-color: #f9fafb;
@@ -581,21 +722,29 @@ span.status-label,
   color: #374151;
   font-size: 0.85rem;
   letter-spacing: 0.025em;
+}
 
 .scoring-table td {
   color: #4b5563;
+}
 
 .scoring-table tbody tr:hover {
   background-color: #f9fafb;
+}
 
+/* Mobile responsiveness for scoring table */
 @media (max-width: 640px) {
   .scoring-table {
     font-size: 0.8rem;
+  }
 
   .scoring-table th,
   .scoring-table td {
     padding: 0.5rem;
+  }
+}
 
+/* Methodology Note Box */
 .methodology-note {
   background-color: #f8f9fa;
   border-left: 4px solid #6c757d;
@@ -603,6 +752,7 @@ span.status-label,
   margin: 1.5rem 0;
   border-radius: 4px;
   font-size: 0.9rem;
+}
 
 .methodology-note h4 {
   margin-top: 0;
@@ -611,23 +761,31 @@ span.status-label,
   font-size: 0.9rem;
   letter-spacing: 0.25px;
   font-weight: 600;
+}
 
 .methodology-note ul {
   margin-bottom: 0;
   padding-left: 1.2rem;
+}
 
 .methodology-note li {
   margin-bottom: 0.5rem;
   line-height: 1.4;
+}
 
 .methodology-note li:last-child {
   margin-bottom: 0;
+}
 
+/* TL;DR Blocks Overlay */
 .hero-with-tldr {
   position: relative;
+}
 
+/* Push content down to make room for TL;DR blocks */
 .hero-with-tldr + section {
   margin-top: 154px;
+}
 
 .tldr-blocks {
   position: absolute;
@@ -637,6 +795,7 @@ span.status-label,
   display: flex;
   gap: 20px;
   z-index: 10;
+}
 
 .tldr-block {
   width: 200px;
@@ -647,6 +806,7 @@ span.status-label,
   backdrop-filter: blur(4px);
   border: 1px solid rgba(255, 255, 255, 0.2);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
 
 .tldr-header {
   font-size: 0.8125rem;
@@ -654,6 +814,7 @@ span.status-label,
   color: #6c757d;
   letter-spacing: 0.25px;
   margin-bottom: 8px;
+}
 
 .tldr-title {
   font-size: 0.78rem;
@@ -661,18 +822,22 @@ span.status-label,
   color: #343a40;
   line-height: 1.2;
   margin-bottom: 2px;
+}
 
 .tldr-subtitle {
   font-size: 0.7rem;
   color: #495057;
   line-height: 1.3;
   margin-top: 5px;
+}
 
 
 
+/* Mobile responsiveness for TL;DR blocks */
 @media (max-width: 768px) {
   .hero-with-tldr {
     position: relative;
+  }
 
   .tldr-blocks {
     position: static;
@@ -682,51 +847,68 @@ span.status-label,
     gap: 12px;
     margin: 20px 0 0 0;
     width: 100%;
+  }
 
   .tldr-block {
     width: 100%;
     height: auto;
     min-height: 80px;
     margin: 0;
+  }
 
+  /* Adjust spacing for mobile - no extra margin needed since blocks are below image */
   .hero-with-tldr + section {
     margin-top: 32px;
+  }
+}
 
 @media (max-width: 480px) {
   .tldr-blocks {
     gap: 10px;
     margin: 16px 0 0 0;
+  }
 
   .tldr-block {
     padding: 12px;
     min-height: 75px;
+  }
 
   .tldr-title {
     font-size: 0.85rem;
+  }
 
   .tldr-subtitle {
     font-size: 0.7rem;
+  }
 
+  /* Further reduce spacing on very small screens */
   .hero-with-tldr + section {
     margin-top: 24px;
+  }
+}
 
+/* ABOUT PAGE SPECIFIC STYLES */
 
+/* Tools Grid */
 .tools-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 32px;
   margin-top: 32px;
+}
 
 .tool-category h3 {
   font-size: var(--step-1);
   font-weight: 600;
   margin-bottom: 16px;
   color: var(--brand);
+}
 
 .tool-list {
   list-style: none;
   padding: 0;
   margin: 0;
+}
 
 .tool-list li {
   display: flex;
@@ -737,25 +919,31 @@ span.status-label,
   background: var(--bg);
   border: 1px solid var(--border);
   border-radius: var(--radius);
+}
 
 .tool-icon {
   font-size: 20px;
   flex-shrink: 0;
   margin-top: 2px;
+}
 
 .tool-list strong {
   display: block;
   font-weight: 600;
   color: var(--brand);
   margin-bottom: 2px;
+}
 
 .tool-list span:not(.tool-icon) {
   font-size: var(--step--1);
   color: var(--text);
   opacity: 0.8;
+}
 
+/* Experience Timeline */
 .experience-timeline {
   margin-top: 32px;
+}
 
 .experience-item {
   display: grid;
@@ -764,42 +952,50 @@ span.status-label,
   margin-bottom: 40px;
   padding-bottom: 32px;
   border-bottom: 1px solid var(--border);
+}
 
 .experience-item:last-child {
   border-bottom: none;
   margin-bottom: 0;
+}
 
 .experience-period {
   display: flex;
   flex-direction: column;
   gap: 4px;
+}
 
 .year {
   font-weight: 600;
   color: var(--brand);
   font-size: var(--step-0);
+}
 
 .duration {
   font-size: var(--step--1);
   color: var(--text);
   opacity: 0.7;
+}
 
 .experience-content h3 {
   font-size: var(--step-1);
   font-weight: 600;
   margin-bottom: 4px;
   color: var(--brand);
+}
 
 .company {
   font-size: var(--step-0);
   color: var(--text);
   opacity: 0.8;
   margin-bottom: 12px;
+}
 
 .achievements {
   list-style: none;
   padding: 0;
   margin: 0;
+}
 
 .achievements li {
   position: relative;
@@ -807,6 +1003,7 @@ span.status-label,
   margin-bottom: 8px;
   font-size: var(--step-0);
   color: var(--text);
+}
 
 .achievements li::before {
   content: '•';
@@ -814,26 +1011,33 @@ span.status-label,
   left: 0;
   color: var(--accent);
   font-weight: bold;
+}
 
+/* Background Grid */
 .background-grid {
   max-width: 800px;
+}
 
 .background-content {
   margin-top: 16px;
+}
 
 .education-item {
   margin-bottom: 32px;
   padding-bottom: 24px;
   border-bottom: 1px solid var(--border);
+}
 
 .education-item:last-of-type {
   border-bottom: none;
+}
 
 .education-item h3 {
   font-size: var(--step-1);
   font-weight: 600;
   margin-bottom: 4px;
   color: var(--brand);
+}
 
 .institution {
   font-size: var(--step-0);
@@ -841,6 +1045,7 @@ span.status-label,
   opacity: 0.8;
   margin-bottom: 8px;
   font-style: italic;
+}
 
 .personal-note {
   background: var(--bg);
@@ -848,51 +1053,66 @@ span.status-label,
   border-radius: var(--radius);
   padding: 24px;
   margin-top: 32px;
+}
 
 .personal-note h3 {
   font-size: var(--step-1);
   font-weight: 600;
   margin-bottom: 12px;
   color: var(--brand);
+}
 
+/* Responsive adjustments */
 @media (max-width: 768px) {
   .tools-grid {
     grid-template-columns: 1fr;
     gap: 24px;
+  }
   
   .experience-item {
     grid-template-columns: 1fr;
     gap: 12px;
+  }
   
   .experience-period {
     flex-direction: row;
     gap: 12px;
     align-items: center;
+  }
   
   .duration::before {
     content: '•';
     margin: 0 4px;
     color: var(--text);
     opacity: 0.5;
+  }
+}
 
+/* Navigation current page indicator */
 .nav-links a[aria-current="page"] {
   opacity: 1;
   color: var(--brand);
   font-weight: 600;
+}
 
 
+/* CREATIVE ABOUT PAGE STYLES */
 
 .about-page {
   background: var(--bg);
+}
 
 .about-main {
   padding-top: 0;
+}
 
+/* Creative Intro Section */
 .about-intro {
   padding: 60px 0 80px;
   background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
   position: relative;
   overflow: hidden;
+}
 
 .about-intro::before {
   content: '';
@@ -904,6 +1124,7 @@ span.status-label,
   background: linear-gradient(45deg, rgba(34, 197, 94, 0.05) 0%, rgba(59, 130, 246, 0.05) 100%);
   transform: rotate(15deg);
   z-index: 1;
+}
 
 .intro-layout {
   display: grid;
@@ -912,6 +1133,7 @@ span.status-label,
   align-items: center;
   position: relative;
   z-index: 2;
+}
 
 .about-title {
   font-size: clamp(2.5rem, 5vw, 4rem);
@@ -919,27 +1141,32 @@ span.status-label,
   line-height: 1.1;
   margin-bottom: 24px;
   color: var(--brand);
+}
 
 .title-line {
   display: block;
+}
 
 .title-line.highlight {
   background: linear-gradient(135deg, #22c55e, #3b82f6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   background-clip: text;
-  color: transparent;
-  background-clip: text;
+}
 
 .intro-subtitle {
   font-size: var(--step-1);
   color: var(--text);
   opacity: 0.8;
   max-width: 500px;
+}
 
 .portrait-container {
   position: relative;
   width: 200px;
   height: 200px;
   margin: 0 auto;
+}
 
 .portrait-container img {
   width: 100%;
@@ -948,6 +1175,7 @@ span.status-label,
   border-radius: 50%;
   position: relative;
   z-index: 2;
+}
 
 .portrait-accent {
   position: absolute;
@@ -958,15 +1186,19 @@ span.status-label,
   background: linear-gradient(135deg, #22c55e, #3b82f6);
   border-radius: 50%;
   z-index: 1;
+}
 
+/* Story Cards */
 .story-section {
   padding: 80px 0;
+}
 
 .story-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 32px;
   margin-top: 40px;
+}
 
 .story-card {
   background: white;
@@ -975,10 +1207,12 @@ span.status-label,
   padding: 32px;
   position: relative;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
 
 .story-card:hover {
   transform: translateY(-4px);
   box-shadow: var(--shadow);
+}
 
 .card-number {
   position: absolute;
@@ -994,6 +1228,7 @@ span.status-label,
   justify-content: center;
   font-weight: 700;
   font-size: var(--step--1);
+}
 
 .story-card h2 {
   font-size: var(--step-1);
@@ -1001,14 +1236,18 @@ span.status-label,
   margin-bottom: 16px;
   color: var(--brand);
   margin-top: 8px;
+}
 
 .story-card p {
   color: var(--text);
   line-height: 1.6;
+}
 
+/* Skills Showcase */
 .skills-showcase {
   padding: 80px 0;
   background: var(--bg);
+}
 
 .section-title {
   font-size: var(--step-2);
@@ -1016,11 +1255,13 @@ span.status-label,
   text-align: center;
   margin-bottom: 48px;
   color: var(--brand);
+}
 
 .skills-layout {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 24px;
+}
 
 .skill-category {
   background: white;
@@ -1028,33 +1269,40 @@ span.status-label,
   border-radius: var(--radius);
   padding: 24px;
   transition: transform 0.2s ease;
+}
 
 .skill-category.primary {
   border-color: var(--accent);
   background: linear-gradient(135deg, rgba(34, 197, 94, 0.02), rgba(34, 197, 94, 0.05));
+}
 
 .skill-category:hover {
   transform: translateY(-2px);
+}
 
 .skill-header {
   display: flex;
   align-items: center;
   gap: 12px;
   margin-bottom: 16px;
+}
 
 .skill-icon {
   font-size: 24px;
+}
 
 .skill-header h3 {
   font-size: var(--step-0);
   font-weight: 600;
   color: var(--brand);
   margin: 0;
+}
 
 .skill-items {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
+}
 
 .skill-tag {
   background: var(--bg);
@@ -1064,25 +1312,31 @@ span.status-label,
   font-size: var(--step--1);
   color: var(--text);
   white-space: nowrap;
+}
 
 .skill-category.primary .skill-tag {
   background: rgba(34, 197, 94, 0.1);
   border-color: rgba(34, 197, 94, 0.2);
   color: #16a34a;
+}
 
+/* Impact Metrics */
 .impact-section {
   padding: 80px 0;
   background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
   color: white;
+}
 
 .impact-section .section-title {
   color: white;
+}
 
 .metrics-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 32px;
   margin-top: 48px;
+}
 
 .metric-card {
   text-align: center;
@@ -1091,26 +1345,32 @@ span.status-label,
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: var(--radius);
   backdrop-filter: blur(10px);
+}
 
 .metric-number {
   font-size: clamp(2rem, 4vw, 3rem);
   font-weight: 700;
   color: #22c55e;
   margin-bottom: 8px;
+}
 
 .metric-label {
   font-size: var(--step--1);
   color: rgba(255, 255, 255, 0.8);
   line-height: 1.4;
+}
 
+/* Philosophy Section */
 .philosophy-section {
   padding: 80px 0;
   background: var(--bg);
+}
 
 .philosophy-content {
   max-width: 800px;
   margin: 0 auto;
   text-align: center;
+}
 
 .philosophy-quote {
   font-size: var(--step-1);
@@ -1122,6 +1382,7 @@ span.status-label,
   border: 1px solid var(--border);
   border-radius: var(--radius);
   position: relative;
+}
 
 .philosophy-quote::before {
   content: '"';
@@ -1131,41 +1392,50 @@ span.status-label,
   top: -10px;
   left: 20px;
   font-family: serif;
+}
 
 .philosophy-details {
   text-align: left;
+}
 
 .philosophy-details p {
   margin-bottom: 16px;
   color: var(--text);
   line-height: 1.6;
+}
 
+/* Contact Section */
 .contact-section {
   padding: 80px 0;
   background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+}
 
 .contact-content {
   max-width: 600px;
   margin: 0 auto;
   text-align: center;
+}
 
 .contact-content h2 {
   font-size: var(--step-2);
   font-weight: 600;
   margin-bottom: 16px;
   color: var(--brand);
+}
 
 .contact-content p {
   font-size: var(--step-0);
   color: var(--text);
   margin-bottom: 32px;
   line-height: 1.6;
+}
 
 .contact-actions {
   display: flex;
   gap: 16px;
   justify-content: center;
   flex-wrap: wrap;
+}
 
 .contact-btn {
   display: inline-block;
@@ -1177,54 +1447,69 @@ span.status-label,
   border: 1px solid var(--border);
   background: white;
   color: var(--brand);
+}
 
 .contact-btn.primary {
   background: var(--accent);
   color: white;
   border-color: var(--accent);
+}
 
 .contact-btn:hover {
   transform: translateY(-2px);
   box-shadow: var(--shadow);
   text-decoration: none;
+}
 
 .contact-btn.primary:hover {
   background: #16a34a;
   border-color: #16a34a;
+}
 
+/* Responsive Design */
 @media (max-width: 768px) {
   .intro-layout {
     grid-template-columns: 1fr;
     gap: 40px;
     text-align: center;
+  }
   
   .about-title {
     font-size: clamp(2rem, 8vw, 3rem);
+  }
   
   .story-grid {
     grid-template-columns: 1fr;
     gap: 24px;
+  }
   
   .skills-layout {
     grid-template-columns: 1fr;
+  }
   
   .metrics-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 24px;
+  }
   
   .contact-actions {
     flex-direction: column;
     align-items: center;
+  }
   
   .contact-btn {
     width: 200px;
+  }
+}
 
 @media (max-width: 480px) {
   .metrics-grid {
     grid-template-columns: 1fr;
+  }
   
   .about-intro {
     padding: 40px 0 60px;
+  }
   
   .story-section,
   .skills-showcase,
@@ -1232,28 +1517,37 @@ span.status-label,
   .philosophy-section,
   .contact-section {
     padding: 60px 0;
+  }
+}
 
+/* BIO PAGE STYLES - Inspired by Mateo CV */
 
 .bio-page {
   background: #fafafa;
+}
 
 .bio-main {
   padding-top: 0;
+}
 
+/* Bio Hero Section */
 .bio-hero {
   padding: 80px 0;
   background: white;
   border-bottom: 1px solid var(--border);
+}
 
 .bio-layout {
   display: grid;
   grid-template-columns: 400px 1fr;
   gap: 80px;
   align-items: start;
+}
 
 .bio-image {
   position: sticky;
   top: 100px;
+}
 
 
 .bio-content h1 {
@@ -1261,40 +1555,49 @@ span.status-label,
   font-weight: 700;
   margin-bottom: 8px;
   color: var(--brand);
+}
 
 .bio-role {
   font-size: var(--step-1);
   color: var(--text);
   opacity: 0.8;
   margin-bottom: 4px;
+}
 
 .bio-location {
   font-size: var(--step-0);
   color: var(--text);
   opacity: 0.6;
   margin-bottom: 32px;
+}
 
 .bio-story p {
   font-size: var(--step-0);
   line-height: 1.7;
   color: var(--text);
   margin-bottom: 24px;
+}
 
 .bio-story p:last-child {
   margin-bottom: 0;
+}
 
+/* Experience Section */
 .experience-section {
   padding: 80px 0;
   background: white;
+}
 
 .section-title {
   font-size: var(--step-2);
   font-weight: 600;
   margin-bottom: 48px;
   color: var(--brand);
+}
 
 .cv-timeline {
   max-width: 800px;
+}
 
 .cv-item {
   display: grid;
@@ -1303,10 +1606,12 @@ span.status-label,
   margin-bottom: 48px;
   padding-bottom: 48px;
   border-bottom: 1px solid var(--border);
+}
 
 .cv-item:last-child {
   border-bottom: none;
   margin-bottom: 0;
+}
 
 .cv-period {
   font-size: var(--step--1);
@@ -1315,12 +1620,14 @@ span.status-label,
   opacity: 0.7;
   position: sticky;
   top: 120px;
+}
 
 .cv-details h3 {
   font-size: var(--step-1);
   font-weight: 600;
   margin-bottom: 4px;
   color: var(--brand);
+}
 
 .cv-company {
   font-size: var(--step-0);
@@ -1328,11 +1635,13 @@ span.status-label,
   opacity: 0.8;
   margin-bottom: 16px;
   font-style: italic;
+}
 
 .cv-responsibilities {
   list-style: none;
   padding: 0;
   margin: 0;
+}
 
 .cv-responsibilities li {
   position: relative;
@@ -1341,6 +1650,7 @@ span.status-label,
   font-size: var(--step-0);
   color: var(--text);
   line-height: 1.6;
+}
 
 .cv-responsibilities li::before {
   content: '•';
@@ -1348,27 +1658,33 @@ span.status-label,
   left: 0;
   color: var(--accent);
   font-weight: bold;
+}
 
+/* Tools Section */
 .tools-section {
   padding: 80px 0;
   background: #fafafa;
+}
 
 .tools-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 48px;
   margin-top: 32px;
+}
 
 .tool-group h3 {
   font-size: var(--step-1);
   font-weight: 600;
   margin-bottom: 24px;
   color: var(--brand);
+}
 
 .tool-items {
   display: flex;
   flex-direction: column;
   gap: 20px;
+}
 
 .tool-item {
   display: flex;
@@ -1379,43 +1695,53 @@ span.status-label,
   border: 1px solid var(--border);
   border-radius: var(--radius);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
 
 .tool-item:hover {
   transform: translateY(-2px);
   box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+}
 
 .tool-name {
   font-size: var(--step-0);
   font-weight: 600;
   color: var(--brand);
+}
 
 .tool-desc {
   font-size: var(--step--1);
   color: var(--text);
   opacity: 0.8;
   line-height: 1.5;
+}
 
+/* Education Section */
 .education-section {
   padding: 80px 0;
   background: white;
+}
 
 .education-content {
   max-width: 800px;
+}
 
 .education-item {
   margin-bottom: 40px;
   padding-bottom: 32px;
   border-bottom: 1px solid var(--border);
+}
 
 .education-item:last-child {
   border-bottom: none;
   margin-bottom: 0;
+}
 
 .education-item h3 {
   font-size: var(--step-1);
   font-weight: 600;
   margin-bottom: 4px;
   color: var(--brand);
+}
 
 .education-institution {
   font-size: var(--step-0);
@@ -1423,38 +1749,46 @@ span.status-label,
   opacity: 0.8;
   margin-bottom: 12px;
   font-style: italic;
+}
 
 .education-item p:not(.education-institution) {
   font-size: var(--step-0);
   color: var(--text);
   line-height: 1.6;
+}
 
+/* Contact Section */
 .contact-section {
   padding: 80px 0;
   background: #fafafa;
+}
 
 .contact-content {
   max-width: 600px;
   margin: 0 auto;
   text-align: center;
+}
 
 .contact-content h2 {
   font-size: var(--step-2);
   font-weight: 600;
   margin-bottom: 16px;
   color: var(--brand);
+}
 
 .contact-content p {
   font-size: var(--step-0);
   color: var(--text);
   margin-bottom: 32px;
   line-height: 1.6;
+}
 
 .contact-links {
   display: flex;
   gap: 24px;
   justify-content: center;
   flex-wrap: wrap;
+}
 
 .contact-link {
   display: flex;
@@ -1468,57 +1802,73 @@ span.status-label,
   color: var(--brand);
   font-weight: 500;
   transition: all 0.2s ease;
+}
 
 .contact-link:hover {
   transform: translateY(-2px);
   box-shadow: 0 4px 16px rgba(0,0,0,0.08);
   text-decoration: none;
+}
 
 .contact-icon {
   font-size: 18px;
+}
 
+/* Responsive Design */
 @media (max-width: 1024px) {
   .bio-layout {
     grid-template-columns: 300px 1fr;
     gap: 60px;
+  }
   
   .bio-image img {
     height: 300px;
+  }
   
   .tools-grid {
     grid-template-columns: 1fr;
     gap: 32px;
+  }
+}
 
 @media (max-width: 768px) {
   .bio-layout {
     grid-template-columns: 1fr;
     gap: 40px;
+  }
   
   .bio-image {
     position: static;
     max-width: 300px;
     margin: 0 auto;
+  }
   
   .bio-image img {
     height: 300px;
+  }
   
   .cv-item {
     grid-template-columns: 1fr;
     gap: 16px;
+  }
   
   .cv-period {
     position: static;
     font-weight: 600;
     color: var(--brand);
     opacity: 1;
+  }
   
   .contact-links {
     flex-direction: column;
     align-items: center;
+  }
   
   .contact-link {
     width: 200px;
     justify-content: center;
+  }
+}
 
 @media (max-width: 480px) {
   .bio-hero,
@@ -1527,18 +1877,24 @@ span.status-label,
   .education-section,
   .contact-section {
     padding: 60px 0;
+  }
   
   .bio-layout {
     gap: 32px;
+  }
   
   .cv-item {
     margin-bottom: 32px;
     padding-bottom: 32px;
+  }
   
   .tools-grid {
     gap: 24px;
+  }
+}
 
 
+/* CREATIVE IMAGE FRAME STYLES */
 
 .image-frame {
   position: relative;
@@ -1546,6 +1902,7 @@ span.status-label,
   height: 400px;
   border-radius: var(--radius);
   overflow: hidden;
+}
 
 .image-frame img {
   width: 100%;
@@ -1554,9 +1911,11 @@ span.status-label,
   border-radius: var(--radius);
   position: relative;
   z-index: 2;
+}
 
 .image-frame:hover img {
   transform: scale(1.02);
+}
 
 .image-accent {
   position: absolute;
@@ -1568,6 +1927,7 @@ span.status-label,
   border-radius: 50%;
   z-index: 1;
   opacity: 0.8;
+}
 
 .image-frame::before {
   content: '';
@@ -1580,6 +1940,7 @@ span.status-label,
   border-radius: calc(var(--radius) + 4px);
   z-index: 0;
   opacity: 0.1;
+}
 
 .image-frame::after {
   content: '';
@@ -1593,29 +1954,40 @@ span.status-label,
   z-index: 1;
   opacity: 0.6;
   animation: float 6s ease-in-out infinite;
+}
 
 @keyframes float {
   0%, 100% { transform: translateY(0px) rotate(0deg); }
   50% { transform: translateY(-10px) rotate(5deg); }
+}
 
+/* Update bio-image to remove old styles */
 .bio-image {
   position: sticky;
   top: 100px;
+}
 
+/* Responsive adjustments for image frame */
 @media (max-width: 1024px) {
   .image-frame {
     height: 300px;
+  }
+}
 
 @media (max-width: 768px) {
   .bio-image {
     position: static;
     max-width: 300px;
     margin: 0 auto;
+  }
   
   .image-frame {
     height: 300px;
+  }
+}
 
 
+/* FIXED CREATIVE IMAGE FRAME - OVERRIDE CONFLICTS */
 .bio-image .image-frame {
   position: relative;
   width: 100%;
@@ -1625,6 +1997,7 @@ span.status-label,
   background: linear-gradient(45deg, #22c55e, #3b82f6, #8b5cf6, #f59e0b);
   padding: 4px;
   box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+}
 
 .bio-image .image-frame img {
   width: 100%;
@@ -1634,9 +2007,11 @@ span.status-label,
   position: relative;
   z-index: 2;
   display: block;
+}
 
 .bio-image .image-frame:hover img {
   transform: scale(1.02);
+}
 
 .bio-image .image-accent {
   position: absolute;
@@ -1649,6 +2024,7 @@ span.status-label,
   z-index: 3;
   opacity: 0.9;
   box-shadow: 0 4px 16px rgba(34, 197, 94, 0.3);
+}
 
 .bio-image .image-frame::after {
   content: '';
@@ -1663,52 +2039,70 @@ span.status-label,
   opacity: 0.8;
   animation: float 6s ease-in-out infinite;
   box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
+}
 
 @keyframes float {
   0%, 100% { 
     transform: translateY(0px) rotate(0deg); 
+  }
   50% { 
     transform: translateY(-8px) rotate(5deg); 
+  }
+}
 
+/* Responsive fixes */
 @media (max-width: 1024px) {
   .bio-image .image-frame {
     height: 300px;
+  }
+}
 
 @media (max-width: 768px) {
   .bio-image .image-frame {
     height: 300px;
+  }
+}
 
 
+/* PROFESSIONAL BIO PAGE - MATEO INSPIRED */
 
+/* Clean, simple image styling */
 .bio-image img {
   width: 100%;
   height: 400px;
   object-fit: cover;
   border-radius: var(--radius);
   box-shadow: var(--shadow), 0 4px 16px rgba(0,0,0,0.08);
+}
 
 
+/* Embedded sections within bio content */
 .embedded-section {
   margin-top: 48px;
   padding-top: 32px;
   border-top: 1px solid var(--border);
+}
 
 .embedded-section h2 {
   font-size: var(--step-1);
   font-weight: 600;
   margin-bottom: 24px;
   color: var(--brand);
+}
 
+/* Compact experience list */
 .experience-list {
   display: flex;
   flex-direction: column;
   gap: 24px;
+}
 
 .exp-item {
   display: grid;
   grid-template-columns: 120px 1fr;
   gap: 20px;
   align-items: start;
+}
 
 .exp-period {
   font-size: var(--step--1);
@@ -1716,88 +2110,112 @@ span.status-label,
   color: var(--text);
   opacity: 0.7;
   line-height: 1.4;
+}
 
 .exp-details h3 {
   font-size: var(--step-0);
   font-weight: 600;
   margin-bottom: 8px;
   color: var(--brand);
+}
 
 .exp-details p {
   font-size: var(--step--1);
   color: var(--text);
   line-height: 1.5;
   margin: 0;
+}
 
+/* Compact skills section */
 .skills-compact {
   display: flex;
   flex-direction: column;
   gap: 20px;
+}
 
 .skill-category h3 {
   font-size: var(--step-0);
   font-weight: 600;
   margin-bottom: 8px;
   color: var(--brand);
+}
 
 .skill-category p {
   font-size: var(--step--1);
   color: var(--text);
   line-height: 1.5;
   margin: 0;
+}
 
+/* Compact education section */
 .education-compact .edu-item h3 {
   font-size: var(--step-0);
   font-weight: 600;
   margin-bottom: 8px;
   color: var(--brand);
+}
 
 .edu-details {
   font-size: var(--step--1);
   color: var(--text);
   line-height: 1.5;
   margin: 0;
+}
 
 .edu-institution {
   opacity: 0.8;
   font-style: italic;
+}
 
+/* Remove old sections that are now embedded */
 .experience-section,
 .tools-section,
 .education-section {
   display: none;
+}
 
+/* Responsive adjustments */
 @media (max-width: 768px) {
   .exp-item {
     grid-template-columns: 1fr;
     gap: 8px;
+  }
   
   .exp-period {
     font-weight: 600;
     color: var(--brand);
     opacity: 1;
+  }
   
   .embedded-section {
     margin-top: 32px;
     padding-top: 24px;
+  }
   
   .bio-image img {
     height: 300px;
+  }
+}
 
+/* Override any conflicting image frame styles */
 .bio-image .image-frame,
 .image-frame,
 .image-accent {
   display: none !important;
+}
 
 
+/* CONDENSED HORIZONTAL SKILLS LAYOUT */
 .skills-compact {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 16px 32px;
   margin-top: 8px;
+}
 
 .skill-category {
   margin-bottom: 0;
+}
 
 .skill-category h3 {
   font-size: var(--step--1);
@@ -1806,22 +2224,29 @@ span.status-label,
   color: var(--brand);
   text-transform: uppercase;
   letter-spacing: 0.5px;
+}
 
 .skill-category p {
   font-size: var(--step--1);
   color: var(--text);
   line-height: 1.4;
   margin: 0;
+}
 
+/* Responsive - stack on mobile */
 @media (max-width: 768px) {
   .skills-compact {
     grid-template-columns: 1fr;
     gap: 12px;
+  }
+}
 
 
+/* UNIQUE IMAGE SHAPE WITH GRADIENT TRANSPARENCY */
 .bio-image {
   position: sticky;
   top: 100px;
+}
 
 .bio-image img {
   width: 100%;
@@ -1836,19 +2261,22 @@ span.status-label,
     rgba(0,0,0,0.8) 85%, 
     rgba(0,0,0,0.4) 95%, 
     rgba(0,0,0,0.1) 100%);
-  -webkit-mask-disabled: linear-gradient(to bottom, 
+  -webkit-mask: linear-gradient(to bottom, 
     rgba(0,0,0,1) 0%, 
     rgba(0,0,0,1) 70%, 
     rgba(0,0,0,0.8) 85%, 
     rgba(0,0,0,0.4) 95%, 
     rgba(0,0,0,0.1) 100%);
+}
 
 
+/* Alternative approach with pseudo-element overlay */
 .bio-image {
   position: sticky;
   top: 100px;
   border-radius: 24px;
   overflow: hidden;
+}
 
 .bio-image::after {
   content: '';
@@ -1863,14 +2291,19 @@ span.status-label,
     rgba(255,255,255,0) 100%);
   pointer-events: none;
   z-index: 2;
+}
 
+/* Responsive adjustments */
 @media (max-width: 1024px) {
   .bio-image img {
     height: 300px;
     border-radius: 20px;
+  }
   
   .bio-image {
     border-radius: 20px;
+  }
+}
 
 @media (max-width: 768px) {
   .bio-image {
@@ -1878,12 +2311,16 @@ span.status-label,
     max-width: 300px;
     margin: 0 auto;
     border-radius: 16px;
+  }
   
   .bio-image img {
     height: 300px;
     border-radius: 16px;
+  }
+}
 
 
+/* PROPORTIONAL IMAGE SIZE BASED ON INDEX */
 .bio-image img {
   width: 100%;
   height: 280px; /* About 2x the index avatar size for prominence */
@@ -1897,12 +2334,13 @@ span.status-label,
     rgba(0,0,0,0.8) 88%, 
     rgba(0,0,0,0.4) 96%, 
     rgba(0,0,0,0.1) 100%);
-  -webkit-mask-disabled: linear-gradient(to bottom, 
+  -webkit-mask: linear-gradient(to bottom, 
     rgba(0,0,0,1) 0%, 
     rgba(0,0,0,1) 75%, 
     rgba(0,0,0,0.8) 88%, 
     rgba(0,0,0,0.4) 96%, 
     rgba(0,0,0,0.1) 100%);
+}
 
 .bio-image {
   position: sticky;
@@ -1910,15 +2348,20 @@ span.status-label,
   border-radius: 24px;
   overflow: hidden;
   max-width: 280px; /* Match the height for square proportions */
+}
 
+/* Responsive sizing to match index proportions */
 @media (max-width: 1024px) {
   .bio-image img {
     height: 240px; /* Slightly smaller on tablet */
     border-radius: 20px;
+  }
   
   .bio-image {
     border-radius: 20px;
     max-width: 240px;
+  }
+}
 
 @media (max-width: 768px) {
   .bio-image {
@@ -1926,25 +2369,33 @@ span.status-label,
     max-width: 200px; /* About 2x mobile avatar (100px) */
     margin: 0 auto;
     border-radius: 16px;
+  }
   
   .bio-image img {
     height: 200px;
     border-radius: 16px;
+  }
+}
 
 @media (max-width: 480px) {
   .bio-image {
     max-width: 180px;
+  }
   
   .bio-image img {
     height: 180px;
+  }
+}
 
 
+/* CLOSER IMAGE TO TEXT LAYOUT */
 .bio-layout {
   display: grid;
   grid-template-columns: 280px 1fr;
   gap: 40px; /* Reduced from default larger gap */
   align-items: start;
   max-width: 1000px; /* Constrain overall width */
+}
 
 .bio-image {
   position: sticky;
@@ -1952,32 +2403,43 @@ span.status-label,
   border-radius: 24px;
   overflow: hidden;
   width: 100%; /* Fill the 280px column */
+}
 
+/* Responsive adjustments */
 @media (max-width: 1024px) {
   .bio-layout {
     grid-template-columns: 240px 1fr;
     gap: 32px; /* Even closer on tablet */
     max-width: 900px;
+  }
+}
 
 @media (max-width: 768px) {
   .bio-layout {
     grid-template-columns: 1fr;
     gap: 24px;
     max-width: 100%;
+  }
   
   .bio-image {
     position: static;
     max-width: 200px;
     margin: 0 auto;
+  }
+}
 
 @media (max-width: 480px) {
   .bio-layout {
     gap: 20px;
+  }
   
   .bio-image {
     max-width: 180px;
+  }
+}
 
 
+/* SOFTER GRADIENT TRANSPARENCY FOR NEW IMAGE */
 .bio-image img {
   width: 100%;
   height: 280px;
@@ -1995,7 +2457,7 @@ span.status-label,
     rgba(0,0,0,0.3) 96%, 
     rgba(0,0,0,0.1) 99%, 
     rgba(0,0,0,0) 100%);
-  -webkit-mask-disabled: linear-gradient(to bottom, 
+  -webkit-mask: linear-gradient(to bottom, 
     rgba(0,0,0,1) 0%, 
     rgba(0,0,0,1) 60%, 
     rgba(0,0,0,0.95) 70%, 
@@ -2005,6 +2467,7 @@ span.status-label,
     rgba(0,0,0,0.3) 96%, 
     rgba(0,0,0,0.1) 99%, 
     rgba(0,0,0,0) 100%);
+}
 
 .bio-image {
   position: sticky;
@@ -2012,7 +2475,9 @@ span.status-label,
   border-radius: 20px;
   overflow: hidden;
   width: 100%;
+}
 
+/* Softer overlay gradient */
 .bio-image::after {
   content: '';
   position: absolute;
@@ -2027,14 +2492,19 @@ span.status-label,
     rgba(255,255,255,0) 100%);
   pointer-events: none;
   z-index: 2;
+}
 
+/* Responsive adjustments */
 @media (max-width: 1024px) {
   .bio-image img {
     height: 240px;
     border-radius: 18px;
+  }
   
   .bio-image {
     border-radius: 18px;
+  }
+}
 
 @media (max-width: 768px) {
   .bio-image {
@@ -2042,21 +2512,28 @@ span.status-label,
     max-width: 200px;
     margin: 0 auto;
     border-radius: 16px;
+  }
   
   .bio-image img {
     height: 200px;
     border-radius: 16px;
+  }
+}
 
 @media (max-width: 480px) {
   .bio-image {
     max-width: 180px;
     border-radius: 14px;
+  }
   
   .bio-image img {
     height: 180px;
     border-radius: 14px;
+  }
+}
 
 
+/* HERO-INSPIRED COLORED SHADOW */
 .bio-image {
   position: sticky;
   top: 100px;
@@ -2064,7 +2541,9 @@ span.status-label,
   overflow: hidden;
   width: 100%;
   position: relative;
+}
 
+/* Colored shadow matching index hero decorations */
 .bio-image::before {
   content: '';
   position: absolute;
@@ -2080,8 +2559,11 @@ span.status-label,
   z-index: -1;
   filter: blur(12px);
   opacity: 0.8;
+}
 
+/* Enhanced shadow on hover */
 
+/* Regular image shadow for depth */
 .bio-image img {
   width: 100%;
   height: 280px;
@@ -2102,7 +2584,7 @@ span.status-label,
     rgba(0,0,0,0.3) 96%, 
     rgba(0,0,0,0.1) 99%, 
     rgba(0,0,0,0) 100%);
-  -webkit-mask-disabled: linear-gradient(to bottom, 
+  -webkit-mask: linear-gradient(to bottom, 
     rgba(0,0,0,1) 0%, 
     rgba(0,0,0,1) 60%, 
     rgba(0,0,0,0.95) 70%, 
@@ -2112,16 +2594,21 @@ span.status-label,
     rgba(0,0,0,0.3) 96%, 
     rgba(0,0,0,0.1) 99%, 
     rgba(0,0,0,0) 100%);
+}
 
 
+/* Responsive adjustments */
 @media (max-width: 1024px) {
   .bio-image::before {
     border-radius: 18px;
     filter: blur(10px);
+  }
   
   .bio-image img {
     height: 240px;
     border-radius: 18px;
+  }
+}
 
 @media (max-width: 768px) {
   .bio-image {
@@ -2129,36 +2616,47 @@ span.status-label,
     max-width: 200px;
     margin: 0 auto;
     border-radius: 16px;
+  }
   
   .bio-image::before {
     border-radius: 16px;
     filter: blur(8px);
+  }
   
   .bio-image img {
     height: 200px;
     border-radius: 16px;
+  }
+}
 
 @media (max-width: 480px) {
   .bio-image {
     max-width: 180px;
     border-radius: 14px;
+  }
   
   .bio-image::before {
     border-radius: 14px;
     filter: blur(6px);
+  }
   
   .bio-image img {
     height: 180px;
     border-radius: 14px;
+  }
+}
 
 
+/* FIX IMAGE POSITION AND SHADOW */
 .bio-image {
   position: sticky !important;
   top: 100px !important;
   border-radius: 20px;
   overflow: visible; /* Allow shadow to show */
   width: 100%;
+}
 
+/* Colored shadow behind image - no position offset */
 .bio-image::before {
   content: '';
   position: absolute;
@@ -2175,8 +2673,11 @@ span.status-label,
   filter: blur(20px);
   opacity: 0.6;
   transform: scale(1.05); /* Slightly larger for shadow effect */
+}
 
+/* Enhanced shadow on hover */
 
+/* Image stays in original position */
 .bio-image img {
   width: 100%;
   height: 280px;
@@ -2185,6 +2686,7 @@ span.status-label,
   box-shadow: var(--shadow), 0 4px 16px rgba(0,0,0,0.08);
   position: relative;
   z-index: 2;
+  /* Keep the soft gradient mask */
   mask: linear-gradient(to bottom, 
     rgba(0,0,0,1) 0%, 
     rgba(0,0,0,1) 60%, 
@@ -2195,7 +2697,7 @@ span.status-label,
     rgba(0,0,0,0.3) 96%, 
     rgba(0,0,0,0.1) 99%, 
     rgba(0,0,0,0) 100%);
-  -webkit-mask-disabled: linear-gradient(to bottom, 
+  -webkit-mask: linear-gradient(to bottom, 
     rgba(0,0,0,1) 0%, 
     rgba(0,0,0,1) 60%, 
     rgba(0,0,0,0.95) 70%, 
@@ -2205,9 +2707,11 @@ span.status-label,
     rgba(0,0,0,0.3) 96%, 
     rgba(0,0,0,0.1) 99%, 
     rgba(0,0,0,0) 100%);
+}
 
 
 
+/* REMOVE STICKY AND ADD PROPER COLORED SHADOW */
 .bio-image {
   position: static !important; /* No sticky scrolling */
   top: auto !important;
@@ -2215,7 +2719,9 @@ span.status-label,
   overflow: visible;
   width: 100%;
   position: relative; /* For shadow positioning */
+}
 
+/* Actual colored shadow behind image */
 .bio-image::before {
   content: '';
   position: absolute;
@@ -2231,8 +2737,11 @@ span.status-label,
   z-index: -1;
   filter: blur(16px);
   opacity: 0.7;
+}
 
+/* Enhanced shadow on hover */
 
+/* Image with no sticky behavior */
 .bio-image img {
   width: 100%;
   height: 280px;
@@ -2242,6 +2751,7 @@ span.status-label,
   position: relative;
   z-index: 2;
   display: block;
+  /* Keep the soft gradient mask */
   mask: linear-gradient(to bottom, 
     rgba(0,0,0,1) 0%, 
     rgba(0,0,0,1) 60%, 
@@ -2252,7 +2762,7 @@ span.status-label,
     rgba(0,0,0,0.3) 96%, 
     rgba(0,0,0,0.1) 99%, 
     rgba(0,0,0,0) 100%);
-  -webkit-mask-disabled: linear-gradient(to bottom, 
+  -webkit-mask: linear-gradient(to bottom, 
     rgba(0,0,0,1) 0%, 
     rgba(0,0,0,1) 60%, 
     rgba(0,0,0,0.95) 70%, 
@@ -2262,22 +2772,28 @@ span.status-label,
     rgba(0,0,0,0.3) 96%, 
     rgba(0,0,0,0.1) 99%, 
     rgba(0,0,0,0) 100%);
+}
 
 
+/* Responsive adjustments */
 @media (max-width: 1024px) {
   .bio-image::before {
     border-radius: 18px;
     filter: blur(14px);
+  }
   
   .bio-image img {
     height: 240px;
     border-radius: 18px;
+  }
+}
 
 @media (max-width: 768px) {
   .bio-image {
     max-width: 200px;
     margin: 0 auto;
     border-radius: 16px;
+  }
   
   .bio-image::before {
     border-radius: 16px;
@@ -2286,15 +2802,19 @@ span.status-label,
     left: 8px;
     right: -8px;
     bottom: -8px;
+  }
   
   .bio-image img {
     height: 200px;
     border-radius: 16px;
+  }
+}
 
 @media (max-width: 480px) {
   .bio-image {
     max-width: 180px;
     border-radius: 14px;
+  }
   
   .bio-image::before {
     border-radius: 14px;
@@ -2303,12 +2823,16 @@ span.status-label,
     left: 6px;
     right: -6px;
     bottom: -6px;
+  }
   
   .bio-image img {
     height: 180px;
     border-radius: 14px;
+  }
+}
 
 
+/* RECREATE INDEX HERO DECORATION STRUCTURE */
 .bio-image {
   position: static !important;
   top: auto !important;
@@ -2316,7 +2840,9 @@ span.status-label,
   overflow: visible;
   width: 100%;
   position: relative;
+}
 
+/* Triangular decoration (like hero ::before) */
 .bio-image::before {
   content: '';
   position: absolute;
@@ -2327,7 +2853,9 @@ span.status-label,
   background: linear-gradient(135deg, rgba(34, 197, 94, 0.3) 0%, rgba(11, 87, 208, 0.25) 100%);
   clip-path: polygon(100% 0%, 100% 100%, 0% 100%);
   z-index: -1;
+}
 
+/* Circular decoration (like hero ::after) */
 .bio-image::after {
   content: '';
   position: absolute;
@@ -2339,9 +2867,12 @@ span.status-label,
   border-radius: 50%;
   z-index: -1;
   opacity: 0.8;
+}
+
+/* Enhanced decorations on hover */
 
 
-
+/* Image with decorative shadows */
 .bio-image img {
   width: 100%;
   height: 280px;
@@ -2351,6 +2882,7 @@ span.status-label,
   position: relative;
   z-index: 2;
   display: block;
+  /* Keep the soft gradient mask */
   mask: linear-gradient(to bottom, 
     rgba(0,0,0,1) 0%, 
     rgba(0,0,0,1) 60%, 
@@ -2361,7 +2893,7 @@ span.status-label,
     rgba(0,0,0,0.3) 96%, 
     rgba(0,0,0,0.1) 99%, 
     rgba(0,0,0,0) 100%);
-  -webkit-mask-disabled: linear-gradient(to bottom, 
+  -webkit-mask: linear-gradient(to bottom, 
     rgba(0,0,0,1) 0%, 
     rgba(0,0,0,1) 60%, 
     rgba(0,0,0,0.95) 70%, 
@@ -2371,65 +2903,82 @@ span.status-label,
     rgba(0,0,0,0.3) 96%, 
     rgba(0,0,0,0.1) 99%, 
     rgba(0,0,0,0) 100%);
+}
 
 
+/* Responsive adjustments */
 @media (max-width: 1024px) {
   .bio-image::before {
     width: 100px;
     height: 65px;
+  }
   
   .bio-image::after {
     width: 80px;
     height: 80px;
+  }
   
   .bio-image img {
     height: 240px;
     border-radius: 18px;
+  }
+}
 
 @media (max-width: 768px) {
   .bio-image {
     max-width: 200px;
     margin: 0 auto;
     border-radius: 16px;
+  }
   
   .bio-image::before {
     width: 80px;
     height: 50px;
     bottom: -6px;
     right: -6px;
+  }
   
   .bio-image::after {
     width: 60px;
     height: 60px;
     top: -8px;
     left: -8px;
+  }
   
   .bio-image img {
     height: 200px;
     border-radius: 16px;
+  }
+}
 
 @media (max-width: 480px) {
   .bio-image {
     max-width: 180px;
     border-radius: 14px;
+  }
   
   .bio-image::before {
     width: 60px;
     height: 40px;
     bottom: -4px;
     right: -4px;
+  }
   
   .bio-image::after {
     width: 50px;
     height: 50px;
     top: -6px;
     left: -6px;
+  }
   
   .bio-image img {
     height: 180px;
     border-radius: 14px;
+  }
+}
 
 
+/* FORCE DECORATIONS WITH HIGH SPECIFICITY */
 .bio-page .bio-image::before {
   content: '' !important;
   position: absolute !important;
@@ -2442,6 +2991,7 @@ span.status-label,
   z-index: -1 !important;
   transition: all 0.3s ease !important;
   display: block !important;
+}
 
 .bio-page .bio-image::after {
   content: '' !important;
@@ -2456,14 +3006,19 @@ span.status-label,
   transition: all 0.3s ease !important;
   opacity: 0.8 !important;
   display: block !important;
+}
 
+/* Make sure parent allows positioning */
 .bio-page .bio-image {
   position: relative !important;
   overflow: visible !important;
+}
+
+/* Enhanced hover effects */
 
 
 
-
+/* ACTUAL HTML ELEMENTS FOR DECORATIONS */
 .decoration-triangle {
   position: absolute !important;
   bottom: -8px !important;
@@ -2475,6 +3030,7 @@ span.status-label,
   z-index: -1 !important;
   transition: all 0.3s ease !important;
   pointer-events: none !important;
+}
 
 .decoration-circle {
   position: absolute !important;
@@ -2487,14 +3043,19 @@ span.status-label,
   z-index: -1 !important;
   transition: all 0.3s ease !important;
   pointer-events: none !important;
+}
+
+/* Hover effects */
 
 
-
+/* Make sure bio-image allows positioning */
 .bio-image {
   position: relative !important;
   overflow: visible !important;
+}
 
 
+/* DEBUG: VERY OBVIOUS DECORATIONS */
 .decoration-triangle {
   position: absolute !important;
   bottom: -20px !important;
@@ -2505,6 +3066,7 @@ span.status-label,
   z-index: 999 !important;
   opacity: 1 !important;
   display: block !important;
+}
 
 .decoration-circle {
   position: absolute !important;
@@ -2517,13 +3079,17 @@ span.status-label,
   z-index: 999 !important;
   opacity: 1 !important;
   display: block !important;
+}
 
+/* Force parent container */
 .bio-image {
   position: relative !important;
   overflow: visible !important;
   border: 2px solid green !important;
+}
 
 
+/* REPLACE DEBUG WITH PROPER HERO DECORATIONS */
 .decoration-triangle {
   position: absolute !important;
   bottom: -8px !important;
@@ -2536,6 +3102,7 @@ span.status-label,
   opacity: 1 !important;
   display: block !important;
   transition: all 0.3s ease !important;
+}
 
 .decoration-circle {
   position: absolute !important;
@@ -2549,16 +3116,21 @@ span.status-label,
   opacity: 1 !important;
   display: block !important;
   transition: all 0.3s ease !important;
+}
 
+/* Remove debug border, keep positioning */
 .bio-image {
   position: relative !important;
   overflow: visible !important;
   border: none !important;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15) !important;
+}
+
+/* Hover effects */
 
 
 
-
+/* MORE VISIBLE HERO DECORATIONS */
 .decoration-triangle {
   position: absolute !important;
   bottom: -8px !important;
@@ -2571,6 +3143,7 @@ span.status-label,
   opacity: 1 !important;
   display: block !important;
   transition: all 0.3s ease !important;
+}
 
 .decoration-circle {
   position: absolute !important;
@@ -2584,8 +3157,10 @@ span.status-label,
   opacity: 1 !important;
   display: block !important;
   transition: all 0.3s ease !important;
+}
 
 
+/* BRING DECORATIONS TO FRONT AND MAKE VERY VISIBLE */
 .decoration-triangle {
   position: absolute !important;
   bottom: -8px !important;
@@ -2599,6 +3174,7 @@ span.status-label,
   display: block !important;
   transition: all 0.3s ease !important;
   pointer-events: none !important;
+}
 
 .decoration-circle {
   position: absolute !important;
@@ -2613,8 +3189,10 @@ span.status-label,
   display: block !important;
   transition: all 0.3s ease !important;
   pointer-events: none !important;
+}
 
 
+/* PROFESSIONAL SUBTLE DECORATIONS */
 .decoration-triangle {
   position: absolute !important;
   bottom: -8px !important;
@@ -2628,6 +3206,7 @@ span.status-label,
   display: block !important;
   transition: all 0.3s ease !important;
   pointer-events: none !important;
+}
 
 .decoration-circle {
   position: absolute !important;
@@ -2642,10 +3221,13 @@ span.status-label,
   display: block !important;
   transition: all 0.3s ease !important;
   pointer-events: none !important;
+}
+
+/* Subtle hover effects */
 
 
 
-
+/* SWEET SPOT: VISIBLE BUT PROFESSIONAL */
 .decoration-triangle {
   position: absolute !important;
   bottom: -8px !important;
@@ -2659,6 +3241,7 @@ span.status-label,
   display: block !important;
   transition: all 0.3s ease !important;
   pointer-events: none !important;
+}
 
 .decoration-circle {
   position: absolute !important;
@@ -2673,13 +3256,17 @@ span.status-label,
   display: block !important;
   transition: all 0.3s ease !important;
   pointer-events: none !important;
+}
+
+/* Hover effects */
 
 
 
-
+/* FIX Z-INDEX LAYERING */
 .bio-image img {
   position: relative !important;
   z-index: 1 !important;
+}
 
 .decoration-triangle {
   position: absolute !important;
@@ -2694,6 +3281,7 @@ span.status-label,
   display: block !important;
   transition: all 0.3s ease !important;
   pointer-events: none !important;
+}
 
 .decoration-circle {
   position: absolute !important;
@@ -2708,28 +3296,36 @@ span.status-label,
   display: block !important;
   transition: all 0.3s ease !important;
   pointer-events: none !important;
+}
 
 
+/* REMOVE ALL DECORATIONS */
 .decoration-triangle,
 .decoration-circle {
   display: none !important;
+}
 
+/* Clean bio-image styling */
 .bio-image {
   position: relative !important;
   overflow: visible !important;
   border: none !important;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15) !important;
+}
 
 .bio-image img {
   position: relative !important;
   z-index: auto !important;
+}
 
 
+/* FIXED MOBILE IMAGE POSITIONING */
 @media (max-width: 768px) {
   .bio-layout {
     grid-template-columns: 1fr !important;
     gap: 32px !important;
     max-width: 100% !important;
+  }
   
   .bio-image {
     position: static !important;
@@ -2737,6 +3333,7 @@ span.status-label,
     margin: 0 auto !important;
     border-radius: 16px !important;
     order: -1 !important; /* Image first on mobile */
+  }
   
   .bio-image img {
     height: 240px !important;
@@ -2744,160 +3341,202 @@ span.status-label,
     width: 100% !important;
     display: block !important;
     margin: 0 auto !important;
+  }
   
   .bio-content {
     text-align: center !important;
+  }
   
   .bio-content h1,
   .bio-content .bio-role,
   .bio-content .bio-location {
     text-align: center !important;
+  }
   
   .bio-story {
     text-align: left !important;
     margin-top: 24px !important;
+  }
+}
 
 @media (max-width: 480px) {
   .bio-image {
     max-width: 200px !important;
+  }
   
   .bio-image img {
     height: 200px !important;
+  }
   
   .bio-layout {
     gap: 24px !important;
+  }
+}
 
 @media (max-width: 360px) {
   .bio-image {
     max-width: 180px !important;
+  }
   
   .bio-image img {
     height: 180px !important;
+  }
   
   .bio-layout {
     gap: 20px !important;
+  }
+}
 
 
+/* REMOVE BOLD FROM ABOUT PAGE */
 .bio-page h1,
 .bio-page h2,
 .bio-page h3 {
   font-weight: 600 !important; /* Slightly less bold */
+}
 
 .bio-page .embedded-section h2 {
   font-weight: 500 !important; /* Even lighter for section headings */
+}
 
 .bio-page .exp-details h3,
 .bio-page .skill-category h3,
 .bio-page .edu-item h3 {
   font-weight: 500 !important; /* Lighter weight for subsection headings */
+}
 
+/* ENSURE NAV LINKS ARE PROPERLY STYLED */
 .nav-links {
   display: flex !important;
   gap: 24px !important;
-  list-style: none;
+  list-style: none !important;
   margin: 0 !important;
   padding: 0 !important;
+}
 
 .nav-links li {
   margin: 0 !important;
   padding: 0 !important;
+}
 
 .nav-links a {
-  text-decoration: none;
+  text-decoration: none !important;
   color: var(--text) !important;
   font-weight: 400 !important; /* Normal weight */
   transition: color 0.2s ease !important;
+}
 
 .nav-links a:hover {
   color: var(--brand) !important;
+}
 
 .nav-links a[aria-current="page"] {
   color: var(--brand) !important;
   font-weight: 500 !important; /* Slightly bolder for current page */
+}
 
 
+/* CONSISTENT HEADER STYLING ACROSS ALL PAGES */
 .site-header {
   position: sticky !important;
   top: 0 !important;
   z-index: 100 !important;
   background: rgba(255, 255, 255, 0.95) !important;
   backdrop-filter: blur(12px) !important;
-  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
   border-bottom: 1px solid rgba(0, 0, 0, 0.08) !important;
   transition: all 0.3s ease !important;
+}
 
+/* Enhanced header on scroll */
 .site-header.scrolled {
   background: rgba(255, 255, 255, 0.98) !important;
   backdrop-filter: blur(16px) !important;
-  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
   box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08) !important;
+}
 
+/* Ensure nav content is properly styled */
 .nav {
   display: flex !important;
   align-items: center !important;
   justify-content: space-between !important;
   min-height: 60px !important;
   padding: 0 !important;
+}
 
 .brand {
   font-family: Manrope, sans-serif !important;
   font-weight: 700 !important;
   font-size: var(--step-1) !important;
   color: var(--text) !important;
-  text-decoration: none;
+  text-decoration: none !important;
+}
 
 .nav-links {
   display: flex !important;
   gap: 24px !important;
-  list-style: none;
+  list-style: none !important;
   padding: 0 !important;
   margin: 0 !important;
+}
 
 .nav-links a {
   color: var(--text) !important;
   opacity: 0.8 !important;
   font-weight: 500 !important;
   font-size: var(--step--1) !important;
-  text-decoration: none;
+  text-decoration: none !important;
   transition: opacity 0.2s ease !important;
+}
 
 .nav-links a:hover {
   opacity: 1 !important;
   color: var(--brand) !important;
+}
 
 .nav-links a[aria-current="page"] {
   opacity: 1 !important;
   color: var(--brand) !important;
+}
 
 
+/* RESTORE SUBTLE TRANSPARENCY */
 .site-header {
   position: sticky !important;
   top: 0 !important;
   z-index: 100 !important;
   background: rgba(255, 255, 255, 0.8) !important;
   backdrop-filter: blur(8px) !important;
-  backdrop-filter: blur(8px) !important;
+  -webkit-backdrop-filter: blur(8px) !important;
   border-bottom: 1px solid rgba(0, 0, 0, 0.06) !important;
   transition: all 0.3s ease !important;
+}
 
+/* Enhanced header on scroll (optional future enhancement) */
 .site-header.scrolled {
   background: rgba(255, 255, 255, 0.9) !important;
   backdrop-filter: blur(12px) !important;
-  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
   box-shadow: 0 2px 16px rgba(0, 0, 0, 0.06) !important;
+}
 
 
+/* IMPROVED EXPERIENCE ALIGNMENT & ELEGANT HOW I WORK SECTION */
 
+/* Better experience list alignment */
 .experience-list {
   display: flex !important;
   flex-direction: column !important;
   gap: 28px !important;
+}
 
 .exp-item {
   display: grid !important;
   grid-template-columns: 130px 1fr !important;
   gap: 24px !important;
   align-items: baseline !important; /* Better alignment between years and content */
+}
 
 .exp-period {
   font-size: var(--step--1) !important;
@@ -2906,6 +3545,7 @@ span.status-label,
   opacity: 0.8 !important;
   line-height: 1.4 !important;
   padding-top: 2px !important; /* Fine-tune alignment with h3 */
+}
 
 .exp-details h3 {
   font-size: var(--step-0) !important;
@@ -2913,6 +3553,7 @@ span.status-label,
   margin-bottom: 8px !important;
   color: var(--text) !important;
   line-height: 1.3 !important;
+}
 
 .exp-details p {
   font-size: var(--step--1) !important;
@@ -2920,12 +3561,15 @@ span.status-label,
   line-height: 1.6 !important;
   margin: 0 !important;
   opacity: 0.9 !important;
+}
 
+/* Elegant How I Work section - horizontal layout */
 .skills-compact {
   display: grid !important;
   grid-template-columns: repeat(3, 1fr) !important;
   gap: 32px !important;
   margin-top: 8px !important;
+}
 
 .skill-category {
   padding: 24px 20px !important;
@@ -2933,10 +3577,12 @@ span.status-label,
   border-radius: 12px !important;
   border-left: 3px solid var(--brand) !important;
   transition: all 0.2s ease !important;
+}
 
 .skill-category:hover {
   background: rgba(34, 197, 94, 0.06) !important;
   transform: translateY(-2px) !important;
+}
 
 .skill-category h3 {
   font-size: var(--step--1) !important;
@@ -2945,6 +3591,7 @@ span.status-label,
   color: var(--brand) !important;
   text-transform: uppercase !important;
   letter-spacing: 0.5px !important;
+}
 
 .skill-category p {
   font-size: var(--step--1) !important;
@@ -2952,33 +3599,44 @@ span.status-label,
   line-height: 1.5 !important;
   margin: 0 !important;
   opacity: 0.9 !important;
+}
 
+/* Mobile responsive adjustments */
 @media (max-width: 768px) {
   .skills-compact {
     grid-template-columns: 1fr !important;
     gap: 20px !important;
+  }
   
   .skill-category {
     padding: 20px 16px !important;
+  }
   
   .exp-item {
     grid-template-columns: 1fr !important;
     gap: 8px !important;
+  }
   
   .exp-period {
     font-weight: 600 !important;
     color: var(--brand) !important;
     opacity: 1 !important;
     padding-top: 0 !important;
+  }
+}
 
 @media (max-width: 480px) {
   .skills-compact {
     gap: 16px !important;
+  }
   
   .skill-category {
     padding: 16px 12px !important;
+  }
+}
 
 
+/* FIX SKILL BLOCKS ALIGNMENT & MATCH WEBSITE STYLE */
 .skill-category {
   padding: 20px 20px !important;
   background: rgba(34, 197, 94, 0.02) !important;
@@ -2989,10 +3647,12 @@ span.status-label,
   flex-direction: column !important;
   align-items: flex-start !important;
   justify-content: flex-start !important;
+}
 
 .skill-category:hover {
   background: rgba(34, 197, 94, 0.04) !important;
   transform: translateY(-1px) !important;
+}
 
 .skill-category h3 {
   font-size: var(--step--1) !important;
@@ -3003,6 +3663,7 @@ span.status-label,
   letter-spacing: normal !important;
   line-height: 1.3 !important;
   align-self: flex-start !important;
+}
 
 .skill-category p {
   font-size: var(--step--1) !important;
@@ -3012,14 +3673,18 @@ span.status-label,
   opacity: 0.85 !important;
   align-self: flex-start !important;
   text-align: left !important;
+}
 
+/* Ensure consistent styling with website */
 .skills-compact {
   display: grid !important;
   grid-template-columns: repeat(3, 1fr) !important;
   gap: 24px !important;
   margin-top: 16px !important;
+}
 
 
+/* MATCH ARTICLE BLOCKS STYLE EXACTLY */
 .skill-category {
   padding: 20px 20px !important;
   background: #fff !important;
@@ -3031,11 +3696,14 @@ span.status-label,
   flex-direction: column !important;
   align-items: flex-start !important;
   justify-content: flex-start !important;
+}
 
 .skill-category:hover {
   transform: translateY(-2px) !important;
   box-shadow: 0 8px 20px rgba(15,23,42,.06) !important;
+}
 
+/* Keep text style and alignment exactly as-is */
 .skill-category h3 {
   font-size: var(--step--1) !important;
   font-weight: 600 !important;
@@ -3045,6 +3713,7 @@ span.status-label,
   letter-spacing: normal !important;
   line-height: 1.3 !important;
   align-self: flex-start !important;
+}
 
 .skill-category p {
   font-size: var(--step--1) !important;
@@ -3054,18 +3723,22 @@ span.status-label,
   opacity: 0.85 !important;
   align-self: flex-start !important;
   text-align: left !important;
+}
 
 
+/* REDUCE EXPERIENCE SECTION LINE SPACING */
 .experience-list {
   display: flex !important;
   flex-direction: column !important;
   gap: 20px !important; /* Reduced from 28px to 20px */
+}
 
 .exp-item {
   display: grid !important;
   grid-template-columns: 130px 1fr !important;
   gap: 24px !important;
   align-items: baseline !important;
+}
 
 .exp-details h3 {
   font-size: var(--step-0) !important;
@@ -3073,6 +3746,7 @@ span.status-label,
   margin-bottom: 6px !important; /* Reduced from 8px to 6px */
   color: var(--text) !important;
   line-height: 1.3 !important;
+}
 
 .exp-details p {
   font-size: var(--step--1) !important;
@@ -3080,8 +3754,10 @@ span.status-label,
   line-height: 1.5 !important; /* Slightly tighter than 1.6 */
   margin: 0 !important;
   opacity: 0.9 !important;
+}
 
 
+/* SUBTLE ANGLED SHADOW BEHIND ABOUT PAGE IMAGE */
 .bio-image::before {
   content: '';
   position: absolute;
@@ -3093,17 +3769,22 @@ span.status-label,
   border-radius: 20px;
   z-index: -1;
   transform: rotate(-2deg);
+}
 
 
+/* Ensure bio-image has proper positioning context */
 .bio-image {
   position: relative !important;
   overflow: visible !important;
+}
 
 .bio-image img {
   position: relative !important;
   z-index: 1 !important;
+}
 
 
+/* MAKE SHADOW MORE VISIBLE - OVERRIDE PREVIOUS */
 .bio-image::before {
   content: '' !important;
   position: absolute !important;
@@ -3117,17 +3798,23 @@ span.status-label,
   transform: rotate(-3deg) !important;
   transition: all 0.3s ease !important;
   display: block !important;
+}
 
 
+/* Ensure image is above shadow */
 .bio-image img {
   position: relative !important;
   z-index: 2 !important;
   border-radius: 20px !important;
+}
 
+/* Remove any conflicting decorations */
 .bio-image::after {
   display: none !important;
+}
 
 
+/* DEBUG SHADOW - MAKE IT SUPER OBVIOUS */
 .bio-image::before {
   content: 'SHADOW' !important;
   position: absolute !important;
@@ -3144,8 +3831,10 @@ span.status-label,
   color: white !important;
   text-align: center !important;
   line-height: 200px !important;
+}
 
 
+/* SHADOW AS ACTUAL HTML ELEMENT */
 .image-shadow {
   position: absolute !important;
   top: 12px !important;
@@ -3157,17 +3846,23 @@ span.status-label,
   z-index: 0 !important;
   transform: rotate(-3deg) !important;
   transition: all 0.3s ease !important;
+}
 
 
+/* Remove pseudo-element attempts */
 .bio-image::before {
   display: none !important;
+}
 
 
+/* REMOVE GRADIENT TRANSPARENCY FROM IMAGE */
 .bio-image img {
   mask: none !important;
-  -webkit-mask-disabled: none !important;
+  -webkit-mask: none !important;
   opacity: 1 !important;
+}
 
+/* FLIP SHADOW TO THE LEFT */
 .image-shadow {
   position: absolute !important;
   top: 12px !important;
@@ -3179,19 +3874,23 @@ span.status-label,
   z-index: 0 !important;
   transform: rotate(3deg) !important;
   transition: all 0.3s ease !important;
+}
 
 
 
+/* REDUCE EXPERIENCE SECTION LINE SPACING - UPDATED */
 .experience-list {
   display: flex !important;
   flex-direction: column !important;
   gap: 16px !important; /* Reduced from 20px to 16px */
+}
 
 .exp-item {
   display: grid !important;
   grid-template-columns: 130px 1fr !important;
   gap: 20px !important; /* Reduced from 24px to 20px */
   align-items: baseline !important;
+}
 
 .exp-details h3 {
   font-size: var(--step-0) !important;
@@ -3199,6 +3898,7 @@ span.status-label,
   margin-bottom: 4px !important; /* Reduced from 6px to 4px */
   color: var(--text) !important;
   line-height: 1.2 !important; /* Tighter line height */
+}
 
 .exp-details p {
   font-size: var(--step--1) !important;
@@ -3206,35 +3906,43 @@ span.status-label,
   line-height: 1.4 !important; /* Reduced from 1.5 to 1.4 */
   margin: 0 !important;
   opacity: 0.9 !important;
+}
 
 
+/* CV PAGE STYLES */
 .cv-page {
   background: var(--bg);
   color: var(--text);
   font-family: var(--font-sans);
+}
 
 .cv-main {
   padding: 60px 0 80px;
   max-width: 800px;
   margin: 0 auto;
+}
 
+/* CV HEADER */
 .cv-header {
   text-align: center;
   margin-bottom: 48px;
   padding-bottom: 32px;
   border-bottom: 1px solid var(--border);
+}
 
 .cv-header h1 {
   font-size: var(--step-3);
   font-weight: 700;
   margin: 0 0 8px;
   color: var(--text);
+}
 
 .cv-title {
   font-size: var(--step-1);
   font-weight: 500;
   color: var(--text-muted);
   margin: 0 0 16px;
+}
 
 .cv-contact {
   font-size: var(--step--1);
@@ -3244,16 +3952,21 @@ span.status-label,
   justify-content: center;
   gap: 12px;
   flex-wrap: wrap;
+}
 
 .cv-contact a {
   color: var(--accent);
   text-decoration: none;
+}
 
 .cv-contact a:hover {
   text-decoration: underline;
+}
 
+/* CV SECTIONS */
 .cv-section {
   margin-bottom: 40px;
+}
 
 .cv-section h2 {
   font-size: var(--step-1);
@@ -3263,22 +3976,27 @@ span.status-label,
   padding-bottom: 8px;
   border-bottom: 2px solid var(--accent);
   display: inline-block;
+}
 
 .cv-section > p {
   font-size: var(--step-0);
   line-height: 1.6;
   color: var(--text);
   margin: 0;
+}
 
+/* CV JOBS */
 .cv-job {
   margin-bottom: 32px;
   padding-bottom: 24px;
   border-bottom: 1px solid var(--border-light);
+}
 
 .cv-job:last-child {
   border-bottom: none;
   margin-bottom: 0;
   padding-bottom: 0;
+}
 
 .cv-job-header {
   display: flex;
@@ -3286,6 +4004,7 @@ span.status-label,
   align-items: baseline;
   margin-bottom: 4px;
   gap: 16px;
+}
 
 .cv-job-header h3 {
   font-size: var(--step-0);
@@ -3293,123 +4012,156 @@ span.status-label,
   color: var(--text);
   margin: 0;
   flex: 1;
+}
 
 .cv-period {
   font-size: var(--step--1);
   font-weight: 500;
   color: var(--text-muted);
   white-space: nowrap;
+}
 
 .cv-company {
   font-size: var(--step--1);
   color: var(--text-muted);
   margin-bottom: 12px;
   font-style: italic;
+}
 
 .cv-achievements {
   margin: 0;
   padding-left: 20px;
+}
 
 .cv-achievements li {
   font-size: var(--step--1);
   line-height: 1.5;
   color: var(--text);
   margin-bottom: 8px;
+}
 
 .cv-achievements li:last-child {
   margin-bottom: 0;
+}
 
+/* CV EDUCATION */
 .cv-education {
   padding-bottom: 16px;
+}
 
+/* CV SKILLS */
 .cv-skills {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 24px;
+}
 
 .cv-skill-category h4 {
   font-size: var(--step--1);
   font-weight: 600;
   color: var(--text);
   margin: 0 0 8px;
+}
 
 .cv-skill-category p {
   font-size: var(--step--1);
   line-height: 1.5;
   color: var(--text-muted);
   margin: 0;
+}
 
+/* RESPONSIVE */
 @media (max-width: 768px) {
   .cv-main {
     padding: 40px 0 60px;
+  }
   
   .cv-header {
     margin-bottom: 32px;
     padding-bottom: 24px;
+  }
   
   .cv-header h1 {
     font-size: var(--step-2);
+  }
   
   .cv-contact {
     flex-direction: column;
     gap: 8px;
+  }
   
   .cv-job-header {
     flex-direction: column;
     align-items: flex-start;
     gap: 4px;
+  }
   
   .cv-skills {
     grid-template-columns: 1fr;
     gap: 20px;
+  }
   
   .cv-section {
     margin-bottom: 32px;
+  }
+}
 
 @media (max-width: 480px) {
   .cv-main {
     padding: 32px 0 48px;
+  }
   
   .cv-header h1 {
     font-size: var(--step-1);
+  }
   
   .cv-title {
     font-size: var(--step-0);
+  }
+}
 
 
+/* CV PAGE STYLES - UPDATED WITHOUT HEADER/FOOTER */
 .cv-page {
   background: var(--bg);
   color: var(--text);
   font-family: var(--font-sans);
   margin: 0;
   padding: 0;
+}
 
 .cv-main {
   padding: 40px 0;
   min-height: 100vh;
+}
 
 .cv-container {
   max-width: 800px;
   margin: 0 auto;
   padding: 0 24px;
+}
 
+/* CV HEADER */
 .cv-header {
   text-align: center;
   margin-bottom: 48px;
   padding-bottom: 32px;
   border-bottom: 1px solid var(--border);
+}
 
 .cv-header h1 {
   font-size: var(--step-3);
   font-weight: 700;
   margin: 0 0 8px;
   color: var(--text);
+}
 
 .cv-title {
   font-size: var(--step-1);
   font-weight: 500;
   color: var(--text-muted);
   margin: 0 0 16px;
+}
 
 .cv-contact {
   font-size: var(--step--1);
@@ -3419,16 +4171,21 @@ span.status-label,
   justify-content: center;
   gap: 12px;
   flex-wrap: wrap;
+}
 
 .cv-contact a {
   color: var(--blue);
   text-decoration: none;
+}
 
 .cv-contact a:hover {
   text-decoration: underline;
+}
 
+/* CV SECTIONS */
 .cv-section {
   margin-bottom: 40px;
+}
 
 .cv-section h2 {
   font-size: var(--step-1);
@@ -3438,22 +4195,27 @@ span.status-label,
   padding-bottom: 8px;
   border-bottom: 2px solid var(--blue);
   display: inline-block;
+}
 
 .cv-section > p {
   font-size: var(--step-0);
   line-height: 1.6;
   color: var(--text);
   margin: 0;
+}
 
+/* CV JOBS */
 .cv-job {
   margin-bottom: 32px;
   padding-bottom: 24px;
   border-bottom: 1px solid var(--border-light);
+}
 
 .cv-job:last-child {
   border-bottom: none;
   margin-bottom: 0;
   padding-bottom: 0;
+}
 
 .cv-job-header {
   display: flex;
@@ -3461,6 +4223,7 @@ span.status-label,
   align-items: baseline;
   margin-bottom: 4px;
   gap: 16px;
+}
 
 .cv-job-header h3 {
   font-size: var(--step-0);
@@ -3468,110 +4231,142 @@ span.status-label,
   color: var(--text);
   margin: 0;
   flex: 1;
+}
 
 .cv-period {
   font-size: var(--step--1);
   font-weight: 500;
   color: var(--text-muted);
   white-space: nowrap;
+}
 
 .cv-company {
   font-size: var(--step--1);
   color: var(--text-muted);
   margin-bottom: 12px;
   font-style: italic;
+}
 
 .cv-achievements {
   margin: 0;
   padding-left: 20px;
+}
 
 .cv-achievements li {
   font-size: var(--step--1);
   line-height: 1.5;
   color: var(--text);
   margin-bottom: 8px;
+}
 
 .cv-achievements li:last-child {
   margin-bottom: 0;
+}
 
+/* CV EDUCATION */
 .cv-education {
   padding-bottom: 16px;
+}
 
+/* CV SKILLS */
 .cv-skills {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 24px;
+}
 
 .cv-skill-category h4 {
   font-size: var(--step--1);
   font-weight: 600;
   color: var(--text);
   margin: 0 0 8px;
+}
 
 .cv-skill-category p {
   font-size: var(--step--1);
   line-height: 1.5;
   color: var(--text-muted);
   margin: 0;
+}
 
+/* RESPONSIVE */
 @media (max-width: 768px) {
   .cv-main {
     padding: 32px 0;
+  }
   
   .cv-container {
     padding: 0 20px;
+  }
   
   .cv-header {
     margin-bottom: 32px;
     padding-bottom: 24px;
+  }
   
   .cv-header h1 {
     font-size: var(--step-2);
+  }
   
   .cv-contact {
     flex-direction: column;
     gap: 8px;
+  }
   
   .cv-job-header {
     flex-direction: column;
     align-items: flex-start;
     gap: 4px;
+  }
   
   .cv-skills {
     grid-template-columns: 1fr;
     gap: 20px;
+  }
   
   .cv-section {
     margin-bottom: 32px;
+  }
+}
 
 @media (max-width: 480px) {
   .cv-main {
     padding: 24px 0;
+  }
   
   .cv-container {
     padding: 0 16px;
+  }
   
   .cv-header h1 {
     font-size: var(--step-1);
+  }
   
   .cv-title {
     font-size: var(--step-0);
+  }
+}
 
 
 
 .avatar {
+}
 
 
+/* Add white border to about image to match index avatar */
 .bio-image img {
   border: 2px solid rgba(255,255,255,0.8) !important;
   box-shadow: 0 4px 16px rgba(0,0,0,0.08) !important;
+}
 
 
+/* Secondary button - transparent with dark gray border */
 .btn-secondary {
   background: transparent !important;
   color: var(--text) !important;
   border: 2px solid #374151 !important;
   box-shadow: none !important;
+}
 
 .btn-secondary:hover {
   background: transparent !important;
@@ -3580,17 +4375,23 @@ span.status-label,
   transform: translateY(-1px);
   box-shadow: none !important;
   border-color: #374151 !important;
+}
+/* Mobile-only: Left-align experience roles and descriptions */
 @media (max-width: 768px) {
   .cv-item h4,
   .cv-item p,
   .cv-item .cv-role,
   .cv-item .cv-description {
     text-align: left !important;
+  }
   
   .cv-item {
     text-align: left !important;
+  }
+}
 
 
+/* Stronger mobile-only left alignment for experience section */
 @media (max-width: 768px) {
   .bio-content h2,
   .bio-content h3,
@@ -3599,79 +4400,102 @@ span.status-label,
   .bio-content li,
   .bio-content div {
     text-align: left !important;
+  }
   
   .bio-content {
     text-align: left !important;
+  }
+}
 
 
+/* Override button background with visible gradient */
 .btn:not(.btn-secondary) {
   background: linear-gradient(135deg, rgba(34, 197, 94, 0.75) 0%, rgba(11, 87, 208, 0.75) 100%) !important;
   border: 2px solid #059669 !important;
   border: none !important;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15) !important;
+}
 
 
+/* Match About Me button text color to hero text */
 .btn-secondary {
   color: #4b5563 !important;
   border-color: #4b5563 !important;
+}
 
 
+/* Add subtle border to work button */
 .btn:not(.btn-secondary) {
   border: 2px solid #059669 !important;
+}
 
 
+/* Force border on work button with higher specificity */
 .actions .btn:not(.btn-secondary) {
   border: none !important;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15) !important;
+}
 
 
+/* Mobile header fixes for devices like Redmi Pro 12 */
 @media (max-width: 768px) {
   header {
     padding: 1rem 0 !important;
     min-height: auto !important;
+  }
   
   .container {
     padding: 0 1rem !important;
     max-width: 100% !important;
+  }
   
   nav {
     display: flex !important;
     justify-content: space-between !important;
     align-items: center !important;
     flex-wrap: nowrap !important;
+  }
   
   .brand {
     font-size: 1.1rem !important;
-    white-space: nowrap;
+    white-space: nowrap !important;
     flex-shrink: 0 !important;
+  }
   
   nav ul {
     display: flex !important;
     gap: 1rem !important;
     margin: 0 !important;
     padding: 0 !important;
-    list-style: none;
+    list-style: none !important;
+  }
   
   nav ul li {
     margin: 0 !important;
+  }
   
   nav ul li a {
     font-size: 0.9rem !important;
     padding: 0.5rem !important;
-    white-space: nowrap;
+    white-space: nowrap !important;
+  }
+}
 
 
+/* Stronger mobile header fixes for Redmi Pro 12 and similar devices */
 @media screen and (max-width: 768px) {
   body header {
     position: relative !important;
     width: 100% !important;
     overflow: hidden !important;
+  }
   
   body header .container {
     width: 100% !important;
     max-width: 100% !important;
     padding: 0 0.75rem !important;
     margin: 0 !important;
+  }
   
   body header nav {
     width: 100% !important;
@@ -3680,6 +4504,7 @@ span.status-label,
     align-items: center !important;
     flex-wrap: nowrap !important;
     overflow: hidden !important;
+  }
   
   body header .brand {
     font-size: 1rem !important;
@@ -3687,7 +4512,8 @@ span.status-label,
     max-width: 50% !important;
     overflow: hidden !important;
     text-overflow: ellipsis !important;
-    white-space: nowrap;
+    white-space: nowrap !important;
+  }
   
   body header nav ul {
     display: flex !important;
@@ -3695,24 +4521,30 @@ span.status-label,
     gap: 0.5rem !important;
     margin: 0 !important;
     padding: 0 !important;
-    list-style: none;
+    list-style: none !important;
     flex-shrink: 1 !important;
+  }
   
   body header nav ul li {
     margin: 0 !important;
     padding: 0 !important;
     flex-shrink: 1 !important;
+  }
   
   body header nav ul li a {
     font-size: 0.8rem !important;
     padding: 0.25rem 0.5rem !important;
-    white-space: nowrap;
+    white-space: nowrap !important;
     display: block !important;
+  }
+}
 
 
+/* MOBILE HEADER EMERGENCY FIX - HIGHEST PRIORITY */
 @media only screen and (max-width: 768px) {
   * {
     box-sizing: border-box;
+  }
   
   header,
   header *,
@@ -3720,17 +4552,20 @@ span.status-label,
   nav * {
     max-width: 100% !important;
     overflow: visible !important;
+  }
   
   header {
     width: 100vw !important;
     padding: 0.5rem 0 !important;
     position: relative !important;
+  }
   
   header .container {
     width: 100% !important;
     max-width: 100% !important;
     padding: 0 1rem !important;
     margin: 0 auto !important;
+  }
   
   header nav {
     width: 100% !important;
@@ -3739,6 +4574,7 @@ span.status-label,
     align-items: center !important;
     flex-wrap: nowrap !important;
     gap: 1rem !important;
+  }
   
   header .brand {
     font-size: 0.9rem !important;
@@ -3747,7 +4583,8 @@ span.status-label,
     max-width: 45% !important;
     overflow: hidden !important;
     text-overflow: ellipsis !important;
-    white-space: nowrap;
+    white-space: nowrap !important;
+  }
   
   header nav ul {
     display: flex !important;
@@ -3755,64 +4592,80 @@ span.status-label,
     gap: 0.75rem !important;
     margin: 0 !important;
     padding: 0 !important;
-    list-style: none;
+    list-style: none !important;
     flex: 1 1 auto !important;
     justify-content: flex-end !important;
+  }
   
   header nav ul li {
     margin: 0 !important;
     padding: 0 !important;
     flex: 0 0 auto !important;
+  }
   
   header nav ul li a {
     font-size: 0.8rem !important;
     padding: 0.5rem 0.25rem !important;
-    white-space: nowrap;
+    white-space: nowrap !important;
     display: inline-block !important;
-    text-decoration: none;
+    text-decoration: none !important;
+  }
+}
 
 
+/* MOBILE NAVIGATION FIX - Show all 3 items */
 @media only screen and (max-width: 768px) {
   header .brand {
     font-size: 0.8rem !important;
     max-width: 35% !important;
+  }
   
   header nav ul {
     gap: 0.5rem !important;
     flex: 1 1 auto !important;
     justify-content: flex-end !important;
     min-width: 0 !important;
+  }
   
   header nav ul li {
     flex: 0 0 auto !important;
     min-width: 0 !important;
+  }
   
   header nav ul li a {
     font-size: 0.75rem !important;
     padding: 0.5rem 0.2rem !important;
-    white-space: nowrap;
+    white-space: nowrap !important;
     overflow: hidden !important;
     text-overflow: ellipsis !important;
     max-width: 4rem !important;
+  }
   
+  /* Specific text adjustments for mobile */
   header nav ul li a[href="/articles/"] {
     max-width: 3.5rem !important;
+  }
   
   header nav ul li a[href="#contact"] {
     max-width: 3rem !important;
+  }
+}
 
 
+/* MOBILE NAVIGATION - HORIZONTAL FLOW AFTER BRAND NAME */
 @media only screen and (max-width: 768px) {
   header nav {
     flex-direction: row !important;
     align-items: center !important;
     gap: 0.75rem !important;
     flex-wrap: nowrap !important;
+  }
   
   header .brand {
     font-size: 0.9rem !important;
     flex-shrink: 0 !important;
     margin-right: 0.5rem !important;
+  }
   
   header nav ul {
     display: flex !important;
@@ -3821,28 +4674,38 @@ span.status-label,
     margin: 0 !important;
     flex-wrap: nowrap !important;
     justify-content: flex-start !important;
+  }
   
   header nav ul li a {
     font-size: 0.8rem !important;
     padding: 0.25rem 0.1rem !important;
-    white-space: nowrap;
+    white-space: nowrap !important;
+  }
   
+  /* Shorter text for mobile navigation */
   header nav ul li a[href="/about"]::after {
     content: "";
+  }
   
   header nav ul li a[href="/articles/"]::after {
     content: "";
+  }
   
   header nav ul li a[href="#contact"]::after {
     content: "";
+  }
+}
 
 
+/* MOBILE NAVIGATION - SHORTER TEXT LABELS */
 @media only screen and (max-width: 768px) {
   header {
     padding: 0.5rem 0 !important;
+  }
   
   header .container {
     padding: 0 0.5rem !important;
+  }
   
   header nav {
     width: 100% !important;
@@ -3850,11 +4713,13 @@ span.status-label,
     justify-content: space-between !important;
     align-items: center !important;
     flex-wrap: nowrap !important;
+  }
   
   header .brand {
     font-size: 0.85rem !important;
     flex: 0 0 auto !important;
     margin-right: 0.5rem !important;
+  }
   
   header nav ul {
     display: flex !important;
@@ -3863,7 +4728,9 @@ span.status-label,
     padding: 0 !important;
     flex: 1 1 auto !important;
     justify-content: flex-end !important;
+  }
   
+  /* Replace text with shorter versions */
   header nav ul li a {
     font-size: 0.75rem !important;
     padding: 0.25rem 0.15rem !important;
@@ -3871,6 +4738,7 @@ span.status-label,
     position: relative !important;
     width: auto !important;
     min-width: 2.5rem !important;
+  }
   
   header nav ul li a[href="/about"]::after {
     content: "About" !important;
@@ -3878,6 +4746,7 @@ span.status-label,
     left: 0.15rem !important;
     top: 0.25rem !important;
     text-indent: 0 !important;
+  }
   
   header nav ul li a[href="/articles/"]::after {
     content: "Work" !important;
@@ -3885,6 +4754,7 @@ span.status-label,
     left: 0.15rem !important;
     top: 0.25rem !important;
     text-indent: 0 !important;
+  }
   
   header nav ul li a[href="#contact"]::after {
     content: "Contact" !important;
@@ -3892,142 +4762,187 @@ span.status-label,
     left: 0.15rem !important;
     top: 0.25rem !important;
     text-indent: 0 !important;
+  }
+}
 
 
+/* MOBILE NAVIGATION - FINAL SPACING ADJUSTMENT */
 @media only screen and (max-width: 768px) {
   header .container {
     padding: 0 0.25rem !important;
+  }
   
   header nav ul {
     gap: 0.25rem !important;
+  }
   
   header nav ul li a {
     min-width: 2.2rem !important;
     padding: 0.25rem 0.1rem !important;
+  }
   
   header nav ul li a[href="/about"]::after {
     left: 0.1rem !important;
+  }
   
   header nav ul li a[href="/articles/"]::after {
     left: 0.1rem !important;
+  }
   
   header nav ul li a[href="#contact"]::after {
     left: 0.1rem !important;
+  }
   
   header .brand {
     font-size: 0.8rem !important;
     margin-right: 0.25rem !important;
+  }
+}
 
 
+/* MOBILE NAVIGATION - ULTRA TIGHT SPACING */
 @media only screen and (max-width: 768px) {
   header .container {
     padding: 0 0.1rem !important;
+  }
   
   header .brand {
     font-size: 0.75rem !important;
     margin-right: 0.15rem !important;
+  }
   
   header nav ul {
     gap: 0.15rem !important;
+  }
   
   header nav ul li a {
     min-width: 2rem !important;
     padding: 0.25rem 0.05rem !important;
     font-size: 0.7rem !important;
+  }
   
   header nav ul li a[href="/about"]::after {
     left: 0.05rem !important;
+  }
   
   header nav ul li a[href="/articles/"]::after {
     left: 0.05rem !important;
+  }
   
   header nav ul li a[href="#contact"]::after {
     left: 0.05rem !important;
+  }
+}
 
 
+/* CLEAN MOBILE NAVIGATION - SIMPLE APPROACH */
 @media only screen and (max-width: 768px) {
+  /* Reset everything first */
   header * {
     box-sizing: border-box !important;
+  }
   
   header {
     padding: 0.5rem 0 !important;
+  }
   
   header .container {
     padding: 0 1rem !important;
     display: flex !important;
     justify-content: space-between !important;
     align-items: center !important;
+  }
   
   header .brand {
     font-size: 1rem !important;
     flex: 0 0 auto !important;
+  }
   
   header nav {
     flex: 1 1 auto !important;
     display: flex !important;
     justify-content: flex-end !important;
+  }
   
   header nav ul {
     display: flex !important;
     gap: 1rem !important;
     margin: 0 !important;
     padding: 0 !important;
-    list-style: none;
+    list-style: none !important;
+  }
   
   header nav ul li a {
     font-size: 0.9rem !important;
     padding: 0.5rem 0 !important;
-    text-decoration: none;
-    white-space: nowrap;
+    text-decoration: none !important;
+    white-space: nowrap !important;
+  }
   
+  /* Remove all the text replacement stuff */
   header nav ul li a {
     text-indent: 0 !important;
     position: static !important;
     width: auto !important;
     min-width: auto !important;
+  }
   
   header nav ul li a::after {
     display: none !important;
+  }
+}
 
 
+/* MOBILE TOP NAVIGATION ONLY */
 @media (max-width: 768px) {
   header nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 100%;
+  }
   
   header .brand {
     font-size: 0.85rem;
     margin-right: 0.5rem;
+  }
   
   header nav ul {
     display: flex;
     gap: 0.6rem;
     margin: 0;
     padding: 0;
+  }
   
   header nav ul li a {
     font-size: 0.75rem;
     padding: 0.25rem 0.15rem;
+  }
+}
 
 
+/* CALCULATED MOBILE TOP NAVIGATION SPACING */
 @media (max-width: 768px) {
   header .container {
     padding: 0 0.5rem !important;
+  }
   
   header nav {
     display: flex !important;
     justify-content: space-between !important;
     align-items: center !important;
     width: 100% !important;
+  }
   
+  /* Brand: ~140px at 0.8rem font */
   header .brand {
     font-size: 0.8rem !important;
     flex: 0 0 auto !important;
     max-width: 140px !important;
     margin-right: 0.4rem !important;
+  }
   
+  /* Navigation: remaining ~200px for 3 items */
   header nav ul {
     display: flex !important;
     gap: 0.3rem !important;
@@ -4035,16 +4950,21 @@ span.status-label,
     padding: 0 !important;
     flex: 1 1 auto !important;
     justify-content: flex-end !important;
+  }
   
+  /* Each nav item: ~60px max */
   header nav ul li a {
     font-size: 0.7rem !important;
     padding: 0.25rem 0.1rem !important;
-    white-space: nowrap;
+    white-space: nowrap !important;
     max-width: 60px !important;
     overflow: hidden !important;
     text-overflow: ellipsis !important;
+  }
+}
 
 
+/* FORCE MOBILE NAVIGATION FIX - HIGHEST PRIORITY */
 @media screen and (max-width: 768px) {
   body header nav {
     display: flex !important;
@@ -4052,11 +4972,13 @@ span.status-label,
     align-items: center !important;
     width: 100% !important;
     flex-wrap: nowrap !important;
+  }
   
   body header .brand {
     font-size: 0.75rem !important;
     flex-shrink: 0 !important;
     margin-right: 0.25rem !important;
+  }
   
   body header nav ul {
     display: flex !important;
@@ -4064,20 +4986,25 @@ span.status-label,
     gap: 0.25rem !important;
     margin: 0 !important;
     padding: 0 !important;
-    list-style: none;
+    list-style: none !important;
     flex-shrink: 1 !important;
+  }
   
   body header nav ul li {
     margin: 0 !important;
     padding: 0 !important;
+  }
   
   body header nav ul li a {
     font-size: 0.65rem !important;
     padding: 0.2rem 0.05rem !important;
-    white-space: nowrap;
+    white-space: nowrap !important;
     display: inline-block !important;
+  }
+}
 
 
+/* MOBILE NAVIGATION - CLOSER TO BRAND NAME */
 @media screen and (max-width: 768px) {
   body header .container {
     padding: 0 0.25rem !important;
@@ -4085,31 +5012,38 @@ span.status-label,
     justify-content: flex-start !important;
     align-items: center !important;
     gap: 0.5rem !important;
+  }
   
   body header .brand {
     font-size: 0.8rem !important;
     flex-shrink: 0 !important;
     margin-right: 0 !important;
+  }
   
   body header nav {
     flex: 1 1 auto !important;
     display: flex !important;
     justify-content: flex-start !important;
     margin-left: 0.5rem !important;
+  }
   
   body header nav ul {
     display: flex !important;
     gap: 0.75rem !important;
     margin: 0 !important;
     padding: 0 !important;
-    list-style: none;
+    list-style: none !important;
+  }
   
   body header nav ul li a {
     font-size: 0.75rem !important;
     padding: 0.25rem 0.1rem !important;
-    white-space: nowrap;
+    white-space: nowrap !important;
+  }
+}
 
 
+/* MOBILE UL CLASS FIX - FOCUS ON NAVIGATION LIST */
 @media screen and (max-width: 768px) {
   body header nav ul {
     display: flex !important;
@@ -4118,33 +5052,41 @@ span.status-label,
     gap: 0.5rem !important;
     margin: 0 !important;
     padding: 0 !important;
-    list-style: none;
+    list-style: none !important;
     width: auto !important;
     max-width: none !important;
     overflow: visible !important;
+  }
   
   body header nav ul li {
     flex: 0 0 auto !important;
     margin: 0 !important;
     padding: 0 !important;
-    white-space: nowrap;
+    white-space: nowrap !important;
+  }
   
   body header nav ul li a {
     font-size: 0.8rem !important;
     padding: 0.25rem 0.2rem !important;
     display: inline-block !important;
-    white-space: nowrap;
-    text-decoration: none;
+    white-space: nowrap !important;
+    text-decoration: none !important;
+  }
+}
 
 
+/* MOBILE NAVIGATION LINKS CONTAINER FIX */
 @media screen and (max-width: 768px) {
+  /* Navigation container */
   body header nav {
     flex: 1 1 auto !important;
     display: flex !important;
     justify-content: flex-end !important;
     align-items: center !important;
     min-width: 0 !important;
+  }
   
+  /* Links container (ul) */
   body header nav ul {
     display: flex !important;
     flex-direction: row !important;
@@ -4152,62 +5094,82 @@ span.status-label,
     gap: 0.4rem !important;
     margin: 0 !important;
     padding: 0 !important;
-    list-style: none;
+    list-style: none !important;
     justify-content: flex-end !important;
     align-items: center !important;
     min-width: 0 !important;
     flex-shrink: 1 !important;
+  }
   
+  /* Individual link items */
   body header nav ul li {
     flex: 0 0 auto !important;
     margin: 0 !important;
     padding: 0 !important;
     min-width: 0 !important;
+  }
   
+  /* Link text */
   body header nav ul li a {
     font-size: 0.75rem !important;
     padding: 0.25rem 0.15rem !important;
-    white-space: nowrap;
+    white-space: nowrap !important;
     display: block !important;
     min-width: 0 !important;
+  }
+}
 
 
+/* CLEAN MOBILE NAVIGATION - TARGETED FIX */
 @media (max-width: 768px) {
+  /* Target the exact HTML structure: header.site-header > .container > nav.nav */
   .site-header .container {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding-left: 0.5rem;
     padding-right: 0.5rem;
+  }
   
+  /* Brand name sizing */
   .site-header .brand {
     font-size: 0.85rem;
     flex-shrink: 0;
+  }
   
+  /* Navigation list */
   .site-header .nav-links {
     display: flex;
     gap: 0.5rem;
     margin: 0;
     padding: 0;
     list-style: none;
+  }
   
+  /* Navigation links */
   .site-header .nav-links a {
     font-size: 0.75rem;
     padding: 0.25rem 0.1rem;
     white-space: nowrap;
+  }
+}
 
 
+/* SAFEST MOBILE NAVIGATION FIX - MAXIMUM SPECIFICITY */
 @media screen and (max-width: 768px) {
+  /* Use maximum specificity to override all conflicting rules */
   html body header.site-header div.container nav.nav {
     display: flex !important;
     justify-content: space-between !important;
     align-items: center !important;
     width: 100% !important;
+  }
   
   html body header.site-header div.container nav.nav a.brand {
     font-size: 0.8rem !important;
     flex-shrink: 0 !important;
     margin-right: 0.5rem !important;
+  }
   
   html body header.site-header div.container nav.nav ul.nav-links {
     display: flex !important;
@@ -4215,11 +5177,14 @@ span.status-label,
     gap: 0.4rem !important;
     margin: 0 !important;
     padding: 0 !important;
-    list-style: none;
+    list-style: none !important;
+  }
   
   html body header.site-header div.container nav.nav ul.nav-links li a {
     font-size: 0.7rem !important;
     padding: 0.2rem 0.05rem !important;
-    white-space: nowrap;
-    text-decoration: none;
+    white-space: nowrap !important;
+    text-decoration: none !important;
+  }
+}
 
