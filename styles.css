@@ -4374,3 +4374,34 @@ span.status-label,
   box-shadow: none !important;
   border-color: #374151 !important;
 }
+/* Mobile-only: Left-align experience roles and descriptions */
+@media (max-width: 768px) {
+  .cv-item h4,
+  .cv-item p,
+  .cv-item .cv-role,
+  .cv-item .cv-description {
+    text-align: left !important;
+  }
+  
+  .cv-item {
+    text-align: left !important;
+  }
+}
+
+
+/* Stronger mobile-only left alignment for experience section */
+@media (max-width: 768px) {
+  .bio-content h2,
+  .bio-content h3,
+  .bio-content h4,
+  .bio-content p,
+  .bio-content li,
+  .bio-content div {
+    text-align: left !important;
+  }
+  
+  .bio-content {
+    text-align: left !important;
+  }
+}
+
