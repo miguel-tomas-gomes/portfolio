@@ -3123,6 +3123,7 @@ span.status-label,
   position: relative !important;
   overflow: visible !important;
   border: none !important;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15) !important;
 }
 
 /* Hover effects */
@@ -3309,6 +3310,7 @@ span.status-label,
   position: relative !important;
   overflow: visible !important;
   border: none !important;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15) !important;
 }
 
 .bio-image img {
@@ -4408,9 +4410,10 @@ span.status-label,
 
 /* Override button background with visible gradient */
 .btn:not(.btn-secondary) {
-  background: linear-gradient(135deg, rgba(34, 197, 94, 0.7) 0%, rgba(11, 87, 208, 0.7) 100%) !important;
+  background: linear-gradient(135deg, rgba(34, 197, 94, 0.75) 0%, rgba(11, 87, 208, 0.75) 100%) !important;
   border: 2px solid #059669 !important;
   border: none !important;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15) !important;
 }
 
 
@@ -4429,6 +4432,7 @@ span.status-label,
 
 /* Force border on work button with higher specificity */
 .actions .btn:not(.btn-secondary) {
-  border: 2px solid #1e40af !important;
+  border: none !important;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15) !important;
 }
 
