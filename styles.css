@@ -73,7 +73,7 @@ p{color: var(--text);}
   right: 0;
   width: 300px;
   height: 200px;
-  background: linear-gradient(135deg, rgba(34, 197, 94, 0.15) 0%, rgba(11, 87, 208, 0.15) 100%);
+  background: linear-gradient(135deg, rgba(34, 197, 94, 0.3) 0%, rgba(11, 87, 208, 0.25) 100%);
   clip-path: polygon(100% 0%, 100% 100%, 0% 100%);
   z-index: 1;
 }
@@ -86,7 +86,7 @@ p{color: var(--text);}
   left: 0;
   width: 144px;
   height: 144px;
-  background: linear-gradient(135deg, rgba(34, 197, 94, 0.15) 0%, rgba(11, 87, 208, 0.15) 100%);
+  background: linear-gradient(135deg, rgba(34, 197, 94, 0.3) 0%, rgba(11, 87, 208, 0.25) 100%);
   border-radius: 50%;
   transform: translate(-30px, -10px);
   z-index: -1;
@@ -188,7 +188,7 @@ span.status-label,
   padding: 0px 1px !important;
   margin: 0 !important;
   border-radius: 999px !important;
-  background: rgba(34, 197, 94, 0.15) !important;
+  background: rgba(34, 197, 94, 0.3) !important;
   color: #16a34a !important;
   border: 1px solid rgba(34, 197, 94, 0.3) !important;
   font-size: 7px !important;
@@ -212,7 +212,6 @@ span.status-label,
   border-radius: var(--radius);
   overflow: hidden;
   box-shadow: var(--shadow);
-  transition: all 0.3s ease;
   border: 1px solid var(--border);
   display: flex;
   flex-direction: column;
@@ -445,7 +444,12 @@ span.status-label,
   }
 
   /* Center avatar on mobile only */
-  .avatar {
+  
+  /* Center hero-media container on mobile */
+  .hero-media {
+    display: flex;
+    justify-content: center;
+  }  .avatar {
     margin: 0 auto;
   }
 
@@ -1907,7 +1911,6 @@ span.status-label,
   border-radius: var(--radius);
   position: relative;
   z-index: 2;
-  transition: transform 0.3s ease;
 }
 
 .image-frame:hover img {
@@ -2003,7 +2006,6 @@ span.status-label,
   border-radius: 16px;
   position: relative;
   z-index: 2;
-  transition: transform 0.3s ease;
   display: block;
 }
 
@@ -2070,13 +2072,9 @@ span.status-label,
   height: 400px;
   object-fit: cover;
   border-radius: var(--radius);
-  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
-  transition: box-shadow 0.3s ease;
+  box-shadow: var(--shadow), 0 4px 16px rgba(0,0,0,0.08);
 }
 
-.bio-image img:hover {
-  box-shadow: 0 6px 24px rgba(0,0,0,0.12);
-}
 
 /* Embedded sections within bio content */
 .embedded-section {
@@ -2255,8 +2253,7 @@ span.status-label,
   height: 400px;
   object-fit: cover;
   border-radius: 24px;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
-  transition: all 0.3s ease;
+  box-shadow: var(--shadow), 0 4px 16px rgba(0,0,0,0.08);
   position: relative;
   mask: linear-gradient(to bottom, 
     rgba(0,0,0,1) 0%, 
@@ -2272,10 +2269,6 @@ span.status-label,
     rgba(0,0,0,0.1) 100%);
 }
 
-.bio-image img:hover {
-  box-shadow: 0 6px 24px rgba(0,0,0,0.12);
-  transform: translateY(-2px);
-}
 
 /* Alternative approach with pseudo-element overlay */
 .bio-image {
@@ -2333,8 +2326,7 @@ span.status-label,
   height: 280px; /* About 2x the index avatar size for prominence */
   object-fit: cover;
   border-radius: 24px;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
-  transition: all 0.3s ease;
+  box-shadow: var(--shadow), 0 4px 16px rgba(0,0,0,0.08);
   position: relative;
   mask: linear-gradient(to bottom, 
     rgba(0,0,0,1) 0%, 
@@ -2453,8 +2445,7 @@ span.status-label,
   height: 280px;
   object-fit: cover;
   border-radius: 20px; /* Slightly less rounded for this image */
-  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
-  transition: all 0.3s ease;
+  box-shadow: var(--shadow), 0 4px 16px rgba(0,0,0,0.08);
   position: relative;
   mask: linear-gradient(to bottom, 
     rgba(0,0,0,1) 0%, 
@@ -2562,21 +2553,15 @@ span.status-label,
   bottom: -8px;
   background: linear-gradient(135deg, 
     rgba(34, 197, 94, 0.2) 0%, 
-    rgba(11, 87, 208, 0.15) 50%, 
+    rgba(11, 87, 208, 0.25) 50%, 
     rgba(34, 197, 94, 0.1) 100%);
   border-radius: 20px;
   z-index: -1;
   filter: blur(12px);
   opacity: 0.8;
-  transition: all 0.3s ease;
 }
 
 /* Enhanced shadow on hover */
-.bio-image:hover::before {
-  filter: blur(16px);
-  opacity: 1;
-  transform: scale(1.02);
-}
 
 /* Regular image shadow for depth */
 .bio-image img {
@@ -2584,10 +2569,9 @@ span.status-label,
   height: 280px;
   object-fit: cover;
   border-radius: 20px;
-  box-shadow: 
+  box-shadow: var(--shadow), 0 4px 16px rgba(0,0,0,0.08);
     0 4px 16px rgba(0,0,0,0.08),
     0 8px 32px rgba(34, 197, 94, 0.1);
-  transition: all 0.3s ease;
   position: relative;
   z-index: 2;
   mask: linear-gradient(to bottom, 
@@ -2612,12 +2596,6 @@ span.status-label,
     rgba(0,0,0,0) 100%);
 }
 
-.bio-image img:hover {
-  box-shadow: 
-    0 6px 24px rgba(0,0,0,0.12),
-    0 12px 48px rgba(34, 197, 94, 0.15);
-  transform: translateY(-2px);
-}
 
 /* Responsive adjustments */
 @media (max-width: 1024px) {
@@ -2689,21 +2667,15 @@ span.status-label,
   background: linear-gradient(135deg, 
     rgba(34, 197, 94, 0.25) 0%, 
     rgba(11, 87, 208, 0.2) 50%, 
-    rgba(34, 197, 94, 0.15) 100%);
+    rgba(34, 197, 94, 0.3) 100%);
   border-radius: 20px;
   z-index: -1;
   filter: blur(20px);
   opacity: 0.6;
-  transition: all 0.3s ease;
   transform: scale(1.05); /* Slightly larger for shadow effect */
 }
 
 /* Enhanced shadow on hover */
-.bio-image:hover::before {
-  filter: blur(24px);
-  opacity: 0.8;
-  transform: scale(1.08);
-}
 
 /* Image stays in original position */
 .bio-image img {
@@ -2711,8 +2683,7 @@ span.status-label,
   height: 280px;
   object-fit: cover;
   border-radius: 20px;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
-  transition: all 0.3s ease;
+  box-shadow: var(--shadow), 0 4px 16px rgba(0,0,0,0.08);
   position: relative;
   z-index: 2;
   /* Keep the soft gradient mask */
@@ -2738,10 +2709,6 @@ span.status-label,
     rgba(0,0,0,0) 100%);
 }
 
-.bio-image img:hover {
-  box-shadow: 0 6px 24px rgba(0,0,0,0.12);
-  transform: translateY(-1px); /* Subtle lift, not too much */
-}
 
 
 /* REMOVE STICKY AND ADD PROPER COLORED SHADOW */
@@ -2770,15 +2737,9 @@ span.status-label,
   z-index: -1;
   filter: blur(16px);
   opacity: 0.7;
-  transition: all 0.3s ease;
 }
 
 /* Enhanced shadow on hover */
-.bio-image:hover::before {
-  filter: blur(20px);
-  opacity: 0.9;
-  transform: scale(1.02);
-}
 
 /* Image with no sticky behavior */
 .bio-image img {
@@ -2786,8 +2747,7 @@ span.status-label,
   height: 280px;
   object-fit: cover;
   border-radius: 20px;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
-  transition: all 0.3s ease;
+  box-shadow: var(--shadow), 0 4px 16px rgba(0,0,0,0.08);
   position: relative;
   z-index: 2;
   display: block;
@@ -2814,10 +2774,6 @@ span.status-label,
     rgba(0,0,0,0) 100%);
 }
 
-.bio-image img:hover {
-  box-shadow: 0 6px 24px rgba(0,0,0,0.12);
-  transform: translateY(-2px);
-}
 
 /* Responsive adjustments */
 @media (max-width: 1024px) {
@@ -2894,10 +2850,9 @@ span.status-label,
   right: -8px;
   width: 120px;
   height: 80px;
-  background: linear-gradient(135deg, rgba(34, 197, 94, 0.15) 0%, rgba(11, 87, 208, 0.15) 100%);
+  background: linear-gradient(135deg, rgba(34, 197, 94, 0.3) 0%, rgba(11, 87, 208, 0.25) 100%);
   clip-path: polygon(100% 0%, 100% 100%, 0% 100%);
   z-index: -1;
-  transition: all 0.3s ease;
 }
 
 /* Circular decoration (like hero ::after) */
@@ -2908,23 +2863,14 @@ span.status-label,
   left: -12px;
   width: 100px;
   height: 100px;
-  background: linear-gradient(135deg, rgba(34, 197, 94, 0.15) 0%, rgba(11, 87, 208, 0.15) 100%);
+  background: linear-gradient(135deg, rgba(34, 197, 94, 0.3) 0%, rgba(11, 87, 208, 0.25) 100%);
   border-radius: 50%;
   z-index: -1;
-  transition: all 0.3s ease;
   opacity: 0.8;
 }
 
 /* Enhanced decorations on hover */
-.bio-image:hover::before {
-  transform: scale(1.1);
-  opacity: 1;
-}
 
-.bio-image:hover::after {
-  transform: scale(1.1);
-  opacity: 1;
-}
 
 /* Image with decorative shadows */
 .bio-image img {
@@ -2932,8 +2878,7 @@ span.status-label,
   height: 280px;
   object-fit: cover;
   border-radius: 20px;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
-  transition: all 0.3s ease;
+  box-shadow: var(--shadow), 0 4px 16px rgba(0,0,0,0.08);
   position: relative;
   z-index: 2;
   display: block;
@@ -2960,10 +2905,6 @@ span.status-label,
     rgba(0,0,0,0) 100%);
 }
 
-.bio-image img:hover {
-  box-shadow: 0 6px 24px rgba(0,0,0,0.12);
-  transform: translateY(-2px);
-}
 
 /* Responsive adjustments */
 @media (max-width: 1024px) {
@@ -3074,15 +3015,7 @@ span.status-label,
 }
 
 /* Enhanced hover effects */
-.bio-page .bio-image:hover::before {
-  transform: scale(1.1) !important;
-  opacity: 1 !important;
-}
 
-.bio-page .bio-image:hover::after {
-  transform: scale(1.1) !important;
-  opacity: 1 !important;
-}
 
 
 /* ACTUAL HTML ELEMENTS FOR DECORATIONS */
@@ -3113,15 +3046,7 @@ span.status-label,
 }
 
 /* Hover effects */
-.bio-image:hover .decoration-triangle {
-  transform: scale(1.1) !important;
-  opacity: 1 !important;
-}
 
-.bio-image:hover .decoration-circle {
-  transform: scale(1.1) !important;
-  opacity: 1 !important;
-}
 
 /* Make sure bio-image allows positioning */
 .bio-image {
@@ -3201,15 +3126,7 @@ span.status-label,
 }
 
 /* Hover effects */
-.bio-image:hover .decoration-triangle {
-  transform: scale(1.1) !important;
-  opacity: 1 !important;
-}
 
-.bio-image:hover .decoration-circle {
-  transform: scale(1.1) !important;
-  opacity: 1 !important;
-}
 
 
 /* MORE VISIBLE HERO DECORATIONS */
@@ -3281,7 +3198,7 @@ span.status-label,
   right: -8px !important;
   width: 120px !important;
   height: 80px !important;
-  background: linear-gradient(135deg, rgba(34, 197, 94, 0.15) 0%, rgba(11, 87, 208, 0.12) 100%) !important;
+  background: linear-gradient(135deg, rgba(34, 197, 94, 0.3) 0%, rgba(11, 87, 208, 0.12) 100%) !important;
   clip-path: polygon(100% 0%, 100% 100%, 0% 100%) !important;
   z-index: -1 !important;
   opacity: 1 !important;
@@ -3296,7 +3213,7 @@ span.status-label,
   left: -12px !important;
   width: 100px !important;
   height: 100px !important;
-  background: linear-gradient(135deg, rgba(34, 197, 94, 0.15) 0%, rgba(11, 87, 208, 0.12) 100%) !important;
+  background: linear-gradient(135deg, rgba(34, 197, 94, 0.3) 0%, rgba(11, 87, 208, 0.12) 100%) !important;
   border-radius: 50% !important;
   z-index: -1 !important;
   opacity: 1 !important;
@@ -3306,15 +3223,7 @@ span.status-label,
 }
 
 /* Subtle hover effects */
-.bio-image:hover .decoration-triangle {
-  transform: scale(1.05) !important;
-  opacity: 1 !important;
-}
 
-.bio-image:hover .decoration-circle {
-  transform: scale(1.05) !important;
-  opacity: 1 !important;
-}
 
 
 /* SWEET SPOT: VISIBLE BUT PROFESSIONAL */
@@ -3349,15 +3258,7 @@ span.status-label,
 }
 
 /* Hover effects */
-.bio-image:hover .decoration-triangle {
-  transform: scale(1.05) !important;
-  background: linear-gradient(135deg, rgba(34, 197, 94, 0.4) 0%, rgba(11, 87, 208, 0.35) 100%) !important;
-}
 
-.bio-image:hover .decoration-circle {
-  transform: scale(1.05) !important;
-  background: linear-gradient(135deg, rgba(34, 197, 94, 0.4) 0%, rgba(11, 87, 208, 0.35) 100%) !important;
-}
 
 
 /* FIX Z-INDEX LAYERING */
@@ -3862,17 +3763,12 @@ span.status-label,
   left: 8px;
   right: -8px;
   bottom: -8px;
-  background: linear-gradient(135deg, rgba(34, 197, 94, 0.15) 0%, rgba(11, 87, 208, 0.15) 100%);
+  background: linear-gradient(135deg, rgba(34, 197, 94, 0.3) 0%, rgba(11, 87, 208, 0.25) 100%);
   border-radius: 20px;
   z-index: -1;
   transform: rotate(-2deg);
-  transition: all 0.3s ease;
 }
 
-.bio-image:hover::before {
-  transform: rotate(-1deg) scale(1.02);
-  background: linear-gradient(135deg, rgba(34, 197, 94, 0.2) 0%, rgba(11, 87, 208, 0.2) 100%);
-}
 
 /* Ensure bio-image has proper positioning context */
 .bio-image {
@@ -3902,10 +3798,6 @@ span.status-label,
   display: block !important;
 }
 
-.bio-image:hover::before {
-  transform: rotate(-2deg) scale(1.03) !important;
-  background: linear-gradient(135deg, rgba(34, 197, 94, 0.4) 0%, rgba(11, 87, 208, 0.35) 100%) !important;
-}
 
 /* Ensure image is above shadow */
 .bio-image img {
@@ -3954,10 +3846,6 @@ span.status-label,
   transition: all 0.3s ease !important;
 }
 
-.bio-image:hover .image-shadow {
-  transform: rotate(-2deg) scale(1.03) !important;
-  background: linear-gradient(135deg, rgba(34, 197, 94, 0.4) 0%, rgba(11, 87, 208, 0.35) 100%) !important;
-}
 
 /* Remove pseudo-element attempts */
 .bio-image::before {
@@ -3986,10 +3874,6 @@ span.status-label,
   transition: all 0.3s ease !important;
 }
 
-.bio-image:hover .image-shadow {
-  transform: rotate(2deg) scale(1.03) !important;
-  background: linear-gradient(135deg, rgba(34, 197, 94, 0.4) 0%, rgba(11, 87, 208, 0.35) 100%) !important;
-}
 
 
 /* REDUCE EXPERIENCE SECTION LINE SPACING - UPDATED */
@@ -4461,3 +4345,32 @@ span.status-label,
   }
 }
 
+
+
+.avatar {
+}
+
+
+/* Add white border to about image to match index avatar */
+.bio-image img {
+  border: 2px solid rgba(255,255,255,0.8) !important;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08) !important;
+}
+
+
+/* Secondary button - transparent with dark gray border */
+.btn-secondary {
+  background: transparent !important;
+  color: var(--text) !important;
+  border: 2px solid #374151 !important;
+  box-shadow: none !important;
+}
+
+.btn-secondary:hover {
+  background: transparent !important;
+  color: var(--text) !important;
+  text-decoration: underline;
+  transform: translateY(-1px);
+  box-shadow: none !important;
+  border-color: #374151 !important;
+}
