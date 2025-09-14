@@ -5154,3 +5154,37 @@ span.status-label,
   }
 }
 
+
+/* SAFEST MOBILE NAVIGATION FIX - MAXIMUM SPECIFICITY */
+@media screen and (max-width: 768px) {
+  /* Use maximum specificity to override all conflicting rules */
+  html body header.site-header div.container nav.nav {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    width: 100% !important;
+  }
+  
+  html body header.site-header div.container nav.nav a.brand {
+    font-size: 0.8rem !important;
+    flex-shrink: 0 !important;
+    margin-right: 0.5rem !important;
+  }
+  
+  html body header.site-header div.container nav.nav ul.nav-links {
+    display: flex !important;
+    flex-direction: row !important;
+    gap: 0.4rem !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    list-style: none !important;
+  }
+  
+  html body header.site-header div.container nav.nav ul.nav-links li a {
+    font-size: 0.7rem !important;
+    padding: 0.2rem 0.05rem !important;
+    white-space: nowrap !important;
+    text-decoration: none !important;
+  }
+}
+
