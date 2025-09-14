@@ -5119,3 +5119,38 @@ span.status-label,
   }
 }
 
+
+/* CLEAN MOBILE NAVIGATION - TARGETED FIX */
+@media (max-width: 768px) {
+  /* Target the exact HTML structure: header.site-header > .container > nav.nav */
+  .site-header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+  
+  /* Brand name sizing */
+  .site-header .brand {
+    font-size: 0.85rem;
+    flex-shrink: 0;
+  }
+  
+  /* Navigation list */
+  .site-header .nav-links {
+    display: flex;
+    gap: 0.5rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  
+  /* Navigation links */
+  .site-header .nav-links a {
+    font-size: 0.75rem;
+    padding: 0.25rem 0.1rem;
+    white-space: nowrap;
+  }
+}
+
