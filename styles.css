@@ -4436,3 +4436,48 @@ span.status-label,
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15) !important;
 }
 
+
+/* Mobile header fixes for devices like Redmi Pro 12 */
+@media (max-width: 768px) {
+  header {
+    padding: 1rem 0 !important;
+    min-height: auto !important;
+  }
+  
+  .container {
+    padding: 0 1rem !important;
+    max-width: 100% !important;
+  }
+  
+  nav {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    flex-wrap: nowrap !important;
+  }
+  
+  .brand {
+    font-size: 1.1rem !important;
+    white-space: nowrap !important;
+    flex-shrink: 0 !important;
+  }
+  
+  nav ul {
+    display: flex !important;
+    gap: 1rem !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    list-style: none !important;
+  }
+  
+  nav ul li {
+    margin: 0 !important;
+  }
+  
+  nav ul li a {
+    font-size: 0.9rem !important;
+    padding: 0.5rem !important;
+    white-space: nowrap !important;
+  }
+}
+
