@@ -4765,3 +4765,357 @@ span.status-label,
   }
 }
 
+
+/* MOBILE NAVIGATION - FINAL SPACING ADJUSTMENT */
+@media only screen and (max-width: 768px) {
+  header .container {
+    padding: 0 0.25rem !important;
+  }
+  
+  header nav ul {
+    gap: 0.25rem !important;
+  }
+  
+  header nav ul li a {
+    min-width: 2.2rem !important;
+    padding: 0.25rem 0.1rem !important;
+  }
+  
+  header nav ul li a[href="/about"]::after {
+    left: 0.1rem !important;
+  }
+  
+  header nav ul li a[href="/articles/"]::after {
+    left: 0.1rem !important;
+  }
+  
+  header nav ul li a[href="#contact"]::after {
+    left: 0.1rem !important;
+  }
+  
+  header .brand {
+    font-size: 0.8rem !important;
+    margin-right: 0.25rem !important;
+  }
+}
+
+
+/* MOBILE NAVIGATION - ULTRA TIGHT SPACING */
+@media only screen and (max-width: 768px) {
+  header .container {
+    padding: 0 0.1rem !important;
+  }
+  
+  header .brand {
+    font-size: 0.75rem !important;
+    margin-right: 0.15rem !important;
+  }
+  
+  header nav ul {
+    gap: 0.15rem !important;
+  }
+  
+  header nav ul li a {
+    min-width: 2rem !important;
+    padding: 0.25rem 0.05rem !important;
+    font-size: 0.7rem !important;
+  }
+  
+  header nav ul li a[href="/about"]::after {
+    left: 0.05rem !important;
+  }
+  
+  header nav ul li a[href="/articles/"]::after {
+    left: 0.05rem !important;
+  }
+  
+  header nav ul li a[href="#contact"]::after {
+    left: 0.05rem !important;
+  }
+}
+
+
+/* CLEAN MOBILE NAVIGATION - SIMPLE APPROACH */
+@media only screen and (max-width: 768px) {
+  /* Reset everything first */
+  header * {
+    box-sizing: border-box !important;
+  }
+  
+  header {
+    padding: 0.5rem 0 !important;
+  }
+  
+  header .container {
+    padding: 0 1rem !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+  }
+  
+  header .brand {
+    font-size: 1rem !important;
+    flex: 0 0 auto !important;
+  }
+  
+  header nav {
+    flex: 1 1 auto !important;
+    display: flex !important;
+    justify-content: flex-end !important;
+  }
+  
+  header nav ul {
+    display: flex !important;
+    gap: 1rem !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    list-style: none !important;
+  }
+  
+  header nav ul li a {
+    font-size: 0.9rem !important;
+    padding: 0.5rem 0 !important;
+    text-decoration: none !important;
+    white-space: nowrap !important;
+  }
+  
+  /* Remove all the text replacement stuff */
+  header nav ul li a {
+    text-indent: 0 !important;
+    position: static !important;
+    width: auto !important;
+    min-width: auto !important;
+  }
+  
+  header nav ul li a::after {
+    display: none !important;
+  }
+}
+
+
+/* MOBILE TOP NAVIGATION ONLY */
+@media (max-width: 768px) {
+  header nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+  
+  header .brand {
+    font-size: 0.85rem;
+    margin-right: 0.5rem;
+  }
+  
+  header nav ul {
+    display: flex;
+    gap: 0.6rem;
+    margin: 0;
+    padding: 0;
+  }
+  
+  header nav ul li a {
+    font-size: 0.75rem;
+    padding: 0.25rem 0.15rem;
+  }
+}
+
+
+/* CALCULATED MOBILE TOP NAVIGATION SPACING */
+@media (max-width: 768px) {
+  header .container {
+    padding: 0 0.5rem !important;
+  }
+  
+  header nav {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    width: 100% !important;
+  }
+  
+  /* Brand: ~140px at 0.8rem font */
+  header .brand {
+    font-size: 0.8rem !important;
+    flex: 0 0 auto !important;
+    max-width: 140px !important;
+    margin-right: 0.4rem !important;
+  }
+  
+  /* Navigation: remaining ~200px for 3 items */
+  header nav ul {
+    display: flex !important;
+    gap: 0.3rem !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    flex: 1 1 auto !important;
+    justify-content: flex-end !important;
+  }
+  
+  /* Each nav item: ~60px max */
+  header nav ul li a {
+    font-size: 0.7rem !important;
+    padding: 0.25rem 0.1rem !important;
+    white-space: nowrap !important;
+    max-width: 60px !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+  }
+}
+
+
+/* FORCE MOBILE NAVIGATION FIX - HIGHEST PRIORITY */
+@media screen and (max-width: 768px) {
+  body header nav {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    width: 100% !important;
+    flex-wrap: nowrap !important;
+  }
+  
+  body header .brand {
+    font-size: 0.75rem !important;
+    flex-shrink: 0 !important;
+    margin-right: 0.25rem !important;
+  }
+  
+  body header nav ul {
+    display: flex !important;
+    flex-direction: row !important;
+    gap: 0.25rem !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    list-style: none !important;
+    flex-shrink: 1 !important;
+  }
+  
+  body header nav ul li {
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  
+  body header nav ul li a {
+    font-size: 0.65rem !important;
+    padding: 0.2rem 0.05rem !important;
+    white-space: nowrap !important;
+    display: inline-block !important;
+  }
+}
+
+
+/* MOBILE NAVIGATION - CLOSER TO BRAND NAME */
+@media screen and (max-width: 768px) {
+  body header .container {
+    padding: 0 0.25rem !important;
+    display: flex !important;
+    justify-content: flex-start !important;
+    align-items: center !important;
+    gap: 0.5rem !important;
+  }
+  
+  body header .brand {
+    font-size: 0.8rem !important;
+    flex-shrink: 0 !important;
+    margin-right: 0 !important;
+  }
+  
+  body header nav {
+    flex: 1 1 auto !important;
+    display: flex !important;
+    justify-content: flex-start !important;
+    margin-left: 0.5rem !important;
+  }
+  
+  body header nav ul {
+    display: flex !important;
+    gap: 0.75rem !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    list-style: none !important;
+  }
+  
+  body header nav ul li a {
+    font-size: 0.75rem !important;
+    padding: 0.25rem 0.1rem !important;
+    white-space: nowrap !important;
+  }
+}
+
+
+/* MOBILE UL CLASS FIX - FOCUS ON NAVIGATION LIST */
+@media screen and (max-width: 768px) {
+  body header nav ul {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    gap: 0.5rem !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    list-style: none !important;
+    width: auto !important;
+    max-width: none !important;
+    overflow: visible !important;
+  }
+  
+  body header nav ul li {
+    flex: 0 0 auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    white-space: nowrap !important;
+  }
+  
+  body header nav ul li a {
+    font-size: 0.8rem !important;
+    padding: 0.25rem 0.2rem !important;
+    display: inline-block !important;
+    white-space: nowrap !important;
+    text-decoration: none !important;
+  }
+}
+
+
+/* MOBILE NAVIGATION LINKS CONTAINER FIX */
+@media screen and (max-width: 768px) {
+  /* Navigation container */
+  body header nav {
+    flex: 1 1 auto !important;
+    display: flex !important;
+    justify-content: flex-end !important;
+    align-items: center !important;
+    min-width: 0 !important;
+  }
+  
+  /* Links container (ul) */
+  body header nav ul {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    gap: 0.4rem !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    list-style: none !important;
+    justify-content: flex-end !important;
+    align-items: center !important;
+    min-width: 0 !important;
+    flex-shrink: 1 !important;
+  }
+  
+  /* Individual link items */
+  body header nav ul li {
+    flex: 0 0 auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    min-width: 0 !important;
+  }
+  
+  /* Link text */
+  body header nav ul li a {
+    font-size: 0.75rem !important;
+    padding: 0.25rem 0.15rem !important;
+    white-space: nowrap !important;
+    display: block !important;
+    min-width: 0 !important;
+  }
+}
+
