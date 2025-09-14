@@ -4481,3 +4481,134 @@ span.status-label,
   }
 }
 
+
+/* Stronger mobile header fixes for Redmi Pro 12 and similar devices */
+@media screen and (max-width: 768px) {
+  body header {
+    position: relative !important;
+    width: 100% !important;
+    overflow: hidden !important;
+  }
+  
+  body header .container {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0 0.75rem !important;
+    margin: 0 !important;
+  }
+  
+  body header nav {
+    width: 100% !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    flex-wrap: nowrap !important;
+    overflow: hidden !important;
+  }
+  
+  body header .brand {
+    font-size: 1rem !important;
+    flex-shrink: 0 !important;
+    max-width: 50% !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
+  }
+  
+  body header nav ul {
+    display: flex !important;
+    flex-direction: row !important;
+    gap: 0.5rem !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    list-style: none !important;
+    flex-shrink: 1 !important;
+  }
+  
+  body header nav ul li {
+    margin: 0 !important;
+    padding: 0 !important;
+    flex-shrink: 1 !important;
+  }
+  
+  body header nav ul li a {
+    font-size: 0.8rem !important;
+    padding: 0.25rem 0.5rem !important;
+    white-space: nowrap !important;
+    display: block !important;
+  }
+}
+
+
+/* MOBILE HEADER EMERGENCY FIX - HIGHEST PRIORITY */
+@media only screen and (max-width: 768px) {
+  * {
+    box-sizing: border-box;
+  }
+  
+  header,
+  header *,
+  nav,
+  nav * {
+    max-width: 100% !important;
+    overflow: visible !important;
+  }
+  
+  header {
+    width: 100vw !important;
+    padding: 0.5rem 0 !important;
+    position: relative !important;
+  }
+  
+  header .container {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0 1rem !important;
+    margin: 0 auto !important;
+  }
+  
+  header nav {
+    width: 100% !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    flex-wrap: nowrap !important;
+    gap: 1rem !important;
+  }
+  
+  header .brand {
+    font-size: 0.9rem !important;
+    font-weight: 600 !important;
+    flex: 0 0 auto !important;
+    max-width: 45% !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
+  }
+  
+  header nav ul {
+    display: flex !important;
+    flex-direction: row !important;
+    gap: 0.75rem !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    list-style: none !important;
+    flex: 1 1 auto !important;
+    justify-content: flex-end !important;
+  }
+  
+  header nav ul li {
+    margin: 0 !important;
+    padding: 0 !important;
+    flex: 0 0 auto !important;
+  }
+  
+  header nav ul li a {
+    font-size: 0.8rem !important;
+    padding: 0.5rem 0.25rem !important;
+    white-space: nowrap !important;
+    display: inline-block !important;
+    text-decoration: none !important;
+  }
+}
+
