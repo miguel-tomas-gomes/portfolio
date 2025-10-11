@@ -1,4 +1,8 @@
 User-agent: *
 Allow: /
 
+# Disallow PDFs from being indexed (they're downloads, not pages)
+Disallow: *.pdf
+Disallow: /assets/*.pdf
+
 Sitemap: https://migueltomasgomes.com/sitemap.xml

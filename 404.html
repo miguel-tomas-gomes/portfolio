@@ -13,19 +13,19 @@
     // Handle redirects for .html versions to clean URLs
     (function() {
       const path = window.location.pathname;
-      
+
       // Redirect index.html to root
       if (path === '/index.html') {
         window.location.replace('/');
         return;
       }
-      
+
       // Redirect articles/index.html to articles/
       if (path === '/articles/index.html') {
         window.location.replace('/articles/');
         return;
       }
-      
+
       // Show 404 page for other cases
     })();
   </script>

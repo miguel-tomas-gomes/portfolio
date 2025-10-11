@@ -90,7 +90,7 @@
           <h2>The Challenge</h2>
 	  <p>This SaaS platform helped product teams manage release notes, track documentation updates, and sync content across tools like GitHub, JIRA, and Zendesk. Most of the time, the GitHub integration worked just fine. But every so often, the connection would timeout.</p>
 	  <p>Every time it happened, users hit a wall. The system showed them: "401 Unauthorized"</p>
-	  <img src="../assets/ux-writing-error-example.png" alt="Example of a bad UI screen error" class="article-image-spaced">
+	  <img src="../assets/ux-writing-error-example.png" alt="Original error message with unclear recovery path - UX writing before improvement" class="article-image-spaced">
 	  <p>Technically accurate, yes. But for most users? A dead end. Instead of fixing the problem themselves, they would abandon the workflow or open a support ticket.</p>
 	  <p>I needed to find out if better copy could reduce frustration and help more users get back on track without support.</p>
           
@@ -104,7 +104,7 @@
           
           <h2>Designing the Test</h2>
 	  <p>The proposed message was: "There was an issue with authentication. Please reconnect your GitHub account."</p>
-	  <img src="../assets/ux-error-improved.png" alt="Example of a good UI screen error" class="article-image-spaced">
+	  <img src="../assets/ux-error-improved.png" alt="Improved error message with clear recovery steps - UX writing after A/B test optimization" class="article-image-spaced">
 	  <p>With the new copy ready, I then partnered with a data scientist and an engineer to get the test set up. We split traffic so that half of users encountering the error saw the old message, and half saw the new one.</p>
 	  <p>In A/B testing, the p-value tells us the probability of seeing results this extreme if there were actually no difference (the null hypothesis). A smaller p-value means the result is less likely due to chance.</p>
 	  <p>The usual threshold for significance is 0.05, meaning there's a 5% chance of seeing results this extreme if the null hypothesis were true. To avoid stopping the test early, we planned sample size and duration up front.</p>
