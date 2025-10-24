@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Finding the Right Words for Monitoring — Miguel Tomás Gomes</title>
-  <meta name="description" content="UX writing case study by Miguel Tomás Gomes." />
+  <meta name="description" content="Content design case study: Standardized monitoring feature terminology through user testing and statistical analysis, reducing support tickets by 27%." />
 
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="article">
@@ -81,7 +81,7 @@
             <h4>Methodology Note</h4>
             <ul>
               <li><strong>Company:</strong> Anonymized for confidentiality reasons</li>
-              <li><strong>Data:</strong> Two rounds of unmoderated testing with 40 participants across technical roles</li>
+              <li><strong>Data:</strong> Two rounds of unmoderated testing with 40 participants across product roles</li>
               <li><strong>Purpose:</strong> Demonstrate terminology standardization methodology</li>
               <li><strong>Tools:</strong> UserTesting, Figma</li>
               <li><strong>Target users:</strong> Developers, admins, and product owners</li>
@@ -94,11 +94,11 @@
           <p>In our product, the concept of a trace was labeled as "Activity". Additionally, what is commonly known as spans appeared in the UI as "Activity details". Industry-wise, however, these words have more precise meanings.</p>
 	  <p>For instance, a trace is the complete record of how an application executes logic across services, while a span is a single sub-operation within that trace. Spans are defined by their start and end time, duration, and metadata. As such, they provide context to a trace.</p>
 	  <img src="../assets/monitoring-terms.png" alt="screen showing a trace and spans" class="article-image-spaced" />
-	  <p>The mismatch between our nomenclature and industry-wide terminology created ambiguity for technical and non-technical users, making it clear to us that both needed to be reconsidered.</p>
+	  <p>The mismatch between our nomenclature and industry-wide terminology created ambiguity for developers and product users, making it clear to us that both needed to be reconsidered.</p>
 	  <p>Even internally, teams didn't fully agree on what each term meant. This inconsistency made its way into the UI and documentation, creating friction and confusion.</p>
-	  <p>I needed to find terminology that was natural, widely understood, and still accurate enough to preserve credibility with technical users.</p>
+	  <p>I needed to find terminology that was natural, widely understood, and still accurate enough to preserve credibility with developer users.</p>
 	  <h2>The Approach</h2>
-	  <p>As the only UX Writer assigned to this project, I developed and ran two rounds of unmoderated testing with a total of 40 participants of varied technical roles. Each session followed the same pattern: first, participants answered a free-input prompt to capture their natural vocabulary.</p>
+	  <p>As the only UX Writer assigned to this project, I developed and ran two rounds of unmoderated testing with a total of 40 participants of varied product roles. Each session followed the same pattern: first, participants answered a free-input prompt to capture their natural vocabulary.</p>
     <p>Then, they saw a randomized multiple-choice set of four options, including their own input when possible. Finally, they were instructed to explain their reasoning in a free-input field.</p>
 	  <h3>Methodology</h3>	  
 	  <p>Splitting the test into two rounds helped control for context bias. The first round used text-only prompts and the second used UI mockups. Text-only prompts asked users to pick the most intuitive option for a given definition, while UI mockups added visual cues and a missing term with multiple options.</p>
@@ -152,7 +152,7 @@
 	  <p><b>Decision</b>: Retire "Activities". Keep "Traces" as the canonical industry term, supported by UI context and documentation. Use "Events" only for user-facing occurrences, not system-level tracing.</p>
 	  <h3>Spans</h3>
 	  <p>The final terminology challenge centered on "span", the unit inside a trace. A span is a sub-operation with its duration and metadata. Multiple spans, linked together, form a trace that shows how a request flows across services.</p>
-	  <p>But the term span proved nearly unusable at first. Few participants recognized it. Non-technical users confused it with HTML tags, and only a handful of developers understood it correctly.</p>
+	  <p>But the term span proved nearly unusable at first. Few participants recognized it. Product users confused it with HTML tags, and only a handful of developers understood it correctly.</p>
 	  <p>When participants were asked what they would call this unit in UI context, 28 out of 40 chose Operation (70%), 8 chose Job (20%), and only 4 chose Span (10%).</p>
 	  <img src="../assets/span-chart.png" alt="spans results pie chart" class="article-image-spaced" />
 	  <p>A chi-square test showed clear preferences beyond chance (p < 0.001), with "Operation" dominating the field. A binomial test confirmed "Operation" significantly outperformed "Job" (28 vs. 8, p < 0.001).</p>
