@@ -118,11 +118,14 @@
     }
 
     .sample-card {
+      display: block;
       background: #fff;
       border: 1px solid var(--border);
       border-radius: var(--radius);
       overflow: hidden;
       transition: transform 0.2s, box-shadow 0.2s;
+      text-decoration: none;
+      color: inherit;
     }
 
     .sample-card:hover {
@@ -147,14 +150,6 @@
       letter-spacing: -0.01em;
     }
 
-    .sample-content h3 a {
-      color: var(--text);
-    }
-
-    .sample-content h3 a:hover {
-      text-decoration: underline;
-    }
-
     .sample-content p {
       color: var(--text-muted);
       font-size: 0.875rem;
@@ -162,13 +157,13 @@
       margin-bottom: 16px;
     }
 
-    .sample-content > a:last-child {
+    .sample-link {
       font-size: 0.875rem;
       font-weight: 500;
       color: var(--text);
     }
 
-    .sample-content > a:last-child:hover {
+    .sample-card:hover .sample-link {
       text-decoration: underline;
     }
 
@@ -222,49 +217,49 @@
       </div>
 
       <div class="samples-grid">
-        <article class="sample-card">
+        <a href="/articles/designing-empty-state-framework" class="sample-card">
           <div class="sample-image">
             <img src="../assets/cover-empty-states.png" alt="Designing an Empty State Framework" loading="lazy" />
           </div>
           <div class="sample-content">
-            <h3><a href="/articles/designing-empty-state-framework">Designing an Empty State Framework</a></h3>
+            <h3>Designing an Empty State Framework</h3>
             <p>Six-scenario framework for empty state design that increased property setup completion rates by 33%.</p>
-            <a href="/articles/designing-empty-state-framework">View Work Sample →</a>
+            <span class="sample-link">View Work Sample →</span>
           </div>
-        </article>
+        </a>
 
-        <article class="sample-card">
+        <a href="/articles/finding-words-monitoring" class="sample-card">
           <div class="sample-image">
             <img src="../assets/cover-monitoring.png" alt="Finding the Right Words for Monitoring" loading="lazy" />
           </div>
           <div class="sample-content">
-            <h3><a href="/articles/finding-words-monitoring">Finding the Right Words for Monitoring</a></h3>
+            <h3>Finding the Right Words for Monitoring</h3>
             <p>Standardized terminology through user testing and statistical analysis, reducing support tickets by 27%.</p>
-            <a href="/articles/finding-words-monitoring">View Work Sample →</a>
+            <span class="sample-link">View Work Sample →</span>
           </div>
-        </article>
+        </a>
 
-        <article class="sample-card">
+        <a href="/articles/ab-test-case" class="sample-card">
           <div class="sample-image">
             <img src="../assets/cover-ux-error.png" alt="A/B Test Case Study: From Error to Recovery" loading="lazy" />
           </div>
           <div class="sample-content">
-            <h3><a href="/articles/ab-test-case">A/B Test Case Study: From Error to Recovery</a></h3>
+            <h3>A/B Test Case Study: From Error to Recovery</h3>
             <p>A/B tested error message copy that increased user recovery rate by 10.1 percentage points.</p>
-            <a href="/articles/ab-test-case">View Case Study →</a>
+            <span class="sample-link">View Case Study →</span>
           </div>
-        </article>
+        </a>
 
-        <article class="sample-card">
+        <a href="/articles/simplifying-domain-config" class="sample-card">
           <div class="sample-image">
             <img src="../assets/cover-domains.png" alt="Simplifying Domain Configuration" loading="lazy" />
           </div>
           <div class="sample-content">
-            <h3><a href="/articles/simplifying-domain-config">Simplifying Domain Configuration</a></h3>
+            <h3>Simplifying Domain Configuration</h3>
             <p>User-friendly domain setup flow that reduced complex jargon and eliminated SSL/DNS support tickets.</p>
-            <a href="/articles/simplifying-domain-config">View Work Sample →</a>
+            <span class="sample-link">View Work Sample →</span>
           </div>
-        </article>
+        </a>
       </div>
     </div>
   </main>

@@ -344,11 +344,14 @@
     }
 
     .work-card {
+      display: block;
       background: #fff;
       border: 1px solid var(--border);
       border-radius: var(--radius);
       overflow: hidden;
       transition: all 0.2s;
+      text-decoration: none;
+      color: inherit;
     }
 
     .work-card:hover {
@@ -585,36 +588,36 @@
           <h2 class="section-title">Work Samples</h2>
         </div>
         <div class="work-grid">
-          <article class="work-card">
+          <a href="/articles/designing-empty-state-framework" class="work-card">
             <div class="work-image">
               <img src="assets/cover-empty-states.png" alt="Designing an Empty State Framework" loading="lazy" />
             </div>
             <div class="work-content">
               <h3>Designing an Empty State Framework</h3>
               <p>Six-scenario framework for empty state design that increased property setup completion rates by 33%.</p>
-              <a href="/articles/designing-empty-state-framework" class="work-link">View Work Sample →</a>
+              <span class="work-link">View Work Sample →</span>
             </div>
-          </article>
-          <article class="work-card">
+          </a>
+          <a href="/articles/finding-words-monitoring" class="work-card">
             <div class="work-image">
               <img src="assets/cover-monitoring.png" alt="Finding the Right Words for Monitoring" loading="lazy" />
             </div>
             <div class="work-content">
               <h3>Finding the Right Words for Monitoring</h3>
               <p>Standardized terminology through user testing and statistical analysis, reducing support tickets by up to 27%.</p>
-              <a href="/articles/finding-words-monitoring" class="work-link">View Work Sample →</a>
+              <span class="work-link">View Work Sample →</span>
             </div>
-          </article>
-          <article class="work-card">
+          </a>
+          <a href="/articles/ab-test-case" class="work-card">
             <div class="work-image">
               <img src="assets/cover-ux-error.png" alt="A/B Test Case Study: From Error to Recovery" loading="lazy" />
             </div>
             <div class="work-content">
               <h3>A/B Test Case Study: From Error to Recovery</h3>
               <p>A/B tested error message copy that increased user recovery rate by 10.1 percentage points.</p>
-              <a href="/articles/ab-test-case" class="work-link">View Case Study →</a>
+              <span class="work-link">View Case Study →</span>
             </div>
-          </article>
+          </a>
         </div>
       </div>
     </section>
