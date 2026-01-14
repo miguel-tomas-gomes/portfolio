@@ -228,7 +228,7 @@
       position: relative;
       z-index: 1;
       background: #fff;
-      border: 1px solid var(--border);
+      border: 1px solid #1a1a1a;
       border-radius: 24px;
       display: grid;
       grid-template-columns: auto 1fr;
@@ -264,6 +264,7 @@
       height: auto;
       display: block;
       margin-bottom: -32px;
+      filter: drop-shadow(8px 8px 0 rgba(0,0,0,0.25));
     }
 
     .hero-text {
@@ -404,12 +405,13 @@
 
     /* ABOUT */
     .about-section {
+      position: relative;
       display: grid;
       grid-template-columns: 300px 1fr;
       gap: 48px;
       align-items: center;
       background: #fff;
-      border: 1px solid var(--border);
+      border: 1px solid #1a1a1a;
       border-radius: var(--radius);
       padding: 48px;
     }
@@ -569,7 +571,7 @@
       <div class="hero-wrapper">
         <section class="hero">
           <div class="hero-image">
-            <img src="assets/portrait-miguel-tomas-gomes.svg" alt="Miguel Tomás Gomes" />
+            <img src="assets/portrait-miguel-tomas-gomes-ux.png" alt="Miguel Tomás Gomes" />
           </div>
           <div class="hero-text">
             <h1>Data-driven Words for Digital Products</h1>
