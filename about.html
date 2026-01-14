@@ -54,97 +54,387 @@
   }
   </script>
 
-  <link rel="stylesheet" href="styles.css?v=49" />
   <link rel="icon" type="image/png" href="assets/favicon-miguel-tomas-gomes.png">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* LIGHT MINIMALIST - Matching homepage style */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #FAFAFA;
+      --bg-alt: #F0F0F0;
+      --text: #1A1A1A;
+      --text-muted: #666666;
+      --accent: #1A1A1A;
+      --border: #E5E5E5;
+      --radius: 16px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* NAV */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 0;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding-left: 24px;
+      padding-right: 24px;
+    }
+
+    .logo {
+      font-weight: 600;
+      font-size: 1rem;
+      letter-spacing: -0.01em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--text); }
+
+    /* ABOUT LAYOUT */
+    .about-section {
+      margin: 60px 0 80px;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 80px;
+      align-items: start;
+      margin-left: -16px;
+    }
+
+    .about-image {
+      position: relative;
+      height: 240px;
+    }
+
+    /* Offset shadow rectangle - outline */
+    .about-image::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: transparent;
+      border: 2px solid #1a1a1a;
+      border-radius: var(--radius);
+      transform: translate(8px, 8px);
+      z-index: 0;
+    }
+
+    .about-image img {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top;
+      border-radius: var(--radius);
+    }
+
+    .about-content h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      margin-bottom: 4px;
+    }
+
+    .about-role {
+      color: var(--text-muted);
+      font-size: 1rem;
+      margin-bottom: 4px;
+    }
+
+    .about-location {
+      color: var(--text-muted);
+      font-size: 0.875rem;
+      margin-bottom: 24px;
+    }
+
+    .about-story p {
+      margin-bottom: 16px;
+      line-height: 1.75;
+    }
+
+    /* SECTIONS */
+    .section-block {
+      margin-top: 48px;
+      padding-top: 32px;
+      border-top: 1px solid var(--border);
+    }
+
+    .section-block h2 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 20px;
+      letter-spacing: -0.02em;
+    }
+
+    /* EXPERIENCE */
+    .exp-item {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .exp-period {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .exp-details h3 {
+      font-size: 0.95rem;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .exp-details p {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* SKILLS */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .skill-category h3 {
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+
+    .skill-category p {
+      font-size: 0.875rem;
+      line-height: 1.6;
+    }
+
+    /* EDUCATION */
+    .edu-item h3 {
+      font-size: 0.95rem;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .edu-item p {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+    }
+
+    /* CONTACT */
+    .contact-section {
+      background: var(--bg-alt);
+      padding: 64px 0;
+      margin-top: 64px;
+      text-align: center;
+    }
+
+    .contact-section h2 {
+      font-size: 1.75rem;
+      font-weight: 700;
+      margin-bottom: 16px;
+      letter-spacing: -0.02em;
+    }
+
+    .contact-section > .container > p {
+      color: var(--text-muted);
+      margin-bottom: 28px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .contact-links {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: var(--text);
+      color: var(--bg);
+    }
+
+    .btn-primary:hover {
+      opacity: 0.85;
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--text);
+    }
+
+    /* FOOTER */
+    footer {
+      padding: 32px 0;
+      border-top: 1px solid var(--border);
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+        margin-left: 0;
+      }
+      .about-image {
+        max-width: 160px;
+        margin: 0 auto;
+      }
+      .about-content { text-align: center; }
+      .about-story { text-align: left; }
+      .exp-item {
+        grid-template-columns: 1fr;
+        gap: 4px;
+      }
+      .skills-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      nav { flex-direction: column; gap: 16px; text-align: center; }
+      .nav-links { justify-content: center; gap: 20px; }
+      .about-section { margin: 40px 0 60px; }
+      .about-content h1 { font-size: 1.6rem; }
+      .contact-links { flex-direction: column; }
+      .contact-links a { text-align: center; }
+    }
+  </style>
 </head>
-<body class="bio-page">
-  <a class="skip-link" href="#main">Skip to content</a>
-  <header class="site-header">
-    <div class="container">
-      <nav class="nav" aria-label="Primary">
-        <a href="/" class="brand">Miguel&nbsp;Tomás&nbsp;Gomes</a>
-        <ul class="nav-links">
-          <li><a href="/about" aria-current="page">About</a></li>
-          <li><a href="/articles/">Work Samples</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </nav>
-    </div>
+<body>
+  <a class="skip-link" href="#main" style="position:absolute;left:-9999px;">Skip to content</a>
+  <header>
+    <nav aria-label="Primary">
+      <a href="/" class="logo">Miguel Tomás Gomes</a>
+      <ul class="nav-links">
+        <li><a href="/about" aria-current="page">About</a></li>
+        <li><a href="/articles/">Work Samples</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
   </header>
 
-  <main id="main" class="bio-main">
-    
-    <!-- BIO HERO SECTION -->
-    <section class="bio-hero">
+  <main id="main">
+    <section class="about-section">
       <div class="container">
-        <div class="bio-layout">
-          <div class="bio-image"><div class="image-shadow"></div>
-            <img src="assets/miguel-tomas-gomes-ux-writer.jpg" alt="Miguel Tomás Gomes - Professional headshot of UX Writer and Content Designer" width="400" height="400" loading="eager" />
+        <div class="about-grid">
+          <div class="about-image">
+            <img src="assets/miguel-tomas-gomes-ux-writer.jpg" alt="Miguel Tomás Gomes - UX Writer and Content Designer" />
           </div>
-          <div class="bio-content">
+          <div class="about-content">
             <h1>Miguel Tomás Gomes</h1>
-            <p class="bio-role">UX Writer & Content Designer</p>
-            <p class="bio-location">Based in Lisbon, Portugal</p>
-            
-            <div class="bio-story">
+            <p class="about-role">UX Writer & Content Designer</p>
+            <p class="about-location">Based in Lisbon, Portugal</p>
+
+            <div class="about-story">
               <p>I've always been captivated by how words can reframe how we see the world. This fascination naturally drew me to Linguistics, where I dove deep into the mechanics of language.</p>
-              
-              <p>When I transitioned into tech companies, I realized I was sitting at the intersection of two worlds I loved: the precision of language and the complexity of technology. I found myself genuinely excited by system architectures and user flows.</p>
-              
+
+              <p>When I transitioned into tech companies, I realized I was sitting at the intersection of two worlds I loved: the precision of language and the complexity of technology.</p>
+
               <p>What truly transformed my approach was discovering the power of data-driven decisions. In a field where everyone has opinions about what "sounds better," data became my compass.</p>
-              
-              <p>Whether it's through quantitative testing or qualitative research, I pair my intuition with empirical evidence as a strong foundation for decision making.</p>
-              
-              <p>Outside of work, you'll find me wandering through Lisbon's neighborhoods. I'm also passionate about analog photography. You could say there's a beautiful parallel between getting the perfect shot and crafting the perfect string of UX copy: both require patience, intention, and looking past the obvious.</p>
+
+              <p>Outside of work, you'll find me wandering through Lisbon's neighborhoods or shooting analog photography.</p>
             </div>
 
-            <!-- EMBEDDED EXPERIENCE SECTION -->
-            <div class="embedded-section">
-              <h2>My Experience</h2>
-              <div class="experience-list">
-                <div class="exp-item">
-                  <div class="exp-period">2021 — Present</div>
-                  <div class="exp-details">
-                    <h3>UX Writer / Content Designer</h3>
-                    <p>Led content strategy for B2B platforms and complex products. Conducted user research and testing to validate content decisions. Collaborated with cross-functional teams.</p>
-                  </div>
+            <div class="section-block">
+              <h2>Experience</h2>
+              <div class="exp-item">
+                <div class="exp-period">2021 — Present</div>
+                <div class="exp-details">
+                  <h3>UX Writer / Content Designer</h3>
+                  <p>Led content strategy for B2B platforms. Conducted user research and testing to validate content decisions.</p>
                 </div>
-
-                <div class="exp-item">
-                  <div class="exp-period">2022 — 2023</div>
-                  <div class="exp-details">
-                    <h3>UX Writing / Content Design Instructor</h3>
-                    <p>Mentored emerging writers in the field by developing and teaching a comprehensive UX writing curriculum. Created course materials covering writing principles, tone of voice, and best practices for different UI elements.</p>
-                  </div>
+              </div>
+              <div class="exp-item">
+                <div class="exp-period">2022 — 2023</div>
+                <div class="exp-details">
+                  <h3>UX Writing Instructor</h3>
+                  <p>Developed and taught comprehensive UX writing curriculum for emerging writers.</p>
                 </div>
-
-                <div class="exp-item">
-                  <div class="exp-period">2018 — 2020</div>
-                  <div class="exp-details">
-                    <h3>Content Strategist / Copywriter</h3>
-                    <p>Defined SEO-driven content strategies and taxonomies. Managed content deliverables across multiple channels. Transitioned from marketing copy to product-focused UX writing.</p>
-                  </div>
+              </div>
+              <div class="exp-item">
+                <div class="exp-period">2018 — 2020</div>
+                <div class="exp-details">
+                  <h3>Content Strategist</h3>
+                  <p>Defined SEO-driven content strategies. Transitioned from marketing copy to product-focused UX writing.</p>
                 </div>
-
-                <div class="exp-item">
-                  <div class="exp-period">2017 — 2018</div>
-                  <div class="exp-details">
-                    <h3>Content Specialist</h3>
-                    <p>Specialized in content localization and language optimization for global platforms. Gained experience with large-scale content management systems and international user experience needs.</p>
-                  </div>
+              </div>
+              <div class="exp-item">
+                <div class="exp-period">2017 — 2018</div>
+                <div class="exp-details">
+                  <h3>Content Specialist</h3>
+                  <p>Specialized in content localization and language optimization for global platforms.</p>
                 </div>
               </div>
             </div>
-            <div class="embedded-section">
-              <h2>How I Work</h2>
-              <div class="skills-compact">
+
+            <div class="section-block">
+              <h2>Skills & Tools</h2>
+              <div class="skills-grid">
                 <div class="skill-category">
                   <h3>Core Skills</h3>
-                  <p> User-Centered Writing, Content Strategy, User Research, A/B Testing</p>
+                  <p>User-Centered Writing, Content Strategy, User Research, A/B Testing</p>
                 </div>
                 <div class="skill-category">
                   <h3>Tools</h3>
-                  <p>Figma, Jira, GitHub, Visual Studio Code, Google Analytics</p>
+                  <p>Figma, Jira, GitHub, VS Code, Google Analytics</p>
                 </div>
                 <div class="skill-category">
                   <h3>Methods</h3>
@@ -153,40 +443,34 @@
               </div>
             </div>
 
-            <!-- EMBEDDED EDUCATION SECTION -->
-            <div class="embedded-section">
-              <h2>My Background</h2>
-              <div class="education-compact">
-                <div class="edu-item">
-                  <h3>Bachelor's Degree</h3>
-                  <p class="edu-details">Applied Languages to Business Relations<br>
-                  <span class="edu-institution">Catholic University of Portugal, 2014-2017</span></p>
-                </div>
+            <div class="section-block">
+              <h2>Education</h2>
+              <div class="edu-item">
+                <h3>Bachelor's Degree</h3>
+                <p>Applied Languages to Business Relations · Catholic University of Portugal, 2014-2017</p>
               </div>
             </div>
-
           </div>
         </div>
       </div>
     </section>
 
-    <!-- CONTACT -->
-    <section id="contact" class="section alt">
-      <div class="container readable">
+    <section id="contact" class="contact-section">
+      <div class="container">
         <h2>Let's Work Together</h2>
-        <p>I am always interested in exploring new opportunities, collaborating on meaningful projects, or sharing knowledge about UX writing and content design. Feel free to reach out if you would like to discuss a project or just connect.</p>
-        <ul class="social">
-          <li><a class="chip" href="https://linkedin.com/in/miguel-tomas-gomes">Connect on LinkedIn</a></li>
-          <li><a class="chip" href="https://migueltomasgomes.com/assets/Miguel-Tomas-Gomes-Resume.pdf">Download CV</a></li>
-          <li><a class="chip" href="mailto:miguelgomes_1@msn.com">Email</a></li>
-        </ul>
+        <p>I am always interested in exploring new opportunities, collaborating on meaningful projects, or sharing knowledge about UX writing and content design. Feel free to reach out.</p>
+        <div class="contact-links">
+          <a href="https://linkedin.com/in/miguel-tomas-gomes" class="btn btn-primary">Connect on LinkedIn</a>
+          <a href="https://migueltomasgomes.com/assets/Miguel-Tomas-Gomes-Resume.pdf" class="btn btn-secondary">Download CV</a>
+          <a href="mailto:miguelgomes_1@msn.com" class="btn btn-secondary">Email</a>
+        </div>
       </div>
     </section>
   </main>
 
-  <footer class="site-footer">
-    <div class="container footer-grid">
-      <p>© <span id="year">2025</span> Miguel Tomás Gomes. All rights reserved.</p>
+  <footer>
+    <div class="container">
+      <p>© 2025 Miguel Tomás Gomes. All rights reserved.</p>
     </div>
   </footer>
 </body>

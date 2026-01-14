@@ -23,73 +23,246 @@
   <!-- Canonical URL -->
   <link rel="canonical" href="https://migueltomasgomes.com/articles/">
 
-  <link rel="stylesheet" href="../styles.css?v=37" />
   <link rel="icon" type="image/png" href="../assets/favicon-miguel-tomas-gomes.png">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* LIGHT MINIMALIST - Matching homepage style */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #FAFAFA;
+      --bg-alt: #F0F0F0;
+      --text: #1A1A1A;
+      --text-muted: #666666;
+      --accent: #1A1A1A;
+      --border: #E5E5E5;
+      --radius: 16px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* NAV */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 0;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding-left: 24px;
+      padding-right: 24px;
+    }
+
+    .logo {
+      font-weight: 600;
+      font-size: 1rem;
+      letter-spacing: -0.01em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--text); }
+
+    /* PAGE HEADER */
+    .page-header {
+      margin: 60px 0 48px;
+      max-width: 600px;
+    }
+
+    .page-header h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      margin-bottom: 12px;
+    }
+
+    .page-header p {
+      color: var(--text-muted);
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+
+    /* SAMPLES GRID */
+    .samples-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 32px;
+      margin-bottom: 80px;
+    }
+
+    .sample-card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .sample-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.08);
+    }
+
+    .sample-image img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .sample-content {
+      padding: 24px;
+    }
+
+    .sample-content h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+      letter-spacing: -0.01em;
+    }
+
+    .sample-content h3 a {
+      color: var(--text);
+    }
+
+    .sample-content h3 a:hover {
+      text-decoration: underline;
+    }
+
+    .sample-content p {
+      color: var(--text-muted);
+      font-size: 0.875rem;
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+
+    .sample-content > a:last-child {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--text);
+    }
+
+    .sample-content > a:last-child:hover {
+      text-decoration: underline;
+    }
+
+    /* FOOTER */
+    .site-footer {
+      padding: 24px 0;
+      border-top: 1px solid var(--border);
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.875rem;
+    }
+
+    .site-footer a {
+      color: var(--text);
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .samples-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      nav { flex-direction: column; gap: 16px; text-align: center; }
+      .nav-links { justify-content: center; gap: 20px; }
+      .page-header { margin: 40px 0 32px; text-align: center; }
+      .page-header h1 { font-size: 1.8rem; }
+      .sample-image img { height: 160px; }
+    }
+  </style>
 </head>
 <body>
-  <header class="site-header">
-    <div class="container">
-      <nav class="nav" aria-label="Primary">
-        <a href="/" class="brand">Miguel&nbsp;Tomás&nbsp;Gomes</a>
-        <ul class="nav-links">
-          <li><a href="/about">About</a></li>
-          <li><a href="/articles/">Work Samples</a></li>
-          <li><a href="../#contact">Contact</a></li>
-        </ul>
-      </nav>
-    </div>
+  <header>
+    <nav aria-label="Primary">
+      <a href="/" class="logo">Miguel Tomás Gomes</a>
+      <ul class="nav-links">
+        <li><a href="/about">About</a></li>
+        <li><a href="/articles/">Work Samples</a></li>
+        <li><a href="/#contact">Contact</a></li>
+      </ul>
+    </nav>
   </header>
 
-  <main id="main" class="section">
+  <main id="main">
     <div class="container">
-      <header class="section-head">
+      <div class="page-header">
         <h1>Work Samples</h1>
-        <p>Content design case studies with measurable impact. See how user research, A/B testing, and cross-functional collaboration transformed complex product flows into intuitive experiences at scale.</p>
-      </header>
+        <p>Content design case studies with measurable impact. See how user research, A/B testing, and cross-functional collaboration transformed complex product flows into intuitive experiences.</p>
+      </div>
 
-      <!-- WORK SAMPLES GRID -->
       <div class="samples-grid">
         <article class="sample-card">
           <div class="sample-image">
-            <img src="../assets/cover-empty-states.png" alt="Designing an Empty State Framework" width="300" height="160" loading="lazy" />
+            <img src="../assets/cover-empty-states.png" alt="Designing an Empty State Framework" loading="lazy" />
           </div>
           <div class="sample-content">
             <h3><a href="/articles/designing-empty-state-framework">Designing an Empty State Framework</a></h3>
             <p>Six-scenario framework for empty state design that increased property setup completion rates by 33%.</p>
-            <a href="/articles/designing-empty-state-framework">View Work Sample</a>
+            <a href="/articles/designing-empty-state-framework">View Work Sample →</a>
           </div>
         </article>
 
         <article class="sample-card">
           <div class="sample-image">
-            <img src="../assets/cover-monitoring.png" alt="Finding the Right Words for Monitoring" width="300" height="160" loading="lazy" />
+            <img src="../assets/cover-monitoring.png" alt="Finding the Right Words for Monitoring" loading="lazy" />
           </div>
           <div class="sample-content">
             <h3><a href="/articles/finding-words-monitoring">Finding the Right Words for Monitoring</a></h3>
-            <p>Standardized terminology through user testing and statistical analysis, reducing support tickets by up to 27%.</p>
-            <a href="/articles/finding-words-monitoring">View Work Sample</a>
+            <p>Standardized terminology through user testing and statistical analysis, reducing support tickets by 27%.</p>
+            <a href="/articles/finding-words-monitoring">View Work Sample →</a>
           </div>
         </article>
 
         <article class="sample-card">
           <div class="sample-image">
-            <img src="../assets/cover-ux-error.png" alt="A/B Test Case Study: From Error to Recovery" width="300" height="160" loading="lazy" />
+            <img src="../assets/cover-ux-error.png" alt="A/B Test Case Study: From Error to Recovery" loading="lazy" />
           </div>
           <div class="sample-content">
             <h3><a href="/articles/ab-test-case">A/B Test Case Study: From Error to Recovery</a></h3>
-            <p>A Case study of an A/B tested error message copy string that increased user recovery rate by 10.1%</p>
-            <a href="/articles/ab-test-case">View Case Study</a>
+            <p>A/B tested error message copy that increased user recovery rate by 10.1 percentage points.</p>
+            <a href="/articles/ab-test-case">View Case Study →</a>
           </div>
         </article>
 
         <article class="sample-card">
           <div class="sample-image">
-            <img src="../assets/cover-domains.png" alt="Simplifying Domain Configuration" width="300" height="160" loading="lazy" />
+            <img src="../assets/cover-domains.png" alt="Simplifying Domain Configuration" loading="lazy" />
           </div>
           <div class="sample-content">
             <h3><a href="/articles/simplifying-domain-config">Simplifying Domain Configuration</a></h3>
-            <p>Designed user-friendly domain setup flow that reduced complex jargon and ensured few to no SSL/DNS support tickets were filed.</p>
-            <a href="/articles/simplifying-domain-config">View Work Sample</a>
+            <p>User-friendly domain setup flow that reduced complex jargon and eliminated SSL/DNS support tickets.</p>
+            <a href="/articles/simplifying-domain-config">View Work Sample →</a>
           </div>
         </article>
       </div>
@@ -97,9 +270,8 @@
   </main>
 
   <footer class="site-footer">
-    <div class="container footer-grid">
-      <a class="link" href="/">Go Back Home</a>
-      <p>© 2025 Miguel Tomás Gomes</p>
+    <div class="container">
+      <a href="/">← Back to Home</a> · © 2025 Miguel Tomás Gomes
     </div>
   </footer>
 </body>
