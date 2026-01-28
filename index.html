@@ -31,7 +31,7 @@
     "name": "Miguel Tomás Gomes",
     "alternateName": ["Miguel Tomas Gomes", "Miguel T. Gomes"],
     "jobTitle": ["UX Writer", "Content Designer", "Content Strategist"],
-    "description": "UX Writer & Content Designer making technology more intuitive and accessible through words. Specializes in statistical analysis, A/B testing, and data-driven content strategy.",
+    "description": "UX Writer / Content Designer making technology more intuitive and accessible through words. Specializes in statistical analysis, A/B testing, and data-driven content strategy.",
     "url": "https://migueltomasgomes.com",
     "image": "https://migueltomasgomes.com/assets/portrait.jpg",
     "address": {
@@ -275,26 +275,27 @@
     .btn {
         display: inline-block;
         padding: 1rem 2rem;
-        background: #0047e0;
+        background: #1a56b8;
         color: #fff;
-        border-radius: var(--radius);
+        border-radius: 12px 24px 12px 24px;
         font-weight: 600;
         transition: transform .25s, background .25s, box-shadow .25s;
     }
     .btn:hover {
         transform: translateY(-3px);
-        background: #0036a8;
+        background: #14458f;
         text-decoration: none;
         box-shadow: 0 10px 30px -10px rgba(0,82,255,0.4);
     }
     .btn--secondary {
         background: transparent;
-        color: var(--text);
-        border: 2px solid #ddd;
+        color: #1a56b8;
+        border: 2px solid #1a56b8;
     }
     .btn--secondary:hover {
-        background: #f5f5f5;
-        border-color: #ccc;
+        background: rgba(26,86,184,0.08);
+        border-color: #14458f;
+        color: #14458f;
         box-shadow: none;
     }
 
@@ -528,7 +529,7 @@
     /* ---------------  WORK CARDS  --------------- */
     .cards {
         display: grid;
-        gap: 4rem;
+        gap: 1.5rem;
     }
     .card {
         display: grid;
@@ -703,11 +704,11 @@
   <section class="hero">
     <!-- Text content -->
     <div class="hero__content">
-      <h1>Data-driven Words for Digital Products</h1>
-      <p>UX Writer & Content Designer</p>
+      <h1>Systems. Words. Tested.</h1>
+      <p>Hi, I'm Miguel. UX Writer / Content Designer</p>
       <div class="hero__buttons">
+        <a class="btn btn--secondary" href="/about">Read About Me</a>
         <a class="btn" href="#work">View Work Samples</a>
-        <a class="btn btn--secondary" href="#about">About Me</a>
       </div>
     </div>
     <!-- Portrait with blob mask and liquid reveal -->
@@ -725,8 +726,8 @@
     <nav aria-label="Primary">
       <div><strong>Miguel Tomás Gomes</strong></div>
       <ul>
-        <li style="--i:1"><a href="#about">About</a></li>
-        <li style="--i:2"><a href="#work">Work Samples</a></li>
+        <li style="--i:1"><a href="/about">About</a></li>
+        <li style="--i:2"><a href="/articles/">Work Samples</a></li>
         <li style="--i:3"><a href="#contact">Contact</a></li>
       </ul>
     </nav>
@@ -780,8 +781,8 @@
       </div>
       <div class="about-content">
         <h2 class="section-title">About Me</h2>
-        <p>My linguistics background taught me that words are tools that shape how people think and act. After starting as a copywriter, I quickly realized that technology is useless if users can't understand how to use it.</p>
-        <p>After 8+ years in tech, I've learned to write for UX like a researcher. I test words and measure business impact. I'm excited by any challenge that combines language and technology.</p>
+        <p>My linguistics background taught me that words shape how people think and act. After 8+ years in tech, I've learned to write for UX like a researcher: I test terminology, run statistical analysis, and measure business impact.</p>
+        <p>I'm excited by any challenge that combines language and technology.</p>
         <a href="/about">Read more →</a>
       </div>
     </div>

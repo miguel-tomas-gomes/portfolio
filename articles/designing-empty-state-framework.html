@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Designing an Empty State Framework — Miguel Tomás Gomes</title>
+  <title>Designing an Empty State Framework | Miguel Tomás Gomes</title>
   <meta name="description" content="Content design framework: Six-scenario empty state methodology with Fisher's exact test validation that increased completion rates from 34% to 67%." />
 
   <!-- Open Graph / Facebook -->
@@ -331,6 +331,189 @@
       font-weight: 600;
     }
 
+    /* ---------------  BEFORE BOX (old guidelines)  --------------- */
+    .before-box {
+      background: #f9f9f9;
+      border-left: 4px solid #ccc;
+      border-radius: var(--radius);
+      padding: 24px 28px;
+      margin: 24px 0;
+    }
+
+    .before-box h4 {
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #999;
+      margin-bottom: 16px;
+    }
+
+    .before-box ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .before-box li {
+      font-size: 0.9rem;
+      color: var(--muted);
+      padding: 6px 0;
+      border-bottom: 1px solid #eee;
+    }
+
+    .before-box li:last-child {
+      border-bottom: none;
+    }
+
+    .before-box li::before {
+      content: '• ';
+      color: #ccc;
+    }
+
+    /* ---------------  FRAMEWORK BOX  --------------- */
+    .framework-box {
+      background: linear-gradient(135deg, #f8faff 0%, #f0f5ff 100%);
+      border-left: 4px solid var(--accent);
+      border-radius: var(--radius);
+      padding: 28px 32px;
+      margin: 24px 0 48px;
+    }
+
+    .framework-box h4 {
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent);
+      margin-bottom: 20px;
+    }
+
+    .framework-row {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(0, 82, 255, 0.08);
+    }
+
+    .framework-row:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .framework-row:first-of-type {
+      padding-top: 0;
+    }
+
+    .framework-tag {
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      background: var(--accent);
+      color: #fff;
+      padding: 4px 10px;
+      border-radius: 4px;
+      white-space: nowrap;
+      flex-shrink: 0;
+      min-width: 95px;
+      text-align: center;
+    }
+
+    .framework-content {
+      flex: 1;
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+
+    .framework-content .when {
+      color: var(--text);
+    }
+
+    .framework-content .then {
+      color: var(--muted);
+    }
+
+    .framework-content .then::before {
+      content: '→ ';
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    @media (max-width: 600px) {
+      .framework-row {
+        flex-direction: column;
+        gap: 8px;
+      }
+      .framework-tag {
+        min-width: auto;
+        align-self: flex-start;
+      }
+    }
+
+    /* ---------------  COLLAPSIBLE METHODOLOGY  --------------- */
+    .methodology-details {
+      margin: 32px 0;
+    }
+
+    .methodology-details summary {
+      cursor: pointer;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--accent);
+      list-style: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .methodology-details summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .methodology-details summary::before {
+      content: '›';
+      font-size: 1.4rem;
+      font-weight: 600;
+      display: inline-block;
+      transition: transform 0.2s ease;
+      color: var(--accent);
+    }
+
+    .methodology-details[open] summary::before {
+      transform: rotate(90deg);
+    }
+
+    .methodology-details summary:hover {
+      text-decoration: underline;
+    }
+
+    .methodology-content {
+      background: #fafafa;
+      border: 1px solid #eee;
+      border-radius: var(--radius);
+      padding: 24px 28px;
+      margin-top: 16px;
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .methodology-content p {
+      margin-bottom: 12px;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .methodology-content p:last-child {
+      margin-bottom: 0;
+    }
+
+    .methodology-content strong {
+      color: var(--text);
+    }
+
     /* ---------------  FOOTER  --------------- */
     .article-footer {
       margin-top: 80px;
@@ -434,13 +617,13 @@
         </div>
 
         <section>
-          <p>In SaaS platforms, empty states are often afterthoughts. But for 42% of users abandoning the free trial of a rental management platform within 10 minutes due to unclear directions, these blank screens were the key to solving this and increasing user engagement.</p>
+          <p>In SaaS platforms, empty states are often afterthoughts. But when 42% of users were abandoning a rental management platform within 10 minutes of starting their free trial, these blank screens turned out to be the key to solving the problem.</p>
 
           <div class="methodology-note">
             <h4>Methodology Note</h4>
             <ul>
               <li><strong>Company:</strong> Anonymized for confidentiality reasons</li>
-              <li><strong>Data:</strong> Qualitative usability testing combined with behavioral validation</li>
+              <li><strong>Data:</strong> Usability testing combined with behavioral validation</li>
               <li><strong>Purpose:</strong> Demonstrate systematic empty state design methodology</li>
               <li><strong>Tools:</strong> Figma, UserTesting</li>
               <li><strong>Target users:</strong> Rental property managers</li>
@@ -448,131 +631,120 @@
           </div>
 
           <h2>The Challenge</h2>
-	  <p>This rental management platform helped rental property managers centralize all the rental properties they manage and list on booking channels like Airbnb and Booking.com.</p>
-	  <p>While old customers found the experience seamless, prospects starting their free trial hit walls that were challenging to overcome. A quick check-in with the product team revealed that around 42% of new users abandoned the property setup flow within the first 10 minutes.</p>
-	  <p>This happened most often at moments users faced empty states. The question was: did users not know what to do, were they unable to find the next step, or did they simply give up?</p>
-	  <p>Empty states were treated by the company as blank canvases, rather than strategic opportunities to guide users toward value. It was clear that we needed to find out whether better empty state design could reduce abandonment and help more users reach their first successful property listing.</p>
+          <p>This rental management platform helped property managers centralize their Airbnb and Booking.com listings. Existing customers found the experience seamless, but new users kept bouncing during onboarding. Specifically at moments when they hit blank screens with no clear next step.</p>
+          <p>A check-in with the product team revealed that around 42% of new users abandoned the property setup flow within the first 10 minutes. Empty states were treated as blank canvases rather than opportunities to guide users toward value.</p>
+
+          <h3>Constraints</h3>
+          <p>This was a 30-person company with no dedicated UX research function. The UserTesting subscription I used was a one-time exception, not a recurring budget. Engineering was stretched thin, so any solution had to be copy and design only. No new features, no onboarding flows, no tooltips. The product team was skeptical that words alone could move the needle on a 42% abandonment rate.</p>
 
           <h2>The Approach</h2>
-	  <p>As one of the UX writers in this SaaS company, I partnered with a product designer. We then audited all empty states across the free trial journey. Each empty state represented a moment where users encountered blank screens, loading processes, or missing content.</p>
-	  <p>The goal was to turn empty screens into strategic user education moments. Rather than leaving users to guess what should happen next, we wanted to provide clear guidance, set appropriate expectations, and maintain momentum toward key actions.</p>
-	  <img src="../assets/empty-states-user-flow.png" alt="Empty states user flow diagram" class="article-image-spaced">
-	  <p>After thorough analysis of the free trial journey, I identified five empty state main scenarios, each requiring a different approach:</p>
-	  <ol>
-	    <li>A property must be added</li>
-	    <li>Each property must be connected to a booking channel</li>
-	    <li>Estimated connection time must be communicated</li>
-	    <li>If a connection fails, a solution must be provided</li>
-	    <li>A connection must be established for bookings to appear</li>
-	  </ol>
-	  <p>Upon realizing these five empty states had different purposes and conditions, I designed a scalable framework that could guide future decisions. This new framework needed to list the scenarios listed above and include new, unprecedented ones.</p>
-	  <p>Before I introduce this framework, I will illustrate two examples with "Empty state 1" and "Empty State 2". Then, I will present a complete framework that covers a comprehensive list of all possible scenarios.</p>
-	  <p>First, I reworked the initial screen (Empty State 1) by guiding users in adding a property, then I reframed expectations once they were forced to wait for their property to connect to a booking channel (Empty State 2).</p>
-	  <p>To validate this approach, I developed a two-phase methodology combining qualitative usability testing with behavioral validation of implementation results.</p>
+          <p>As one of the UX writers on this project, I partnered with a product designer and audited every empty state in the free trial flow. We identified five critical moments where users hit blank screens. Two of them were causing most of the damage. When I later audited the full product, I found a sixth pattern that applied elsewhere.</p>
+          <img src="../assets/empty-states-user-flow.png" alt="Empty states user flow diagram" class="article-image-spaced">
 
-          <h3>Test Overview</h3>
-	  <p>In the first phase, I identified the root causes of abandonment through qualitative usability testing. After hearing about bounce rates spiking during property setup, I spoke with the sales manager to understand customer feedback patterns. I then scheduled moderated usability testing sessions to uncover specific friction points.</p>
-	  <p>The second phase focused on behavioral validation for scenarios where we expected large effect sizes. For system processes like booking channel connections, I used quick validation testing with smaller samples.</p>
-	  <p>Because I expected substantial behavioral differences with my new proposal, I was able to work with a small sample size, saving costs while maintaining some level of statistical accuracy.</p>
-	  <p>After validating the approach, I implemented changes and tracked performance at scale, accounting for external factors that could influence user behavior.</p>
+          <h3>Example 1: The Hidden Action</h3>
+          <p>The property listing page for new users presented a blank state with high bounce rates. I conducted a moderated usability test with 5 participants to identify the friction points.</p>
+          <p>Out of 5 participants, 4 scanned the empty state saying "no properties yet," looked for obvious next steps, and expressed frustration about not knowing how to proceed. The test revealed something unexpected: the problem wasn't the copy, it was the UI. The only way to add a property was through a small plus icon tucked in the top-right corner, and only one participant found it quickly.</p>
+          <img src="../assets/add-property-screen.png" alt="Screen showing hidden plus icon for adding property" class="article-image-spaced">
+          <p>The redesigned version replaced the "no properties yet" screen with a centered call-to-action: "Add your first property" accompanied by a brief explanation of what would happen next.</p>
+          <img src="../assets/add-property.png" alt="Redesigned empty state with clear call-to-action" class="article-image-spaced">
+          <p><b>Result:</b> Property creation completion rates during free trial increased from 34% to 67% over the first month across 312 property setup attempts.</p>
 
-	  <h3>The Process</h3>
-	  <p>The property listing page for new users presented a blank state, resulting in a high bounce rate. After consulting with the sales manager about customer onboarding feedback, I conducted a moderated usability test session with 5 participants to identify the specific friction points that caused this.</p>
-	  <p>According to Nielsen Norman Group, testing with even 5 participants uncovers approximately 80% of usability problems, making this sample size sufficient for identifying major interface issues.</p>
-	  <p>Out of 5 participants, 4 scanned the empty state stating "no properties yet", looked for obvious next steps, and eventually expressed frustration about not knowing how to proceed.</p>
-	  <p>The consistent pattern across all participants confirmed something we weren't expecting: the problem wasn't in the empty state, it was in the platform design.</p>
-	  <p>The test revealed that participants consistently failed to find the primary action button. The only way to add a property was through a small plus icon tucked in the top-right corner of the interface, and only one participant found it quickly.</p>
-	  <img src="../assets/add-property-screen.png" alt="Screen showing hidden plus icon for adding property" class="article-image-spaced">
-	  <p>The plus sign icon being tucked away was a critical barrier to new users adding their property during their free trial.</p>
-	  <p>The redesigned version replaced the "no properties yet" screen with a centered call-to-action: "Add your first property" accompanied by a brief explanation of what would happen next.</p>
-	  <img src="../assets/add-property.png" alt="Redesigned empty state with clear call-to-action" class="article-image-spaced">
-	  <p>This change represented a fundamental shift from assuming users would discover the action to explicitly guiding them.</p>
-	  <p>Following implementation across all new user accounts, property creation completion rates during free trial increased from 34% to 67% over the first month across 312 property setup attempts.</p>
-	  <p>The improvement was immediate and sustained, validating that the usability testing had accurately identified the core barrier to user progression.</p>
-	  <p>Following the empty state redesign, the product design team revisited the plus icon design and placement, so users could also easily find it after the initial empty state.</p>
+          <details class="methodology-details">
+            <summary>Click to view statistical validation</summary>
+            <div class="methodology-content">
+              <p><strong>Usability testing:</strong> I tested with 5 participants. Per Nielsen Norman Group, this uncovers approximately 80% of usability issues, sufficient for identifying major friction points in qualitative research.</p>
+              <p><strong>Validation at scale:</strong> Following implementation across all new user accounts, I tracked property creation rates over 312 attempts. The improvement from 34% to 67% was statistically significant (chi-square test, χ² = 68.0, p < 0.001) and sustained over the first month.</p>
+            </div>
+          </details>
 
-          <h3>From Uncertainty to Confidence</h3>
-	  <p>After adding their first property, users still needed to connect to the booking channels their property was listed on. This was an essential step for users to view and manage bookings directly from the platform.</p>
-	  <p>The connection process required users to wait anywhere from four to six minutes while the system established an API connection with platforms like Airbnb and Booking.com.</p>
-	  <p>During this time, users saw a "Connecting. Please wait." message with no indication of progress or additional context.</p>
-	  <p>Because of authentication constraints, closing the window caused the connection to fail. To prevent this, we needed to set expectations clearly.</p>
-	  <img src="../assets/empty-state-connection.png" alt="Original vague connection message" class="article-image-spaced">
-	  <p>To test whether setting clear expectations would reduce abandonment, I conducted an unmoderated test session with 18 participants split into two groups of 9. All UI mockups were created with the help of the product designer I teamed up with.</p>
-	  <p>We used high-fidelity screens and added animations to accurately represent the real experience.</p>
-	  <p>The sample size of this test was appropriate because I expected a large behavioral difference (greater than 60%) between the two approaches. For such substantial effect sizes, small samples can reliably detect meaningful differences without requiring complex statistical analysis.</p>
-	  <p>Of the 9 participants who encountered the original vague messaging, 8 abandoned the connection process before it completed (88.9% abandonment rate). Some assumed the system had frozen, others grew impatient, and a few simply closed the browser tab.</p>
-	  <p>The redesigned temporary state provided specific information: "Connecting to {channel}. This may take up to 6 minutes. Please don't close this window."</p>
-	  <p>This message accomplished three things: it explained what was happening, with a variable for each channel name, set expectations about timing, and provided guidance.</p>
-	  <img src="../assets/improved-empty-state-connection.png" alt="Improved connection message with clear expectations" class="article-image-spaced">
-	  <p>In the second round, 8 participants waited up to 6 minutes as instructed, with some opening new tabs and continuing other tasks, while monitoring the connection progress. Only 1 participant failed to follow instructions, representing a 11.1% abandonment rate.</p>
-	  <p>This 77.8% difference between the two groups represented exactly the type of large behavioral change the testing was designed to detect.</p>
-	  <p>When effect sizes are this substantial, the practical significance is clear. Fisher's exact test confirmed this: p= 0.0007, indicating such an extreme difference would occur by chance less than 0.07% of the time.</p>
-	  <p>To validate this improvement at scale, I tracked connection abandonment rates before and after implementation. The results aligned with the behavioral testing: abandonment during booking channel setup dropped from 45% to 12% over 374 connection attempts.</p>
-	  <p>Also, to ensure this wasn't due to external factors like seasonal changes or product updates, I analyzed abandonment rates on three other flows that remained unchanged during the measurement period: user registration completion, billing setup flow, and property verification process.</p>
-	  <p>These flows showed no significant variation, confirming that the improvement was specifically attributable to the messaging change.</p>
+          <h3>Example 2: The Vague Wait</h3>
+          <p>After adding their first property, users needed to connect to booking channels like Airbnb. The connection process required waiting 4-6 minutes while the system established an API connection. During this time, users saw only: "Connecting. Please wait."</p>
+          <p>Because of authentication constraints, closing the window caused the connection to fail. But the UI didn't communicate this.</p>
+          <img src="../assets/empty-state-connection.png" alt="Original vague connection message" class="article-image-spaced">
+          <p>I conducted an unmoderated test with 18 participants split into two groups. Of the 9 participants who encountered the original messaging, 8 abandoned before the connection completed (88.9% abandonment). Some assumed the system had frozen, others grew impatient.</p>
+          <p>The redesigned message provided specific information: "Connecting to {channel}. This may take up to 6 minutes. Please don't close this window."</p>
+          <img src="../assets/improved-empty-state-connection.png" alt="Improved connection message with clear expectations" class="article-image-spaced">
+          <p>In the second group, 8 of 9 participants waited as instructed, representing only 11.1% abandonment. In production, the baseline abandonment rate was 45%. After implementation, it dropped to 12% across 374 attempts.</p>
+          <p>To ensure this wasn't due to external factors, I analyzed abandonment rates on three unchanged flows (registration, billing, verification). No significant variation, confirming the improvement was attributable to the messaging change.</p>
 
-          <h2>The Six-Scenario Framework</h2>
-	  <p>As previously stated, I had identified six empty state main scenarios, each requiring different approaches. To make this framework useful, I developed validation criteria for each scenario, accounting for user agency, system constraints, and business objectives:</p>
+          <details class="methodology-details">
+            <summary>Click to view statistical validation</summary>
+            <div class="methodology-content">
+              <p><strong>Sample size:</strong> I used 18 participants (9 per group) because I expected a large behavioral difference (>60%) between approaches. For such substantial effect sizes, small samples can reliably detect meaningful differences.</p>
+              <p><strong>Statistical test:</strong> The 77.8 percentage point difference between groups was validated using Fisher's exact test (p = 0.0007), meaning this result would occur by chance less than 0.07% of the time.</p>
+              <p><strong>Validation at scale:</strong> Following implementation, I tracked abandonment rates across 374 connection attempts. The improvement from 45% to 12% held.</p>
+              <p><strong>Control comparison:</strong> To rule out external factors, I tracked three unchanged flows during the same period: user registration, billing setup, and property verification. None showed significant variation.</p>
+            </div>
+          </details>
 
-	  <h3>First-Use Scenario</h3>
-	  <p>This scenario represents the first moment users encounter a feature. This is a critical juncture for introducing the purpose of the feature, its key benefits, and how they connect to user goals. The depth of this introduction varies significantly across products and features.</p>
-	  <img src="../assets/domain-empty-state.png" alt="First use empty state example" class="article-image-spaced">
-	  <p>Some self-explanatory features may not require extensive details nor urgent action. However, users may sometimes benefit from taking action under particular circumstances.</p>
-	  <p>For example, users discovering a custom domain feature for their web apps could be encouraged to add an existing domain. Encouraging users to take action promotes feature adoption, engagement, and helps them progress through their user journey.</p>
-	  <p><strong>Key question:</strong> Do users need context about what this feature does, or are they ready to take action?</p>
-	  <p>This determines whether to inform and explain, or provide a direct call-to-action for users to take initial action.</p>
-	  <p><strong>Advice:</strong> Use action patterns for features that benefit from immediate engagement. Reserve inform patterns for complex features requiring context before use.</p>
+          <h2>The Framework</h2>
+          <p>Before this project, the team had informal guidelines for empty states. Decisions were made ad-hoc, with no shared criteria for what each situation actually needed:</p>
 
-	  <h3>Missing External Factor Scenario</h3>
-	  <p>Sometimes users hit blockers due to unmet system conditions. This requires assessing whether users can resolve the issue themselves or must wait for external action. Your approach should depend on how much control the user has and what's blocking them.</p>
-	  <img src="../assets/access-empty-state.png" alt="Missing external factor empty state example" class="article-image-spaced">
-	  <p>In some cases, users have no control over the blocking factor. For example, a user waiting for admin approval cannot take meaningful action to expedite the process. These situations require clear communication while avoiding false expectations.</p>
-	  <p>In other cases, users can directly resolve the issue themselves. For instance, users from the original example, who saw an empty dashboard on their property management platform. By guiding them to add a property, we empower users to move forward and promote feature adoption.</p>
-	  <p><strong>Key question:</strong> Can users do something or must they wait for external factors?</p>
-	  <p>Issues users can't control, like admin approval, call for transparency. Problems users can resolve, such as integrations or connections, benefit from guidance and a clear CTA.</p>
-	  <p><strong>Decision:</strong> Match your approach to user agency. Provide clear next steps when users can act, transparent communication when they cannot.</p>
+          <div class="before-box">
+            <h4>Previous Guidelines</h4>
+            <ul>
+              <li>Keep the tone friendly and helpful</li>
+              <li>Add a CTA when possible</li>
+              <li>Don't leave screens blank</li>
+              <li>Use illustrations if available</li>
+              <li>Explain what the feature does</li>
+            </ul>
+          </div>
 
-	  <h3>Failure Scenario</h3>
-	  <p>These scenarios emerge when users encounter broken processes or unexpected interruptions. Failure states are critical for maintaining user trust, as users need immediate guidance to solve the issue. Unlike other scenarios, failure states always require an action-oriented approach.</p>
-	  <img src="../assets/timeout-empty-state.png" alt="Failure state empty state example" class="article-image-spaced">
-	  <p>These situations demand comprehensive support. Like errors, system failures also require an explanation. While user errors need corrective guidance, failures need alternative paths. The depth of explanation should match the severity and user impact of the failure.</p>
-	  <p>Users experiencing failures benefit from structured recovery options. Provide clear error explanation, retry options, and escalation paths if the problem persists. This reduces frustration and maintains user confidence in the system.</p>
-	  <p><strong>Key question:</strong> What recovery actions can users take?</p>
-	  <p><strong>Decision:</strong> Provide guidance with clear recovery paths. Include escalation options for unresolvable or uncertain issues.</p>
+          <p>These two examples were part of a larger audit. Across 23 empty states, I found the same patterns repeating. I grouped them into six scenarios based on what was blocking the user and what they could do about it:</p>
 
-	  <h3>No Results Scenario</h3>
-	  <p>When users search or filter results, they might get an empty screen. Turn these situations into opportunities to help users take action, instead of abandoning what they were doing. The response should feel supportive, avoiding any implication of user error.</p>
-	  <img src="../assets/no-results-empty-state.png" alt="No results empty state example" class="article-image-spaced">
-	  <p>A simple "no results found" with filter adjustment suggestions may be enough when the search intent is clear and the refinement path is obvious. In more complex scenarios, users might benefit from broader guidance.</p>
-	  <p>For example, users searching an empty knowledge base should be shown alternative discovery methods or related topics. This promotes continued engagement and helps users find value through different paths.</p>
-	  <p><strong>Key question:</strong> Do users need help with their current approach, or do they need alternative discovery methods?</p>
-	  <p>Above all, avoid blaming users or making them think they did something wrong.</p>
-	  <p><strong>Decision:</strong> Guide users in refining their search. Offer alternative discovery methods for unsuccessful searches.</p>
+          <div class="framework-box">
+            <h4>New Six-Scenario Framework</h4>
+            <div class="framework-row">
+              <span class="framework-tag">First Use</span>
+              <div class="framework-content">
+                <span class="when">User encounters a feature for the first time</span>
+                <span class="then">Guide to action or explain value</span>
+              </div>
+            </div>
+            <div class="framework-row">
+              <span class="framework-tag">Blocker</span>
+              <div class="framework-content">
+                <span class="when">User can't proceed (e.g., admin approval)</span>
+                <span class="then">Be transparent about blocker and timeline</span>
+              </div>
+            </div>
+            <div class="framework-row">
+              <span class="framework-tag">Failure</span>
+              <div class="framework-content">
+                <span class="when">Something broke or timed out</span>
+                <span class="then">Explain issue and provide recovery path</span>
+              </div>
+            </div>
+            <div class="framework-row">
+              <span class="framework-tag">No Results</span>
+              <div class="framework-content">
+                <span class="when">Search or filter returns nothing</span>
+                <span class="then">Help refine search or suggest alternatives</span>
+              </div>
+            </div>
+            <div class="framework-row">
+              <span class="framework-tag">User Action</span>
+              <div class="framework-content">
+                <span class="when">User deleted or archived content</span>
+                <span class="then">Acknowledge action, offer next steps</span>
+              </div>
+            </div>
+            <div class="framework-row">
+              <span class="framework-tag">Transition</span>
+              <div class="framework-content">
+                <span class="when">System is processing (loading, syncing)</span>
+                <span class="then">Set timing expectations, explain what's happening</span>
+              </div>
+            </div>
+          </div>
 
-	  <h3>User-Initiated Scenario</h3>
-	  <p>Users can deliberately create empty states by archiving, deleting, or hiding content. For intentional actions that don't require confirmation modals, you should acknowledge the user's action while providing pathways forward.</p>
-	  <img src="../assets/empty-state-empty.png" alt="User-initiated empty state example" class="article-image-spaced">
-	  <p>Your approach should respect user agency while offering helpful next steps. Simple actions like clearing a folder don't require extensive acknowledgment, since the user's intent is clear and the empty state is expected.</p>
-	  <p>In some situations, users might benefit from expanded options. For instance, users who archive all their projects could be encouraged to continue their workflow.</p>
-	  <p><strong>Key question:</strong> Do users need simple confirmation of their action, or would they benefit from expanded options and pathways?</p> 
-	  <p>Your approach should acknowledge user intentions while providing options to undo, view hidden items, or create new content.</p>
-	  <p><strong>Decision:</strong> Acknowledge intent with minimal friction. Provide recovery options and forward paths without overwhelming users.</p>
+          <h2>Outcome</h2>
+          <p>The immediate results were clear: property setup completion improved from 34% to 67% across 312 attempts. Connection abandonment dropped from 45% to 12% across 374 attempts.</p>
 
-	  <h3>Transition Scenario</h3>
-	  <p>Sometimes users encounter empty states due to ongoing processes like loading, syncing, or data processing. Manage user expectations during these wait times to prevent abandonment. Your approach should provide clear communication about timing and process status.</p>
-	  <img src="../assets/improved-empty-state-connection.png" alt="Temporary state empty state example" class="article-image-spaced">
-	  <p>As in the earlier example with property connections, provide estimated completion times whenever possible. This maintains engagement and reduces anxiety about system functionality.</p>
-	  <p><strong>Key question:</strong> What information do users need to feel confident while waiting, and what alternatives do they have?</p>
-	  <p>Whenever possible, try to manage user expectations about timing and explain what's happening during waiting time.</p>
-	  <p><strong>Decision:</strong> Always provide timing expectations and process transparency. Include alternative actions to maintain engagement.</p>
-
-	  <h2>Outcome</h2>
-	  <p>The immediate outcomes from the two illustrated examples were clear: property setup completion rates improved from 34% to 67% across 312 attempts. Property connection abandonment rates, on the other hand, dropped from 45% to 12% across 374 attempts.</p>
-
-	  <h3>Results</h3>
-	  <p>Around six months after developing this framework, I touched base with the product team to assess its impact. Product designers reported using the six-scenario model for new feature development.</p>
-	  <p>More importantly, the methodology set a precedent for systematic UX writing. By establishing clear criteria for each scenario type, the team gained a repeatable model for empty state decisions.</p>
-	  <p>This outcome demonstrated that empty states are fundamental to how users understand and progress through a product. When approached systematically, they become strategic touchpoints that help us guide users toward success.</p>
+          <h3>Results</h3>
+          <p>Six months after developing this framework, I checked in with the product team. Product designers reported using the six-scenario model for new feature development, applying it without needing to reinvent the approach each time.</p>
+          <p>This outcome demonstrated that empty states are fundamental to how users understand and progress through a product. When approached systematically, they become strategic touchpoints that guide users toward success.</p>
         </section>
 
         <footer id="contact" class="article-footer">

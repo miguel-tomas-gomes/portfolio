@@ -448,22 +448,17 @@
           </div>
 
           <h2>Context</h2>
-	  <p>As one of the UX writers at a fast-moving low-code software company, I was asked to design the experience for customers setting custom domains to the web apps they built. On the surface, this sounded straightforward. It seemed like a simple process of walking users through adding and verifying a domain. In practice, it turned out to be far more complex.</p>
-	  <p>The Product Designer assigned to the feature was unavailable, as was the case with the Product Manager. I was left with vague directions and no clear blueprint for how the flow should work.</p>
-          
+          <p>As one of the UX writers at a fast-moving low-code software company, I was asked to design the experience for customers setting custom domains to the web apps they built. On the surface, this sounded straightforward. In practice, it turned out to be far more complex.</p>
+
+          <h3>Constraints</h3>
+          <p>The Product Designer and Product Manager assigned to the feature were both unavailable. I was left with vague directions and no blueprint for how the flow should work. I had no background in DNS records, CNAMEs, or SSL validation. The system imposed a hard 72-hour window for SSL certificate validation. If users missed it, they had to delete the domain and start over. Any copy I wrote had to guide users through CNAME records and certificate expiration without overwhelming them with jargon.</p>
+
           <h3>From Uncertainty to Clarity</h3>
-	  <p>Without a plan to fall back on, I took the lead. I had no background in DNS records, CNAMEs, or SSL validation, so I started with research. I read up on the basics, then sat down with a Cloud Architect stakeholder and a few backend developers to understand the system requirements. Their explanations gave me the grounding I needed to write with confidence.</p>
-	  <p>With that foundation in place, I partnered with another Designer who happened to be available. Together we began shaping the experience into a step-by-step flow that would feel effortless for users, even if the underlying process was highly complex.</p>
-          
-          <h3>The System Process</h3>
-	  <p>Our experience came with some system restraints that couldn't be changed. Because we were issuing SSL certificates for the domains being added to the platform, we had a limited window to ensure the SSL validation process was completed within 72 hours.</p>
-	  <p>This meant that customers needed to add their domain to the platform, verify ownership, and point the domain to their app within that time frame to avoid certificate expiration.</p>
-	  <p>The steps weren't exactly intuitive, either. Customers had to add CNAME records to their domain's DNS settings. While this may sound simple to experienced users, it could be a foreign concept to many.</p>
-	  <p>On top of that, the 72-hour window for SSL validation was critical. If users missed it, they had to restart from scratch. In other words, users would have to delete the domain from the platform and add it again, only to repeat the same steps.</p>
-	  <p>Instead of piling more jargon into the UI, we set out to design a flow that guided users through these constraints without overwhelming them.</p>
-          
+          <p>Without a plan to fall back on, I took the lead. I read up on the basics, then sat down with a Cloud Architect and a few backend developers to understand the system requirements. Their explanations gave me the grounding I needed to write with confidence.</p>
+          <p>With that foundation in place, I partnered with another Designer who happened to be available. Together we shaped the experience into a step-by-step flow that would feel effortless for users, even if the underlying process was highly complex.</p>
+
           <h2>The Approach</h2>
-	  <p>The key was to reduce cognitive load. We divided the flow into three distinct steps—add a domain, validate ownership, and point the domain.</p>
+          <p>The key was to reduce cognitive load. We divided the flow into three distinct steps: add a domain, validate ownership, and point the domain.</p>
 	  <p>This ensured that users only had to focus on one action at a time. Each step was framed in plain language and anchored by a clear goal.</p>
 
 	  <p>Usability testing on low-fidelity mockups revealed that some users were unfamiliar with SSL certificates but reacted well to the word security. That insight informed a critical shift. Instead of "SSL certificate," we told users: "A security certificate was issued for this domain. This certificate will expire in 72 hours. Follow the next steps to complete the setup before expiration."</p>
