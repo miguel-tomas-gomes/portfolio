@@ -3,21 +3,21 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>A/B Test Case Study: From Error to Recovery Path — Miguel Tomás Gomes</title>
-  <meta name="description" content="Content design case study: A/B tested error message copy that increased user recovery rate by 10.1 percentage points through statistical analysis and user research." />
+  <title>A/B Testing an Error Message — Miguel Tomás Gomes</title>
+  <meta name="description" content="Methodology demonstration: How I approach A/B testing for UX copy, from hypothesis formation to statistical validation." />
 
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://migueltomasgomes.com/articles/ab-test-case">
-  <meta property="og:title" content="A/B Test Case Study: From Error to Recovery">
-  <meta property="og:description" content="A/B tested error message copy that increased user recovery rate by 10.1 percentage points.">
+  <meta property="og:title" content="A/B Testing an Error Message">
+  <meta property="og:description" content="Methodology demonstration: How I approach A/B testing for UX copy.">
   <meta property="og:image" content="https://migueltomasgomes.com/assets/cover-ux-error.png">
 
   <!-- Twitter -->
   <meta property="twitter:card" content="summary_large_image">
   <meta property="twitter:url" content="https://migueltomasgomes.com/articles/ab-test-case">
-  <meta property="twitter:title" content="A/B Test Case Study: From Error to Recovery Path">
-  <meta property="twitter:description" content="A/B tested error message copy that increased user recovery rate by 10.1 percentage points.">
+  <meta property="twitter:title" content="A/B Testing an Error Message">
+  <meta property="twitter:description" content="Methodology demonstration: How I approach A/B testing for UX copy.">
   <meta property="twitter:image" content="https://migueltomasgomes.com/assets/cover-ux-error.png">
 
   <!-- Canonical URL -->
@@ -278,6 +278,21 @@
       box-shadow: 0 10px 40px -15px rgba(0,0,0,.12);
     }
 
+    .article-figure {
+      margin: 40px 0;
+    }
+
+    .article-figure img {
+      margin-bottom: 12px;
+    }
+
+    .article-figure figcaption {
+      font-size: 0.85rem;
+      color: var(--muted);
+      font-style: italic;
+      text-align: center;
+    }
+
     .article-content ul {
       margin: 20px 0;
       padding-left: 24px;
@@ -408,82 +423,85 @@
       <div class="container">
         <!-- HEADER -->
         <div class="article-header">
-          <h1>A/B Test Case Study: From Error to Recovery</h1>
-          <p class="article-meta">UX Writing · Speculative · 2024</p>
+          <h1>A/B Testing an Error Message</h1>
+          <p class="article-meta">UX Writing · Methodology Demo · 2024</p>
         </div>
 
         <!-- HERO IMAGE -->
         <div class="article-hero">
-          <img src="../assets/cover-ux-error.png" alt="A/B test UX writing work sample" />
+          <img src="../assets/cover-ux-error.png" alt="A/B test methodology demonstration" />
         </div>
 
         <!-- SUMMARY BOX -->
         <div class="summary-box">
           <div class="summary-row">
-            <span class="summary-label">Problem</span>
+            <span class="summary-label">Scenario</span>
             <span class="summary-value">Dead-end error messages blocking workflows and driving support tickets</span>
           </div>
           <div class="summary-row">
-            <span class="summary-label">Solution</span>
-            <span class="summary-value">Recovery-focused messaging with statistical methodology and significance testing</span>
+            <span class="summary-label">Approach</span>
+            <span class="summary-value">Hypothesis formation, sample size planning, statistical validation</span>
           </div>
           <div class="summary-row">
-            <span class="summary-label">Result</span>
-            <span class="summary-value">10.1 percentage point lift in recovery, 184 additional monthly recoveries</span>
+            <span class="summary-label">Outcome</span>
+            <span class="summary-value">How I design and analyze A/B tests for UX copy</span>
           </div>
         </div>
 
         <section>
-          <p>Sometimes the biggest wins hide in the smallest places. This speculative case study is about one of those places: a single error message that was quietly driving frustration and support tickets until I turned it into a recovery path.</p>
+          <p>Sometimes the biggest wins hide in the smallest places. This is a methodology demonstration: how I would approach a single error message that's driving frustration and support tickets, and turn it into a recovery path.</p>
 
           <div class="methodology-note">
             <h4>Methodology Note</h4>
             <ul>
-              <li><strong>Based on:</strong> Error recovery patterns in SaaS environments</li>
-              <li><strong>Data:</strong> Based on typical conversion rates and sample sizes</li>
-              <li><strong>Purpose:</strong> Demonstrate statistical A/B testing methodology</li>
+              <li><strong>Format:</strong> Demonstration</li>
+              <li><strong>Purpose:</strong> Show how I approach A/B testing and statistical validation</li>
             </ul>
           </div>
 
-          <h2>The Challenge</h2>
-	  <p>This SaaS platform helped product teams manage release notes, track documentation updates, and sync content across tools like GitHub, JIRA, and Zendesk. Most of the time, the GitHub integration worked just fine. But every so often, the connection would timeout.</p>
-	  <p>Every time it happened, users hit a wall. The system showed them: "401 Unauthorized"</p>
-	  <img src="../assets/ux-writing-error-example.png" alt="Original error message with unclear recovery path - UX writing before improvement" class="article-image-spaced">
-	  <p>Accurate, yes. But for most users? A dead end. Instead of fixing the problem themselves, they would abandon the workflow or open a support ticket.</p>
-	  <p>I needed to find out if better copy could reduce frustration and help more users get back on track without support.</p>
-          
-          <h2>Forming the Hypothesis</h2>
-	  <p>To A/B test this, I started with an assumption about user behavior. I contacted the support team and requested access to call recordings and transcripts. It seemed that users weren't exactly confused about what went wrong, they understood there was an authentication issue. The biggest frustration was not knowing what to do next.</p>
-          <p>So I shaped the hypothesis: if the error message explained the issue and gave a clear next step, more users would reconnect GitHub on their own.</p>
-          <p>In A/B testing, we start with a null hypothesis (H₀): there would be no difference between the two error messages. My job was to see whether the new copy produced results unlikely to happen if that null hypothesis were true.</p>
-          
-          <h2>Designing the Test</h2>
-	  <p>The proposed message was: "There was an issue with authentication. Please reconnect your GitHub account."</p>
-	  <img src="../assets/ux-error-improved.png" alt="Improved error message with clear recovery steps - UX writing after A/B test optimization" class="article-image-spaced">
-	  <p>With the new copy ready, I then partnered with a data scientist and an engineer to get the test set up. I split traffic so that half of users encountering the error saw the old message, and half saw the new one.</p>
-	  <p>In A/B testing, the p-value tells us the probability of seeing results this extreme if there were actually no difference (the null hypothesis). A smaller p-value means the result is less likely due to chance.</p>
-	  <p>The usual threshold for significance is 0.05, meaning there's a 5% chance of seeing results this extreme if the null hypothesis were true. To avoid stopping the test early, I planned sample size and duration up front.</p>
-	  <p>Using Evan Miller's calculator, I set the minimum detectable effect at about +7 to 10 percentage points, power at 80%, and significance at 0.05 (5%). That told us how many users we needed to hit per group before making a call.</p>
-	  <p>Given the rate of GitHub errors, that meant about two weeks of live traffic.</p>
-          
-          <h2>Findings</h2>
-	  <p>872 users saw the old message with 480 successfully recovering, meaning a 55% recovery rate. In comparison, 879 users encountered the new message and 572 recovered, resulting in a 65.1% recovery rate.</p>
-	  <img src="../assets/ab-test-results.png" alt="A/B test results showing recovery rate improvement" class="article-image-spaced">
+          <h2>The Scenario</h2>
+	  <p>Imagine a SaaS platform that helps product teams manage release notes and sync content across tools like GitHub, JIRA, and Zendesk. The GitHub integration works fine most of the time, but occasionally the connection times out.</p>
+	  <p>When it happens, users see: "401 Unauthorized"</p>
+	  <img src="../assets/ux-writing-error-example.png" alt="Original error message with unclear recovery path" class="article-image-spaced">
+	  <p>Accurate, but a dead end. Users either abandon the workflow or open a support ticket. The question: can better copy help more users recover on their own?</p>
 
-	  <p>That's a +10.1 percentage point lift. But raw percentages don't tell the whole story, they need statistical backup.</p>
-	  <p>When I ran the analysis, the p-value came in under 0.05.</p>
-	  <p>In statistical terms, this means that if there were truly no difference between the two messages, the probability of observing results at least this extreme would be less than 5 percent. In other words, the difference was unlikely to be explained by random variation alone.</p>
-	  <p>I also looked at the confidence interval (CI). For the +10.1 point lift, the 95% CI stretched from about +3.5 to +16.7, which told me two things:</p>
-	  <p>At the low end (+3.5), the effect was still real and positive. At the high end, the impact could be way stronger than the average.</p>
-	  <p>Because I had planned for 80% power, I knew the test wasn't under-sampled. The results were both reliable and meaningful.</p>
-	  <p>Midway through the test, our support team pinged engineering, asking if they had fixed the bug. Ticket volume for GitHub errors had dropped and they assumed a patch had gone out. In reality, nothing about the integration had changed. The only change was the copy.</p>
-	  <p>That reaction was evidence enough that words alone had shifted outcomes.</p>
-          
-          <h2>Outcome</h2>
-	  <p>After rolling out the friendlier copy to all GitHub users, I applied the same approach to other integrations like Bitbucket and GitLab. Each time, the principle held: clear, actionable copy helped more users solve problems without help.</p>
-	  <p>This wasn't a flashy homepage copy or a major design overhaul. It was a single string buried in an error state.</p>
-	  <p>Across two weeks of live traffic, more than 1,700 people hit this error. With the old message, almost half gave up or filed a support ticket. With the new message, 92 more users were able to resolve the issue on their own, translating to about 184 additional recoveries each month.</p>
-          <p>The statistics backed it up: a +10.1 point lift in recovery, a p-value under 0.05, and a confidence interval that stayed positive. A single string buried in an error state had directly reduced support load and improved user experience.</p>
+          <h2>Forming the Hypothesis</h2>
+	  <p>Before writing new copy, I would dig into <em>why</em> users fail. Support tickets tell you what's broken. Call recordings tell you how users think about it.</p>
+	  <p>In this case, users likely understand authentication failed. They just don't know the fix is a simple reconnect. That gap between understanding and action is where UX copy lives.</p>
+          <p>The hypothesis: if the error message explains the issue and gives a clear next step, more users will reconnect GitHub on their own.</p>
+          <p>In A/B testing, I would set up a null hypothesis (H₀): there's no difference between the two messages. The goal is to see whether the new copy produces results unlikely to occur if that null hypothesis were true.</p>
+
+          <h2>Designing the Test</h2>
+	  <p>The proposed message: "There was an issue with authentication. Please reconnect your GitHub account."</p>
+	  <img src="../assets/ux-error-improved.png" alt="Improved error message with clear recovery steps" class="article-image-spaced">
+	  <p>I would partner with a data scientist and engineer to split traffic 50/50 between the old and new messages.</p>
+	  <p>Before launching, I would use a sample size calculator (like Evan Miller's) to determine how long to run the test. With a minimum detectable effect of ~10 percentage points, 80% power, and 0.05 significance, I would need roughly 800-900 users per group. Depending on error frequency, that might take two weeks.</p>
+
+          <h2>Analyzing Results</h2>
+	  <p>Once the test reaches the target sample size, I would compare recovery rates between groups. Here's what a successful result might look like:</p>
+	  <figure class="article-figure">
+	    <img src="../assets/ab-test-results.png" alt="Example A/B test results visualization" class="article-image-spaced">
+	    <figcaption>Illustrative example: 55% recovery (control) vs 65% (variant). Even the conservative estimate (+3.5pp) shows meaningful improvement.</figcaption>
+	  </figure>
+	  <p>With results like these, I would check:</p>
+	  <ul>
+	    <li><strong>P-value:</strong> Is it under 0.05? If so, results this extreme would be unlikely if there were no real difference.</li>
+	    <li><strong>Confidence interval:</strong> Does the range exclude zero? A 95% CI of +3.5 to +16.7 means you're 95% confident the true effect falls somewhere in that range.</li>
+	  </ul>
+	  <p>I would also check for secondary signals: did support ticket volume drop during the test period? That kind of qualitative confirmation strengthens the case.</p>
+
+          <h2>When I Wouldn't A/B Test</h2>
+          <p>A/B testing is a tool, not a religion. I wouldn't use it when:</p>
+          <ul>
+            <li><strong>Low traffic:</strong> If you can't reach sample size in a reasonable timeframe, the test drags on and external factors contaminate results.</li>
+            <li><strong>High-stakes flows:</strong> If a bad variant causes real harm (failed payments, data loss), the risk isn't worth the learning.</li>
+            <li><strong>Qualitative research already shows a clear winner:</strong> If 8 out of 10 usability participants fail on the same step, you don't need statistical significance to act.</li>
+          </ul>
+          <p>Knowing when <em>not</em> to test is as important as knowing how.</p>
+
+          <h2>The Same Rigor, Different Methods</h2>
+          <p>A/B testing isn't always possible, but the statistical thinking applies everywhere. In my <a href="/articles/designing-empty-state-framework">empty state framework</a> work, I used Fisher's exact test to validate usability findings before scaling. In <a href="/articles/finding-words-monitoring">terminology research</a>, chi-square tests and weighted scoring helped cut support tickets by 27%.</p>
+          <p>The method matters less than the mindset: design tests that can actually prove something, then let the numbers decide.</p>
         </section>
 
         <footer id="contact" class="article-footer">
