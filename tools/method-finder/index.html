@@ -467,6 +467,62 @@
       font-style: italic;
     }
 
+    /* SHARE LINK */
+    .share-link-wrapper {
+      text-align: center;
+      margin-top: 24px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
+    }
+
+    .share-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.9375rem;
+      font-weight: 500;
+      color: var(--accent);
+      background: none;
+      border: none;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-family: inherit;
+      text-decoration: none;
+    }
+
+    .share-link:hover {
+      text-decoration: underline;
+      opacity: 0.8;
+    }
+
+    .share-link svg {
+      width: 16px;
+      height: 16px;
+      stroke: currentColor;
+      stroke-width: 2;
+    }
+
+    .share-toast {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: var(--text);
+      color: white;
+      padding: 12px 20px;
+      border-radius: 8px;
+      font-size: 0.875rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      opacity: 0;
+      transition: all 0.3s ease;
+      z-index: 1000;
+    }
+
+    .share-toast.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
     /* METRICS BOX */
     .metrics-box {
       background: var(--bg);
@@ -907,6 +963,21 @@
 
   <!-- MAIN -->
   <main class="main">
+    <!-- RECOMMENDATION AREA -->
+    <div id="recommendation">
+      <div class="empty-state">
+        <div class="floating-icons">
+          <div class="orbit-wrapper orbit-1"><svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="g1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="rgba(107,140,204,0.5)"/><stop offset="50%" stop-color="rgba(122,199,184,0.5)"/><stop offset="100%" stop-color="rgba(212,120,154,0.5)"/></linearGradient></defs><rect fill="white" height="16" rx="3" ry="3" stroke="url(#g1)" stroke-width="2" width="6" x="10" y="22"/><rect fill="white" height="24" rx="3" ry="3" stroke="url(#g1)" stroke-width="2" width="6" x="21" y="14"/><rect fill="white" height="28" rx="3" ry="3" stroke="url(#g1)" stroke-width="2" width="6" x="32" y="10"/></svg></div>
+          <div class="orbit-wrapper orbit-2"><svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="g2" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="rgba(107,140,204,0.5)"/><stop offset="50%" stop-color="rgba(122,199,184,0.5)"/><stop offset="100%" stop-color="rgba(212,120,154,0.5)"/></linearGradient></defs><circle cx="24" cy="24" fill="white" r="16" stroke="url(#g2)" stroke-width="2"/><line stroke="url(#g2)" stroke-width="2" x1="24" x2="24" y1="24" y2="8"/><line stroke="url(#g2)" stroke-width="2" x1="24" x2="38" y1="24" y2="30"/></svg></div>
+          <svg class="icon-checklist" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="g3" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="rgba(107,140,204,0.5)"/><stop offset="50%" stop-color="rgba(122,199,184,0.5)"/><stop offset="100%" stop-color="rgba(212,120,154,0.5)"/></linearGradient></defs><rect fill="white" height="32" rx="4" ry="4" stroke="url(#g3)" stroke-width="1.2" width="24" x="12" y="8"/><rect fill="white" height="4" rx="1" ry="1" stroke="url(#g3)" stroke-width="1.2" width="4" x="16" y="16"/><rect fill="white" height="4" rx="1" ry="1" stroke="url(#g3)" stroke-width="1.2" width="4" x="16" y="24"/><polyline fill="none" points="22,18 24,20 28,16" stroke="url(#g3)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2"/><polyline fill="none" points="22,26 24,28 28,24" stroke="url(#g3)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2"/></svg>
+          <div class="orbit-wrapper orbit-3"><svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="g4" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="rgba(107,140,204,0.5)"/><stop offset="50%" stop-color="rgba(122,199,184,0.5)"/><stop offset="100%" stop-color="rgba(212,120,154,0.5)"/></linearGradient></defs><polyline fill="none" points="8,32 18,26 28,20 38,14" stroke="url(#g4)" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/><circle cx="8" cy="32" fill="white" r="2.5" stroke="url(#g4)" stroke-width="2"/><circle cx="18" cy="26" fill="white" r="2.5" stroke="url(#g4)" stroke-width="2"/><circle cx="28" cy="20" fill="white" r="2.5" stroke="url(#g4)" stroke-width="2"/><circle cx="38" cy="14" fill="white" r="2.5" stroke="url(#g4)" stroke-width="2"/></svg></div>
+          <div class="orbit-wrapper orbit-4"><svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="g5" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="rgba(107,140,204,0.5)"/><stop offset="50%" stop-color="rgba(122,199,184,0.5)"/><stop offset="100%" stop-color="rgba(212,120,154,0.5)"/></linearGradient></defs><circle cx="20" cy="20" fill="white" r="12" stroke="url(#g5)" stroke-width="2"/><line stroke="url(#g5)" stroke-linecap="round" stroke-width="2" x1="29" y1="29" x2="40" y2="40"/></svg></div>
+        </div>
+        <h1 class="empty-state-title">Need help with UX research?</h1>
+        <p>Select your research question and available participants to see recommended methods.</p>
+      </div>
+    </div>
+
     <!-- SELECTORS -->
     <div class="selectors">
       <div class="selector-group">
@@ -929,21 +1000,6 @@
           </select>
         </div>
         <span id="sampleHint" class="hint-message"></span>
-      </div>
-    </div>
-
-    <!-- RECOMMENDATION -->
-    <div id="recommendation">
-      <div class="empty-state">
-        <div class="floating-icons">
-          <div class="orbit-wrapper orbit-1"><svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="g1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="rgba(107,140,204,0.5)"/><stop offset="50%" stop-color="rgba(122,199,184,0.5)"/><stop offset="100%" stop-color="rgba(212,120,154,0.5)"/></linearGradient></defs><rect fill="white" height="16" rx="3" ry="3" stroke="url(#g1)" stroke-width="2" width="6" x="10" y="22"/><rect fill="white" height="24" rx="3" ry="3" stroke="url(#g1)" stroke-width="2" width="6" x="21" y="14"/><rect fill="white" height="28" rx="3" ry="3" stroke="url(#g1)" stroke-width="2" width="6" x="32" y="10"/></svg></div>
-          <div class="orbit-wrapper orbit-2"><svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="g2" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="rgba(107,140,204,0.5)"/><stop offset="50%" stop-color="rgba(122,199,184,0.5)"/><stop offset="100%" stop-color="rgba(212,120,154,0.5)"/></linearGradient></defs><circle cx="24" cy="24" fill="white" r="16" stroke="url(#g2)" stroke-width="2"/><line stroke="url(#g2)" stroke-width="2" x1="24" x2="24" y1="24" y2="8"/><line stroke="url(#g2)" stroke-width="2" x1="24" x2="38" y1="24" y2="30"/></svg></div>
-          <svg class="icon-checklist" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="g3" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="rgba(107,140,204,0.5)"/><stop offset="50%" stop-color="rgba(122,199,184,0.5)"/><stop offset="100%" stop-color="rgba(212,120,154,0.5)"/></linearGradient></defs><rect fill="white" height="32" rx="4" ry="4" stroke="url(#g3)" stroke-width="1.2" width="24" x="12" y="8"/><rect fill="white" height="4" rx="1" ry="1" stroke="url(#g3)" stroke-width="1.2" width="4" x="16" y="16"/><rect fill="white" height="4" rx="1" ry="1" stroke="url(#g3)" stroke-width="1.2" width="4" x="16" y="24"/><polyline fill="none" points="22,18 24,20 28,16" stroke="url(#g3)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2"/><polyline fill="none" points="22,26 24,28 28,24" stroke="url(#g3)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2"/></svg>
-          <div class="orbit-wrapper orbit-3"><svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="g4" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="rgba(107,140,204,0.5)"/><stop offset="50%" stop-color="rgba(122,199,184,0.5)"/><stop offset="100%" stop-color="rgba(212,120,154,0.5)"/></linearGradient></defs><polyline fill="none" points="8,32 18,26 28,20 38,14" stroke="url(#g4)" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/><circle cx="8" cy="32" fill="white" r="2.5" stroke="url(#g4)" stroke-width="2"/><circle cx="18" cy="26" fill="white" r="2.5" stroke="url(#g4)" stroke-width="2"/><circle cx="28" cy="20" fill="white" r="2.5" stroke="url(#g4)" stroke-width="2"/><circle cx="38" cy="14" fill="white" r="2.5" stroke="url(#g4)" stroke-width="2"/></svg></div>
-          <div class="orbit-wrapper orbit-4"><svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="g5" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="rgba(107,140,204,0.5)"/><stop offset="50%" stop-color="rgba(122,199,184,0.5)"/><stop offset="100%" stop-color="rgba(212,120,154,0.5)"/></linearGradient></defs><circle cx="20" cy="20" fill="white" r="12" stroke="url(#g5)" stroke-width="2"/><line stroke="url(#g5)" stroke-linecap="round" stroke-width="2" x1="29" y1="29" x2="40" y2="40"/></svg></div>
-        </div>
-        <h1 class="empty-state-title">Need help with UX research?</h1>
-        <p>Select your research question and available participants to see recommended methods.</p>
       </div>
     </div>
 
@@ -1872,18 +1928,6 @@
       sampleSelect.innerHTML = '<option value="">Select...</option>';
       sampleSelect.disabled = true;
       document.getElementById('sampleSelectWrapper').classList.add('disabled');
-      document.getElementById('recommendation').innerHTML = `
-        <div class="empty-state">
-          <div class="floating-icons">
-            <div class="orbit-wrapper orbit-1"><svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="g1a" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="rgba(107,140,204,0.5)"/><stop offset="50%" stop-color="rgba(122,199,184,0.5)"/><stop offset="100%" stop-color="rgba(212,120,154,0.5)"/></linearGradient></defs><rect fill="white" height="16" rx="3" ry="3" stroke="url(#g1a)" stroke-width="2" width="6" x="10" y="22"/><rect fill="white" height="24" rx="3" ry="3" stroke="url(#g1a)" stroke-width="2" width="6" x="21" y="14"/><rect fill="white" height="28" rx="3" ry="3" stroke="url(#g1a)" stroke-width="2" width="6" x="32" y="10"/></svg></div>
-            <div class="orbit-wrapper orbit-2"><svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="g2a" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="rgba(107,140,204,0.5)"/><stop offset="50%" stop-color="rgba(122,199,184,0.5)"/><stop offset="100%" stop-color="rgba(212,120,154,0.5)"/></linearGradient></defs><circle cx="24" cy="24" fill="white" r="16" stroke="url(#g2a)" stroke-width="2"/><line stroke="url(#g2a)" stroke-width="2" x1="24" x2="24" y1="24" y2="8"/><line stroke="url(#g2a)" stroke-width="2" x1="24" x2="38" y1="24" y2="30"/></svg></div>
-            <svg class="icon-checklist" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="g3a" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="rgba(107,140,204,0.5)"/><stop offset="50%" stop-color="rgba(122,199,184,0.5)"/><stop offset="100%" stop-color="rgba(212,120,154,0.5)"/></linearGradient></defs><rect fill="white" height="32" rx="4" ry="4" stroke="url(#g3a)" stroke-width="1.2" width="24" x="12" y="8"/><rect fill="white" height="4" rx="1" ry="1" stroke="url(#g3a)" stroke-width="1.2" width="4" x="16" y="16"/><rect fill="white" height="4" rx="1" ry="1" stroke="url(#g3a)" stroke-width="1.2" width="4" x="16" y="24"/><polyline fill="none" points="22,18 24,20 28,16" stroke="url(#g3a)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2"/><polyline fill="none" points="22,26 24,28 28,24" stroke="url(#g3a)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2"/></svg>
-            <div class="orbit-wrapper orbit-3"><svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="g4a" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="rgba(107,140,204,0.5)"/><stop offset="50%" stop-color="rgba(122,199,184,0.5)"/><stop offset="100%" stop-color="rgba(212,120,154,0.5)"/></linearGradient></defs><polyline fill="none" points="8,32 18,26 28,20 38,14" stroke="url(#g4a)" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/><circle cx="8" cy="32" fill="white" r="2.5" stroke="url(#g4a)" stroke-width="2"/><circle cx="18" cy="26" fill="white" r="2.5" stroke="url(#g4a)" stroke-width="2"/><circle cx="28" cy="20" fill="white" r="2.5" stroke="url(#g4a)" stroke-width="2"/><circle cx="38" cy="14" fill="white" r="2.5" stroke="url(#g4a)" stroke-width="2"/></svg></div>
-            <div class="orbit-wrapper orbit-4"><svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="g5a" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="rgba(107,140,204,0.5)"/><stop offset="50%" stop-color="rgba(122,199,184,0.5)"/><stop offset="100%" stop-color="rgba(212,120,154,0.5)"/></linearGradient></defs><circle cx="20" cy="20" fill="white" r="12" stroke="url(#g5a)" stroke-width="2"/><line stroke="url(#g5a)" stroke-linecap="round" stroke-width="2" x1="29" y1="29" x2="40" y2="40"/></svg></div>
-          </div>
-          <h1 class="empty-state-title">Need help with UX research?</h1>
-          <p>Select your research question and available participants to see recommended methods.</p>
-        </div>`;
       return;
     }
 
@@ -1911,20 +1955,19 @@
     const sample = document.getElementById('sampleSelect').value;
 
     if (!intent || !sample) {
-      if (!intent) {
-        document.getElementById('recommendation').innerHTML = `
-          <div class="empty-state">
-            <div class="floating-icons">
-              <div class="orbit-wrapper orbit-1"><svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="g1b" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#6b8ccc"/><stop offset="50%" stop-color="#7ac7b8"/><stop offset="100%" stop-color="#d4789a"/></linearGradient></defs><rect fill="none" height="16" rx="3" ry="3" stroke="url(#g1b)" stroke-width="2" width="6" x="10" y="22"/><rect fill="none" height="24" rx="3" ry="3" stroke="url(#g1b)" stroke-width="2" width="6" x="21" y="14"/><rect fill="none" height="28" rx="3" ry="3" stroke="url(#g1b)" stroke-width="2" width="6" x="32" y="10"/></svg></div>
-              <div class="orbit-wrapper orbit-2"><svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="g2b" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#6b8ccc"/><stop offset="50%" stop-color="#7ac7b8"/><stop offset="100%" stop-color="#d4789a"/></linearGradient></defs><circle cx="24" cy="24" fill="none" r="16" stroke="url(#g2b)" stroke-width="2"/><line stroke="url(#g2b)" stroke-width="2" x1="24" x2="24" y1="24" y2="8"/><line stroke="url(#g2b)" stroke-width="2" x1="24" x2="38" y1="24" y2="30"/></svg></div>
-              <svg class="icon-checklist" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="g3b" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#6b8ccc"/><stop offset="50%" stop-color="#7ac7b8"/><stop offset="100%" stop-color="#d4789a"/></linearGradient></defs><rect fill="none" height="32" rx="4" ry="4" stroke="url(#g3b)" stroke-width="1.2" width="24" x="12" y="8"/><rect fill="none" height="4" rx="1" ry="1" stroke="url(#g3b)" stroke-width="1.2" width="4" x="16" y="16"/><rect fill="none" height="4" rx="1" ry="1" stroke="url(#g3b)" stroke-width="1.2" width="4" x="16" y="24"/><polyline fill="none" points="22,18 24,20 28,16" stroke="url(#g3b)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2"/><polyline fill="none" points="22,26 24,28 28,24" stroke="url(#g3b)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2"/></svg>
-              <div class="orbit-wrapper orbit-3"><svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="g4b" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#6b8ccc"/><stop offset="50%" stop-color="#7ac7b8"/><stop offset="100%" stop-color="#d4789a"/></linearGradient></defs><polyline fill="none" points="8,32 18,26 28,20 38,14" stroke="url(#g4b)" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/><circle cx="8" cy="32" fill="none" r="2.5" stroke="url(#g4b)" stroke-width="2"/><circle cx="18" cy="26" fill="none" r="2.5" stroke="url(#g4b)" stroke-width="2"/><circle cx="28" cy="20" fill="none" r="2.5" stroke="url(#g4b)" stroke-width="2"/><circle cx="38" cy="14" fill="none" r="2.5" stroke="url(#g4b)" stroke-width="2"/></svg></div>
-              <div class="orbit-wrapper orbit-4"><svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="g5b" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#6b8ccc"/><stop offset="50%" stop-color="#7ac7b8"/><stop offset="100%" stop-color="#d4789a"/></linearGradient></defs><circle cx="20" cy="20" fill="none" r="12" stroke="url(#g5b)" stroke-width="2"/><line stroke="url(#g5b)" stroke-linecap="round" stroke-width="2" x1="29" y1="29" x2="40" y2="40"/></svg></div>
-            </div>
-            <h1 class="empty-state-title">Need help with UX research?</h1>
-            <p>Select what you need to learn to see recommended methods.</p>
-          </div>`;
-      }
+      // Restore empty state
+      document.getElementById('recommendation').innerHTML = `
+        <div class="empty-state">
+          <div class="floating-icons">
+            <div class="orbit-wrapper orbit-1"><svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="g1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="rgba(107,140,204,0.5)"/><stop offset="50%" stop-color="rgba(122,199,184,0.5)"/><stop offset="100%" stop-color="rgba(212,120,154,0.5)"/></linearGradient></defs><rect fill="white" height="16" rx="3" ry="3" stroke="url(#g1)" stroke-width="2" width="6" x="10" y="22"/><rect fill="white" height="24" rx="3" ry="3" stroke="url(#g1)" stroke-width="2" width="6" x="21" y="14"/><rect fill="white" height="28" rx="3" ry="3" stroke="url(#g1)" stroke-width="2" width="6" x="32" y="10"/></svg></div>
+            <div class="orbit-wrapper orbit-2"><svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="g2" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="rgba(107,140,204,0.5)"/><stop offset="50%" stop-color="rgba(122,199,184,0.5)"/><stop offset="100%" stop-color="rgba(212,120,154,0.5)"/></linearGradient></defs><circle cx="24" cy="24" fill="white" r="16" stroke="url(#g2)" stroke-width="2"/><line stroke="url(#g2)" stroke-width="2" x1="24" x2="24" y1="24" y2="8"/><line stroke="url(#g2)" stroke-width="2" x1="24" x2="38" y1="24" y2="30"/></svg></div>
+            <svg class="icon-checklist" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="g3" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="rgba(107,140,204,0.5)"/><stop offset="50%" stop-color="rgba(122,199,184,0.5)"/><stop offset="100%" stop-color="rgba(212,120,154,0.5)"/></linearGradient></defs><rect fill="white" height="32" rx="4" ry="4" stroke="url(#g3)" stroke-width="1.2" width="24" x="12" y="8"/><rect fill="white" height="4" rx="1" ry="1" stroke="url(#g3)" stroke-width="1.2" width="4" x="16" y="16"/><rect fill="white" height="4" rx="1" ry="1" stroke="url(#g3)" stroke-width="1.2" width="4" x="16" y="24"/><polyline fill="none" points="22,18 24,20 28,16" stroke="url(#g3)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2"/><polyline fill="none" points="22,26 24,28 28,24" stroke="url(#g3)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2"/></svg>
+            <div class="orbit-wrapper orbit-3"><svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="g4" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="rgba(107,140,204,0.5)"/><stop offset="50%" stop-color="rgba(122,199,184,0.5)"/><stop offset="100%" stop-color="rgba(212,120,154,0.5)"/></linearGradient></defs><polyline fill="none" points="8,32 18,26 28,20 38,14" stroke="url(#g4)" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/><circle cx="8" cy="32" fill="white" r="2.5" stroke="url(#g4)" stroke-width="2"/><circle cx="18" cy="26" fill="white" r="2.5" stroke="url(#g4)" stroke-width="2"/><circle cx="28" cy="20" fill="white" r="2.5" stroke="url(#g4)" stroke-width="2"/><circle cx="38" cy="14" fill="white" r="2.5" stroke="url(#g4)" stroke-width="2"/></svg></div>
+            <div class="orbit-wrapper orbit-4"><svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="g5" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="rgba(107,140,204,0.5)"/><stop offset="50%" stop-color="rgba(122,199,184,0.5)"/><stop offset="100%" stop-color="rgba(212,120,154,0.5)"/></linearGradient></defs><circle cx="20" cy="20" fill="white" r="12" stroke="url(#g5)" stroke-width="2"/><line stroke="url(#g5)" stroke-linecap="round" stroke-width="2" x1="29" y1="29" x2="40" y2="40"/></svg></div>
+          </div>
+          <h1 class="empty-state-title">Need help with UX research?</h1>
+          <p>Select your research question and available participants to see recommended methods.</p>
+        </div>`;
       return;
     }
 
@@ -2126,9 +2169,94 @@
         ${metricsHtml}
         ${structureHtml}
         ${quoteHtml}
+
+        <div class="share-link-wrapper">
+          <button class="share-link" onclick="shareResult()">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Copy Link
+          </button>
+        </div>
       </div>
     `;
   }
+
+  // ---- SHARE RESULT ----
+  function shareResult() {
+    const intent = document.getElementById('intentSelect').value;
+    const sample = document.getElementById('sampleSelect').value;
+
+    if (!intent || !sample) return;
+
+    const url = `${window.location.origin}${window.location.pathname}?q=${intent}&s=${sample}`;
+
+    // Copy to clipboard
+    navigator.clipboard.writeText(url).then(() => {
+      showToast('Link copied! Share with your team');
+    }).catch(() => {
+      // Fallback for older browsers
+      const textarea = document.createElement('textarea');
+      textarea.value = url;
+      textarea.style.position = 'fixed';
+      textarea.style.opacity = '0';
+      document.body.appendChild(textarea);
+      textarea.select();
+      document.execCommand('copy');
+      document.body.removeChild(textarea);
+      showToast('Link copied! Share with your team');
+    });
+  }
+
+  function showToast(message) {
+    // Remove existing toast if any
+    const existingToast = document.querySelector('.share-toast');
+    if (existingToast) existingToast.remove();
+
+    // Create and show new toast
+    const toast = document.createElement('div');
+    toast.className = 'share-toast';
+    toast.textContent = message;
+    document.body.appendChild(toast);
+
+    // Trigger animation
+    setTimeout(() => toast.classList.add('show'), 10);
+
+    // Remove after 3 seconds
+    setTimeout(() => {
+      toast.classList.remove('show');
+      setTimeout(() => toast.remove(), 300);
+    }, 3000);
+  }
+
+  // ---- LOAD FROM URL PARAMETERS ----
+  function loadFromURL() {
+    const params = new URLSearchParams(window.location.search);
+    const intent = params.get('q');
+    const sample = params.get('s');
+
+    if (intent && sample) {
+      // Set intent dropdown
+      const intentSelect = document.getElementById('intentSelect');
+      intentSelect.value = intent;
+
+      // Trigger change to populate sample options
+      intentSelect.dispatchEvent(new Event('change'));
+
+      // Wait a moment for sample options to populate, then set sample
+      setTimeout(() => {
+        const sampleSelect = document.getElementById('sampleSelect');
+        sampleSelect.value = sample;
+
+        // Trigger recommendation
+        updateRecommendation();
+      }, 50);
+    }
+  }
+
+  // Load from URL on page load
+  window.addEventListener('DOMContentLoaded', loadFromURL);
 
   /* ---------------  HAMBURGER MENU  --------------- */
   const hamburger = document.querySelector('.hamburger');
