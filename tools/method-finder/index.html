@@ -1921,7 +1921,7 @@
 
     // Build steps HTML (with term wrapping)
     // Prepend prerequisite step for all scenarios
-    const prerequisiteStep = "<strong>Before you start:</strong> Ensure all participants have the same conditions, timing, context, and represent your userbase.";
+    const prerequisiteStep = "<strong>Before you start:</strong> Ensure all participants have the same conditions, timing, context, and are representative of your userbase.";
     const allSteps = [prerequisiteStep, ...(scenario.steps || [])];
     const stepsHtml = allSteps.map(step => `<li>${wrapTerms(step, wrappedTerms)}</li>`).join('');
 
