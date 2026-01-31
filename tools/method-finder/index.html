@@ -795,15 +795,30 @@
     /* GLOSSARY TERM TOOLTIPS */
     .term {
       position: relative;
-      border-bottom: 1px dotted var(--accent);
       cursor: help;
+      color: inherit;
+    }
+
+    .term::after {
+      content: '?';
+      display: inline-block;
+      font-size: 0.65em;
+      font-weight: 600;
+      color: var(--muted);
+      opacity: 0.5;
+      margin-left: 2px;
+      vertical-align: super;
+      line-height: 0;
+    }
+
+    .term:hover::after,
+    .term:focus::after {
+      opacity: 0.8;
       color: var(--accent);
     }
 
     .term:hover,
     .term:focus {
-      color: var(--accent);
-      border-bottom-style: solid;
       outline: none;
     }
 
