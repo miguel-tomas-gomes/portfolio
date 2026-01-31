@@ -476,23 +476,25 @@
     }
 
     .share-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
+      display: inline;
       font-size: 0.9375rem;
-      font-weight: 500;
+      font-weight: 400;
       color: var(--accent);
       background: none;
       border: none;
+      outline: none;
       cursor: pointer;
-      transition: all 0.2s ease;
+      transition: opacity 0.2s ease;
       font-family: inherit;
       text-decoration: none;
+      padding: 0;
+      margin: 0;
+      vertical-align: baseline;
+      line-height: inherit;
     }
 
     .share-link:hover {
-      text-decoration: underline;
-      opacity: 0.8;
+      opacity: 0.7;
     }
 
     .share-link svg {
@@ -500,6 +502,16 @@
       height: 16px;
       stroke: currentColor;
       stroke-width: 2;
+      vertical-align: text-bottom;
+      display: inline-block;
+      margin-right: 4px;
+    }
+
+    .share-context {
+      margin-left: 4px;
+      font-size: 0.9375rem;
+      color: var(--muted);
+      font-weight: 400;
     }
 
     .share-toast {
@@ -2178,6 +2190,7 @@
             </svg>
             Copy Link
           </button>
+          <span class="share-context">to share this result</span>
         </div>
       </div>
     `;
@@ -2203,7 +2216,7 @@
 
     // Copy to clipboard
     navigator.clipboard.writeText(url).then(() => {
-      showToast('Link copied! Share with your team');
+      showToast('Link copied!');
     }).catch(() => {
       // Fallback for older browsers
       const textarea = document.createElement('textarea');
@@ -2214,7 +2227,7 @@
       textarea.select();
       document.execCommand('copy');
       document.body.removeChild(textarea);
-      showToast('Link copied! Share with your team');
+      showToast('Link copied!');
     });
   }
 
