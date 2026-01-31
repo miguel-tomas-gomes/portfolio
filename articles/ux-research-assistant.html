@@ -1,0 +1,825 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Building a UX Research Assistant — Miguel Tomás Gomes</title>
+  <meta name="description" content="How I partnered with a developer to build an interactive tool that helps UX designers choose the right research method based on their situation and sample size." />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://migueltomasgomes.com/articles/ux-research-assistant">
+  <meta property="og:title" content="Building a UX Research Assistant">
+  <meta property="og:description" content="How I partnered with a developer to build an interactive tool that helps UX designers choose the right research method based on their situation and sample size.">
+  <meta property="og:image" content="https://migueltomasgomes.com/assets/portrait-miguel-tomas-gomes-ux.png">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://migueltomasgomes.com/articles/ux-research-assistant">
+  <meta property="twitter:title" content="Building a UX Research Assistant">
+  <meta property="twitter:description" content="How I partnered with a developer to build an interactive tool that helps UX designers choose the right research method based on their situation and sample size.">
+  <meta property="twitter:image" content="https://migueltomasgomes.com/assets/portrait-miguel-tomas-gomes-ux.png">
+
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://migueltomasgomes.com/articles/ux-research-assistant">
+
+  <link rel="icon" type="image/png" href="../assets/favicon-miguel-tomas-gomes.png">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --accent: #0052ff;
+      --text: #111;
+      --muted: #555;
+      --bg: #ffffff;
+      --radius: 12px;
+      --timing: .7s cubic-bezier(.25,1,.25,1);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 1.0625rem;
+      line-height: 1.75;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    img { max-width: 100%; display: block; }
+
+    .container {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ---------------  NAV (glassmorphism)  --------------- */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(255,255,255,.8);
+      backdrop-filter: blur(10px);
+      z-index: 100;
+      animation: slideDown .8s both;
+    }
+
+    nav {
+      max-width: 1100px;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.8rem 2.5rem;
+    }
+
+    .logo {
+      font-weight: 600;
+      font-size: 1rem;
+      color: var(--text);
+    }
+    .logo:hover { text-decoration: none; }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 3rem;
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav-links li {
+      opacity: 0;
+      animation: fadeIn .6s forwards;
+      animation-delay: calc(.1s * var(--i));
+    }
+
+    .nav-links a {
+      color: var(--text);
+      font-weight: 500;
+      transition: color .25s;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    @keyframes slideDown {
+      from { transform: translateY(-100%); }
+      to { transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
+
+    /* ---------------  SUBTLE BACKGROUND SHAPES  --------------- */
+    .depth-layer {
+      position: fixed;
+      inset: -20%;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    .shape {
+      position: absolute;
+      opacity: .06;
+      filter: blur(1px);
+      animation: drift 90s linear infinite alternate;
+    }
+
+    .shape:nth-child(1) {
+      width: 45vmax;
+      height: 45vmax;
+      background: var(--accent);
+      border-radius: 50%;
+      top: 5%;
+      left: -10%;
+      animation-duration: 80s;
+    }
+
+    .shape:nth-child(2) {
+      width: 35vmax;
+      height: 35vmax;
+      background: #00d4aa;
+      border-radius: 50%;
+      bottom: 12%;
+      right: -5%;
+      animation-duration: 100s;
+    }
+
+    @keyframes drift {
+      0% { transform: translate(0, 0) rotate(0deg); }
+      100% { transform: translate(10vw, -10vh) rotate(360deg); }
+    }
+
+    @keyframes morphBlob {
+      0%, 100% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
+      25% { border-radius: 50% 50% 60% 40% / 40% 30% 70% 60%; }
+      50% { border-radius: 40% 60% 50% 50% / 50% 50% 50% 50%; }
+      75% { border-radius: 60% 40% 40% 60% / 35% 45% 55% 65%; }
+    }
+
+    /* ---------------  ARTICLE HEADER  --------------- */
+    .article-header {
+      margin: 140px 0 48px;
+    }
+
+    .article-header h1 {
+      font-size: clamp(1.85rem, 4.5vw, 2.5rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+
+    .article-meta {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    /* ---------------  HERO IMAGE  --------------- */
+    .article-hero {
+      position: relative;
+      margin-bottom: 48px;
+    }
+
+    .article-hero::before {
+      content: '';
+      position: absolute;
+      inset: -3%;
+      background: linear-gradient(135deg, var(--accent) 0%, #00d4aa 100%);
+      border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+      animation: morphBlob 8s ease-in-out infinite;
+      opacity: 0.12;
+      z-index: -1;
+    }
+
+    .article-hero img {
+      position: relative;
+      width: 100%;
+      border-radius: var(--radius);
+      box-shadow: 0 15px 40px -15px rgba(0,0,0,.12);
+    }
+
+    /* ---------------  SUMMARY BOX (TL;DR)  --------------- */
+    .summary-box {
+      background: linear-gradient(135deg, #f8faff 0%, #f0f5ff 100%);
+      border-left: 4px solid var(--accent);
+      border-radius: var(--radius);
+      padding: 28px 32px;
+      margin-bottom: 56px;
+    }
+
+    .summary-row {
+      display: flex;
+      gap: 16px;
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(0,82,255,.1);
+    }
+
+    .summary-row:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .summary-row:first-child {
+      padding-top: 0;
+    }
+
+    .summary-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent);
+      width: 80px;
+      flex-shrink: 0;
+      padding-top: 2px;
+    }
+
+    .summary-value {
+      font-size: 0.95rem;
+      color: var(--text);
+      line-height: 1.5;
+    }
+
+    /* ---------------  ARTICLE CONTENT  --------------- */
+    .article-content h2 {
+      font-size: 1.45rem;
+      font-weight: 700;
+      margin: 56px 0 20px;
+      letter-spacing: -0.02em;
+      color: var(--text);
+    }
+
+    .article-content h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin: 40px 0 16px;
+      color: var(--text);
+    }
+
+    .article-content p {
+      margin-bottom: 20px;
+      color: var(--text);
+      line-height: 1.8;
+    }
+
+    .article-content img {
+      border-radius: var(--radius);
+      margin: 40px 0;
+      box-shadow: 0 10px 40px -15px rgba(0,0,0,.12);
+    }
+
+    .article-content ul, .article-content ol {
+      margin: 20px 0;
+      padding-left: 24px;
+    }
+
+    .article-content li {
+      margin-bottom: 10px;
+      line-height: 1.8;
+    }
+
+    .article-content p b {
+      color: var(--accent);
+      background: rgba(0, 82, 255, 0.08);
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+
+    /* ---------------  METHODOLOGY NOTE  --------------- */
+    .methodology-note {
+      background: #fafafa;
+      border-radius: var(--radius);
+      padding: 28px 32px;
+      margin: 40px 0;
+      border: 1px solid #eee;
+    }
+
+    .methodology-note h4 {
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+
+    .methodology-note ul {
+      list-style: none;
+      font-size: 0.9rem;
+      color: var(--muted);
+      padding-left: 0;
+    }
+
+    .methodology-note li {
+      margin-bottom: 8px;
+      line-height: 1.6;
+    }
+
+    .methodology-note strong {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    /* ---------------  COMPARISON TABLE  --------------- */
+    .comparison-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 32px 0;
+      font-size: 0.875rem;
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: 0 4px 20px -8px rgba(0,0,0,.1);
+    }
+
+    .comparison-table th,
+    .comparison-table td {
+      padding: 14px 16px;
+      text-align: left;
+      border-bottom: 1px solid #eee;
+    }
+
+    .comparison-table th {
+      background: linear-gradient(135deg, #f8faff 0%, #f0f5ff 100%);
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .comparison-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .comparison-table tbody tr:hover {
+      background: #fafbfc;
+    }
+
+    .comparison-table .before {
+      color: var(--muted);
+    }
+
+    .comparison-table .after {
+      color: var(--accent);
+      font-weight: 500;
+    }
+
+    /* ---------------  DIAGRAM BOX  --------------- */
+    .diagram-box {
+      background: #fafafa;
+      border-radius: var(--radius);
+      padding: 32px;
+      margin: 40px 0;
+      border: 1px solid #eee;
+    }
+
+    .diagram-box h4 {
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+      margin-bottom: 24px;
+      text-align: center;
+    }
+
+    .diagram-flow {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      align-items: center;
+    }
+
+    .diagram-level {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .diagram-node {
+      background: white;
+      border: 2px solid #e0e0e0;
+      border-radius: 8px;
+      padding: 12px 20px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      text-align: center;
+      min-width: 140px;
+    }
+
+    .diagram-node.primary {
+      border-color: var(--accent);
+      background: rgba(0, 82, 255, 0.05);
+    }
+
+    .diagram-node.new {
+      border-color: #00d4aa;
+      background: rgba(0, 212, 170, 0.08);
+    }
+
+    .diagram-arrow {
+      font-size: 1.5rem;
+      color: var(--muted);
+    }
+
+    /* ---------------  PARTICIPANT GRID  --------------- */
+    .participant-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 16px;
+      margin: 32px 0;
+    }
+
+    .participant-card {
+      background: white;
+      border: 2px solid #e8e8e8;
+      border-radius: 8px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .participant-id {
+      font-weight: 700;
+      color: var(--accent);
+      font-size: 1.1rem;
+    }
+
+    .participant-context {
+      font-weight: 600;
+      color: var(--text);
+      font-size: 0.9rem;
+    }
+
+    .participant-detail {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    /* ---------------  INSIGHT CARDS  --------------- */
+    .insight-card {
+      background: #fafafa;
+      border-left: 4px solid #ddd;
+      border-radius: var(--radius);
+      padding: 24px 28px;
+      margin: 24px 0;
+      box-shadow: 0 2px 8px rgba(0,0,0,.06);
+    }
+
+    .insight-card.green { border-color: #66bb6a; background: #f8fdf8; }
+
+    .insight-quote {
+      font-size: 1.05rem;
+      font-style: italic;
+      color: var(--text);
+      line-height: 1.7;
+      margin-bottom: 12px;
+    }
+
+    .insight-meta {
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+
+    .insight-label {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    /* ---------------  CTA BOX  --------------- */
+    .cta-box {
+      background: linear-gradient(135deg, #f8faff 0%, #f0f5ff 100%);
+      border-radius: var(--radius);
+      padding: 32px;
+      margin: 48px 0;
+      text-align: center;
+      border: 1px solid rgba(0,82,255,.15);
+    }
+
+    .cta-box p {
+      margin-bottom: 20px;
+      font-size: 1.05rem;
+    }
+
+    .cta-box .btn {
+      display: inline-block;
+      background: var(--accent);
+      color: white;
+      padding: 14px 28px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .cta-box .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px -8px rgba(0,82,255,.4);
+      text-decoration: none;
+    }
+
+    /* ---------------  FOOTER  --------------- */
+    .article-footer {
+      margin-top: 80px;
+      padding-top: 40px;
+      border-top: 1px solid #eee;
+      color: var(--muted);
+      font-size: 0.95rem;
+      text-align: center;
+    }
+
+    .article-footer a {
+      color: var(--accent);
+      font-weight: 500;
+    }
+
+    .site-footer {
+      margin-top: 100px;
+      padding: 32px 0;
+      border-top: 1px solid #eee;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.875rem;
+    }
+
+    .site-footer a {
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    .site-footer a:hover {
+      color: var(--accent);
+    }
+
+    /* ---------------  RESPONSIVE  --------------- */
+    @media (max-width: 768px) {
+      .article-header { margin-top: 120px; }
+      nav { padding: 0.8rem 1.5rem; }
+    }
+
+    @media (max-width: 600px) {
+      nav { flex-direction: column; gap: 1rem; text-align: center; }
+      .nav-links { justify-content: center; gap: 1.5rem; }
+      .article-header { margin: 100px 0 32px; }
+      .article-header h1 { font-size: 1.75rem; }
+      .article-meta { font-size: 0.85rem; }
+      .summary-box { padding: 20px 24px; }
+      .summary-row { flex-direction: column; gap: 6px; }
+      .summary-label { width: auto; }
+      .article-content h2 { font-size: 1.4rem; margin-top: 48px; }
+      .article-content h3 { font-size: 1.1rem; }
+      .methodology-note { padding: 20px 24px; }
+      .comparison-table { font-size: 0.75rem; }
+      .comparison-table th, .comparison-table td { padding: 10px 12px; }
+      .diagram-box { padding: 20px; }
+      .diagram-node { min-width: 100px; padding: 10px 14px; font-size: 0.75rem; }
+      .participant-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+      .participant-card { padding: 12px; }
+      .insight-card { padding: 18px 20px; margin: 16px 0; }
+      .insight-quote { font-size: 0.95rem; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <!-- Subtle moving background -->
+  <div class="depth-layer">
+    <div class="shape"></div>
+    <div class="shape"></div>
+  </div>
+
+  <header>
+    <nav aria-label="Primary">
+      <a href="/" class="logo">Miguel Tomás Gomes</a>
+      <ul class="nav-links">
+        <li style="--i:1"><a href="/about">About</a></li>
+        <li style="--i:2"><a href="/articles/">Work Samples</a></li>
+        <li style="--i:3"><a href="/tools/research-tool">Research Tool</a></li>
+        <li style="--i:4"><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main">
+    <article class="article-content">
+      <div class="container">
+        <!-- HEADER -->
+        <div class="article-header">
+          <h1>Building a UX Research Assistant</h1>
+          <p class="article-meta">Product Design · Side Project · 2025</p>
+        </div>
+
+        <!-- HERO IMAGE -->
+        <div class="article-hero">
+          <img src="../assets/portrait-miguel-tomas-gomes-ux.png" alt="UX Research Assistant tool interface showing dropdown menus and recommendation card" />
+        </div>
+
+        <!-- SUMMARY BOX -->
+        <div class="summary-box">
+          <div class="summary-row">
+            <span class="summary-label">Problem</span>
+            <span class="summary-value">UX designers often pick the wrong research method for their sample size and goals</span>
+          </div>
+          <div class="summary-row">
+            <span class="summary-label">Solution</span>
+            <span class="summary-value">Interactive tool with 2 dropdowns that recommends the right method with step-by-step guidance</span>
+          </div>
+          <div class="summary-row">
+            <span class="summary-label">Result</span>
+            <span class="summary-value">6 research categories, 18 scenarios, 24 glossary terms with inline tooltips</span>
+          </div>
+        </div>
+
+        <section>
+          <p>Most UX designers know they should do research. Fewer know which method to use when. I partnered with a developer to build a tool that answers one question: <em>"Given my situation and sample size, what research method should I use?"</em></p>
+
+          <div class="methodology-note">
+            <h4>Project Details</h4>
+            <ul>
+              <li><strong>Role:</strong> Content design, UX strategy, information architecture</li>
+              <li><strong>Collaboration:</strong> Partnered with a developer for implementation</li>
+              <li><strong>Timeline:</strong> 3 weeks from concept to launch</li>
+              <li><strong>Discovery:</strong> 8 interviews with UX writers across B2B, B2C, agencies, and health tech</li>
+              <li><strong>Framework:</strong> Based on Nielsen Norman Group research methods</li>
+            </ul>
+          </div>
+
+          <h2>Discovery Research</h2>
+          <p>Before building anything, I interviewed 8 UX writers from different contexts: B2B enterprise, B2C apps, design agencies, and health tech. I wanted to understand how they currently approach research decisions.</p>
+
+          <h3>Interview Questions</h3>
+          <ul>
+            <li>When you need to validate a design decision, where do you start?</li>
+            <li>How do you decide which research method to use?</li>
+            <li>What's the last research you ran? How did you choose that approach?</li>
+            <li>What stops you from doing more research?</li>
+            <li>When research goes wrong, what usually caused it?</li>
+          </ul>
+
+          <div class="participant-grid">
+            <div class="participant-card">
+              <span class="participant-id">P1</span>
+              <span class="participant-context">B2B Enterprise</span>
+              <span class="participant-detail">Solo writer · Has researcher</span>
+            </div>
+            <div class="participant-card">
+              <span class="participant-id">P3</span>
+              <span class="participant-context">Design Agency</span>
+              <span class="participant-detail">2 writers · Per-project research</span>
+            </div>
+            <div class="participant-card">
+              <span class="participant-id">P4</span>
+              <span class="participant-context">Health Tech</span>
+              <span class="participant-detail">Solo writer · No researcher</span>
+            </div>
+            <div class="participant-card">
+              <span class="participant-id">P6</span>
+              <span class="participant-context">B2C E-commerce</span>
+              <span class="participant-detail">4 writers · Has researcher</span>
+            </div>
+          </div>
+
+          <h3>What I Heard</h3>
+
+          <div class="insight-card">
+            <div class="insight-quote">"I know I should test this, but I genuinely don't know if I need a survey or interviews or a usability test."</div>
+            <div class="insight-meta">— P4, Health Tech</div>
+            <div class="insight-label">6 of 8 felt paralyzed when starting research</div>
+          </div>
+
+          <div class="insight-card">
+            <div class="insight-quote">"We ran an A/B test with 8 people and called it a winner. Looking back... yeah, that was wrong."</div>
+            <div class="insight-meta">— P6, B2C E-commerce</div>
+            <div class="insight-label">Sample size confusion led to false confidence</div>
+          </div>
+
+          <div class="insight-card">
+            <div class="insight-quote">"I've read all the NN/g articles. I know what a card sort is. I just don't know when to use one instead of a tree test."</div>
+            <div class="insight-meta">— P3, Design Agency</div>
+            <div class="insight-label">The gap is application, not theory</div>
+          </div>
+
+          <h3>Design Requirements</h3>
+          <p>The interviews shaped three core requirements:</p>
+          <ol>
+            <li><strong>Start with the question, not the method.</strong> Users think "Is this clear?" not "Should I run a comprehension test?"</li>
+            <li><strong>Make sample size a first-class input.</strong> The right method depends heavily on how many users you have.</li>
+            <li><strong>Bridge theory to action.</strong> Don't just name the method—provide steps, warnings, and presentation language.</li>
+          </ol>
+
+          <h2>The Pivot</h2>
+          <p>My first instinct was to build an A/B test calculator. It worked — but it solved the wrong problem. A designer with 8 users doesn't need help interpreting results. They need to know A/B testing isn't the right method for their situation.</p>
+          <p>I scrapped the calculator. Instead of asking "What were your results?", the tool would ask "What do you need to learn?"</p>
+          <p>The first version had 3 categories: Is the message clear? Which option feels right? Does it convert? This worked for evaluative research, but I was missing half the picture.</p>
+
+          <p>I compared my tool against Nielsen Norman Group's research methods chart. They categorize methods into four phases: Discover, Explore, Test, and Listen. My first version only covered "Test." Methods like user interviews, field studies, card sorting, and journey mapping were completely absent.</p>
+
+          <p>The solution: expand from 3 options to 6, phrased as questions a real person would ask — without adding a third dropdown.</p>
+
+          <div class="diagram-box">
+            <h4>Final Structure: Two Dropdowns, Six Scenarios</h4>
+            <div class="diagram-flow">
+              <div class="diagram-level">
+                <div class="diagram-node primary">What do you need to learn?</div>
+              </div>
+              <div class="diagram-arrow">↓</div>
+              <div class="diagram-level">
+                <div class="diagram-node">Is this clear?</div>
+                <div class="diagram-node">Which do users prefer?</div>
+                <div class="diagram-node">Which performs better?</div>
+              </div>
+              <div class="diagram-level">
+                <div class="diagram-node new">What's causing the problem?</div>
+                <div class="diagram-node new">What do users need?</div>
+                <div class="diagram-node new">How do users organize this?</div>
+              </div>
+              <div class="diagram-arrow">↓</div>
+              <div class="diagram-level">
+                <div class="diagram-node primary">Sample size</div>
+              </div>
+              <div class="diagram-arrow">↓</div>
+              <div class="diagram-level">
+                <div class="diagram-node">Recommendation + Steps + Warnings</div>
+              </div>
+            </div>
+          </div>
+
+          <table class="comparison-table">
+            <thead>
+              <tr>
+                <th>Before</th>
+                <th>After</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="before">Is the message clear?</td>
+                <td class="after">Is this clear?</td>
+              </tr>
+              <tr>
+                <td class="before">Which option feels right?</td>
+                <td class="after">Which do users prefer?</td>
+              </tr>
+              <tr>
+                <td class="before">Does it convert?</td>
+                <td class="after">Which performs better?</td>
+              </tr>
+              <tr>
+                <td class="before">—</td>
+                <td class="after">What's causing the problem?</td>
+              </tr>
+              <tr>
+                <td class="before">—</td>
+                <td class="after">What do users need?</td>
+              </tr>
+              <tr>
+                <td class="before">—</td>
+                <td class="after">How do users organize this?</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h2>Early Feedback</h2>
+          <p>I shared the tool with the UX writers I interviewed:</p>
+          <div class="insight-card green">
+            <div class="insight-quote">"I used this before a stakeholder meeting. Showed them exactly why we couldn't A/B test with 30 users. They got it immediately."</div>
+            <div class="insight-meta">— P1, B2B Enterprise</div>
+          </div>
+          <p>The tool is working as intended: giving designers language to communicate with stakeholders, not just internal decision-making support.</p>
+
+          <div class="cta-box">
+            <p><strong>Try the UX Research Assistant</strong></p>
+            <p>Select your situation and sample size to get a personalized recommendation.</p>
+            <a href="/tools/research-tool" class="btn">Open the Tool →</a>
+          </div>
+
+        </section>
+
+        <footer id="contact" class="article-footer">
+          <p>Enjoyed reading? <a href="mailto:miguelgomes_1@msn.com">Get in touch</a> or see more <a href="/articles/">work samples</a>.</p>
+        </footer>
+      </div>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <a href="/articles/">View Work Samples</a> · © 2025 Miguel Tomás Gomes
+    </div>
+  </footer>
+</body>
+</html>
+

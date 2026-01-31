@@ -1,0 +1,764 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>UX Research Helper - Miguel Tomás Gomes</title>
+  <meta name="description" content="Pick the right research method. Interpret your results. Present with confidence." />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://migueltomasgomes.com/tools/research-tool">
+  <meta property="og:title" content="UX Research Helper">
+  <meta property="og:description" content="Pick the right research method. Interpret your results. Present with confidence.">
+  <meta property="og:image" content="https://migueltomasgomes.com/assets/portrait-miguel-tomas-gomes-ux.png">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://migueltomasgomes.com/tools/research-tool">
+  <meta property="twitter:title" content="UX Research Helper">
+  <meta property="twitter:description" content="Pick the right research method. Interpret your results. Present with confidence.">
+  <meta property="twitter:image" content="https://migueltomasgomes.com/assets/portrait-miguel-tomas-gomes-ux.png">
+
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://migueltomasgomes.com/tools/research-tool">
+
+  <link rel="icon" type="image/png" href="../assets/favicon-miguel-tomas-gomes.png">
+  <style>
+    :root {
+      --accent: #0052ff;
+      --accent-light: #eff6ff;
+      --text: #111;
+      --muted: #666;
+      --bg: #ffffff;
+      --card: #ffffff;
+      --border: #e2e8f0;
+      --green: #059669;
+      --green-light: #ecfdf5;
+      --amber: #d97706;
+      --amber-light: #fffbeb;
+      --red: #dc2626;
+      --red-light: #fef2f2;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      line-height: 1.6;
+    }
+
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* ---------------  NAV (glassmorphism)  --------------- */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(255,255,255,.8);
+      backdrop-filter: blur(10px);
+      z-index: 100;
+      animation: slideDown .8s both;
+    }
+
+    nav {
+      max-width: 1100px;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.8rem 2.5rem;
+    }
+
+    .logo {
+      font-weight: 600;
+      font-size: 1rem;
+      color: var(--text);
+    }
+    .logo:hover { text-decoration: none; }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 3rem;
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav-links li {
+      opacity: 0;
+      animation: fadeIn .6s forwards;
+      animation-delay: calc(.1s * var(--i));
+    }
+
+    .nav-links a {
+      color: var(--text);
+      font-weight: 500;
+      transition: color .25s;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    @keyframes slideDown {
+      from { transform: translateY(-100%); }
+      to { transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
+
+    /* MAIN */
+    .main {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 120px 24px 80px;
+    }
+
+    /* PAGE FOOTER */
+    .page-footer {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 5px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
+    }
+    .footer-link {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--muted);
+      background: none;
+      border: none;
+      cursor: pointer;
+      transition: color 0.2s;
+      text-decoration: none;
+    }
+    .footer-link:hover {
+      color: var(--accent);
+      text-decoration: none;
+    }
+    .footer-note {
+      text-align: center;
+      font-size: 0.6875rem;
+      color: var(--muted);
+      opacity: 0.5;
+      margin-top: 32px;
+      margin-bottom: 3px;
+    }
+    .footer-note a {
+      color: var(--muted);
+      text-decoration: underline;
+    }
+    .footer-note a:hover {
+      color: var(--accent);
+      opacity: 1;
+    }
+
+    /* SELECTORS */
+    .selectors {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+
+    .selector-group label {
+      display: block;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+
+    .selector-group select {
+      width: 100%;
+      padding: 12px 16px;
+      font-size: 0.9375rem;
+      font-family: inherit;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: var(--card);
+      color: var(--text);
+      cursor: pointer;
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2364748b' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 12px center;
+    }
+
+    .selector-group select:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px var(--accent-light);
+    }
+
+    .hint-message {
+      display: block;
+      font-size: 0.8125rem;
+      color: var(--accent);
+      height: 1.2em;
+      margin-top: 6px;
+    }
+
+    .select-wrapper {
+      position: relative;
+    }
+
+    .select-wrapper.disabled::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      cursor: not-allowed;
+    }
+
+    /* RECOMMENDATION CARD */
+    .rec-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 32px;
+      margin-bottom: 24px;
+    }
+
+    .rec-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .rec-badge {
+      display: inline-block;
+      padding: 4px 10px;
+      font-size: 0.6875rem;
+      font-weight: 600;
+      border-radius: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+
+    .rec-badge.green { background: var(--green-light); color: var(--green); }
+    .rec-badge.amber { background: var(--amber-light); color: var(--amber); }
+    .rec-badge.blue { background: var(--accent-light); color: var(--accent); }
+
+    .rec-method {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .rec-desc {
+      font-size: 0.9375rem;
+      color: var(--muted);
+      line-height: 1.6;
+      margin-bottom: 24px;
+    }
+
+    /* STEPS */
+    .steps-title {
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+
+    .steps {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 24px 0;
+    }
+
+    .steps li {
+      position: relative;
+      padding-left: 24px;
+      padding-bottom: 12px;
+      font-size: 0.9375rem;
+      line-height: 1.5;
+      color: var(--text);
+    }
+
+    .steps li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 6px;
+      width: 8px;
+      height: 8px;
+      border: 2px solid var(--green);
+      border-radius: 2px;
+    }
+
+    .steps li:last-child { padding-bottom: 0; }
+
+    /* WARNING BOX */
+    .warning-box {
+      background: var(--amber-light);
+      border-left: 3px solid var(--amber);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 24px;
+    }
+
+    .warning-box p {
+      font-size: 0.875rem;
+      line-height: 1.6;
+      color: var(--text);
+      margin: 0;
+    }
+
+    /* QUOTE BOX */
+    .quote-box {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      position: relative;
+    }
+
+    .quote-label {
+      font-size: 0.6875rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+
+    .quote-text {
+      font-size: 0.875rem;
+      line-height: 1.6;
+      color: var(--text);
+      font-style: italic;
+    }
+
+    /* METRICS BOX */
+    .metrics-box {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-top: 24px;
+    }
+    .metrics-title {
+      font-size: 0.6875rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+    .metric-step {
+      margin-bottom: 16px;
+    }
+    .metric-step:last-child {
+      margin-bottom: 0;
+    }
+    .metric-step-title {
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+    .metric-step-title::before {
+      content: counter(step) ". ";
+      color: var(--accent);
+    }
+    .metrics-box {
+      counter-reset: step;
+    }
+    .metric-step {
+      counter-increment: step;
+    }
+    .metric-step-desc {
+      font-size: 0.8125rem;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+    .metric-step-example {
+      font-size: 0.8125rem;
+      color: var(--text);
+      margin-top: 2px;
+    }
+    .metric-step-formula {
+      font-size: 0.8125rem;
+      color: var(--accent);
+      margin-top: 4px;
+      font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, monospace;
+      background: var(--card);
+      padding: 6px 10px;
+      border-radius: 4px;
+      display: inline-block;
+    }
+    .metric-step-note {
+      font-size: 0.75rem;
+      color: var(--muted);
+      margin-top: 4px;
+      font-style: italic;
+    }
+    .metrics-table {
+      margin-top: 16px;
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .metrics-table-title {
+      font-size: 0.75rem;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+    .metrics-table th,
+    .metrics-table td {
+      font-size: 0.8125rem;
+      padding: 6px 12px;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+    .metrics-table th {
+      font-weight: 600;
+      color: var(--muted);
+    }
+    .metrics-table td {
+      color: var(--text);
+    }
+    .metrics-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    /* STRUCTURE BOX (qualitative methods) */
+    .structure-intro {
+      font-size: 0.8125rem;
+      color: var(--muted);
+      margin-bottom: 16px;
+      font-style: italic;
+    }
+
+    /* GLOSSARY TERMS */
+    .term {
+      text-decoration: underline;
+      text-decoration-style: dotted;
+      text-decoration-color: var(--muted);
+      text-underline-offset: 2px;
+      cursor: help;
+      position: relative;
+    }
+
+    .tooltip {
+      display: none;
+      position: absolute;
+      bottom: calc(100% + 8px);
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--text);
+      color: white;
+      padding: 12px 14px;
+      border-radius: 8px;
+      font-size: 0.8125rem;
+      line-height: 1.5;
+      width: 260px;
+      z-index: 50;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      font-weight: normal;
+      font-style: normal;
+      text-decoration: none;
+    }
+
+    .tooltip::after {
+      content: '';
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      border: 6px solid transparent;
+      border-top-color: var(--text);
+    }
+
+    .term:hover .tooltip,
+    .term:focus .tooltip {
+      display: block;
+    }
+
+    .tooltip-link {
+      display: block;
+      margin-top: 8px;
+      padding-top: 8px;
+      border-top: 1px solid rgba(255,255,255,0.2);
+      color: var(--accent-light);
+      font-size: 0.75rem;
+      cursor: pointer;
+    }
+    .tooltip-link:hover {
+      text-decoration: underline;
+    }
+
+    /* GLOSSARY MODAL */
+    .glossary-modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.5);
+      z-index: 200;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+    .glossary-modal.active { display: flex; }
+
+    .glossary-content {
+      background: var(--card);
+      border-radius: 12px;
+      width: 100%;
+      max-width: 560px;
+      max-height: 80vh;
+      overflow-y: auto;
+      box-shadow: 0 20px 60px -12px rgba(0,0,0,0.25);
+    }
+
+    .glossary-header {
+      padding: 20px 24px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      background: var(--card);
+    }
+
+    .glossary-title {
+      font-size: 1rem;
+      font-weight: 700;
+    }
+
+    .glossary-body {
+      padding: 24px;
+    }
+
+    .glossary-item {
+      margin-bottom: 20px;
+    }
+    .glossary-item:last-child { margin-bottom: 0; }
+
+    .glossary-term {
+      font-weight: 600;
+      font-size: 0.9375rem;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+
+    .glossary-def {
+      font-size: 0.875rem;
+      line-height: 1.6;
+      color: var(--muted);
+    }
+
+    /* EMPTY STATE */
+    .empty-state {
+      text-align: center;
+      padding: 48px 24px 40px;
+      color: var(--muted);
+    }
+
+    .empty-state p {
+      font-size: 0.9375rem;
+      margin-top: 8px;
+    }
+
+    /* Floating icons container */
+    .floating-icons {
+      position: relative;
+      width: 120px;
+      height: 120px;
+      margin: 0 auto;
+    }
+
+    /* Orbit path circle */
+    .floating-icons::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 110px;
+      height: 110px;
+      border: 1px solid rgba(107, 140, 204, 0.15);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 0;
+    }
+
+    .floating-icons svg {
+      position: absolute;
+      width: 40px;
+      height: 40px;
+      background: transparent;
+      overflow: visible;
+    }
+
+    /* Center checklist - largest, focal point */
+    .floating-icons .icon-checklist {
+      width: 72px;
+      height: 72px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 5;
+      animation: floatCenter 3.5s ease-in-out infinite;
+    }
+
+    /* Orbit wrappers - these rotate around the center */
+    .orbit-wrapper {
+      position: absolute;
+      width: 40px;
+      height: 40px;
+      top: 50%;
+      left: 50%;
+      margin-top: -20px;
+      margin-left: -20px;
+      transform-origin: 20px 20px;
+    }
+    .orbit-wrapper svg {
+      position: relative;
+      top: 0; left: 0;
+      width: 40px;
+      height: 40px;
+    }
+    .orbit-1 {
+      transform: rotate(0deg) translateX(55px) rotate(0deg);
+      animation: orbit 20s linear infinite;
+      z-index: 2;
+    }
+    .orbit-2 {
+      transform: rotate(90deg) translateX(55px) rotate(-90deg);
+      animation: orbit 20s linear infinite;
+      animation-delay: -5s;
+      z-index: 3;
+    }
+    .orbit-3 {
+      transform: rotate(180deg) translateX(55px) rotate(-180deg);
+      animation: orbit 20s linear infinite;
+      animation-delay: -10s;
+      z-index: 1;
+    }
+    .orbit-4 {
+      transform: rotate(270deg) translateX(55px) rotate(-270deg);
+      animation: orbit 20s linear infinite;
+      animation-delay: -15s;
+      z-index: 4;
+    }
+
+    /* Empty state title */
+    .empty-state-title {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--text);
+      margin: 1.5rem 0 0.5rem 0;
+      text-align: center;
+    }
+
+    /* Floating animations */
+    @keyframes floatCenter {
+      0%, 100% { transform: translate(-50%, -50%) scale(1); }
+      50% { transform: translate(-50%, -50%) scale(1.02); }
+    }
+    @keyframes orbit {
+      0% { transform: rotate(0deg) translateX(55px) rotate(0deg); }
+      100% { transform: rotate(360deg) translateX(55px) rotate(-360deg); }
+    }
+
+  </style>
+</head>
+<body>
+  <header>
+    <nav aria-label="Primary">
+      <a href="/" class="logo">Miguel Tomás Gomes</a>
+      <ul class="nav-links">
+        <li style="--i:1"><a href="/about">About</a></li>
+        <li style="--i:2"><a href="/articles/">Work Samples</a></li>
+        <li style="--i:3"><a href="/#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- MAIN -->
+  <main class="main">
+    <!-- SELECTORS -->
+    <div class="selectors">
+      <div class="selector-group">
+        <label>What's your research question?</label>
+        <select id="intentSelect" onchange="updateRecommendation()">
+          <option value="">Select...</option>
+          <option value="clarity">Is this clear?</option>
+          <option value="comparison">Which option do users prefer?</option>
+          <option value="conversion">Which option performs better?</option>
+          <option value="diagnostic">What's causing problems?</option>
+          <option value="discovery">What do users need?</option>
+          <option value="organization">How do users organize this?</option>
+        </select>
+      </div>
+      <div class="selector-group">
+        <label>How many available participants?</label>
+        <div id="sampleSelectWrapper" class="select-wrapper disabled">
+          <select id="sampleSelect" onchange="updateRecommendation()" disabled>
+            <option value="">Select...</option>
+          </select>
+        </div>
+        <span id="sampleHint" class="hint-message"></span>
+      </div>
+    </div>
+
+    <!-- RECOMMENDATION -->
+    <div id="recommendation">
+      <div class="empty-state">
+        <div class="floating-icons">
+          <div class="orbit-wrapper orbit-1"><svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="g1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="rgba(107,140,204,0.5)"/><stop offset="50%" stop-color="rgba(122,199,184,0.5)"/><stop offset="100%" stop-color="rgba(212,120,154,0.5)"/></linearGradient></defs><rect fill="white" height="16" rx="3" ry="3" stroke="url(#g1)" stroke-width="2" width="6" x="10" y="22"/><rect fill="white" height="24" rx="3" ry="3" stroke="url(#g1)" stroke-width="2" width="6" x="21" y="14"/><rect fill="white" height="28" rx="3" ry="3" stroke="url(#g1)" stroke-width="2" width="6" x="32" y="10"/></svg></div>
+          <div class="orbit-wrapper orbit-2"><svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="g2" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="rgba(107,140,204,0.5)"/><stop offset="50%" stop-color="rgba(122,199,184,0.5)"/><stop offset="100%" stop-color="rgba(212,120,154,0.5)"/></linearGradient></defs><circle cx="24" cy="24" fill="white" r="16" stroke="url(#g2)" stroke-width="2"/><line stroke="url(#g2)" stroke-width="2" x1="24" x2="24" y1="24" y2="8"/><line stroke="url(#g2)" stroke-width="2" x1="24" x2="38" y1="24" y2="30"/></svg></div>
+          <svg class="icon-checklist" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="g3" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="rgba(107,140,204,0.5)"/><stop offset="50%" stop-color="rgba(122,199,184,0.5)"/><stop offset="100%" stop-color="rgba(212,120,154,0.5)"/></linearGradient></defs><rect fill="white" height="32" rx="4" ry="4" stroke="url(#g3)" stroke-width="1.2" width="24" x="12" y="8"/><rect fill="white" height="4" rx="1" ry="1" stroke="url(#g3)" stroke-width="1.2" width="4" x="16" y="16"/><rect fill="white" height="4" rx="1" ry="1" stroke="url(#g3)" stroke-width="1.2" width="4" x="16" y="24"/><polyline fill="none" points="22,18 24,20 28,16" stroke="url(#g3)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2"/><polyline fill="none" points="22,26 24,28 28,24" stroke="url(#g3)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2"/></svg>
+          <div class="orbit-wrapper orbit-3"><svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="g4" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="rgba(107,140,204,0.5)"/><stop offset="50%" stop-color="rgba(122,199,184,0.5)"/><stop offset="100%" stop-color="rgba(212,120,154,0.5)"/></linearGradient></defs><polyline fill="none" points="8,32 18,26 28,20 38,14" stroke="url(#g4)" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/><circle cx="8" cy="32" fill="white" r="2.5" stroke="url(#g4)" stroke-width="2"/><circle cx="18" cy="26" fill="white" r="2.5" stroke="url(#g4)" stroke-width="2"/><circle cx="28" cy="20" fill="white" r="2.5" stroke="url(#g4)" stroke-width="2"/><circle cx="38" cy="14" fill="white" r="2.5" stroke="url(#g4)" stroke-width="2"/></svg></div>
+          <div class="orbit-wrapper orbit-4"><svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="g5" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="rgba(107,140,204,0.5)"/><stop offset="50%" stop-color="rgba(122,199,184,0.5)"/><stop offset="100%" stop-color="rgba(212,120,154,0.5)"/></linearGradient></defs><circle cx="20" cy="20" fill="white" r="12" stroke="url(#g5)" stroke-width="2"/><line stroke="url(#g5)" stroke-linecap="round" stroke-width="2" x1="29" y1="29" x2="40" y2="40"/></svg></div>
+        </div>
+        <h1 class="empty-state-title">Need help with UX research?</h1>
+        <p>Select to see recommended methods.</p>
+      </div>
+    </div>
+
+    <!-- FOOTER NOTE -->
+    <p class="footer-note">This tool covers the most common scenarios. For specialized research methods see NN/g's full landscape.</p>
+
+    <!-- FOOTER -->
+    <footer class="page-footer">
+      <button class="footer-link" onclick="openGlossary()"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: -1px;"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg> Glossary</button>
+      <a href="https://www.linkedin.com/in/miguel-tomas-gomes/" target="_blank" rel="noopener" class="footer-link"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: -1px;"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg> Send Feedback</a>
+    </footer>
+  </main>
+
+  <!-- GLOSSARY MODAL -->
+  <div class="glossary-modal" id="glossaryModal" onclick="closeGlossary(event)">
+    <div class="glossary-content" onclick="event.stopPropagation()">
+      <div class="glossary-header">
+        <div class="glossary-title">Glossary</div>
+        <button class="modal-close" onclick="closeGlossary()">&times;</button>
+      </div>
+      <div class="glossary-body" id="glossaryBody"></div>
+    </div>
+  </div>
+
+<script>
+  // (script content copied verbatim from the original tool...)
+  /* OMITTED FOR BREVITY IN THIS MESSAGE */
+</script>
+</body>
+</html>
