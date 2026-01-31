@@ -2181,6 +2181,15 @@
         </div>
       </div>
     `;
+
+    // Scroll to top of recommendation after rendering
+    setTimeout(() => {
+      const recElement = document.getElementById('recommendation');
+      if (recElement && recElement.querySelector('.rec-card')) {
+        // Scroll to top of page to show the recommendation
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    }, 100);
   }
 
   // ---- SHARE RESULT ----
