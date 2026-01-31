@@ -154,11 +154,17 @@
       color: var(--text);
       font-weight: 500;
       transition: color .25s;
+      text-decoration: none;
     }
 
     .nav-links a:hover {
       color: var(--accent);
-      text-decoration: none;
+    }
+
+    .nav-links a.active {
+      color: var(--accent);
+      text-decoration: underline;
+      text-underline-offset: 4px;
     }
 
     /* PAGE HEADER */
@@ -288,9 +294,11 @@
     <nav aria-label="Primary">
       <a href="/" class="logo">Miguel Tomás Gomes</a>
       <ul class="nav-links">
-        <li style="--i:1"><a href="/about">About</a></li>
-        <li style="--i:2"><a href="/tools/method-finder">UX Method Finder</a></li>
-        <li style="--i:3"><a href="/#contact">Contact</a></li>
+        <li style="--i:1"><a href="/">Home</a></li>
+        <li style="--i:2"><a href="/about">About</a></li>
+        <li style="--i:3"><a href="/articles/" class="active">Work Samples</a></li>
+        <li style="--i:4"><a href="/tools/method-finder">UX Method Finder</a></li>
+        <li style="--i:5"><a href="/#contact">Contact</a></li>
       </ul>
     </nav>
   </header>

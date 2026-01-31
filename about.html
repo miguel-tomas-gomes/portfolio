@@ -124,10 +124,15 @@
       color: var(--text);
       font-weight: 500;
       transition: color .25s;
+      text-decoration: none;
     }
     .nav-links a:hover {
       color: var(--accent);
-      text-decoration: none;
+    }
+    .nav-links a.active {
+      color: var(--accent);
+      text-decoration: underline;
+      text-underline-offset: 4px;
     }
 
     /* Hamburger menu */
@@ -485,9 +490,11 @@
         <span></span>
       </button>
       <ul class="nav-links" id="navMenu">
-        <li style="--i:1"><a href="/articles/">Work Samples</a></li>
-        <li style="--i:2"><a href="/tools/method-finder">UX Method Finder</a></li>
-        <li style="--i:3"><a href="#contact">Contact</a></li>
+        <li style="--i:1"><a href="/">Home</a></li>
+        <li style="--i:2"><a href="/about" class="active">About</a></li>
+        <li style="--i:3"><a href="/articles/">Work Samples</a></li>
+        <li style="--i:4"><a href="/tools/method-finder">UX Method Finder</a></li>
+        <li style="--i:5"><a href="#contact">Contact</a></li>
       </ul>
     </nav>
   </header>
