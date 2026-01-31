@@ -20,26 +20,38 @@
   </url>
   <url>
     <loc>https://migueltomasgomes.com/articles/finding-words-monitoring</loc>
-    <lastmod>2025-09-14</lastmod>
+    <lastmod>2026-01-31</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://migueltomasgomes.com/articles/ab-test-case</loc>
-    <lastmod>2025-09-14</lastmod>
+    <lastmod>2026-01-31</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://migueltomasgomes.com/articles/simplifying-domain-config</loc>
-    <lastmod>2025-09-14</lastmod>
+    <lastmod>2026-01-31</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://migueltomasgomes.com/articles/designing-empty-state-framework</loc>
-    <lastmod>2025-01-20</lastmod>
+    <lastmod>2026-01-31</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://migueltomasgomes.com/articles/research-tool</loc>
+    <lastmod>2026-01-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://migueltomasgomes.com/articles/ux-research-assistant</loc>
+    <lastmod>2026-01-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
 </urlset>

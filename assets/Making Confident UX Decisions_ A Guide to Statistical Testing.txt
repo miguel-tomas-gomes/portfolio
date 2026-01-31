@@ -1,0 +1,2246 @@
+﻿Making Confident UX
+Decisions:
+
+A Guide to Statistical
+Testing
+
+
+
+Index
+
+Introduction 2
+
+Part 1: Foundations 3
+
+Chapter 1: What is Research and Why It Matters 4
+
+Chapter 2: Understanding P-Values 6
+
+Chapter 3: Sample Sizes 8
+
+Part 2: Statistical Testing in Practice 10
+
+Chapter 4: Fisher's Exact Test 11
+
+Chapter 5: A/B Testing Methodology 13
+
+Chapter 6: Chi-Square Test 15
+
+Chapter 7: T-Test 17
+
+Part 3: Practical Application 19
+
+Chapter 8: Choosing the Right Test 20
+
+Chapter 9: Interpreting Results for Business 22
+
+Chapter 10: Common Mistakes and How to Avoid Them 24
+
+Chapter 11: From Qualitative Insights to Quantitative Tests 26
+
+Chapter 12: Communicating Results to Stakeholders 28
+
+Conclusion 30
+
+Note: Page numbers are estimates. Use Chrome Print Preview to see actual pagina‐
+tion, then manually adjust these numbers if needed.
+
+2
+
+
+
+Introduction
+
+3
+
+
+
+A Note to UX Practitioners
+
+If you've picked up this handbook, you probably fall into one of
+these categories: You make design decisions based on intuition and
+user feedback, but stakeholders keep asking for "data to back it up."
+You've tried to run A/B tests before, but you're not sure if your re‐
+sults actually mean anything. You understand that statistical testing
+could make your work more credible, but every resource you've
+found assumes a math background you don't have. This handbook is
+for you.
+
+I won't teach you to become a statistician. I won't overwhelm you
+with mathematical theory. Instead, I'll show you exactly what you
+need to know to make confident, evidence-based design decisions.
+Three statistical tests. Clear decision criteria for when to use each
+one. Practical guidance for interpreting results and communicating
+findings.
+
+You don't need advanced math skills. You don't need to understand
+complex formulas. You just need to understand when your evidence
+is strong enough to trust, and when it isn't.
+
+The goal isn't statistical sophistication: it's better design decisions
+backed by solid evidence instead of guesswork.
+
+4
+
+
+
+Let's pretend you're a UX practitioner at an e-commerce company.
+Now imagine your team spent the last three months redesigning the
+main checkout flow. Your new design is successful and everyone
+loves it. It's sleek, modern, and follows design best practices. You
+launch it to all users, and within a week, you notice something trou‐
+bling: conversion rates drop by over 14%. Your company serves cus‐
+tomers from all around the world, so that drop translates into hun‐
+dreds of thousands of dollars in lost revenue.
+
+This scenario plays out at companies every day. The biggest mistake
+in this scenario was basing decisions on instinct alone. The new
+checkout might have felt better, but without testing, you are effec‐
+tively gambling with business outcomes.
+
+This handbook teaches you how to replace gambling with evidence.
+I'll show you the basics of statistical thinking that handle nearly the
+vast majority of UX scenarios you'll encounter. More importantly,
+you'll understand when to use each test, how to interpret the results,
+and how to communicate findings to stakeholders who make deci‐
+sions based on your research.
+
+My approach differs from academic statistics courses. Instead of in‐
+troducing you to mathematical theory, I'll start with common prob‐
+lems you face as a UX practitioner. Each statistical test is introduced
+as a solution to a specific type of question you need to answer. The
+mathematics comes second, explained in plain language after you
+understand why you need it.
+
+5
+
+
+
+By the end of this handbook, you'll be able to design rigorous exper‐
+iments, analyze results with appropriate statistical tests, and present
+findings that drive confident business decisions. You'll understand
+how to run the tests, why they work, and when they don't.
+
+6
+
+
+
+Part 1: Foundations
+
+7
+
+
+
+Statistical testing rests on three fundamental concepts: understand‐
+ing what research can and cannot tell you, interpreting probability
+statements correctly, and planning appropriate sample sizes.
+Moreover, these concepts are interconnected: misunderstanding one
+leads to mistakes in the others.
+
+Consider a common scenario: you test a new feature with 20 users
+and find that 14 prefer it over the current version. That's 70% pref‐
+erence. Should you launch it? The answer depends on understand‐
+ing all three foundations. You need to know what this research actu‐
+ally tells you, how confident you can be in the result, and whether
+20 users provides sufficient evidence.
+
+By the end of Chapter 3, you'll understand why some tests need 5
+users while others need 5,000. You'll know why "statistically signifi‐
+cant" doesn't always mean "important," and I'll show you how to de‐
+sign studies that provide answers to your business questions.
+
+Chapter 1: What Is Research and Why It Matters
+
+Research is systematic investigation designed to answer specific
+questions with evidence. By systematic, I mean it follows a struc‐
+tured process. This process exists to minimize bias and produce reli‐
+able results. In UX, research helps you understand what users actu‐
+ally do. By understanding users, you won't need to rely on guessing
+
+8
+
+
+
+alone. Rather, you're able to make logical deductions based on facts
+and evidence.
+
+The fundamental challenge in UX work is uncertainty. When you de‐
+sign a new feature, you're making predictions about how users will
+respond. Even experienced designers make incorrect predictions on
+a regular basis. Research won't help you eliminate uncertainty, but it
+can help you quantify it. Instead of "I think users will like this," re‐
+search lets you say "70% of users preferred this version, and I'm
+95% confident the true preference is between 60% and 80%."
+
+This quantification of uncertainty is what makes research valuable
+for business decisions. When making decisions, executive leadership
+doesn't always need certainty. They need to understand the risks and
+rewards for each option, and research provides that understanding.
+
+Consider Booking.com, one of the most data-driven companies in
+the world. They test everything, and they've learned that expert in‐
+tuition is wrong about 90% of the time. Features that designers ex‐
+pect to improve conversion often decrease it. Visual changes that
+seem minor often have major impacts. The only way to know is by
+testing systematically.1
+
+But research also reveals opportunities that intuition misses entirely.
+When Microsoft tested different shades of blue for links in Bing,
+they found that one particular shade increased revenue by $80 mil‐
+lion annually. The difference was imperceptible to most people, but
+
+9
+
+
+
+it mattered at scale. No amount of expert judgment would have
+identified that opportunity, only systematic testing could.
+
+But research has limitations. It tells you what happened in your test,
+not why it happened. It tells you what users did, not necessarily
+what they'll do in different contexts. It tells you about the users you
+tested, not necessarily all users. Understanding these limitations is
+as important as understanding research's capabilities.
+
+The most common mistake in UX research is treating research find‐
+ings as universal truths rather than evidence about specific situa‐
+tions. When you test a checkout flow with 1,000 users and find a
+15% improvement in conversion, you've learned something valuable
+about those 1,000 users in that specific context. You haven't proven
+that all users everywhere will experience the same improvement.
+Good research acknowledges this uncertainty explicitly.
+
+1 Eisenberg, B. (2013). "Booking.com: Testing Culture." Eisenberg Holdings. Referenced in
+multiple case studies showing that even expert predictions fail 80-90% of the time without
+testing.
+
+10
+
+
+
+Chapter 2: Understanding P-Values
+
+Every statistical test in this handbook produces a p-value.
+Understanding p-values correctly is essential because misinterpret‐
+ing them leads to wrong decisions, wasted resources, and failed
+product launches.
+
+Let's start with a concrete example. You test two checkout flows with
+50 users each. In the current checkout, 30 users complete their pur‐
+chase (60% conversion). In the new checkout, 35 users complete
+their purchase (70% conversion). You run a statistical test and get p
+= 0.23. What does this mean?
+
+The p-value answers this question: "If both checkout flows were ac‐
+tually equivalent, what's the probability of seeing a difference this
+large (or larger) just by random chance?" In this case, p = 0.23
+means there's a 23% chance you'd see a 10 percentage point differ‐
+ence even if both checkouts were identical in their true conversion
+rates.
+
+That's a fairly high probability, which suggests the difference you ob‐
+served might just be random variation rather than a real improve‐
+ment. But notice what the p-value doesn't tell you: it doesn't tell you
+the probability that the new checkout is better. It doesn't tell you
+how much better it might be. It doesn't tell you whether the im‐
+provement is large enough to matter for your business.
+
+11
+
+
+
+The conventional threshold for statistical significance is p < 0.05,
+meaning less than a 5% chance of seeing your results if there's no
+real difference. This threshold is arbitrary: there's nothing magical
+about 5%: but it's become standard because it balances two types of
+errors: false positives (thinking something works when it doesn't)
+and false negatives (missing real improvements).2
+
+When p < 0.05, I call the result "statistically significant." This phrase
+causes enormous confusion because "significant" in everyday lan‐
+guage means "important" or "meaningful," but in statistics it just
+means "unlikely to be due to chance." A result can be statistically
+significant but practically meaningless, or practically important but
+not statistically significant.
+
+Here's an example of statistical significance without practical impor‐
+tance: you test a new button color with 100,000 users and find it in‐
+creases conversion from 10.00% to 10.05%. The p-value is 0.001:
+highly statistically significant. But the improvement is so small that
+it won't meaningfully impact your business. The statistical test cor‐
+rectly identified a real difference, but that difference doesn't matter.
+
+Conversely, you might test a new feature with 20 users and find it
+reduces task completion time from 120 seconds to 90 seconds: a
+25% improvement. The p-value is 0.08, not statistically significant
+by conventional standards. But the improvement is large enough
+that it might be worth implementing anyway, especially if you plan
+to gather more data after launch.
+
+12
+
+
+
+The key insight is that p-values tell you about the reliability of your
+evidence, not about the importance of your findings. You need both
+pieces of information to make good decisions: Is the difference real?
+P-values answer this. And is the difference large enough to matter?
+Effect size answers this, which I'll cover in Chapter 9.
+
+One more critical point about p-values: they depend heavily on sam‐
+ple size. With very large samples, even tiny differences become sta‐
+tistically significant. With very small samples, even large differences
+might not reach statistical significance. This is why sample size plan‐
+ning (Chapter 3) is so important: you need enough data to detect
+differences that matter for your business, but not so much data that
+you detect differences too small to care about.3
+
+2 Wasserstein, R.L. & Lazar, N.A. (2016). "The ASA Statement on p-Values: Context,
+Process, and Purpose." The American Statistician, 70(2), 129-133. Discusses why p < 0.05
+is conventional but arbitrary.
+
+3 Sauro, J. & Lewis, J.R. (2016). "Quantifying the User Experience: Practical Statistics for
+User Research" (2nd ed.). Morgan Kaufmann. Chapter 4: Statistical Significance and
+Sample Size.
+
+13
+
+
+
+Chapter 3: Sample Sizes and Why Some Tests Need
+50 participants and Others Need 5,000
+
+Sample size is the most misunderstood aspect of UX research.
+Practitioners often ask "How many users do I need?" expecting a
+simple answer like "30 users" or "100 users." But the real answer is:
+it depends on what you're trying to detect and what type of data
+you're collecting.
+
+Here's what happens when you test different types of data. First sce‐
+nario: you're testing whether users can complete a task at all. They
+either succeed or fail. Second scenario: you're measuring how long
+the task takes. Every user provides a precise time value.
+
+The continuous measurement scenario requires far fewer users.
+Why? Because each user provides much more information. When
+you measure task time, one user might take 45 seconds, another 52
+seconds, another 38 seconds. Each measurement tells you some‐
+thing specific about performance. But with binary outcomes, each
+user provides just one bit of information: success or failure. You
+need many more users to build a clear picture of the true success
+rate.
+
+This means continuous data often requires smaller samples than cat‐
+egorical data, but effect size matters more than data type. This ex‐
+
+14
+
+
+
+plains why usability tests with task completion times work well with
+20-30 users per group, while conversion rate tests need thousands
+of users per group.3
+
+The second factor affecting sample size is the size of the difference
+you want to detect. Detecting large differences requires small sam‐
+ples. Detecting small differences requires large samples. This makes
+intuitive sense: if a new checkout flow doubles conversion rate
+(from 10% to 20%), you'll notice that improvement quickly. But if it
+increases conversion by just 1% (from 10% to 11%), you'll need
+many more users to distinguish that small improvement from ran‐
+dom variation.
+
+Here's where business strategy intersects with statistical planning.
+Before running any test, ask yourself: "What's the smallest improve‐
+ment that would be worth implementing?" If only large improve‐
+ments justify the development effort, you can use smaller samples. If
+small improvements are valuable (perhaps because you have mil‐
+lions of users), you'll need larger samples to detect them reliably.
+
+The Cost of Being Wrong
+
+Your sample size should reflect the cost of making the wrong
+decision:
+
+15
+
+
+
+Cost of Being Sample Size Example
+Wrong Strategy
+
+High cost of Larger samples Major checkout re‐
+false positive + higher confi‐ design that's expen‐
+(implement‐ dence levels sive to build and
+ing something risky to deploy
+that doesn't
+work)
+
+High cost of Larger samples Testing a feature
+false nega‐ + higher power that competitors
+tive levels might launch first
+(missing a
+real
+improvement)
+
+Low cost of Smaller sam‐ Testing button col‐
+being wrong ples + stan‐ ors that are cheap
+
+dard confi‐ to change
+dence levels
+
+Let's make this concrete with typical ranges. Suppose you're testing
+a new checkout flow and your current conversion rate is 10%. If you
+want to detect a 5 percentage point improvement (from 10% to
+15%: a 50% relative improvement), sample size calculators typically
+suggest 300-500 participants per group, depending on your confi‐
+dence and power requirements. But if you want to detect a 1 per‐
+centage point improvement (from 10% to 11%: a 10% relative im‐
+
+16
+
+
+
+provement), you'd typically need 8,000-12,000 participants per
+group. The smaller the improvement you want to detect, the more
+participants you need.
+
+For continuous data like task times, the numbers can be dramatical‐
+ly different. If you're measuring task completion time and expect a
+25% improvement (say, from 60 seconds to 45 seconds), calculators
+typically suggest 20-40 participants per group, depending on data
+variability. The precise number depends on how variable the task
+times are. But if you're testing a tiny improvement (say, 60 seconds
+to 58 seconds), you'd need much larger samples.
+
+The mathematical reason continuous data often needs smaller sam‐
+ples lies in information density. Categorical data provides exactly
+one bit of information per participant (success/failure, yes/no,
+clicked/didn't click). Continuous data provides much more informa‐
+tion per participant because it captures the magnitude of the out‐
+come, not just whether it occurred.
+
+This explains why usability studies with 5-8 participants can identify
+major problems, but A/B tests need thousands of users. Usability
+studies measure continuous variables like task completion time and
+focus on large effect sizes. A/B tests measure binary outcomes like
+conversion rates and often try to detect small improvements. They're
+solving different problems with different effect sizes and data
+types.4
+
+17
+
+
+
+Before running any test, you need to plan your sample size. Too few
+participants and you'll miss real improvements. Too many partici‐
+pants and you'll waste time and resources. The key is matching your
+sample size to your business context and the size of improvement
+you want to detect.
+
+18
+
+
+
+Sample Size Planning Framework
+
+Step 1: Define Your Minimum Detectable Effect
+
+What's the smallest change that would justify implementation
+costs? This is called the minimum detectable effect (MDE),
+and it drives everything else.
+
+Step 2: Assess Your Data Variability
+
+• Conversion rates: Check historical data for typical ranges
+(±2-5 percentage points is common)
+
+• Task times: Calculate coefficient of variation (standard devi‐
+ation ÷ mean)
+
+• No past data? Assume high variability and plan
+conservatively
+
+Step 3: Consider Business Context
+
+• High cost of being wrong? Use larger samples for more
+confidence
+
+• Low implementation cost? Smaller samples may be
+sufficient
+
+• Competitive pressure? Balance speed vs. confidence
+
+Step 4: Use Sample Size Calculators
+
+19
+
+
+
+Input your specific parameters: effect size, baseline rate, confi‐
+dence level, power level
+
+Step 5: Reality Check
+
+• Can you actually recruit this many participants?
+
+• How long will the test take to reach sample size?
+
+• Add 20-30% buffer for dropouts and real-world conditions
+
+Example: Testing a New Checkout Flow
+
+Sarah is testing a simplified checkout process. She starts by asking:
+"What improvement would justify the engineering effort?" Her team
+decides anything less than a 20% relative improvement isn't worth
+implementing. Their current conversion rate is 15%, so they want to
+detect an improvement to 18% (3 percentage points).
+
+Next, Sarah checks historical data. Their conversion rates typically
+vary by ±2 percentage points week to week, suggesting moderate
+variability. The implementation cost is high (3 months of engineer‐
+ing work), so missing a real improvement would be costly. She de‐
+cides to use 90% power instead of the standard 80%.
+
+Using a sample size calculator with these parameters (15% baseline,
+3pp improvement, 95% confidence, 90% power), she gets approxi‐
+mately 1,200 participants per group. Adding a 25% buffer for
+
+20
+
+
+
+dropouts, she plans for 1,500 participants per group. Her reality
+check: with 500 daily users, this will take 6 days to complete - ac‐
+ceptable for her timeline.
+
+Understanding Confidence and Power Levels
+
+Sample size calculations depend on two key parameters you can ad‐
+just based on business context:
+
+Confidence Level (typically 95%): How sure you want to be that a
+"significant" result isn't just luck. Higher confidence requires larger
+samples. Use 99% confidence for high-stakes decisions, 90% for
+low-risk experiments.
+
+Power Level (typically 80%): How likely you are to detect a real
+improvement if it exists. Higher power requires larger samples. Use
+90% power if missing a real improvement is costly, 70% for ex‐
+ploratory tests.
+
+Why Baseline Rates Matter for Categorical Data
+
+Testing an improvement from 50% to 55% requires far fewer users
+than testing an improvement from 5% to 10%, even though both
+represent 5 percentage point improvements. This is because out‐
+comes near 50% have maximum variability (users convert about
+half the time), while outcomes near 0% or 100% are more
+predictable.
+
+21
+
+
+
+The practical implication: if you're testing something with very low
+or very high baseline rates (below 10% or above 90%), you can use
+smaller samples. If you're testing something near 50%, you'll need
+larger samples. This is why signup flow tests (often 50-80% comple‐
+tion) need different sample sizes than purchase conversion tests (of‐
+ten 2-5% conversion).
+
+3 Nielsen, J. (2006). "Quantitative Studies: How Many Users to Test?" Nielsen Norman
+Group. https://www.nngroup.com/articles/quantitative-studies-how-many-users/
+
+4 Nielsen, J. (2000). "Why You Only Need to Test with 5 Users." Nielsen Norman Group.
+https://www.nngroup.com/articles/why-you-only-need-to-test-with-5-users/ : Note: This
+applies to qualitative usability testing for finding problems, not quantitative measurement
+of effect sizes.
+
+22
+
+
+
+Part 2: Statistical Testing in Practice
+
+23
+
+
+
+Now that you understand the foundations, I can turn to the specific
+statistical tests you'll use in practice. This section covers three tests
+that provide the statistical foundation for most UX validation scenar‐
+ios. Fisher's exact test for small samples with categorical data. Chi-
+square test for large samples with categorical data. T-test for contin‐
+uous data.
+
+Each test is designed for specific situations. Using the wrong test
+leads to incorrect conclusions. But choosing the right test is straight‐
+forward once you understand your data type and sample size. I'll
+also cover A/B testing methodology, which is how you apply these
+tests to real product decisions.
+
+All three tests follow the same logic. You collect data from two
+groups, calculate how different they are, then determine the proba‐
+bility of seeing that difference by chance alone. This probability is
+the p-value. The math differs for each test, but the logic is identical.
+
+Chapter 4: Fisher's Exact Test: When You Have
+Small Samples
+
+You're testing a new checkout flow, but you only have budget to test
+20 users in each version. In the current checkout, 12 out of 20 users
+complete their purchase (60% conversion). In the new checkout, 16
+out of 20 users complete their purchase (80% conversion). That's a
+20 percentage point improvement: substantial if it's real. But with
+
+24
+
+
+
+only 20 users per group, how confident can you be that this differ‐
+ence isn't just luck?
+
+This is exactly the situation Fisher's exact test was designed for.
+When you have categorical data (success/failure, yes/no,
+clicked/didn't click) and expected cell frequencies below 5, Fisher's
+exact test calculates the precise probability of seeing your results if
+both groups were actually equivalent. It's particularly useful for
+small samples, but can be used with any sample size when you want
+exact probabilities.
+
+The test is called "exact" because it calculates exact probabilities
+rather than approximations. This matters with small samples, where
+approximations can be inaccurate. With large samples, approxima‐
+tions work fine and chi-square test is faster. But with small samples,
+you need Fisher's exact precision.
+
+Let's work through the checkout example. You have a 2×2 table of
+results:
+
+Completed Abandoned Total
+
+Current 12 8 20
+
+New 16 4 20
+
+Total 28 12 40
+
+25
+
+
+
+Fisher's exact test asks: "If I randomly shuffled these 28 completions
+and 12 abandonments among 40 users, how often would I see a
+split this extreme?" The test calculates this probability exactly by
+considering all possible arrangements of the data.
+
+For this example, the test gives p = 0.096. This means there's a
+9.6% chance you'd see a difference this large just by random chance
+if both checkouts were equivalent. By conventional standards (p <
+0.05), this isn't statistically significant. You observed a 20 percent‐
+age point improvement, but I can't be confident it's real rather than
+luck.
+
+This illustrates a crucial point about small samples: even large dif‐
+ferences might not reach statistical significance because you simply
+don't have enough data to be confident. With 20 users per group,
+you'd need to see something like 18/20 vs 12/20 to reach p < 0.05.
+The test isn't saying the new checkout doesn't work: it's saying you
+don't have enough evidence yet to be confident.
+
+What should you do with p = 0.096? You have several options. You
+could gather more data: test another 20 users per group and com‐
+bine the results. You could implement the new checkout anyway, ac‐
+cepting the risk that the improvement might not be real. Or you
+could make the decision based on other factors: if the new checkout
+is cheaper to maintain or easier to update, the suggestive evidence
+might be enough to justify the change.
+
+26
+
+
+
+This is where statistical testing meets business judgment. The test
+tells you about your evidence strength, but doesn't make the deci‐
+sion. A p-value of 0.096 means "moderate evidence of improvement,
+but not conclusive." Whether that's enough depends on the costs of
+being wrong.
+
+Fisher's Exact Test: Quick Reference
+
+When to use: Categorical data when expected cell frequencies
+< 5, or when you want exact probabilities regardless of sam‐
+ple size
+
+Data format: 2×2 table of counts (success/failure for two
+groups)
+
+What it tells you: Exact probability of seeing your results if
+groups are equivalent
+
+Online calculator: socscistatistics.com/tests/fisher
+
+Example calculation: Current checkout: 12/20 success, New
+checkout: 16/20 success → p = 0.096 (not significant at p <
+0.05)
+
+27
+
+
+
+Chapter 5: A/B Testing: Putting Statistical Tests
+Into Practice
+
+You've written two call-to-action buttons. Version A says "Get
+Started." Version B says "Start Free Trial." Which gets more clicks?
+You could guess based on intuition, or run an A/B test and find out
+with evidence.
+
+A/B testing is the systematic process of comparing two versions of
+something to determine which performs better. You show half your
+users version A and half version B, measure the outcome for each
+group, and use statistical tests to determine whether any difference
+is real or just random chance. It's how you replace guesswork with
+evidence in product decisions.
+
+But A/B testing is more than just "try two things and see what hap‐
+pens." The methodology matters enormously. Poor experimental de‐
+sign can lead to completely wrong conclusions, even with perfect
+statistical analysis. This chapter covers the principles that make A/B
+tests reliable and the common mistakes that make them misleading.
+
+From Assumptions to Hypotheses
+
+Every A/B test starts with a hypothesis. You observe how users inter‐
+act with your product, identify a potential improvement, and form a
+testable prediction. For example: "If I change the button from 'Get
+
+28
+
+
+
+Started' to 'Start Free Trial,' users will click it more because it explic‐
+itly mentions that it's free."
+
+In frequentist statistics (the approach I use), you don't directly test
+whether version B is better. Instead, you test the null hypothesis that
+there's no difference. You collect data and ask: "If both versions were
+equivalent, how likely would I see a difference this large just by
+chance?"
+
+That probability is the p-value. A p-value of 0.05 means that if there
+were truly no difference between versions, you'd still see results this
+extreme about 5% of the time due to random variation. When p <
+0.05, we have strong evidence against the null hypothesis—the dif‐
+ference is unlikely to be just chance. This doesn't guarantee the dif‐
+ference is real (nothing in statistics provides absolute certainty), but
+it gives us sufficient evidence to act on the finding.
+
+Understanding Statistical Errors
+
+Even with perfect methodology, you can still draw wrong conclu‐
+sions. There are two types of errors you need to understand.
+
+Type I errors (false positives): You conclude there's a difference
+when there actually isn't. You reject the null hypothesis when it's
+true. This is what the significance level (α = 0.05) controls: you're
+accepting a 5% chance of this error. If you run 100 A/B tests where
+
+29
+
+
+
+nothing is actually different, you'd expect about 5 to show "signifi‐
+cant" results just by chance.
+
+Type II errors (false negatives): You conclude there's no difference
+when there actually is. You fail to reject the null hypothesis when it's
+false. This happens when your test lacks statistical power: you don't
+have enough data to detect the real effect.
+
+Statistical power (1 - β) is the probability that you'll detect a real
+difference when one exists. Power is conventionally set at 80%,
+meaning if there's a real effect of the size you're looking for, you'll
+detect it 8 out of 10 times. The other 2 times, you'll miss it due to
+random variation in your sample.
+
+Power depends on four factors: your sample size (larger samples =
+more power), the size of the effect you're trying to detect (larger ef‐
+fects = easier to detect), your significance level (stricter thresholds
+= less power), and the variability in your data (less variability =
+more power). When planning an A/B test, you typically fix three of
+these (significance level at 0.05, power at 80%, and the minimum
+effect size you care about) and calculate the required sample size.
+
+The Five Critical Principles
+
+Five principles determine whether your A/B test produces reliable
+results. Violate any of them and your conclusions become
+questionable.
+
+30
+
+
+
+Principle 1: True randomization. Every user must have an equal
+chance of seeing either version, and the assignment must be truly
+random: not based on time of day, user characteristics, or any other
+factor. Why? Because randomization is what allows you to attribute
+differences in outcomes to differences in the versions rather than
+differences in the users.
+
+Imagine you show version A to users who visit in the morning and
+version B to users who visit in the afternoon. If version B performs
+better, you can't tell whether it's because version B is actually better
+or because afternoon users behave differently. Maybe afternoon
+users are more likely to convert regardless of which version they
+see. Randomization eliminates this problem by ensuring both groups
+are equivalent on average: same mix of morning and afternoon
+users, same mix of new and returning users, same mix of every char‐
+acteristic that might affect the outcome.
+
+Principle 2: Simultaneous testing. Both versions must run at the
+same time. If you test version A for a week, then version B for a
+week, you can't tell whether differences are due to the versions or
+due to what happened during those different weeks. Maybe a com‐
+petitor launched a promotion during week two. Maybe there was a
+holiday. Maybe your marketing campaign changed. Simultaneous
+testing controls for all these external factors by exposing both ver‐
+sions to the same conditions.
+
+31
+
+
+
+Principle 3: Predetermined sample size. This is the most common‐
+ly violated principle, and it causes serious problems. You must de‐
+cide in advance how much data to collect, run the test until you
+reach that amount, and then analyze results once. If you check re‐
+sults repeatedly and stop the test as soon as you see statistical signif‐
+icance, you dramatically inflate your false positive rate from 5% to
+potentially 20% or higher.
+
+This "peeking problem" is subtle but important. Imagine you're test‐
+ing a new feature and checking results every day. On day 3, p =
+0.03: statistically significant! You stop the test and declare victory.
+But if you had kept running the test, the effect might have disap‐
+peared. By checking repeatedly and stopping at the first significant
+result, you're giving yourself multiple chances to find significance,
+which means you'll find it more often even when there's no real
+effect.9
+
+The solution: calculate your required sample size before starting
+(using the guidelines from Chapter 3), run the test until you reach
+that sample size, and analyze results once. If you absolutely must
+check results early for technical monitoring, use adjusted signifi‐
+cance thresholds (like p < 0.01 for interim looks) or sequential test‐
+ing methods designed for multiple analyses. But the simplest ap‐
+proach is to resist peeking entirely.
+
+Principle 4: Single primary metric. Choose one metric before start‐
+ing the test that will determine success or failure. You can measure
+
+32
+
+
+
+other things for exploratory purposes, but the decision should be
+based on the primary metric alone. Why? Because if you measure 20
+different metrics and then cherry-pick the one that shows the best
+result, you're inflating your false positive rate. With 20 metrics and a
+5% false positive rate per metric, you'd expect one metric to show
+"significance" purely by chance even if nothing real is happening.
+
+Principle 5: Appropriate statistical test. Use the right test for your
+data type and sample size. Categorical outcomes (clicked or didn't
+click, converted or didn't convert) use Fisher's exact test or chi-
+square test depending on expected cell frequencies. Continuous out‐
+comes (time on page, satisfaction rating) use t-test. Using the wrong
+test can lead to incorrect conclusions.
+
+A Complete Example
+
+Here's a complete A/B test from start to finish. You want to test a
+new product page layout. Your primary metric is add-to-cart rate,
+currently 15%. You want to detect a 3 percentage point improve‐
+ment (from 15% to 18%). Using Chapter 3 guidelines, you need
+about 2,000 participants per group.
+
+You implement random assignment so that each user has a 50%
+chance of seeing either the current layout or the new layout. You
+run the test for two weeks until you've collected data from 2,000
+users per group. Then, and only then, you analyze the results.
+
+33
+
+
+
+The results: current layout had 300 add-to-carts out of 2,000 partici‐
+pants (15.0%), new layout had 340 add-to-carts out of 2,000 partic‐
+ipants (17.0%). That's a 2 percentage point improvement. You run a
+chi-square test and get p = 0.11. This is not statistically significant
+(p > 0.05), so despite the 2 percentage point difference, you don't
+have sufficient evidence that the new layout is better. You continue
+with the current layout and consider testing a more substantial
+change.
+
+Notice what made this test reliable: random assignment, simultane‐
+ous testing, predetermined sample size, single primary metric, and
+appropriate statistical test. Remove any of these elements and your
+conclusions become less trustworthy.
+
+Minimum Detectable Effect and Test Duration
+
+When planning an A/B test, you need to decide the smallest im‐
+provement worth detecting. As we discussed in sample size plan‐
+ning, this is your minimum detectable effect (MDE). If the effect is
+large: say, a 50% improvement in conversion rate: you can detect it
+with relatively few users. But if the effect is small: say, a 5% im‐
+provement: you need a much larger sample to be confident it's real
+and not just noise.
+
+The MDE directly determines your required sample size, which in
+turn determines how long the test must run. You can estimate test
+duration with a simple formula:
+
+34
+
+
+
+Test Duration = Required Sample Size ÷ Average Daily Visitors
+
+For example, if you need 2,000 users per group (4,000 total) and
+you get 500 visitors per day, your test will run for 8 days. If the test
+ends too quickly, you risk stopping before the data has stabilized.
+That's why sample size and test duration are planned up front: to
+ensure your A/B test has enough data to detect the effect you care
+about with confidence.
+
+Confidence Intervals: Understanding the Range of
+Uncertainty
+
+When your A/B test ends, most tools show a percentage lift and a
+confidence interval (CI). The confidence interval is a range where
+the true effect is likely to fall. For example, if variant B shows a
++2% increase with a 95% CI of ±1.5%, then you can be reasonably
+confident the real effect is somewhere between +0.5% and +3.5%.
+
+If the confidence interval crosses zero (for example, -0.5% to
++2.5%), the result is uncertain. The true effect might be positive,
+negative, or nonexistent. This is another way of saying the result
+isn't statistically significant. The confidence interval gives you more
+information than the p-value alone: it shows the plausible range of
+effect sizes.
+
+And despite your level of confidence, reaching statistical significance
+doesn't mean a change is automatically worth implementing. You
+
+35
+
+
+
+need to look at the effect size and connect it back to overall business
+value. A +0.5% lift may not be worth the engineering cost to imple‐
+ment and maintain, even if it's statistically significant.
+
+Common Pitfalls to Avoid
+
+Three mistakes can make A/B test results unreliable, even when you
+follow the five principles.
+
+Pitfall 1: P-hacking (stopping tests early). This is the most infa‐
+mous mistake: checking results repeatedly and stopping as soon as
+you see statistical significance. This inflates false positives and
+makes findings less trustworthy. When you pick a test duration, stick
+to it. Don't peek and stop early because you see p < 0.05.
+
+Pitfall 2: Testing too many variants at once. If you test five differ‐
+ent button colors simultaneously, you'll struggle to understand
+what's driving any differences you observe. Each test should isolate
+the change so you can be more confident about causality. For exam‐
+ple, if you're testing copy changes on a button, keep the rest of the
+page unchanged, including the button's color, size, and position.
+
+Pitfall 3: Poor segmentation. If you fail to split users by relevant
+criteria, you may miss important differences or apply insights to the
+wrong audience. Results from new users may not match long-time
+users, and mixing them blurs the real effect. Segmentation should
+reflect how people use your product. If you're testing a feature only
+
+36
+
+
+
+power users care about, focus your analysis on that group rather
+than diluting the signal with casual users.
+
+37
+
+
+
+A/B Testing Checklist
+
+Before starting:
+
+□ Define primary metric
+
+□ Calculate required sample size
+
+□ Set up random assignment
+
+□ Choose statistical test method
+
+During test:
+
+□ Don't peek at results
+
+□ Monitor for technical issues only
+
+□ Run until planned sample size reached
+
+After test:
+
+□ Analyze with predetermined statistical test
+
+□ Check both statistical and practical significance
+
+□ Make decision based on complete evidence
+
+38
+
+
+
+Takeaways for UX Practitioners
+
+A/B testing is about making better design decisions with less guess‐
+work. You contribute by crafting hypotheses grounded in user re‐
+search, designing tests that isolate specific changes, and interpreting
+results that connect user behavior to business outcomes. The three
+statistical tests in this handbook are the tools you use within the A/B
+testing framework. Master the methodology, and you'll answer ques‐
+tions like "Which button copy drives more clicks?" with evidence in‐
+stead of intuition.
+
+9 Kohavi, R., Tang, D., & Xu, Y. (2020). "Trustworthy Online Controlled Experiments: A
+Practical Guide to A/B Testing." Cambridge University Press. Chapter 20: Peeking and
+Stopping Rules.
+
+39
+
+
+
+Chapter 6: Chi-Square Test: When You Have Large
+Samples
+
+You're testing three email subject lines, each sent to 10,000 users.
+Subject A gets 1,800 opens (18.0%), Subject B gets 1,950 opens
+(19.5%), and Subject C gets 1,750 opens (17.5%). Subject B per‐
+forms best, but could these differences just be chance? This is where
+chi-square test comes in.
+
+Chi-square test serves the same purpose as Fisher's exact test: deter‐
+mining whether differences in categorical data are real or random
+variation. But it's designed for large samples. With large samples,
+calculating exact probabilities becomes computationally intensive
+and unnecessary. Chi-square test uses a mathematical approximation
+that's accurate with large samples and much faster to calculate.
+
+The test compares what you observed to what you'd expect if all
+groups were equivalent. In the email example, you sent 30,000
+emails and got 5,500 opens (18.3% overall). If all three subject lines
+were equally effective, you'd expect each to get about 1,833 opens.
+The chi-square test measures how far your observed results (1,800,
+1,950, 1,750) deviate from these expected values (1,833 each).
+
+The larger the deviations, the less likely they are due to chance, and
+the smaller your p-value. For this example, chi-square test gives p =
+
+40
+
+
+
+0.003. This means there's only a 0.3% chance you'd see differences
+this large by random chance if all three subject lines were equiva‐
+lent. That's well below the 0.05 threshold, providing strong evidence
+that the differences are real rather than random variation.
+
+But here's where statistical significance and practical significance di‐
+verge. Subject B (the best performer) had a 19.5% open rate com‐
+pared to Subject C (the worst performer) at 17.5%. That's a 2 per‐
+centage point difference, or about an 11% relative improvement. Is
+that meaningful for your business? It depends on your email volume
+and the value of each open. With millions of emails per year, an
+11% improvement in open rates could be substantial. With smaller
+volumes, it might not justify the effort of personalizing subject lines.
+
+This illustrates an important principle: statistical tests tell you
+whether differences are real, but they don't tell you whether differ‐
+ences matter. You need both pieces of information to make good
+decisions.
+
+Chi-square test can handle more than two groups, which makes it
+useful for testing multiple variations simultaneously. But there's a
+catch: the test tells you that at least one group is different, but not
+which specific pairs differ. In the email example, you know the three
+subject lines aren't all equivalent, but you don't know whether A dif‐
+fers from B, B differs from C, or A differs from C.
+
+41
+
+
+
+For practical purposes, you can usually just look at the data and see
+which group performed best. In the email example, Subject B clearly
+outperformed the others. But if you need formal statistical compar‐
+isons between specific pairs, you'd need to run additional tests with
+adjusted significance thresholds to account for multiple
+comparisons.
+
+One technical note: chi-square test requires expected frequencies of
+at least 5 in each cell. This is the actual statistical requirement, not
+total sample size. With the email example, even the smallest expect‐
+ed frequency (1,833) is well above 5, so chi-square test is appropri‐
+ate. For a 2×2 table, this typically means 20+ observations per
+group.14
+
+42
+
+
+
+Chi-Square Test: Quick Reference
+
+When to use: Categorical data when expected frequency ≥ 5
+in each cell
+
+What it tells you: Whether groups differ (but not which spe‐
+cific pairs differ)
+
+Data format: Contingency table of counts (can handle 2+
+groups)
+
+Requirement: Expected frequency ≥ 5 in each cell (not total
+sample size)
+
+Online calculator: socscistatistics.com/tests/chisquare2
+
+Example calculation: Email subjects A: 1,800/10,000, B:
+1,950/10,000, C: 1,750/10,000 → p = 0.003 (significant)
+
+Formula: χ² = Σ [(Observed - Expected)² / Expected]
+
+14 Cochran, W.G. (1954). "Some Methods for Strengthening the Common χ² Tests."
+Biometrics, 10(4), 417-451. Established the "expected frequency ≥ 5" rule for chi-square
+tests. This applies to expected frequencies in each cell, not total sample size, making chi-
+square appropriate for various study designs including goodness-of-fit tests with moderate
+samples.
+
+43
+
+
+
+Chapter 7: T-Test: When You're Measuring
+Continuous Data
+
+You're testing a streamlined checkout process. You measure comple‐
+tion time for 20 participants with the current checkout (average: 95
+seconds) and 20 participants with the new checkout (average: 78
+seconds). The new checkout saves 17 seconds on average. But with
+only 20 participants per group and considerable variation in comple‐
+tion times, how confident can you be this difference is real?
+
+This is where t-test comes in. Unlike Fisher's exact test and chi-
+square test, which work with categorical data (success/failure,
+yes/no), t-test works with continuous data (time in seconds, satis‐
+faction ratings, number of errors). Continuous data provides much
+more information per participant, which is why you can draw reli‐
+able conclusions with smaller samples.
+
+T-test compares the averages of two groups while accounting for
+variability within each group. High variability makes it harder to de‐
+tect real differences because the overlap between groups is larger.
+Low variability makes it easier to detect real differences because the
+groups are more distinct.
+
+In the checkout example, both groups show substantial variability.
+Some participants are fast, others are slow. T-test asks: "Given this
+
+44
+
+
+
+variability, is the 17-second difference in averages likely to be real,
+or could it be random variation in which participants were assigned
+to each group?"
+
+The test calculates a t-statistic that measures how many "standard
+errors" apart the two averages are. Standard error measures how
+much the sample average typically varies from the true population
+average. If the two sample averages are many standard errors apart,
+that's strong evidence of a real difference. If they're only one or two
+standard errors apart, the difference might be chance.
+
+For the checkout example, t-test gives p = 0.045. This means there's
+a 4.5% chance you'd see a 17-second difference (or larger) just by
+random chance if both checkouts actually took the same time on av‐
+erage. That's below the 0.05 threshold, so you can be reasonably
+confident the new checkout is faster.
+
+But notice "reasonably" rather than "certain." With p = 0.045, you're
+on the edge of statistical significance. If you had tested 19 partici‐
+pants per group instead of 20, or if variability had been higher, you
+might have gotten p = 0.055 and missed statistical significance.
+This is why I recommend planning sample sizes in advance and not
+reading too much into results that barely cross the threshold.
+
+T-test also provides confidence intervals, which are more informa‐
+tive than p-values alone. For the checkout example, the 95% confi‐
+dence interval for time savings is approximately 2 to 32 seconds.
+
+45
+
+
+
+This means you can be 95% confident that the true time savings
+falls somewhere between 2 and 32 seconds.
+
+Notice how wide that interval is. The point estimate is 17 seconds,
+but the true value could plausibly be as low as 2 seconds or as high
+as 32 seconds. This uncertainty reflects your small sample size. With
+more users, the confidence interval would narrow, giving you a
+more precise estimate of the true effect.
+
+One of t-test's great strengths is its robustness. The test assumes
+data are normally distributed with a bell curve, but it works well
+even when this assumption is violated, especially with sample sizes
+of 30 or more per group. Task completion times, for example, are of‐
+ten right-skewed. Most participants are fast, a few are very slow. But
+t-test still gives reliable results.10
+
+T-test can be affected by extreme outliers. If one user takes 300 sec‐
+onds to complete checkout while everyone else takes 60-120 sec‐
+onds, that one person can skew your average and lead to misleading
+conclusions. When you see obvious outliers like this, you can often
+remove them (with justification) or use medians instead of averages.
+But for most UX applications, standard t-test works well.
+
+46
+
+
+
+T-Test: Quick Reference
+
+When to use: Continuous data (times, ratings, counts) with
+any sample size
+
+What it tells you: Whether group means differ, plus confi‐
+dence interval for the difference
+
+Data format: Two groups of numerical measurements
+
+Robustness: Works well even with non-normal data, especial‐
+ly with n ≥ 30
+
+Online calculator: socscistatistics.com/tests/studentttest
+
+Excel formula: =T.TEST(array1, array2, 2, 2)
+
+Example calculation: Current checkout: 95 sec average, New
+checkout: 78 sec average (20 participants each) → p = 0.045
+(significant)
+
+Formula: t = (x̄₁ - x̄₂) / √[s²ₚ(1/n₁ + 1/n₂)]
+
+10 Sauro, J. & Lewis, J.R. (2016). "Quantifying the User Experience" (2nd ed.). Morgan
+Kaufmann. Chapter 5: Comparing Means : discusses t-test robustness to violations of nor‐
+mality assumptions.
+
+47
+
+
+
+Part 3: Practical Application
+
+48
+
+
+
+Understanding statistical tests is necessary but not sufficient for ef‐
+fective UX research. You also need to know which test to use in dif‐
+ferent situations, how to interpret results in business terms, how to
+avoid common mistakes, and how to communicate findings to stake‐
+holders who need to make decisions based on your research.
+
+This section bridges the gap between statistical knowledge and prac‐
+tical application. I'll show you decision frameworks for choosing
+tests, techniques for translating statistical results into business im‐
+pact, strategies for avoiding the pitfalls that trap even experienced
+researchers, and methods for presenting findings that drive action
+rather than confusion.
+
+The goal is to make you competent at running statistical tests and
+effective at using research to improve products and influence
+decisions.
+
+Chapter 8: Choosing the Right Test
+
+Choosing the right statistical test is simpler than most people think.
+You need to answer just two questions: What type of data do you
+have? And how many users did you test? The answers determine
+which test to use.
+
+Let's start with data type. Categorical data has discrete categories:
+success or failure, yes or no, clicked or didn't click, chose option A or
+option B. Each user falls into exactly one category. Continuous data
+
+49
+
+
+
+has numerical values on a scale: time in seconds, satisfaction rating
+from 1-7, number of errors, distance scrolled in pixels. Each user
+provides a specific measurement.
+
+The distinction matters because categorical and continuous data re‐
+quire different statistical tests. Categorical data uses Fisher's exact
+test (small samples) or chi-square test (large samples). Continuous
+data uses t-test regardless of sample size.
+
+For categorical data, the choice between Fisher's exact test and chi-
+square test depends on expected cell frequencies, not total sample
+size. Calculate expected frequencies for each cell. If any expected
+frequency is below 5, use Fisher's exact test. If all expected frequen‐
+cies are 5 or above, use chi-square test. For typical A/B tests with
+moderate conversion rates, this threshold occurs around 20-40 par‐
+ticipants per group.
+
+For continuous data, use t-test. It works well with any sample size,
+though larger samples give you more precise estimates and narrow‐
+er confidence intervals. T-test is remarkably robust, meaning it gives
+reliable results even when its mathematical assumptions aren't per‐
+fectly met. This makes it the workhorse test for most UX research in‐
+volving measurements rather than categories.
+
+Let's apply this framework to common UX scenarios. Testing conver‐
+sion rates? That's categorical data (converted or didn't convert), so
+use Fisher's exact test for small samples or chi-square test for large
+
+50
+
+
+
+samples. Testing task completion times? That's continuous data, so
+use t-test. Testing satisfaction ratings? Continuous data, t-test.
+Testing which of three designs participants prefer? Categorical data,
+chi-square test if you have enough participants.
+
+One scenario causes confusion: Likert scale ratings (e.g., "Rate your
+satisfaction from 1 to 7"). Technically, these are ordinal data where
+numbers represent order but intervals between numbers might not
+be equal. But in practice, I recommend treating Likert scales as con‐
+tinuous data and using t-tests, especially with 5 or more scale
+points. This pragmatic approach works well for UX research where
+you're making practical decisions, provided your data is reasonably
+normally distributed. If your ratings are heavily skewed (lots of 1s
+or 7s), consider non-parametric alternatives.11
+
+What about comparing more than two groups? Fisher's exact test
+only works with two groups. Chi-square test handles multiple
+groups easily. T-test also works with two groups, but most UX tests
+compare just two variations anyway (current vs new design), so this
+rarely matters.
+
+One more test worth mentioning: the binomial test. When you're
+comparing a single proportion to a known baseline (e.g., "Did 8 out
+of 12 users succeed, when our baseline success rate is 50%?"), the
+binomial test provides exact probabilities with any sample size. It's
+useful for small-sample usability testing when you want to compare
+observed success rates to historical baselines.15
+
+51
+
+
+
+What if you have both categorical and continuous data from the
+same test? Analyze them separately with appropriate tests. For ex‐
+ample, you might measure both task completion rate (categorical)
+and task completion time (continuous). Run a chi-square test on
+completion rates and a t-test on completion times. Each test answers
+a different question, and both might be relevant for your decision.
+
+The key insight is that test selection is mechanical, not mysterious.
+Identify your data type, calculate expected frequencies (for categori‐
+cal data), and the decision tree tells you which test to use. The hard
+parts of UX research are designing good studies, collecting clean
+data, and interpreting results in context: not choosing statistical
+tests.
+
+11 Norman, G. (2010). "Likert scales, levels of measurement and the 'laws' of statistics."
+Advances in Health Sciences Education, 15(5), 625-632. Argues that treating Likert scales
+as continuous is appropriate for practical research.
+
+15 Sauro, J. & Lewis, J.R. (2016). "Quantifying the User Experience" (2nd ed.). Morgan
+Kaufmann. Chapter 3: Measuring and Comparing Binary Data. Covers binomial tests for
+single-proportion comparisons with any sample size.
+
+52
+
+
+
+Chapter 9: Interpreting Results for Business
+Decisions
+
+Statistical tests give you p-values, confidence intervals, and test sta‐
+tistics. Business stakeholders need to know: Should you implement
+this change? How much improvement can you expect? What's the
+risk if you're wrong? Translating statistical results into business lan‐
+guage is crucial.
+
+Let's start with the most common scenario: you run an A/B test, get
+p = 0.03 (statistically significant), and observe a 2 percentage point
+improvement in conversion rate (from 10% to 12%). How do you
+present this to stakeholders?
+
+First, translate the p-value into evidence language. Instead of "p =
+0.03," I recommend saying "The data provides strong evidence this
+improvement is real, not just luck. There's only a 3% chance I'd see
+a difference this large if the new version weren't actually better."
+This makes the meaning clear without requiring statistical
+knowledge.
+
+Second, translate the effect size into business impact. A 2 percent‐
+age point improvement from 10% to 12% is a 20% relative improve‐
+ment in conversion rate. If you have 100,000 visitors per month,
+that's 2,000 additional conversions per month. If average order val‐
+
+53
+
+
+
+ue is $50, that's $100,000 in additional monthly revenue, or $1.2
+million annually. These are numbers stakeholders can evaluate
+against implementation costs.
+
+Third, provide the confidence interval to quantify uncertainty. The
+95% confidence interval might be 0.5% to 3.5% improvement. This
+means you're 95% confident the true improvement is somewhere in
+that range. In business terms: "I expect between 500 and 3,500 ad‐
+ditional conversions per month, with my best estimate being 2,000."
+This helps stakeholders understand both the expected value and the
+uncertainty.
+
+Now consider a different scenario: p = 0.08 (not statistically signifi‐
+cant) with an observed 15-second reduction in task completion
+time. How do you present this?
+
+Be honest about the uncertainty: "I observed a 15-second improve‐
+ment, but I can't be highly confident it's real rather than chance.
+There's about an 8% probability I'd see a difference this large even if
+both versions were actually equivalent." Then provide context:
+"However, the observed improvement is large enough to be mean‐
+ingful if it's real. I recommend either gathering more data to in‐
+crease confidence, or implementing the change with a plan to moni‐
+tor performance after launch."
+
+This illustrates an important principle: statistical significance is not
+a binary decision rule. It's information about the strength of your ev‐
+
+54
+
+
+
+idence. Sometimes strong evidence (p < 0.05) supports a small,
+unimportant effect. Sometimes moderate evidence (p = 0.08) sup‐
+ports a large, important effect. Your job is to help stakeholders
+weigh the evidence against the business context.
+
+Effect size is often more important than statistical significance for
+business decisions. A statistically significant 0.1% improvement in
+conversion rate might not be worth implementing if it requires sub‐
+stantial engineering effort. A non-significant 25% reduction in task
+time might be worth implementing anyway if the task is critical and
+implementation is cheap.
+
+Here's a framework for presenting results: Start with the business
+question ("Should you implement the new checkout?"), present the
+evidence (observed improvement, statistical significance, confidence
+interval), translate to business impact (additional revenue, time
+saved, errors prevented), acknowledge uncertainty explicitly, and
+provide a recommendation that weighs evidence against business
+context.
+
+For example: "I tested the new checkout with 2,000 users per group.
+The new version improved conversion from 10% to 12%, a 20% rel‐
+ative improvement. The data provides strong evidence this improve‐
+ment is real (p = 0.03). Based on your traffic, this translates to ap‐
+proximately $1.2 million in additional annual revenue, with a 95%
+confidence interval of $300,000 to $2.1 million. Given the modest
+
+55
+
+
+
+implementation cost and substantial expected return, I recommend
+implementing the new checkout."
+
+Notice what this presentation includes: the business question, the
+evidence, the statistical confidence, the business impact with uncer‐
+tainty quantified, and a clear recommendation. This is what stake‐
+holders need to make informed decisions.
+
+One more scenario: you test three different designs and find that all
+three perform similarly, with no statistically significant differences.
+How do you present this?
+
+Avoid saying "all three designs are equivalent." Your test didn't prove
+equivalence: it failed to detect differences. There might be small dif‐
+ferences that your sample size wasn't large enough to detect.
+Instead, say: "I tested three designs with 500 users each and found
+no statistically significant differences in conversion rate. All three
+performed between 14% and 16%. This suggests that design choice
+won't substantially impact conversion, so you can choose based on
+other factors like implementation cost, maintainability, or brand
+consistency."
+
+This framing is honest about what you learned (no large differences
+detected) without claiming you proved equivalence (which would
+require much larger samples and different statistical tests). It also
+provides actionable guidance: choose based on other factors.
+
+56
+
+
+
+Visualizing Statistical Results
+
+How you present data visually can make the difference between
+clear communication and misleading stakeholders. Statistical results
+require careful visualization to show both the findings and the
+uncertainty.
+
+Essential elements for statistical charts:
+
+Show confidence intervals with error bars. Don't just show point
+estimates (like "12% conversion rate"). Show the range of uncertain‐
+ty with error bars representing 95% confidence intervals. This helps
+stakeholders understand that your "12%" estimate might actually be
+anywhere from 10.5% to 13.5%.
+
+Start axes at zero for percentage comparisons. A chart showing
+conversion rates from 10% to 12% should have a y-axis starting at
+0%, not 10%. Starting at 10% makes a 2 percentage point difference
+look like a 100% improvement, which is visually misleading.
+
+Show effect sizes, not just significance. Instead of marking results
+as "significant" or "not significant," show the actual differences with
+their confidence intervals. A "non-significant" result with a large ef‐
+fect size tells a different story than one with a tiny effect size.
+
+Use consistent scales for comparisons. If you're comparing multi‐
+ple tests, use the same y-axis scale for all charts. This allows stake‐
+holders to visually compare effect sizes across different experiments.
+
+57
+
+
+
+Avoid chart junk. Remove unnecessary elements like 3D effects, ex‐
+cessive colors, or decorative elements that don't convey information.
+Focus attention on the data and its uncertainty.
+
+A well-designed chart shows the point estimate, the confidence in‐
+terval, the baseline for comparison, and uses appropriate scales.
+This gives stakeholders both the finding and the confidence level in
+a single, honest visualization.
+
+Chapter 10: Common Mistakes and How to Avoid
+Them
+
+Even experienced researchers make mistakes in statistical testing.
+Some mistakes are subtle, others are obvious in hindsight. This
+chapter covers the most common errors and how to avoid them.
+
+Mistake 1: Peeking at results and stopping when you see signifi‐
+cance. This is the most common and damaging mistake in A/B test‐
+ing. You plan to test 1,000 users per group, but check results after
+200 users and see p = 0.04. You stop the test and declare victory.
+The problem: by checking multiple times and stopping at the first
+significant result, you've inflated your false positive rate. Frequent
+peeking can double or triple your false positive rate, depending on
+how often you check and your stopping rules.12
+
+58
+
+
+
+Solution: Decide your sample size in advance, run the test until you
+reach that sample size, and analyze results once. If you must check
+early for technical monitoring, use adjusted significance thresholds
+(like p < 0.01 for interim looks) or sequential testing methods de‐
+signed for multiple analyses.
+
+Mistake 2: Testing multiple metrics and reporting the best one.
+You measure 15 different metrics in your A/B test: conversion rate,
+time on page, bounce rate, scroll depth, clicks on various elements.
+You find that one metric shows p = 0.04 and report that as your re‐
+sult. The problem: with 15 metrics and a 5% false positive rate per
+metric, you'd expect to find "significance" in at least one metric
+purely by chance even if nothing real is happening.
+
+Solution: Choose one primary metric before starting the test. You
+can measure other metrics for exploratory purposes, but the
+success/failure decision should be based on the primary metric
+alone. If you genuinely need to test multiple metrics, use adjusted
+significance thresholds (like Bonferroni correction) to account for
+multiple comparisons.
+
+Mistake 3: Confusing statistical significance with practical im‐
+portance. You test a new feature with 100,000 users and find it in‐
+creases engagement by 0.5%, with p = 0.001 (highly statistically
+significant). You implement it, but the business impact is negligible.
+The problem: with very large samples, even tiny effects become sta‐
+tistically significant, but that doesn't mean they matter.
+
+59
+
+
+
+Solution: Always evaluate effect size alongside statistical signifi‐
+cance. Ask: "Is this improvement large enough to matter for our
+business?" A 0.5% improvement might be meaningful for a company
+with 100 million users, but irrelevant for a company with 10,000
+users.
+
+Mistake 4: Using the wrong test for your data type. You measure
+task completion time (continuous data) but analyze it with chi-
+square test by categorizing times as "fast" or "slow." The problem:
+categorizing continuous data throws away information and reduces
+statistical power. You need larger samples to detect the same effects.
+
+Solution: Use t-test for continuous data, Fisher's exact or chi-square
+for categorical data. Don't convert continuous data to categories un‐
+less you have a compelling reason.
+
+Mistake 5: Ignoring baseline rates when planning sample sizes.
+You plan to test an improvement from 5% to 7% conversion rate and
+use the same sample size you used for testing 50% to 52%. The
+problem: low baseline rates require larger samples than mid-range
+baseline rates for the same absolute improvement.
+
+Solution: Use sample size calculators that account for baseline
+rates, or consult the detailed guidelines in Chapter 3. Don't assume
+all conversion rate tests need the same sample size.
+
+60
+
+
+
+Mistake 6: Treating p = 0.051 as fundamentally different from p
+= 0.049. You get p = 0.051 and conclude there's no effect. The
+problem: the conventional 0.05 threshold is arbitrary. A result with
+p = 0.051 provides nearly the same evidence as p = 0.049.
+
+Solution: Treat p-values as continuous measures of evidence
+strength, not binary pass/fail thresholds. Results near the threshold
+(say, 0.03 to 0.08) should be interpreted cautiously, with decisions
+based on the full context including effect size, business impact, and
+implementation costs.
+
+Mistake 7: Running tests that are too small to detect meaningful
+effects. You test a new feature with 30 users per group, hoping to
+detect a 10% improvement in conversion rate. You find no signifi‐
+cant difference and conclude the feature doesn't work. The problem:
+30 users per group is far too small to reliably detect a 10% improve‐
+ment. Your test was underpowered.
+
+Solution: Calculate required sample sizes before starting tests
+(Chapter 3). If you can't get enough users to detect the effect size
+you care about, either focus on larger effects, gather data over a
+longer period, or acknowledge that your test is exploratory rather
+than conclusive.
+
+Mistake 8: Running tests on messy data without checking first.
+You collect task completion times and immediately run a t-test. You
+get p = 0.03 and declare victory. But you never looked at the actual
+
+61
+
+
+
+data: one user took 500 seconds while everyone else took 30-60 sec‐
+onds. That outlier is driving your "significant" result. The problem:
+statistical tools will happily give you a p-value even if your data are
+messy.
+
+Solution: Reality-check your data before you test. Take 30 seconds
+to look at the data first: Are there extreme outliers? If one or two
+users took ten times longer than everyone else, don't let them domi‐
+nate your average. Are both groups consistent? If one design causes
+wildly different results among users, your comparison is shaky. Are
+all users unique? Don't count the same person twice. When you see
+these issues, don't panic—you can often fix them by removing obvi‐
+ous outliers or using medians instead of averages. These small
+habits make your results far more trustworthy than running a test
+blindly.
+
+Mistake 9: Assuming statistical tests prove causation. You find
+that users who view product videos have higher conversion rates.
+You conclude that adding videos will increase conversion. The prob‐
+lem: correlation doesn't imply causation. Maybe users who are al‐
+ready interested in buying are more likely to watch videos.
+
+Solution: Use randomized experiments (A/B tests) to establish cau‐
+sation. Observational analyses can identify correlations and generate
+hypotheses, but only randomized experiments can prove that
+changes cause outcomes.
+
+62
+
+
+
+12 Kohavi, R., Deng, A., Frasca, B., Walker, T., Xu, Y., & Pohlmann, N. (2013). "Online
+Controlled Experiments at Large Scale." Proceedings of the 19th ACM SIGKDD
+International Conference on Knowledge Discovery and Data Mining. Demonstrates how
+peeking inflates false positive rates.
+
+63
+
+
+
+Chapter 11: Beyond the Qualitative vs Quantitative
+Myth
+
+UX research suffers from a persistent myth: that qualitative and
+quantitative research are fundamentally different types of inquiry
+that serve separate purposes. You'll hear people say "qualitative re‐
+search is for understanding why, quantitative is for measuring what"
+or "qualitative is exploratory, quantitative is evaluative." This black-
+and-white thinking is not only wrong: it's harmful because it pre‐
+vents researchers from using the full toolkit available to them.
+
+The reality is more nuanced. Research methods exist on multiple
+continua: sample size (small to large), data structure (unstructured
+to highly structured), analysis approach (interpretive to statistical),
+and research goal (exploratory to evaluative). These dimensions are
+independent. You can have small-sample quantitative studies (test‐
+ing task completion time with 20 users) and large-sample qualitative
+studies (analyzing 10,000 customer support tickets for themes). You
+can have exploratory quantitative research (analyzing analytics data
+to find patterns) and evaluative qualitative research (testing
+whether users understand a new feature).5
+
+The statistical tests in this handbook work with any sample size.
+Fisher's exact test, chi-square test, and t-test don't care whether you
+collected data through interviews, usability tests, surveys, or A/B
+
+64
+
+
+
+tests. They care about the structure of your data (categorical or con‐
+tinuous) and how many observations you have. A usability test that
+measures task completion time with 15 users per group is quantita‐
+tive research analyzed with a t-test. The fact that you watched users
+and took notes doesn't make it qualitative.
+
+This matters because the qualitative/quantitative dichotomy leads to
+poor decisions. Researchers avoid statistical analysis of small sam‐
+ples because they think "you need large samples for quantitative re‐
+search." But a t-test with 20 users per group can provide strong evi‐
+dence about task time differences. Researchers treat usability test
+findings as purely qualitative insights when they could be quantify‐
+ing success rates, error counts, and completion times to make
+stronger claims.
+
+Let's examine what actually distinguishes different research ap‐
+proaches. The key dimensions are:
+
+Sample size and sampling strategy. Small, purposive samples (5-
+15 users selected for specific characteristics) are appropriate when
+you're looking for problems that affect many users: one user strug‐
+gling with a feature suggests others will too. Large, random samples
+(hundreds or thousands of users randomly selected) are necessary
+when you're measuring effect sizes precisely or detecting small im‐
+provements. But both can involve quantitative measurement and
+statistical analysis.6
+
+65
+
+
+
+Data structure. Unstructured data requires interpretive analysis to
+identify themes and patterns. This includes interview transcripts, ob‐
+servation notes, and open-ended survey responses. Structured data
+enables statistical analysis. This includes task completion times, suc‐
+cess rates, and rating scales. But you often collect both in the same
+study. A usability test produces both observation notes and task
+completion times.
+
+Research goal. Exploratory research seeks to understand a problem
+space, identify user needs, or generate hypotheses. Evaluative re‐
+search tests specific hypotheses or measures the impact of changes.
+But these goals often overlap. An A/B test might reveal unexpected
+user behaviors that require exploration. A usability study might de‐
+finitively show that a feature doesn't work.
+
+Here's a concrete example that illustrates the false dichotomy. You're
+testing a new checkout flow with 12 users. During the test, you ob‐
+serve that 8 users successfully complete checkout while 4 abandon
+it. You also measure completion time for successful users (average:
+78 seconds). You take detailed notes about where users struggle and
+what they say.
+
+Is this qualitative or quantitative research? The question is meaning‐
+less. You have:
+
+• Quantitative data suitable for statistical analysis: 8/12 success rate
+(67%), average completion time of 78 seconds
+
+66
+
+
+
+• Qualitative data requiring interpretive analysis: observation notes
+about struggle points, user comments
+
+• Small sample size: 12 users, purposively selected
+
+• Evaluative goal: testing whether the new checkout works
+
+You can run a Fisher's exact test comparing the 8/12 success rate to
+your baseline success rate. You can calculate a confidence interval
+for the completion time. You can also analyze your notes to under‐
+stand why the 4 users abandoned checkout. All of this is legitimate
+research using appropriate methods for your data and goals.
+
+The harmful consequence of the qualitative/quantitative myth is
+that researchers often fail to quantify what they observe. They re‐
+port "most users struggled with the navigation" instead of "7 out of
+10 users failed to find the settings page within 2 minutes." They say
+"users preferred design A" instead of "8 out of 12 users chose design
+A when offered both options (p = 0.19, not statistically significant)."
+I prefer the quantified version because it's more precise and more
+honest about the strength of evidence.
+
+Nielsen Norman Group, the most influential voice in UX research,
+has consistently argued against the qualitative/quantitative dichoto‐
+my. As Jakob Nielsen writes, "The distinction between qualitative
+and quantitative is often overblown. Most user research involves
+both."7 Their research shows that small-sample usability testing (of‐
+
+67
+
+
+
+ten called "qualitative") becomes more powerful when you quantify
+observations: count errors, measure times, calculate success rates,
+and use appropriate statistical tests.
+
+Consider the famous "5 users" guideline for usability testing.
+Nielsen's research showed that testing with 5 users finds about 85%
+of usability problems. But this applies specifically to finding prob‐
+lems through observation: it's not about measuring effect sizes or
+comparing designs statistically. If you want to know whether design
+A is faster than design B, 5 users per group isn't enough. You need
+the sample sizes discussed in Chapter 3, which depend on the effect
+size you want to detect and the variability in your data.8
+
+The practical implication: stop asking "should I do qualitative or
+quantitative research?" Instead ask:
+
+• What questions am I trying to answer?
+
+• What type of data will answer those questions?
+
+• How many observations do I need for adequate evidence?
+
+• What analysis methods are appropriate for my data?
+
+These questions lead to better research designs. You might conduct
+usability tests with 15 users (small sample), measure both task times
+and success rates (quantitative data), take detailed observation
+notes (qualitative data), analyze times with t-tests and notes with
+
+68
+
+
+
+thematic analysis (mixed methods), and use the results both to iden‐
+tify problems and to measure improvement (exploratory and evalua‐
+tive goals).
+
+Another false dichotomy worth addressing: the idea that quantita‐
+tive research is "objective" while qualitative research is "subjective."
+All research involves human judgment. Choosing what to measure,
+how to measure it, which statistical test to use, and how to interpret
+results all require subjective decisions. The advantage of quantita‐
+tive methods isn't objectivity: it's transparency and replicability.
+When you report "p = 0.03 from a t-test comparing task times," oth‐
+er researchers can verify your analysis and assess your evidence.
+When you report "users seemed frustrated," they can't.
+
+The best UX research combines multiple types of data and analysis.
+You observe users to understand their behavior deeply. You measure
+outcomes to quantify the magnitude of problems. You use statistical
+tests to assess the strength of evidence. You interpret findings in
+context to generate actionable insights. This isn't "mixed methods"
+as a special category: it's just good research.
+
+Here's a complete example of research that defies the
+qualitative/quantitative dichotomy. A team is redesigning their mo‐
+bile app's navigation. They conduct moderated usability tests with
+20 users (10 with current navigation, 10 with new navigation). For
+each user, they:
+
+69
+
+
+
+• Measure task completion time for 5 standard tasks
+
+• Record success/failure for each task
+
+• Count navigation errors (wrong path taken)
+
+• Take detailed observation notes
+
+• Conduct a brief interview about the experience
+
+Analysis includes:
+
+• T-test comparing average task times between groups (quantitative,
+statistical)
+
+• Fisher's exact test comparing success rates (quantitative,
+statistical)
+
+• Thematic analysis of observation notes to identify common strug‐
+gle points (qualitative, interpretive)
+
+• Synthesis of interview responses to understand user mental mod‐
+els (qualitative, interpretive)
+
+Results: The new navigation reduced average task time from 45 to
+38 seconds (p = 0.04, 95% CI: 1-13 seconds saved). Success rates
+improved from 70% to 85% (p = 0.09, not quite significant).
+Observation notes revealed that users struggled less with finding
+features but more with understanding category labels. Interviews
+
+70
+
+
+
+showed that users appreciated the cleaner visual design but wanted
+more obvious indicators of their current location.
+
+This research provides both statistical evidence (task time improve‐
+ment is real, success rate improvement is suggestive but not conclu‐
+sive) and deep understanding (why users struggled, what they val‐
+ued). It uses small samples (20 users total) but still employs statisti‐
+cal tests appropriately. It combines measurement with interpreta‐
+tion. It's neither purely qualitative nor purely quantitative: it's com‐
+prehensive research using appropriate methods for each question.
+
+The path forward is to abandon the qualitative/quantitative dichoto‐
+my entirely. Think instead about research questions, data types,
+sample sizes, and analysis methods. Use statistical tests when you
+have structured data, regardless of sample size. Use interpretive
+analysis when you have unstructured data, regardless of how you
+collected it. Combine multiple types of data and analysis to build
+comprehensive understanding. And always be explicit about the
+strength of your evidence and the limitations of your conclusions.
+
+5 Sauro, J. & Lewis, J.R. (2016). "Quantifying the User Experience" (2nd ed.). Morgan
+Kaufmann. Chapter 1: Introduction to Quantifying User Experience.
+
+6 Nielsen, J. (2006). "Quantitative Studies: How Many Users to Test?" Nielsen Norman
+Group. https://www.nngroup.com/articles/quantitative-studies-how-many-users/
+
+7 Nielsen, J. (2004). "Risks of Quantitative Studies." Nielsen Norman Group.
+https://www.nngroup.com/articles/risks-of-quantitative-studies/
+
+71
+
+
+
+8 Nielsen, J. & Landauer, T.K. (1993). "A mathematical model of the finding of usability
+problems." Proceedings of ACM INTERCHI'93 Conference. pp. 206-213.
+
+72
+
+
+
+Chapter 12: Communicating Results to
+Stakeholders
+
+The best research in the world has no impact if you can't communi‐
+cate it effectively. Stakeholders need to understand what you found,
+why it matters, and what they should do about it. This requires
+translating statistical findings into business language and presenting
+them in a way that drives decisions rather than confusion.
+
+Start with the business question, not the methodology. Don't begin
+with "I ran a chi-square test with 2,000 users per group." Begin with
+"I tested whether the new checkout flow improves conversion."
+Stakeholders care about the question you're answering, not the sta‐
+tistical technique you used.13
+
+Present the finding clearly and directly. "The new checkout in‐
+creased conversion from 10% to 12%, a 20% improvement. The
+data provides strong evidence this improvement is real: there's only
+a 3% chance I'd see a difference this large if the new checkout
+weren't actually better." This gives stakeholders the key information:
+what happened, how large the effect is, and the strength of
+evidence.
+
+Translate statistical results into business impact. Don't say "I ob‐
+served a 2 percentage point improvement with p = 0.03 and a 95%
+
+73
+
+
+
+confidence interval of 0.5% to 3.5%." Say "Based on your monthly
+traffic of 100,000 visitors, this improvement will generate approxi‐
+mately 2,000 additional conversions per month, or $1.2 million in
+additional annual revenue. I'm 95% confident the true impact is be‐
+tween $300,000 and $2.1 million annually."
+
+Acknowledge uncertainty explicitly. Research never provides certain‐
+ty, and pretending it does undermines your credibility. "I'm highly
+confident the new checkout is better, but there's some uncertainty
+about exactly how much better. My best estimate is a 20% improve‐
+ment, but it could plausibly be anywhere from 5% to 35%." This
+honesty helps stakeholders make informed decisions that account
+for risk.
+
+Provide a clear recommendation. Present data and give stakeholders
+a clear direction. "Given the strong evidence of improvement and
+the substantial expected revenue impact, I recommend implement‐
+ing the new checkout." If the evidence is mixed or the decision de‐
+pends on factors beyond your research, say so: "The evidence sug‐
+gests a modest improvement, but the implementation cost is high. I
+recommend implementing only if you can do so cheaply, or gather‐
+ing more data to increase confidence before making a large
+investment."
+
+I recommend using visualizations to make results concrete. A simple
+bar chart showing conversion rates for control vs treatment is more
+intuitive than a table of numbers. A line graph showing how confi‐
+
+74
+
+
+
+dence in the result increased as you gathered more data helps stake‐
+holders understand why sample size matters. But keep visualizations
+simple: complex statistical plots confuse rather than clarify.
+
+Anticipate questions and address them proactively. Stakeholders of‐
+ten ask: "How do you know this will work for all users?" Answer: I
+tested a representative sample, but there's always some uncertainty
+about generalization. "What if the improvement disappears after
+launch?" Answer: You can monitor post-launch metrics to verify the
+improvement persists. "Why did this work?" Answer: Qualitative re‐
+search suggests users found the new flow less confusing, but you'd
+need additional research to be certain.
+
+Tailor your communication to your audience. Executives need high-
+level summaries focused on business impact and recommendations.
+Product managers need more detail about what worked and why.
+Engineers might want to understand the statistical methodology.
+Prepare different versions of your findings for different audiences,
+all telling the same story but with different levels of detail.
+
+Here's a complete example of effective communication:
+
+Research Question: Will simplifying our checkout flow improve
+conversion?
+
+What I Did: I tested the simplified checkout with 2,000 users and
+compared it to your current checkout with another 2,000 users.
+
+75
+
+
+
+Users were randomly assigned to each version over a two-week
+period.
+
+What I Found: The simplified checkout increased conversion from
+10.0% to 12.0%, a 20% relative improvement. The data provides
+strong evidence this improvement is real (p = 0.03), not just ran‐
+dom chance.
+
+Business Impact: Based on your monthly traffic of 100,000 visitors,
+this translates to approximately 2,000 additional conversions per
+month, or $1.2 million in additional annual revenue (assuming $50
+average order value). I'm 95% confident the true impact is between
+$300,000 and $2.1 million annually.
+
+Recommendation: Implement the simplified checkout. The evi‐
+dence of improvement is strong, the expected business impact is
+substantial, and the implementation cost is modest. You should
+monitor conversion rates for the first month after launch to verify
+the improvement persists.
+
+Notice what this communication includes: the question, the method
+(briefly), the finding, the confidence level, the business impact with
+uncertainty quantified, and a clear recommendation with next steps.
+This is what stakeholders need to make informed decisions.
+
+One final point: be prepared to explain your methodology if asked,
+but don't lead with it. Have a backup slide or appendix with techni‐
+
+76
+
+
+
+cal details (sample size calculations, statistical test used, assump‐
+tions checked, etc.) for stakeholders who want to dig deeper. But
+most stakeholders care about what you found and what it means,
+not how you calculated the p-value.
+
+13 Pernice, K., Whitenton, K., & Nielsen, J. (2014). "How to Present UX Research Findings
+That Have Impact." Nielsen Norman Group. https://www.nngroup.com/articles/ux-re‐
+search-reports/
+
+77
+
+
+
+Statistical Terminology: Key Distinctions
+
+Statistical language can be confusing, especially when similar terms
+have different meanings. Here are the key distinctions that matter
+for interpreting and communicating results correctly:
+
+P-value vs. Confidence Level: A p-value is the probability of seeing
+your data if there were no real difference. A confidence level (like
+95%) is how often your confidence interval would contain the true
+value if you repeated the experiment many times. They're related
+but different concepts.
+
+Confidence Interval vs. Confidence Level: A confidence interval is
+a range of plausible values for the true effect (e.g., "2% to 8% im‐
+provement"). The confidence level is how confident you are that this
+range contains the true value (e.g., "95% confident").
+
+Statistical Significance vs. Practical Significance: Statistical sig‐
+nificance means the difference is probably real, not chance. Practical
+significance means the difference is large enough to matter for your
+business. You need both for good decisions.
+
+Evidence vs. Confidence: When presenting results, focus on "evi‐
+dence strength" rather than personal confidence. Say "the data pro‐
+vides strong evidence" rather than "I'm confident." This keeps the fo‐
+
+78
+
+
+
+cus on what the data shows rather than your subjective
+interpretation.
+
+Probability of Data vs. Probability of Hypothesis: P-values tell you
+the probability of seeing your data if the null hypothesis were true.
+They don't tell you the probability that your hypothesis is true. This
+distinction matters for proper interpretation.
+
+These distinctions help you interpret results correctly and communi‐
+cate findings without common statistical misconceptions.
+
+79
+
+
+
+Conclusion
+
+80
+
+
+
+Statistical testing is not about mathematical sophistication: it's about
+making better decisions with evidence rather than intuition. The
+three tests covered in this handbook (Fisher's exact test, chi-square
+test, and t-test) provide the statistical foundation for most UX vali‐
+dation scenarios you'll encounter. They cover the core cases you'll
+face daily, though complex experiments may require additional
+methods. More importantly, you now understand when to use each
+test, how to interpret the results, and how to communicate findings
+that drive action.
+
+This handbook provides the statistical foundation for evidence-based
+UX decisions. As you advance in your practice, you may encounter
+scenarios requiring more sophisticated methods—regression model‐
+ing for complex relationships, Bayesian approaches for continuous
+learning, or specialized techniques for time-series data. But these
+three tests will handle the majority of your validation needs.
+
+The key insights from this handbook:
+
+Research quantifies uncertainty. You'll never have perfect certainty
+about how users will respond to changes, but research tells you how
+confident you can be in your predictions. This confidence is what
+makes research valuable for business decisions.
+
+P-values measure evidence strength, not importance. Statistical
+significance tells you whether an effect is real, but it doesn't tell you
+
+81
+
+
+
+whether it matters. You need both statistical significance and practi‐
+cal significance to make good decisions.
+
+Sample size depends on what you're trying to detect. Continuous
+data requires smaller samples than categorical data. Large effects re‐
+quire smaller samples than small effects. Plan your sample sizes
+based on the minimum improvement that would be worth
+implementing.
+
+Test selection is mechanical. Identify your data type (categorical
+or continuous) and sample size (small or large), and the decision
+tree tells you which test to use. The hard parts are designing good
+studies and interpreting results in context.
+
+Methodology matters as much as mathematics. Even the most so‐
+phisticated statistical test gives wrong answers if the underlying ex‐
+periment is poorly designed. Random assignment, simultaneous
+testing, predetermined sample sizes, and single primary metrics are
+essential for reliable results.
+
+Communication determines impact. Research only matters if it in‐
+fluences decisions. Translate statistical findings into business lan‐
+guage, acknowledge uncertainty explicitly, and provide clear recom‐
+mendations that help stakeholders act on your findings.
+
+The path from here is practice. Start with simple tests: compare two
+versions of something with clear success metrics. Run the appropri‐
+
+82
+
+
+
+ate statistical test. Interpret the results. Communicate the findings.
+Over time, you'll develop intuition for when tests will be informa‐
+tive, what sample sizes you need, and how to present findings
+effectively.
+
+Remember that statistical testing is a tool, not a goal. The goal is
+better products that serve users more effectively. Statistical testing
+helps you achieve that goal by replacing guesswork with evidence,
+but it's not a substitute for design judgment, user empathy, or busi‐
+ness strategy. Use it as one input among many.
+
+The most successful UX practitioners combine qualitative insight
+with quantitative validation. They use research to understand users
+deeply, generate hypotheses about what will improve the experi‐
+ence, test those hypotheses rigorously, and implement changes that
+demonstrably work. I've given you the quantitative validation tools.
+The rest comes from your experience and expertise.
+
+Go forth and test with confidence.
+
+83
