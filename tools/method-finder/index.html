@@ -821,7 +821,7 @@
         <label>What's your research question?</label>
         <select id="intentSelect" onchange="updateRecommendation()">
           <option value="">Select...</option>
-          <option value="clarity">Is this clear?</option>
+          <option value="clarity">Is this clear for users?</option>
           <option value="comparison">Which option do users prefer?</option>
           <option value="conversion">Which option performs better?</option>
           <option value="diagnostic">What's causing problems?</option>
@@ -982,6 +982,14 @@
     'maxdiff': {
       term: 'MaxDiff survey',
       def: 'A survey technique that forces users to pick the most and least important items from sets. Produces clearer priorities than simple rating scales.'
+    },
+    'randomise': {
+      term: 'Randomise',
+      def: 'Showing options in a different order for each participant to avoid order bias. For example, if testing A vs B, show A first to half the participants and B first to the other half.'
+    },
+    'representative': {
+      term: 'Representative',
+      def: 'Participants who match your target userbase in relevant characteristics (e.g., experience level, use case, demographics). A representative sample ensures findings apply to your actual users.'
     }
   };
 
@@ -1008,14 +1016,14 @@
   // ---- CONFIG ----
   const sampleOptions = {
     clarity: [
-      { value: "c1", label: "1–5 users" },
-      { value: "c2", label: "6–14 users" },
-      { value: "c3", label: "15+ users" }
+      { value: "c1", label: "1–5 participants" },
+      { value: "c2", label: "6–14 participants" },
+      { value: "c3", label: "15+ participants" }
     ],
     comparison: [
-      { value: "cmp1", label: "1–9 users" },
-      { value: "cmp2", label: "10–14 users" },
-      { value: "cmp3", label: "15+ users" }
+      { value: "cmp1", label: "3–9 participants" },
+      { value: "cmp2", label: "10–14 participants" },
+      { value: "cmp3", label: "30+ participants" }
     ],
     conversion: [
       { value: "cv1", label: "16–40 per version" },
@@ -1023,19 +1031,19 @@
       { value: "cv3", label: "100+ per version" }
     ],
     diagnostic: [
-      { value: "d1", label: "3–5 users" },
-      { value: "d2", label: "6–12 users" },
-      { value: "d3", label: "12+ users" }
+      { value: "d1", label: "3–5 participants" },
+      { value: "d2", label: "6–12 participants" },
+      { value: "d3", label: "12+ participants" }
     ],
     discovery: [
-      { value: "disc1", label: "5–8 users" },
-      { value: "disc2", label: "8–15 users" },
-      { value: "disc3", label: "15+ users (or survey)" }
+      { value: "disc1", label: "5–8 participants" },
+      { value: "disc2", label: "8–15 participants" },
+      { value: "disc3", label: "15+ participants (or survey)" }
     ],
     organization: [
-      { value: "org1", label: "10–15 users" },
-      { value: "org2", label: "15–30 users" },
-      { value: "org3", label: "30+ users" }
+      { value: "org1", label: "10–15 participants" },
+      { value: "org2", label: "15–30 participants" },
+      { value: "org3", label: "30+ participants" }
     ]
   };
 
@@ -1050,7 +1058,7 @@
         steps: [
           "Show the copy on the real screen, since context matters.",
           "Ask: \"What does this mean to you?\"",
-          "Ask: \"What would you do next?\"",
+          "Ask: \"What do you think will happen?\"",
           "List the top 2–3 misunderstandings. Don't calculate percentages."
         ],
         outcome:
@@ -1081,7 +1089,7 @@
           "Ask the same prompts for everyone (consistency matters).",
           "Score each response: Pass / Partial / Fail.",
           "Group failures into themes (e.g., \"thought this meant X\").",
-          "Rank themes by frequency. 4 of 10 failing on the same thing is actionable."
+          "Rank themes by frequency. 6 of 10 failing on the same thing is actionable."
         ],
         outcome:
           "<strong>Why it works:</strong> This gives you evidence without the overhead of formal stats. You're still in find-and-fix mode.",
@@ -1104,7 +1112,7 @@
         badgeClass: "do-this",
         badgeText: "Measurable",
         method: "Comprehension rate",
-        rec: "At 15+ users, you can report pass rates and track improvement over time. Still no stats required.",
+        rec: "At 15+ participants, you can report pass rates with more precision. Statistical significance is not possible at this sample size.",
         steps: [
           "Keep scoring consistent: same prompts, same pass/fail criteria.",
           "Report simply: \"14 of 20 understood correctly (70%).\"",
@@ -1125,7 +1133,7 @@
             '<div class="method-alt-when">Good for: Evidence that users notice the primary message immediately.</div>' +
           '</div>',
         present: [
-          "In our latest round, 70% interpreted the message correctly versus 40% before. That improvement is large enough to ship."
+          "In our latest round, 14 of 20 interpreted the message correctly versus 8 of 20 before. That 6-person improvement (30 percentage points) is large enough to ship."
         ],
         howToMeasure: {
           steps: [
@@ -1160,7 +1168,7 @@
         badgeClass: "do-this",
         badgeText: "Qualitative",
         method: "Preference interview",
-        rec: "At this scale, reasons matter more than votes. A 5/4 split tells you nothing, but consistent themes are gold.",
+        rec: "At this scale, reasons matter more than votes. A 5/4 split tells you nothing, but consistent themes are actionable.",
         steps: [
           "Show both options; randomise order for each person.",
           "Ask: \"If you had to choose, which would you use?\"",
@@ -1226,17 +1234,18 @@
         badgeClass: "directional",
         badgeText: "Testable",
         method: "Preference test with binomial check",
-        rec: "At 15+ users, you can run a binomial test, but only if the split is dramatic (80/20 or stronger).",
+        rec: "At 30+ participants, you can run a binomial test. A clear preference (70%+) is more meaningful than a weak split.",
         steps: [
-          "Run the paired test: both options, \"which\" then \"why\".",
-          "Summarise the split (e.g., 18 chose A, 2 chose B).",
+          "Show both options to each participant (within-subjects design).",
+          "Ask: \"Which would you use?\" then \"Why?\"",
+          "Summarise the split (e.g., 21 chose A, 9 chose B).",
           "Run a binomial test only if one option clearly dominates.",
-          "If near 50/50, treat it as a tie regardless of sample size."
+          "If near 50/50, treat it as a tie at this level of sample size."
         ],
         outcome:
-          "<strong>Reality check:</strong> 55/45 is weak even with 100 people. 16/4 is meaningful even at 20 people.",
+          "<strong>Reality check:</strong> 55/45 is weak even with 100 people. 21/9 (70%) is meaningful at 30 people.",
         mistake:
-          "<strong>Avoid:</strong> Chasing p-values on weak splits. Treat 60/40 as a tie, regardless of sample size.",
+          "<strong>Avoid:</strong> Chasing p-values on weak splits. Treat 60/40 as a tie at this level of sample size.",
         altMethods:
           '<div class="method-alt">' +
             '<div class="method-alt-name">Multi-variant preference test</div>' +
@@ -1266,10 +1275,10 @@
           table: {
             title: "Quick reference: p < 0.05 is the common threshold",
             col1: "Sample size",
-            col2: "Need for winner",
+            col2: "Preference share for significance",
             rows: [
-              { users: "15–25 users", need: "80%+" },
-              { users: "25+ users", need: "70%+" }
+              { users: "30–40 participants", need: "75%+" },
+              { users: "40+ participants", need: "70%+" }
             ]
           }
         }
@@ -1285,14 +1294,14 @@
         rec: "You can run an A/B test, but only bold changes will show up. This is for exploration, not proof.",
         steps: [
           "<strong>Before you start:</strong> Define your one primary metric.",
-          "Randomise which version each user sees (no self-selection).",
-          "Decide your sample size in advance and don't check early.",
-          "At ~40 users, look for obvious differences only. Ignore tiny lifts."
+          "Randomise which version each participant sees (no self-selection).",
+          "Decide your sample size in advance. Don't peek at results until you reach it.",
+          "At ~40 participants per version, look for obvious differences only. Ignore tiny lifts."
         ],
         outcome:
           "<strong>Expect:</strong> \"No clear difference\" is normal unless the change is dramatic (~20%+ lift).",
         mistake:
-          "Checking results repeatedly, which can dramatically inflate your false positive rate. Decide when to stop before you start.",
+          "<strong>Avoid:</strong> Peeking at results before reaching your target sample size, chasing p-values, or stopping early when you see a \"winner\". These inflate false positive rates.",
         altMethods:
           '<div class="method-alt">' +
             '<div class="method-alt-name">Task-based usability test</div>' +
@@ -1347,7 +1356,7 @@
             }
           ],
           table: {
-            title: "Approximate sample sizes (rule of thumb, 80% power)",
+            title: "Approximate sample sizes (rule of thumb, 80% power)<br><small style='font-weight: normal; opacity: 0.8;'>Note: These are general guidelines. Your specific case may vary based on effect size, baseline rate, and acceptable error rates.</small>",
             col1: "Baseline rate",
             col2: "Sample needed",
             rows: [
@@ -1402,7 +1411,7 @@
             }
           ],
           table: {
-            title: "Approximate sample sizes (rule of thumb, 80% power)",
+            title: "Approximate sample sizes (rule of thumb, 80% power)<br><small style='font-weight: normal; opacity: 0.8;'>Note: These are general guidelines. Your specific case may vary based on effect size, baseline rate, and acceptable error rates.</small>",
             col1: "Effect size",
             col2: "Sample needed",
             rows: [
@@ -1911,7 +1920,10 @@
     const wrappedTerms = new Set();
 
     // Build steps HTML (with term wrapping)
-    const stepsHtml = (scenario.steps || []).map(step => `<li>${wrapTerms(step, wrappedTerms)}</li>`).join('');
+    // Prepend prerequisite step for all scenarios
+    const prerequisiteStep = "<strong>Before you start:</strong> Ensure all participants have the same conditions, timing, context, and represent your userbase.";
+    const allSteps = [prerequisiteStep, ...(scenario.steps || [])];
+    const stepsHtml = allSteps.map(step => `<li>${wrapTerms(step, wrappedTerms)}</li>`).join('');
 
     // Build warning HTML (with term wrapping)
     const mistakes = Array.isArray(scenario.mistake) ? scenario.mistake : (scenario.mistake ? [scenario.mistake] : []);
