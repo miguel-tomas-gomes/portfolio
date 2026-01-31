@@ -1,1 +1,4 @@
 .DS_Store
+
+# Local-only files (not for live site)
+articles/ux-research-assistant.html

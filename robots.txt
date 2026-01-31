@@ -5,4 +5,7 @@ Allow: /
 Disallow: *.pdf
 Disallow: /assets/*.pdf
 
+# Disallow local-only pages
+Disallow: /articles/ux-research-assistant
+
 Sitemap: https://migueltomasgomes.com/sitemap.xml
