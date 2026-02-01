@@ -2307,55 +2307,22 @@ redirect_from: /tools/method-finder
 
     if (!intent || !sample) return;
 
-    // Get smart defaults based on selection
-    const intentLabels = {
-      'clarity': 'if this is clear for users',
-      'comparison': 'which option users prefer',
-      'conversion': 'which option performs better',
-      'diagnostic': 'what\'s causing problems',
-      'discovery': 'what users need',
-      'organization': 'how users organize this'
-    };
-
-    const sampleElement = document.getElementById('sampleSelect');
-    const sampleLabel = sampleElement.options[sampleElement.selectedIndex]?.text || '';
-
-    // Extract participant count from label (e.g., "1–5 participants" -> "5")
-    const participantMatch = sampleLabel.match(/(\d+)[–-]?(\d+)?/);
-    const participantCount = participantMatch ? (participantMatch[2] || participantMatch[1]) : '';
-
-    // Get method name
-    const methodElement = document.querySelector('.rec-method');
-    const methodName = methodElement ? methodElement.textContent.trim() : 'this method';
-
-    // Build URL
     const url = `${window.location.origin}${window.location.pathname}?q=${intent}&s=${sample}`;
 
-    // Build message with smart defaults
-    const goal = intentLabels[intent] || '';
-    let message = '';
-    if (goal && participantCount) {
-      message = `To understand ${goal} with ${participantCount} participants, the recommended method is: ${methodName}. See details: ${url}`;
-    } else if (goal) {
-      message = `To understand ${goal}, the recommended method is: ${methodName}. See details: ${url}`;
-    } else {
-      message = `The recommended method is: ${methodName}. See details: ${url}`;
-    }
-
     // Copy to clipboard
-    navigator.clipboard.writeText(message).then(() => {
-      showToast('Message copied!');
+    navigator.clipboard.writeText(url).then(() => {
+      showToast('Link copied!');
     }).catch(() => {
       // Fallback for older browsers
       const textarea = document.createElement('textarea');
-      textarea.value = message;
+      textarea.value = url;
       textarea.style.position = 'fixed';
       textarea.style.opacity = '0';
       document.body.appendChild(textarea);
       textarea.select();
       document.execCommand('copy');
       document.body.removeChild(textarea);
-      showToast('Message copied!');
+      showToast('Link copied!');
     });
   }
 
