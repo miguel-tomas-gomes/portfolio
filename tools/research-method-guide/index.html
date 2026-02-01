@@ -798,6 +798,135 @@ redirect_from: /tools/method-finder
     }
     .glossary-modal.active { display: flex; }
 
+    /* SHARE MODAL */
+    .share-modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.5);
+      z-index: 200;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+    .share-modal.active { display: flex; }
+
+    .share-modal-content {
+      background: var(--card);
+      border-radius: 12px;
+      width: 100%;
+      max-width: 500px;
+      box-shadow: 0 20px 60px -12px rgba(0,0,0,0.25);
+    }
+
+    .share-modal-header {
+      padding: 20px 24px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .share-modal-title {
+      font-size: 1rem;
+      font-weight: 700;
+    }
+
+    .share-modal-body {
+      padding: 24px;
+    }
+
+    .share-input-group {
+      margin-bottom: 16px;
+    }
+
+    .share-input-group:last-of-type {
+      margin-bottom: 20px;
+    }
+
+    .share-input-label {
+      display: block;
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+
+    .share-input {
+      width: 100%;
+      padding: 10px 12px;
+      font-size: 0.9375rem;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      background: var(--bg);
+      color: var(--text);
+      font-family: inherit;
+      transition: border-color 0.2s;
+    }
+
+    .share-input:focus {
+      outline: none;
+      border-color: var(--accent);
+    }
+
+    .share-preview {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 12px;
+      font-size: 0.875rem;
+      color: var(--muted);
+      line-height: 1.6;
+      margin-bottom: 20px;
+      word-break: break-word;
+    }
+
+    .share-preview-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+
+    .share-modal-actions {
+      display: flex;
+      gap: 8px;
+      justify-content: flex-end;
+    }
+
+    .share-modal-btn {
+      padding: 10px 20px;
+      font-size: 0.9375rem;
+      font-weight: 600;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-family: inherit;
+    }
+
+    .share-modal-btn-primary {
+      background: var(--accent);
+      color: white;
+    }
+
+    .share-modal-btn-primary:hover {
+      background: #0046e0;
+    }
+
+    .share-modal-btn-secondary {
+      background: transparent;
+      color: var(--muted);
+      border: 1px solid var(--border);
+    }
+
+    .share-modal-btn-secondary:hover {
+      background: var(--bg);
+      color: var(--text);
+    }
+
     .glossary-content {
       background: var(--card);
       border-radius: 12px;
@@ -1128,6 +1257,32 @@ redirect_from: /tools/method-finder
         <button class="modal-close" onclick="closeGlossary()">&times;</button>
       </div>
       <div class="glossary-body" id="glossaryBody"></div>
+    </div>
+  </div>
+
+  <!-- SHARE MODAL -->
+  <div class="share-modal" id="shareModal" onclick="closeShareModal(event)">
+    <div class="share-modal-content" onclick="event.stopPropagation()">
+      <div class="share-modal-header">
+        <div class="share-modal-title">Customize Share Message</div>
+        <button class="modal-close" onclick="closeShareModal()">&times;</button>
+      </div>
+      <div class="share-modal-body">
+        <div class="share-input-group">
+          <label class="share-input-label" for="shareGoal">What are you trying to understand?</label>
+          <input type="text" id="shareGoal" class="share-input" placeholder="e.g., if users understand our new feature" oninput="updateSharePreview()">
+        </div>
+        <div class="share-input-group">
+          <label class="share-input-label" for="shareParticipants">How many participants?</label>
+          <input type="text" id="shareParticipants" class="share-input" placeholder="e.g., 5" oninput="updateSharePreview()">
+        </div>
+        <div class="share-preview-label">Preview</div>
+        <div class="share-preview" id="sharePreview"></div>
+        <div class="share-modal-actions">
+          <button class="share-modal-btn share-modal-btn-secondary" onclick="closeShareModal()">Cancel</button>
+          <button class="share-modal-btn share-modal-btn-primary" onclick="copyShareMessage()">Copy Message</button>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -2307,23 +2462,82 @@ redirect_from: /tools/method-finder
 
     if (!intent || !sample) return;
 
+    // Get smart defaults based on selection
+    const intentLabels = {
+      'clarity': 'if this is clear for users',
+      'comparison': 'which option users prefer',
+      'conversion': 'which option performs better',
+      'diagnostic': 'what\'s causing problems',
+      'discovery': 'what users need',
+      'organization': 'how users organize this'
+    };
+
+    const sampleElement = document.getElementById('sampleSelect');
+    const sampleLabel = sampleElement.options[sampleElement.selectedIndex]?.text || '';
+
+    // Extract participant count from label (e.g., "1–5 participants" -> "5")
+    const participantMatch = sampleLabel.match(/(\d+)[–-]?(\d+)?/);
+    const participantDefault = participantMatch ? (participantMatch[2] || participantMatch[1]) : '';
+
+    // Set defaults
+    document.getElementById('shareGoal').value = intentLabels[intent] || '';
+    document.getElementById('shareParticipants').value = participantDefault;
+
+    // Update preview
+    updateSharePreview();
+
+    // Show modal
+    document.getElementById('shareModal').classList.add('active');
+  }
+
+  function updateSharePreview() {
+    const goal = document.getElementById('shareGoal').value;
+    const participants = document.getElementById('shareParticipants').value;
+    const methodElement = document.querySelector('.rec-method');
+    const methodName = methodElement ? methodElement.textContent.trim() : 'this method';
+
+    const intent = document.getElementById('intentSelect').value;
+    const sample = document.getElementById('sampleSelect').value;
     const url = `${window.location.origin}${window.location.pathname}?q=${intent}&s=${sample}`;
 
+    let message = '';
+    if (goal && participants) {
+      message = `To understand ${goal} with ${participants} participants, the recommended method is: ${methodName}. See details: ${url}`;
+    } else if (goal) {
+      message = `To understand ${goal}, the recommended method is: ${methodName}. See details: ${url}`;
+    } else {
+      message = `The recommended method is: ${methodName}. See details: ${url}`;
+    }
+
+    document.getElementById('sharePreview').textContent = message;
+  }
+
+  function copyShareMessage() {
+    const message = document.getElementById('sharePreview').textContent;
+
     // Copy to clipboard
-    navigator.clipboard.writeText(url).then(() => {
-      showToast('Link copied!');
+    navigator.clipboard.writeText(message).then(() => {
+      closeShareModal();
+      showToast('Message copied!');
     }).catch(() => {
       // Fallback for older browsers
       const textarea = document.createElement('textarea');
-      textarea.value = url;
+      textarea.value = message;
       textarea.style.position = 'fixed';
       textarea.style.opacity = '0';
       document.body.appendChild(textarea);
       textarea.select();
       document.execCommand('copy');
       document.body.removeChild(textarea);
-      showToast('Link copied!');
+      closeShareModal();
+      showToast('Message copied!');
     });
+  }
+
+  function closeShareModal(event) {
+    if (!event || event.target === document.getElementById('shareModal')) {
+      document.getElementById('shareModal').classList.remove('active');
+    }
   }
 
   function showToast(message) {
