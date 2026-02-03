@@ -117,7 +117,7 @@
     /* Skip link for accessibility */
     .skip-link {
       position: absolute;
-      top: -40px;
+      top: -100%;
       left: 0;
       background: var(--accent);
       color: white;
@@ -126,10 +126,14 @@
       border-radius: 0 0 4px 0;
       z-index: 9999;
       font-weight: 600;
-      transition: top 0.2s ease;
+      opacity: 0;
+      pointer-events: none;
+      transition: top 0.2s ease, opacity 0.2s ease;
     }
     .skip-link:focus {
       top: 0;
+      opacity: 1;
+      pointer-events: auto;
     }
     * {
         box-sizing: border-box;
