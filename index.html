@@ -113,6 +113,24 @@
       --radius: 12px;
       --timing: .7s cubic-bezier(.25,1,.25,1);
     }
+
+    /* Skip link for accessibility */
+    .skip-link {
+      position: absolute;
+      top: -40px;
+      left: 0;
+      background: var(--accent);
+      color: white;
+      padding: 8px 16px;
+      text-decoration: none;
+      border-radius: 0 0 4px 0;
+      z-index: 9999;
+      font-weight: 600;
+      transition: top 0.2s ease;
+    }
+    .skip-link:focus {
+      top: 0;
+    }
     * {
         box-sizing: border-box;
     }
