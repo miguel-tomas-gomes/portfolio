@@ -11,14 +11,18 @@
   <meta property="og:url" content="https://migueltomasgomes.com/">
   <meta property="og:title" content="Miguel Tomás Gomes — UX Writer / Content Designer">
   <meta property="og:description" content="Portfolio and writing by Miguel Tomás Gomes — UX Writer / Content Designer making technology more intuitive and accessible through words.">
-  <meta property="og:image" content="https://migueltomasgomes.com/assets/portrait.jpg">
+  <meta property="og:image" content="https://migueltomasgomes.com/assets/portrait-miguel-tomas-gomes.jpg">
+  <meta property="og:image:alt" content="Miguel Tomás Gomes, UX Writer and Content Designer">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="1600">
 
   <!-- Twitter -->
   <meta property="twitter:card" content="summary_large_image">
   <meta property="twitter:url" content="https://migueltomasgomes.com/">
   <meta property="twitter:title" content="Miguel Tomás Gomes — UX Writer / Content Designer">
   <meta property="twitter:description" content="Portfolio and writing by Miguel Tomás Gomes — UX Writer / Content Designer making technology more intuitive and accessible through words.">
-  <meta property="twitter:image" content="https://migueltomasgomes.com/assets/portrait.jpg">
+  <meta property="twitter:image" content="https://migueltomasgomes.com/assets/portrait-miguel-tomas-gomes.jpg">
+  <meta property="twitter:image:alt" content="Miguel Tomás Gomes, UX Writer and Content Designer">
 
   <!-- Canonical URL -->
   <link rel="canonical" href="https://migueltomasgomes.com/">
@@ -34,7 +38,12 @@
     "jobTitle": ["UX Writer", "Content Designer"],
     "description": "UX writer and content designer. Works in information technology, improving digital products and services through language.",
     "url": "https://migueltomasgomes.com",
-    "image": "https://migueltomasgomes.com/assets/portrait.jpg",
+    "image": {
+      "@type": "ImageObject",
+      "url": "https://migueltomasgomes.com/assets/portrait-miguel-tomas-gomes.jpg",
+      "contentUrl": "https://migueltomasgomes.com/assets/portrait-miguel-tomas-gomes.jpg",
+      "caption": "Miguel Tomás Gomes, UX Writer and Content Designer"
+    },
     "address": {
       "@type": "PostalAddress",
       "addressLocality": "Lisbon",
@@ -738,7 +747,16 @@
       <p>Hi, I'm Miguel. UX Writer / Content Designer</p>
       <div class="hero__buttons">
         <a class="btn btn--secondary" href="/about">Read About Me</a>
-        <a class="btn" href="#work">View Work Samples</a>
+        <a class="btn" href="/articles/">View Work Samples</a>
+      </div>
+
+      <!-- Logo bar -->
+      <div style="margin-top: 3rem; opacity: 0.7;">
+        <p style="font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 1rem; font-weight: 500;">Some of the companies I worked for</p>
+        <div style="display: flex; gap: 40px; align-items: center; justify-content: flex-start;">
+          <img src="assets/Booking.com_Logo.svg.png" alt="Booking.com" style="height: 18px; opacity: 0; transition: opacity 2s ease-in;" loading="lazy" fetchpriority="low" onload="this.style.opacity='1'">
+          <img src="assets/OutSystems-Logo.webp" alt="OutSystems" style="height: 29px; opacity: 0; transition: opacity 2s ease-in;" loading="lazy" fetchpriority="low" onload="this.style.opacity='1'">
+        </div>
       </div>
     </div>
     <!-- Portrait with blob mask and liquid reveal -->
@@ -746,7 +764,7 @@
       <div class="portrait-wrapper">
         <div class="portrait-blob"></div>
         <div class="portrait-blob"></div>
-        <img class="portrait-img" src="assets/portrait-miguel-tomas-gomes.jpg" alt="Miguel Tomás Gomes">
+        <img class="portrait-img" src="assets/portrait-miguel-tomas-gomes.jpg" alt="Miguel Tomás Gomes, UX Writer and Content Designer" fetchpriority="high" itemprop="image">
       </div>
     </div>
   </section>
