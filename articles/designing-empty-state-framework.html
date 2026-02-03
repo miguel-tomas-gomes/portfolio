@@ -110,6 +110,40 @@
       text-decoration: none;
     }
 
+    .nav-links a.active {
+      color: var(--accent);
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+
+    /* Hamburger menu */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+      z-index: 101;
+    }
+    .hamburger span {
+      width: 24px;
+      height: 2px;
+      background: var(--text);
+      transition: all 0.3s ease;
+      border-radius: 2px;
+    }
+    .hamburger.active span:nth-child(1) {
+      transform: rotate(45deg) translate(7px, 7px);
+    }
+    .hamburger.active span:nth-child(2) {
+      opacity: 0;
+    }
+    .hamburger.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(7px, -7px);
+    }
+
     @keyframes slideDown {
       from { transform: translateY(-100%); }
       to { transform: translateY(0); }
@@ -549,13 +583,37 @@
 
     /* ---------------  RESPONSIVE  --------------- */
     @media (max-width: 768px) {
+      .hamburger {
+        display: flex;
+      }
+      .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        height: 100vh;
+        width: 70%;
+        max-width: 300px;
+        background: rgba(255, 255, 255, 0.98);
+        backdrop-filter: blur(20px);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 2.5rem;
+        transition: right 0.3s ease;
+        box-shadow: -5px 0 20px rgba(0, 0, 0, 0.1);
+      }
+      .nav-links.active {
+        right: 0;
+      }
+      .nav-links li {
+        font-size: 1.2rem;
+      }
       .article-header { margin-top: 120px; }
       nav { padding: 0.8rem 1.5rem; }
     }
 
     @media (max-width: 600px) {
-      nav { flex-direction: column; gap: 1rem; text-align: center; }
-      .nav-links { justify-content: center; gap: 1.5rem; }
+      nav { flex-direction: row; justify-content: space-between; }
       .article-header { margin: 100px 0 32px; }
       .article-header h1 { font-size: 1.75rem; }
       .article-meta { font-size: 0.85rem; }
@@ -579,10 +637,15 @@
   <header>
     <nav aria-label="Primary">
       <a href="/" class="logo">Miguel Tomás Gomes</a>
-      <ul class="nav-links">
+      <button class="hamburger" aria-label="Toggle menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <ul class="nav-links" id="navMenu">
         <li style="--i:1"><a href="/about">About</a></li>
         <li style="--i:2"><a href="/articles/">Work Samples</a></li>
-        <li style="--i:3"><a href="/tools/research-tool">Research Tool</a></li>
+        <li style="--i:3"><a href="/tools/research-method-guide">UX Research Method Guide</a></li>
         <li style="--i:4"><a href="#contact">Contact</a></li>
       </ul>
     </nav>
@@ -761,5 +824,37 @@
       <a href="/articles/">View Work Samples</a> · © 2025 Miguel Tomás Gomes
     </div>
   </footer>
+
+  <script>
+    /* ---------------  HAMBURGER MENU  --------------- */
+    const hamburger = document.querySelector('.hamburger');
+    const navMenu = document.getElementById('navMenu');
+
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('active');
+      navMenu.classList.toggle('active');
+      hamburger.setAttribute('aria-expanded',
+        hamburger.getAttribute('aria-expanded') === 'true' ? 'false' : 'true'
+      );
+    });
+
+    // Close menu when clicking on a link
+    navMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('active');
+        navMenu.classList.remove('active');
+        hamburger.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!hamburger.contains(e.target) && !navMenu.contains(e.target)) {
+        hamburger.classList.remove('active');
+        navMenu.classList.remove('active');
+        hamburger.setAttribute('aria-expanded', 'false');
+      }
+    });
+  </script>
 </body>
 </html>
