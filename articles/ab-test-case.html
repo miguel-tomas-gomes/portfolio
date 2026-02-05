@@ -546,12 +546,12 @@
 	  <p>Once the test reaches the target sample size, I would compare recovery rates between groups. Here's what a successful result might look like:</p>
 	  <figure class="article-figure">
 	    <img src="../assets/ab-test-results.png" alt="Example A/B test results visualization" class="article-image-spaced">
-	    <figcaption>Illustrative example: 55% recovery (control) vs 65% (variant). Even the conservative estimate (+3.5pp) shows meaningful improvement.</figcaption>
+	    <figcaption>Illustrative example: 55% recovery (control) vs 65% (variant). Point estimate: +10.1pp with 95% CI of ±6.6pp.</figcaption>
 	  </figure>
 	  <p>With results like these, I would check:</p>
 	  <ul>
 	    <li><strong>P-value:</strong> Is it under 0.05? If so, results this extreme would be unlikely if there were no real difference.</li>
-	    <li><strong>Confidence interval:</strong> Does the range exclude zero? A 95% CI of +3.5 to +16.7 means you're 95% confident the true effect falls somewhere in that range.</li>
+	    <li><strong>Confidence interval:</strong> Does the range exclude zero? A 95% CI of +3.5pp to +16.7pp means you're 95% confident the true effect falls somewhere in that range.</li>
 	  </ul>
 	  <p>I would also check for secondary signals: did support ticket volume drop during the test period? That kind of qualitative confirmation strengthens the case.</p>
 
