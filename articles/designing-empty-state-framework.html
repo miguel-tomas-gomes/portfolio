@@ -727,7 +727,7 @@
           <p>Because of authentication constraints, closing the window caused the connection to fail. But the UI didn't communicate this.</p>
           <img src="../assets/empty-state-connection.png" alt="Original vague connection message" class="article-image-spaced">
           <p>I conducted an unmoderated test with 18 participants split into two groups. Of the 9 participants who encountered the original messaging, 8 abandoned before the connection completed (88.9% abandonment). Some assumed the system had frozen, others grew impatient.</p>
-          <p>The redesigned message provided specific information: "Connecting to {channel}. This may take up to 6 minutes. Please don't close this window."</p>
+          <p>The redesigned message provided specific information: "Connecting to {channel}. Leave this window open. This may take up to 6 minutes."</p>
           <img src="../assets/improved-empty-state-connection.png" alt="Improved connection message with clear expectations" class="article-image-spaced">
           <p>In the second group, 8 of 9 participants waited as instructed, representing only 11.1% abandonment. In production, the baseline abandonment rate was around 45%. After implementation, it dropped to around 10% across 374 attempts.</p>
           <p>To ensure this wasn't due to external factors, I analyzed abandonment rates on three unchanged flows (registration, billing, verification). No significant variation, confirming the improvement was attributable to the messaging change.</p>
