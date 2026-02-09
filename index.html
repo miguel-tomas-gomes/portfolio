@@ -653,6 +653,86 @@
         object-fit: cover;
     }
 
+    /* ---------------  RESEARCH TOOL BANNER  --------------- */
+    .research-banner {
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+        background: linear-gradient(135deg, #f0f5ff 0%, #e0eaff 100%);
+        border: 1px solid #c7d7fe;
+        border-radius: var(--radius);
+        padding: 1.5rem 2rem;
+        margin-bottom: 2rem;
+        text-decoration: none;
+        color: inherit;
+        transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+    .research-banner:hover {
+        border-color: var(--accent);
+        box-shadow: 0 4px 12px rgba(0, 82, 255, 0.12);
+        text-decoration: none;
+    }
+    .research-banner.scroll-reveal {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity 0.7s ease, transform 0.7s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+    .research-banner.scroll-reveal.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    .research-banner-new {
+        display: inline-block;
+        background: #10b981;
+        color: white;
+        font-size: 0.65rem;
+        font-weight: 700;
+        padding: 0.2rem 0.5rem;
+        border-radius: 4px;
+        letter-spacing: 0.05em;
+        vertical-align: middle;
+        margin-left: 0.5rem;
+    }
+    .research-banner-content {
+        flex: 1;
+    }
+    .research-banner-content strong {
+        display: block;
+        font-size: 1.1rem;
+        color: var(--text);
+        margin-bottom: 0.25rem;
+    }
+    .research-banner-desc {
+        font-size: 0.9rem;
+        color: var(--muted);
+        line-height: 1.5;
+    }
+    .research-banner-cta {
+        flex-shrink: 0;
+        background: var(--accent);
+        color: white;
+        padding: 0.75rem 1.5rem;
+        border-radius: 8px;
+        font-weight: 600;
+        font-size: 0.9rem;
+        transition: background 0.2s ease, transform 0.2s ease;
+    }
+    .research-banner:hover .research-banner-cta {
+        background: #0041cc;
+        transform: translateY(-2px);
+    }
+    @media (max-width: 700px) {
+        .research-banner {
+            flex-direction: column;
+            text-align: center;
+            gap: 1rem;
+            padding: 1.25rem;
+        }
+        .research-banner-cta {
+            width: 100%;
+        }
+    }
+
     /* ---------------  CONTACT  --------------- */
     .contact {
         text-align: center;
@@ -824,6 +904,16 @@
   <!-- ---------------  WORK SAMPLES  --------------- -->
   <section id="work">
     <h2 class="section-title scroll-reveal">Work Samples</h2>
+
+    <!-- Research Tool Banner -->
+    <a href="/tools/research-method-guide" class="research-banner scroll-reveal">
+      <span class="research-banner-content">
+        <strong>UX Research Method Guide <span class="research-banner-new">NEW</span></strong>
+        <span class="research-banner-desc">I built an interactive tool that recommends the right research method based on your question and sample size.</span>
+      </span>
+      <span class="research-banner-cta">Try the Tool →</span>
+    </a>
+
     <div class="cards scroll-reveal">
       <article class="card">
         <div class="img-reveal">
@@ -858,6 +948,7 @@
         </div>
       </article>
     </div>
+
   </section>
 
   <!-- ---------------  ABOUT  --------------- -->
