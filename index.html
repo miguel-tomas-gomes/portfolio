@@ -478,7 +478,7 @@
     }
     .section-title {
         font-size: 2.5rem;
-        margin-bottom: 0.8rem;
+        margin-bottom: 1.5rem;
         opacity: 0;
         transform: translateY(30px);
         transition: var(--timing);
@@ -567,9 +567,12 @@
             transform: scale(1);
         }
     }
-    .about-content .section-title {
+    .about-content .section-title,
+    .work-content .section-title {
         opacity: 1;
         transform: none;
+    }
+    .about-content .section-title {
         margin-bottom: 0.6rem;
     }
 
@@ -586,13 +589,6 @@
         border-radius: var(--radius);
         padding: 2.5rem;
         align-items: center;
-        opacity: 0;
-        transform: translateY(40px);
-        transition: var(--timing);
-    }
-    .visible .card {
-        opacity: 1;
-        transform: translateY(0);
     }
     .card .img-reveal {
         width: 300px;
@@ -624,14 +620,19 @@
         gap: 1.5rem;
     }
     blockquote {
-        background: #fafafa;
+        background: linear-gradient(135deg, #f5f8ff 0%, #eef3ff 100%);
+        border: 1px solid #dce6ff;
         padding: 1.25rem 1.25rem 0.75rem;
         border-radius: var(--radius);
         margin: 0;
-        font-size: 0.9rem;
+        font-size: 1.1rem;
+        font-style: italic;
+        color: #444;
         opacity: 0;
         transform: translateY(30px);
         transition: var(--timing);
+        display: flex;
+        flex-direction: column;
     }
     .visible blockquote {
         opacity: 1;
@@ -639,19 +640,29 @@
     }
     blockquote footer {
         display: flex;
+        flex-direction: column;
         align-items: center;
-        gap: 0.7rem;
-        margin-top: 0.9rem;
+        gap: 0.5rem;
+        margin-top: auto;
+        padding-top: 1rem;
         font-style: normal;
-        font-weight: 600;
-        font-size: 0.85rem;
-        color: var(--muted);
+        text-align: center;
     }
     .testimonial-avatar {
-        width: 56px;
-        height: 56px;
+        width: 80px;
+        height: 80px;
         border-radius: 50%;
         object-fit: cover;
+        border: 3px solid #a8c0ff;
+    }
+    .testimonial-name {
+        font-weight: 600;
+        font-size: 0.95rem;
+        color: var(--text);
+    }
+    .testimonial-title {
+        font-size: 0.85rem;
+        color: var(--muted);
     }
 
     /* ---------------  RESEARCH TOOL BANNER  --------------- */
@@ -673,12 +684,12 @@
         box-shadow: 0 4px 12px rgba(0, 82, 255, 0.12);
         text-decoration: none;
     }
-    .research-banner.scroll-reveal {
+    .work-content {
         opacity: 0;
         transform: translateY(30px);
-        transition: opacity 0.7s ease, transform 0.7s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+        transition: opacity 0.7s ease, transform 0.7s ease;
     }
-    .research-banner.scroll-reveal.visible {
+    .work-content.visible {
         opacity: 1;
         transform: translateY(0);
     }
@@ -808,6 +819,16 @@
         .card {
             grid-template-columns: 1fr;
         }
+        .about-grid {
+            text-align: center;
+        }
+        .about-img-wrapper {
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .card .img-reveal {
+            width: 100%;
+        }
         .contact-links {
             flex-direction: column;
             gap: 1.5rem;
@@ -903,19 +924,18 @@
   </header>
 
   <!-- ---------------  WORK SAMPLES  --------------- -->
-  <section id="work">
-    <h2 class="section-title scroll-reveal">Work Samples</h2>
+  <section id="work" class="work-content scroll-reveal">
+    <h2 class="section-title">Work Samples</h2>
+      <!-- Research Tool Banner -->
+      <a href="/tools/research-method-guide" class="research-banner">
+        <span class="research-banner-content">
+          <strong>UX Research Method Guide <span class="research-banner-new">NEW</span></strong>
+          <span class="research-banner-desc">I built an interactive tool that recommends the right research method based on your question and sample size.</span>
+        </span>
+        <span class="research-banner-cta">Try the Tool →</span>
+      </a>
 
-    <!-- Research Tool Banner -->
-    <a href="/tools/research-method-guide" class="research-banner scroll-reveal">
-      <span class="research-banner-content">
-        <strong>UX Research Method Guide <span class="research-banner-new">NEW</span></strong>
-        <span class="research-banner-desc">I built an interactive tool that recommends the right research method based on your question and sample size.</span>
-      </span>
-      <span class="research-banner-cta">Try the Tool →</span>
-    </a>
-
-    <div class="cards scroll-reveal">
+      <div class="cards">
       <article class="card">
         <div class="img-reveal">
           <img src="assets/cover-empty-states.png" alt="Empty State Framework">
@@ -961,9 +981,9 @@
       </div>
       <div class="about-content">
         <h2 class="section-title">About Me</h2>
-        <p>My linguistics background taught me that words shape how people think and act. After 8+ years in tech, I've learned to write for UX like a researcher: I test terminology, run statistical analysis, and measure business impact.</p>
+        <p>My linguistics background taught me that words shape how people think and act. After 8+ years in tech, my UX writing approach is rooted in research: testing terminology, running statistical analysis, and measuring business impact.</p>
         <p>I'm excited by any challenge that combines language and technology.</p>
-        <a href="/about">Read more →</a>
+        <a href="/about" style="font-weight: 600;">Read more →</a>
       </div>
     </div>
   </section>
@@ -976,16 +996,17 @@
         "Miguel enjoys thinking outside the box. He's both hardworking and creative. Above all, he's a pleasure to work with."
         <footer>
           <img class="testimonial-avatar" src="assets/leonel-menaia.jpg" alt="Leonel Menaia">
-          <span>Leonel Menaia <span style="font-weight:400">— Developer</span></span>
+          <span class="testimonial-name">Leonel Menaia</span>
+          <span class="testimonial-title">Developer</span>
         </footer>
       </blockquote>
       <blockquote>
         "Miguel is a motivated, forward-thinking, and creative writer. I really do think that he's an asset to any tech team."
         <footer>
           <img class="testimonial-avatar" src="assets/nicole-varela.jpg" alt="Nicole Varela">
-          <span>Nicole Varela <span style="font-weight:400">— Head of Marketing</span></span>
+          <span class="testimonial-name">Nicole Varela</span>
+          <span class="testimonial-title">Head of Marketing</span>
         </footer>
-      </blockquote>
     </div>
   </section>
 
