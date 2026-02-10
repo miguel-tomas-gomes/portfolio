@@ -368,6 +368,50 @@
       border-radius: 4px;
     }
 
+    /* ---------------  COPY COMPARISON TABLE  --------------- */
+    .copy-comparison-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 32px 0;
+      font-size: 0.875rem;
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: 0 4px 20px -8px rgba(0,0,0,.1);
+    }
+
+    .copy-comparison-table th,
+    .copy-comparison-table td {
+      padding: 16px 20px;
+      text-align: left;
+      border-bottom: 1px solid #eee;
+      vertical-align: top;
+    }
+
+    .copy-comparison-table th {
+      background: linear-gradient(135deg, #f8faff 0%, #f0f5ff 100%);
+      font-weight: 600;
+      color: var(--text);
+      width: 50%;
+    }
+
+    .copy-comparison-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .copy-comparison-table tbody tr:hover {
+      background: #fafbfc;
+    }
+
+    .copy-comparison-table td:first-child {
+      color: var(--muted);
+      font-style: italic;
+    }
+
+    .copy-comparison-table td:last-child {
+      font-weight: 500;
+      color: var(--text);
+    }
+
     /* ---------------  METHODOLOGY NOTE  --------------- */
     .methodology-note {
       background: #fafafa;
@@ -561,7 +605,23 @@
           <p>In A/B testing, I would set up a null hypothesis (H₀): there's no difference between the two messages. The goal is to see whether the new copy produces results unlikely to occur if that null hypothesis were true.</p>
 
           <h2>Designing the Test</h2>
-	  <p>The proposed message: "There was an issue with authentication. Please reconnect your GitHub account."</p>
+	  <p>The proposed message: "Authentication expired, please reconnect your GitHub account." This explained the issue and gave a clear next step.</p>
+
+	  <table class="copy-comparison-table">
+	    <thead>
+	      <tr>
+	        <th>Before</th>
+	        <th>After</th>
+	      </tr>
+	    </thead>
+	    <tbody>
+	      <tr>
+	        <td>401 Unauthorized</td>
+	        <td>Authentication expired, please reconnect your GitHub account.</td>
+	      </tr>
+	    </tbody>
+	  </table>
+
 	  <img src="../assets/ux-error-improved.png" alt="Improved error message explaining authentication issue with clear reconnection instructions" class="article-image-spaced">
 	  <p>I would partner with a data scientist and engineer to split traffic 50/50 between the old and new messages.</p>
 	  <p>Before launching, I would use a sample size calculator (like Evan Miller's) to determine how long to run the test. With a minimum detectable effect of ~10 percentage points, 80% power, and 0.05 significance, I would need roughly 800-900 users per group. Depending on error frequency, that might take two weeks.</p>

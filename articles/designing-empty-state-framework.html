@@ -442,11 +442,10 @@
     }
 
     .before-box h4 {
-      font-size: 0.7rem;
+      font-size: 0.85rem;
       font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: #999;
+      letter-spacing: 0.02em;
+      color: var(--muted);
       margin-bottom: 16px;
     }
 
@@ -539,25 +538,30 @@
 
     .framework-content {
       flex: 1;
-      display: grid;
-      grid-template-columns: auto 1fr;
-      gap: 8px 12px;
-      align-items: baseline;
-    }
-
-    .framework-content .scenario-label,
-    .framework-content .response-label {
-      font-size: 0.7rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      color: var(--muted);
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
     }
 
     .framework-content .scenario-text {
       color: var(--text);
       font-size: 0.875rem;
       line-height: 1.6;
+    }
+
+    .framework-content .response-row {
+      display: flex;
+      gap: 8px;
+      align-items: baseline;
+    }
+
+    .framework-content .response-label {
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--muted);
+      flex-shrink: 0;
     }
 
     .framework-content .response-text {
@@ -901,60 +905,66 @@
               <span class="framework-number">1</span>
               <span class="framework-tag">First Use</span>
               <div class="framework-content">
-                <span class="scenario-label">Scenario:</span>
                 <span class="scenario-text">User encounters a feature for the first time</span>
-                <span class="response-label">Response:</span>
-                <span class="response-text">Guide them to action or explain the value</span>
+                <div class="response-row">
+                  <span class="response-label">Response:</span>
+                  <span class="response-text">Guide them to action or explain the value</span>
+                </div>
               </div>
             </div>
             <div class="framework-row framework-row-2">
               <span class="framework-number">2</span>
               <span class="framework-tag">Blocker</span>
               <div class="framework-content">
-                <span class="scenario-label">Scenario:</span>
                 <span class="scenario-text">User can't proceed (waiting for admin approval)</span>
-                <span class="response-label">Response:</span>
-                <span class="response-text">Explain what's blocking them and when it will resolve</span>
+                <div class="response-row">
+                  <span class="response-label">Response:</span>
+                  <span class="response-text">Explain what's blocking them and when it will resolve</span>
+                </div>
               </div>
             </div>
             <div class="framework-row framework-row-3">
               <span class="framework-number">3</span>
               <span class="framework-tag">Failure</span>
               <div class="framework-content">
-                <span class="scenario-label">Scenario:</span>
                 <span class="scenario-text">Something broke or timed out</span>
-                <span class="response-label">Response:</span>
-                <span class="response-text">Explain what happened and how to recover</span>
+                <div class="response-row">
+                  <span class="response-label">Response:</span>
+                  <span class="response-text">Explain what happened and how to recover</span>
+                </div>
               </div>
             </div>
             <div class="framework-row framework-row-4">
               <span class="framework-number">4</span>
               <span class="framework-tag">No Results</span>
               <div class="framework-content">
-                <span class="scenario-label">Scenario:</span>
                 <span class="scenario-text">Search or filter returns nothing</span>
-                <span class="response-label">Response:</span>
-                <span class="response-text">Help them refine their search or suggest alternatives</span>
+                <div class="response-row">
+                  <span class="response-label">Response:</span>
+                  <span class="response-text">Help them refine their search or suggest alternatives</span>
+                </div>
               </div>
             </div>
             <div class="framework-row framework-row-5">
               <span class="framework-number">5</span>
               <span class="framework-tag">User Action</span>
               <div class="framework-content">
-                <span class="scenario-label">Scenario:</span>
                 <span class="scenario-text">User deleted or archived all their content</span>
-                <span class="response-label">Response:</span>
-                <span class="response-text">Acknowledge their action and suggest next steps</span>
+                <div class="response-row">
+                  <span class="response-label">Response:</span>
+                  <span class="response-text">Acknowledge their action and suggest next steps</span>
+                </div>
               </div>
             </div>
             <div class="framework-row framework-row-6">
               <span class="framework-number">6</span>
               <span class="framework-tag">Transition</span>
               <div class="framework-content">
-                <span class="scenario-label">Scenario:</span>
                 <span class="scenario-text">System is processing (loading, syncing)</span>
-                <span class="response-label">Response:</span>
-                <span class="response-text">Set clear timing expectations</span>
+                <div class="response-row">
+                  <span class="response-label">Response:</span>
+                  <span class="response-text">Set clear timing expectations</span>
+                </div>
               </div>
             </div>
           </div>
