@@ -310,6 +310,7 @@
       border-radius: var(--radius);
       margin: 40px 0;
       box-shadow: 0 10px 40px -15px rgba(0,0,0,.12);
+      border: 1px solid rgba(0, 0, 0, 0.08);
     }
 
     .article-content ul {
@@ -513,6 +514,7 @@
 
           <h2>Context</h2>
           <p>As one of the UX writers at a fast-moving low-code software company, I was asked to design the experience for customers setting custom domains to the web apps they built. On the surface, this sounded straightforward. In practice, it turned out to be far more complex.</p>
+          <img src="../assets/domains-screen.png" alt="Domains management screen showing list of configured custom domains with status indicators" class="article-image-spaced" />
 
           <h3>Constraints</h3>
           <p>The Product Designer and Product Manager assigned to the feature were both unavailable. I was left with vague directions and no blueprint for how the flow should work. I had no background in DNS records, CNAMEs, or SSL validation. The system imposed a hard 72-hour window for SSL certificate validation. If users missed it, they had to delete the domain and start over. Any copy I wrote had to guide users through CNAME records and certificate expiration without overwhelming them with jargon.</p>
@@ -522,22 +524,23 @@
           <p>With that foundation in place, I partnered with another Designer who happened to be available. Together we shaped the experience into a step-by-step flow that would feel effortless for users, even if the underlying process was highly complex.</p>
 
           <h2>The Approach</h2>
-          <p>The key was to reduce cognitive load. We divided the flow into three distinct steps: add a domain, validate ownership, and point the domain.</p>
-	  <p>This ensured that users only had to focus on one action at a time. Each step was framed in plain language and anchored by a clear goal.</p>
+          <p>The key was to reduce cognitive load. I divided the flow into three distinct steps: adding a domain, validating ownership, and pointing the domain to the apps. This ensured that users only had to focus on one action at a time. Each step was framed in plain language and anchored by a clear goal.</p>
+	      <img src="../assets/domain-journey.png" alt="Domain setup journey showing step-by-step configuration flow with clear status indicators" class="article-image-spaced" />
 
 	  <p>Usability testing on low-fidelity mockups revealed that some users were unfamiliar with SSL certificates but reacted well to the word security. That insight informed a critical shift. Instead of "SSL certificate," we told users: "A security certificate was issued for this domain. This certificate will expire in 72 hours. Follow the next steps to complete the setup before expiration."</p>
 	  <p>This wording simplified the concept, highlighted the time constraint, and focused attention on the next action.</p>
-        <img src="../assets/domain-config.png" alt="screen showing domain configuration" class="article-image-spaced" />
-          <h3>Guiding Users Through Uncertainty</h3>
-	  <p>The same principle applied to expired states. Originally, users who missed the 72-hour window were left staring at a system message that offered no path forward. We replaced it with: "The security certificate for this domain has expired. Delete this domain to restart the configuration."</p>
-	  <p>This avoided blame, stated the issue in clear terms, and gave users a direct recovery path. We also added helpful empty states at key points.</p>
-	      <img src="../assets/domain-journey.png" alt="screen showing domain journey" class="article-image-spaced" />
-        <p>To clarify the purpose of custom domains, we added an empty state for users first discovering the feature. When no domain had been added yet, the interface now clearly explained why the section was blank and how to get started.</p> 
-        <img src="../assets/domain-empty-state.png" alt="screen showing domain empty state" class="article-image-spaced" />
-        <p>If, for whatever reason, users weren't able to complete setup and one of the certificates assigned to a domain expired, users would now see another empty state explaining what happened and how to fix it. This prevented users from getting stuck.</p>
-        <img src="../assets/domain-certificate-expired.png" alt="screen showing domain certificate expired" class="article-image-spaced" />
-        <p>We also added confirmation modals for users attempting to leave the configuration before completion. This prevented certificate expiration and gave users a chance to reconsider.</p>
-    <img src="../assets/domain-exit-confirmation.png" alt="screen showing domain exit confirmation" class="article-image-spaced" />
+
+          <h3>The Flow</h3>
+        <p>To clarify the purpose of custom domains, I added an empty state for users first discovering the feature. When no domain had been added yet, the interface clearly explained why the section was blank and how to get started.</p>
+        <img src="../assets/domain-empty-state.png" alt="Empty state explaining custom domain purpose with clear call-to-action to get started" class="article-image-spaced" />
+          <p>When users initiated the domain setup process, they were guided through a clear modal that explained what information was needed and why. I also added inline validation to verify the domain format in real-time, preventing errors before users could proceed.</p>
+          <img src="../assets/add-domain-modal.png" alt="Add domain modal with clear input field and explanation of domain setup process" class="article-image-spaced" />
+        <p>Once a domain was added, users saw the configuration screen where I gradually introduced the concept of security certificates. Rather than overwhelming users with technical jargon upfront, I explained what the certificate does, what actions they needed to take, and why completing the setup within 72 hours was critical to avoid starting over.</p>
+        <img src="../assets/domain-config.png" alt="Domain configuration interface showing security certificate expiration warning with clear next steps" class="article-image-spaced" />
+        <p>I also added confirmation modals for users attempting to leave the configuration before completion. This prevented certificate expiration and gave users a chance to reconsider.</p>
+    <img src="../assets/domain-exit-confirmation.png" alt="Exit confirmation modal warning users about incomplete setup and certificate expiration" class="article-image-spaced" />
+        <p>If, for whatever reason, users weren't able to complete setup and one of the certificates assigned to a domain expired, users would see an empty state explaining what happened and how to fix it. This avoided blame, stated the issue in clear terms, and gave users a direct recovery path.</p>
+        <img src="../assets/domain-certificate-expired.png" alt="Certificate expiration screen with clear explanation and recovery instructions" class="article-image-spaced" />
         <h2>Outcome</h2>
 	  <p>The copy and structure made the domain configuration process easy to complete and less intimidating than it would seem at first glance.</p>
 	  <p>Customers didn't feel blocked by complex jargon or hidden deadlines. The product also gained a consistent voice in error states and flows, aligning with our conversational tone.</p>

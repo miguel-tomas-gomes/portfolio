@@ -332,6 +332,22 @@
       border-radius: var(--radius);
       margin: 40px 0;
       box-shadow: 0 10px 40px -15px rgba(0,0,0,.12);
+      border: 1px solid rgba(0, 0, 0, 0.08);
+    }
+
+    .article-figure {
+      margin: 40px 0;
+    }
+
+    .article-figure img {
+      margin-bottom: 12px;
+    }
+
+    .article-figure figcaption {
+      font-size: 0.85rem;
+      color: var(--muted);
+      text-align: center;
+      font-style: italic;
     }
 
     .article-content ul {
@@ -659,7 +675,7 @@
           <h2>The Challenge</h2>
           <p>The Monitoring feature was designed to display logs and system traces. Some of these terms had roots in industry standards, others were unique to our product. None worked consistently across our users.</p>
           <p>Developers leaned toward precision, while product owners cared more about accessible language. Admins wanted both. Even internally, teams didn't fully agree on what each term meant. This inconsistency made its way into the UI and documentation, creating friction and confusion.</p>
-          <img src="../assets/monitoring-terms.png" alt="screen showing a trace and spans" class="article-image-spaced" />
+          <img src="../assets/monitoring-screen.png" alt="Monitoring dashboard interface showing logs and traces with inconsistent terminology" class="article-image-spaced" />
           <p>I needed to find terminology that was natural, widely understood, and still accurate enough to preserve credibility with developer users.</p>
 
           <h3>Constraints</h3>
@@ -709,7 +725,7 @@
             </tbody>
           </table>
 
-          <img src="../assets/monitoring-term.png" alt="User testing results showing 60% preference for 'Monitoring' over other terminology options" class="article-image-spaced" />
+          <img src="../assets/monitoring-term.png" alt="User testing results showing preference distribution for monitoring terminology options" class="article-image-spaced" />
 
           <h3>Weighted Scoring</h3>
           <p>Raw preference wasn't enough. A term could win the vote but still cause confusion in context. To account for this, I applied a weighted scoring model:</p>
@@ -738,14 +754,18 @@
 
           <p>This is why "Traces" beat "Events" despite similar raw scores. "Traces" carried the industry multiplier; "Events" triggered confusion about whether it meant user actions or system events.</p>
 
-          <h3>The Hardest Call: Traces vs. Activities</h3>
+          <h3>The Hardest Call: "Traces"</h3>
           <p>The most difficult naming decision emerged around system behavior records. In observability, the industry-standard term is "trace": a record that captures how an application executes logic across services. Our UI labeled this "Activities." On paper, the word sounded approachable. In practice, it was vague. Some participants assumed it meant audit logs of end-user actions.</p>
+          <img src="../assets/monitoring-trace-screen.png" alt="Trace detail view showing system execution flow across services with span operations" class="article-image-spaced" />
           <p>In text-only prompts, many leaned toward "Events," finding it intuitive and less technical. But once shown UI mockups, comprehension shifted. With context, "Traces" gained ground. By the end of the second round, 60% favored "Traces", compared with 5% for "Activities" and 35% for "Events".</p>
-          <img src="../assets/monitoring-pie-chart.png" alt="traces results pie chart" class="article-image-spaced" />
+          <img src="../assets/monitoring-pie-chart.png" alt="Pie chart showing 60% user preference for 'Traces' terminology over alternatives" class="article-image-spaced" />
           <p>"Events" remained useful in specific contexts. Product owners found it approachable. But under the scoring model, "Traces" carried the industry-standard multiplier, which pushed it above "Events" in the final evaluation.</p>
           <p><b>Decision</b>: Retire "Activities". Use "Traces" as the canonical term, supported by UI context and documentation. Reserve "Events" for user-facing occurrences only.</p>
 
-          <img src="../assets/span-tooltip.png" alt="screen showing tooltip on a span visual element" class="article-image-spaced" />
+          <figure class="article-figure">
+            <img src="../assets/span-tooltip.png" alt="Monitoring interface showing contextual tooltip explaining span terminology" class="article-image-spaced">
+            <figcaption>Tooltip displaying: "Sub-units of a trace with their own duration and metadata. They show how requests are processed across services."</figcaption>
+          </figure>
 
           <details class="methodology-details">
             <summary>View statistical validation</summary>

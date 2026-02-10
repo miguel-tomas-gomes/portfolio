@@ -332,6 +332,7 @@
       border-radius: var(--radius);
       margin: 40px 0;
       box-shadow: 0 10px 40px -15px rgba(0,0,0,.12);
+      border: 1px solid rgba(0, 0, 0, 0.08);
     }
 
     .article-figure {
@@ -549,7 +550,7 @@
           <h2>The Scenario</h2>
 	  <p>Imagine a SaaS platform that helps product teams manage release notes and sync content across tools like GitHub, JIRA, and Zendesk. The GitHub integration works fine most of the time, but occasionally the connection times out.</p>
 	  <p>When it happens, users see: "401 Unauthorized"</p>
-	  <img src="../assets/ux-writing-error-example.png" alt="Original error message with unclear recovery path" class="article-image-spaced">
+	  <img src="../assets/ux-writing-error-example.png" alt="Original '401 Unauthorized' error message with no recovery guidance" class="article-image-spaced">
 	  <p>Accurate, but a dead end. Users either abandon the workflow or open a support ticket. The question: can better copy help more users recover on their own?</p>
 
           <h2>Forming the Hypothesis</h2>
@@ -560,14 +561,14 @@
 
           <h2>Designing the Test</h2>
 	  <p>The proposed message: "There was an issue with authentication. Please reconnect your GitHub account."</p>
-	  <img src="../assets/ux-error-improved.png" alt="Improved error message with clear recovery steps" class="article-image-spaced">
+	  <img src="../assets/ux-error-improved.png" alt="Improved error message explaining authentication issue with clear reconnection instructions" class="article-image-spaced">
 	  <p>I would partner with a data scientist and engineer to split traffic 50/50 between the old and new messages.</p>
 	  <p>Before launching, I would use a sample size calculator (like Evan Miller's) to determine how long to run the test. With a minimum detectable effect of ~10 percentage points, 80% power, and 0.05 significance, I would need roughly 800-900 users per group. Depending on error frequency, that might take two weeks.</p>
 
           <h2>Analyzing Results</h2>
 	  <p>Once the test reaches the target sample size, I would compare recovery rates between groups. Here's what a successful result might look like:</p>
 	  <figure class="article-figure">
-	    <img src="../assets/ab-test-results.png" alt="Example A/B test results visualization" class="article-image-spaced">
+	    <img src="../assets/ab-test-results.png" alt="A/B test results showing 10 percentage point improvement in recovery rate with confidence intervals" class="article-image-spaced">
 	    <figcaption>Illustrative example: 55% recovery (control) vs 65% (variant). Point estimate: +10.1pp with 95% CI of ±6.6pp.</figcaption>
 	  </figure>
 	  <p>With results like these, I would check:</p>
