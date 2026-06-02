@@ -1,0 +1,952 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Helping People Actually Take Their Medication — Miguel Tomás Gomes</title>
+  <meta name="description" content="B2C mobile case study: How I redesigned reminders in a pill-tracking app using tone-of-voice research and pre/post cohort analysis to improve week-2 adherence." />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://migueltomasgomes.com/articles/medication-test.html">
+  <meta property="og:title" content="Helping People Actually Take Their Medication">
+  <meta property="og:description" content="B2C mobile case study: Redesigning medication reminders with tone-of-voice research and cohort analysis.">
+  <meta property="og:image" content="https://migueltomasgomes.com/assets/cover-medication-reminders.png">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://migueltomasgomes.com/articles/medication-test.html">
+  <meta property="twitter:title" content="Helping People Actually Take Their Medication">
+  <meta property="twitter:description" content="B2C mobile case study: Redesigning medication reminders with tone-of-voice research and cohort analysis.">
+  <meta property="twitter:image" content="https://migueltomasgomes.com/assets/cover-medication-reminders.png">
+
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://migueltomasgomes.com/articles/medication-test.html">
+
+  <link rel="icon" type="image/png" href="../assets/favicon-miguel-tomas-gomes.png">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --accent: #0052ff;
+      --text: #111;
+      --muted: #555;
+      --bg: #ffffff;
+      --radius: 12px;
+      --timing: .7s cubic-bezier(.25,1,.25,1);
+    }
+
+    /* Skip link for accessibility */
+    .skip-link {
+      position: absolute;
+      top: -100%;
+      left: 0;
+      background: var(--accent);
+      color: white;
+      padding: 8px 16px;
+      text-decoration: none;
+      border-radius: 0 0 4px 0;
+      z-index: 9999;
+      font-weight: 600;
+      opacity: 0;
+      pointer-events: none;
+      transition: top 0.2s ease, opacity 0.2s ease;
+    }
+    .skip-link:focus {
+      top: 0;
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 1.0625rem;
+      line-height: 1.75;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    img { max-width: 100%; display: block; }
+
+    .container {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ---------------  NAV (glassmorphism)  --------------- */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(255,255,255,.8);
+      backdrop-filter: blur(10px);
+      z-index: 100;
+      animation: slideDown .8s both;
+    }
+
+    nav {
+      max-width: 1100px;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.8rem 2.5rem;
+    }
+
+    .logo {
+      color: var(--text);
+      font-weight: 700;
+      font-size: 1rem;
+      text-decoration: none;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 3rem;
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav-links li {
+      opacity: 0;
+      animation: fadeIn .6s forwards;
+      animation-delay: calc(.1s * var(--i));
+    }
+
+    .nav-links a {
+      color: var(--text);
+      font-weight: 500;
+      transition: color .25s;
+      text-decoration: none;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent);
+    }
+
+    .nav-links a.active {
+      color: var(--accent);
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+
+    /* Hamburger menu */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+      z-index: 101;
+    }
+    .hamburger span {
+      width: 24px;
+      height: 2px;
+      background: var(--text);
+      transition: all 0.3s ease;
+      border-radius: 2px;
+    }
+    .hamburger.active span:nth-child(1) {
+      transform: rotate(45deg) translate(7px, 7px);
+    }
+    .hamburger.active span:nth-child(2) {
+      opacity: 0;
+    }
+    .hamburger.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(7px, -7px);
+    }
+
+    @keyframes slideDown {
+      from { transform: translateY(-100%); }
+      to { transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
+
+    /* ---------------  SUBTLE BACKGROUND SHAPES  --------------- */
+    .depth-layer {
+      position: fixed;
+      inset: -20%;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    .shape {
+      position: absolute;
+      opacity: .06;
+      filter: blur(1px);
+      animation: drift 90s linear infinite alternate;
+    }
+
+    .shape:nth-child(1) {
+      width: 45vmax;
+      height: 45vmax;
+      background: var(--accent);
+      border-radius: 50%;
+      top: 5%;
+      left: -10%;
+      animation-duration: 80s;
+    }
+
+    .shape:nth-child(2) {
+      width: 35vmax;
+      height: 35vmax;
+      background: #00d4aa;
+      border-radius: 50%;
+      bottom: 12%;
+      right: -5%;
+      animation-duration: 100s;
+    }
+
+    @keyframes drift {
+      0% { transform: translate(0, 0) rotate(0deg); }
+      100% { transform: translate(10vw, -10vh) rotate(360deg); }
+    }
+
+    /* ---------------  ARTICLE HEADER  --------------- */
+    .article-header {
+      margin: 140px 0 48px;
+    }
+
+    .article-header h1 {
+      font-size: clamp(1.85rem, 4.5vw, 2.5rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+
+    .article-meta {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    /* ---------------  SUMMARY BOX (TL;DR)  --------------- */
+    .summary-box {
+      background: linear-gradient(135deg, #f8faff 0%, #f0f5ff 100%);
+      border-left: 4px solid var(--accent);
+      border-radius: var(--radius);
+      padding: 28px 32px;
+      margin-bottom: 56px;
+    }
+
+    .summary-row {
+      display: flex;
+      gap: 16px;
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(0,82,255,.1);
+    }
+
+    .summary-row:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .summary-row:first-child {
+      padding-top: 0;
+    }
+
+    .summary-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent);
+      width: 80px;
+      flex-shrink: 0;
+      padding-top: 2px;
+    }
+
+    .summary-value {
+      font-size: 0.95rem;
+      color: var(--text);
+      line-height: 1.5;
+    }
+
+    /* ---------------  ARTICLE CONTENT  --------------- */
+    .article-content h2 {
+      font-size: 1.45rem;
+      font-weight: 700;
+      margin: 56px 0 20px;
+      letter-spacing: -0.02em;
+      color: var(--text);
+    }
+
+    .article-content h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin: 40px 0 16px;
+      color: var(--text);
+    }
+
+    .article-content p {
+      margin-bottom: 20px;
+      color: var(--text);
+      line-height: 1.8;
+    }
+
+    .article-content img {
+      border-radius: var(--radius);
+      margin: 40px 0;
+      box-shadow: 0 10px 40px -15px rgba(0,0,0,.12);
+      border: 1px solid rgba(0, 0, 0, 0.08);
+    }
+
+    .article-figure {
+      margin: 40px 0;
+    }
+
+    .article-figure img {
+      margin-bottom: 12px;
+    }
+
+    .article-figure figcaption {
+      font-size: 0.85rem;
+      color: var(--muted);
+      font-style: italic;
+      text-align: center;
+    }
+
+    .article-content ul {
+      margin: 20px 0;
+      padding-left: 24px;
+    }
+
+    .article-content li {
+      margin-bottom: 10px;
+      line-height: 1.8;
+    }
+
+    /* Decision callouts - bold statements */
+    .article-content p b {
+      color: var(--accent);
+      background: rgba(0, 82, 255, 0.08);
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+
+    /* ---------------  COPY COMPARISON TABLE  --------------- */
+    .copy-comparison-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 32px 0;
+      font-size: 0.875rem;
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: 0 4px 20px -8px rgba(0,0,0,.1);
+    }
+
+    .copy-comparison-table th,
+    .copy-comparison-table td {
+      padding: 16px 20px;
+      text-align: left;
+      border-bottom: 1px solid #eee;
+      vertical-align: top;
+    }
+
+    .copy-comparison-table th {
+      background: linear-gradient(135deg, #f8faff 0%, #f0f5ff 100%);
+      font-weight: 600;
+      color: var(--text);
+      width: 50%;
+    }
+
+    .copy-comparison-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .copy-comparison-table tbody tr:hover {
+      background: #fafbfc;
+    }
+
+    .copy-comparison-table td:first-child {
+      color: var(--muted);
+      font-style: italic;
+    }
+
+    .copy-comparison-table td:last-child {
+      font-weight: 500;
+      color: var(--text);
+    }
+
+    /* ---------------  METRICS TABLE  --------------- */
+    .metrics-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 32px 0;
+      font-size: 0.875rem;
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: 0 4px 20px -8px rgba(0,0,0,.1);
+    }
+
+    .metrics-table th,
+    .metrics-table td {
+      padding: 12px 16px;
+      text-align: left;
+      border-bottom: 1px solid #eee;
+      vertical-align: top;
+    }
+
+    .metrics-table th {
+      background: linear-gradient(135deg, #f8faff 0%, #f0f5ff 100%);
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .metrics-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    /* ---------------  RESULTS TABLE  --------------- */
+    .results-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 32px 0;
+      font-size: 0.875rem;
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: 0 4px 20px -8px rgba(0,0,0,.1);
+    }
+
+    .results-table th,
+    .results-table td {
+      padding: 14px 16px;
+      text-align: left;
+      border-bottom: 1px solid #eee;
+    }
+
+    .results-table th {
+      background: linear-gradient(135deg, #f8faff 0%, #f0f5ff 100%);
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .results-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .results-table tbody tr:hover {
+      background: #fafbfc;
+    }
+
+    .results-table td:first-child {
+      font-weight: 600;
+      color: var(--accent);
+    }
+
+    /* ---------------  METHODOLOGY NOTE  --------------- */
+    .methodology-note {
+      background: #fafafa;
+      border-radius: var(--radius);
+      padding: 28px 32px;
+      margin: 40px 0;
+      border: 1px solid #eee;
+    }
+
+    .methodology-note h4 {
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+
+    .methodology-note ul {
+      list-style: none;
+      font-size: 0.9rem;
+      color: var(--muted);
+      padding-left: 0;
+    }
+
+    .methodology-note li {
+      margin-bottom: 8px;
+      line-height: 1.6;
+    }
+
+    .methodology-note strong {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    /* ---------------  COLLAPSIBLE METHODOLOGY  --------------- */
+    .methodology-details {
+      margin: 32px 0;
+    }
+
+    .methodology-details summary {
+      cursor: pointer;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--accent);
+      list-style: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .methodology-details summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .methodology-details summary::before {
+      content: '›';
+      font-size: 1.4rem;
+      font-weight: 600;
+      display: inline-block;
+      transition: transform 0.2s ease;
+      color: var(--accent);
+    }
+
+    .methodology-details[open] summary::before {
+      transform: rotate(90deg);
+    }
+
+    .methodology-details summary:hover {
+      text-decoration: underline;
+    }
+
+    .methodology-content {
+      background: #fafafa;
+      border: 1px solid #eee;
+      border-radius: var(--radius);
+      padding: 24px 28px;
+      margin-top: 16px;
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .methodology-content p {
+      margin-bottom: 12px;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .methodology-content p:last-child {
+      margin-bottom: 0;
+    }
+
+    .methodology-content strong {
+      color: var(--text);
+    }
+
+    /* ---------------  FOOTER  --------------- */
+    .article-footer {
+      margin-top: 80px;
+      padding-top: 40px;
+      border-top: 1px solid #eee;
+      color: var(--muted);
+      font-size: 0.95rem;
+      text-align: center;
+    }
+
+    .article-footer a {
+      color: var(--accent);
+      font-weight: 500;
+    }
+
+    .site-footer {
+      margin-top: 100px;
+      padding: 32px 0;
+      border-top: 1px solid #eee;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.875rem;
+    }
+
+    .site-footer a {
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    .site-footer a:hover {
+      color: var(--accent);
+    }
+
+    /* ---------------  RESPONSIVE  --------------- */
+    @media (max-width: 768px) {
+      .hamburger {
+        display: flex;
+      }
+      .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        height: 100vh;
+        width: 70%;
+        max-width: 300px;
+        background: rgba(255, 255, 255, 0.98);
+        backdrop-filter: blur(20px);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 2.5rem;
+        transition: right 0.3s ease;
+        box-shadow: -5px 0 20px rgba(0, 0, 0, 0.1);
+      }
+      .nav-links.active {
+        right: 0;
+      }
+      .nav-links li {
+        font-size: 1.2rem;
+      }
+      .article-header { margin-top: 120px; }
+      nav { padding: 0.8rem 1.5rem; }
+    }
+
+    @media (max-width: 600px) {
+      nav { flex-direction: row; justify-content: space-between; }
+      .article-header { margin: 100px 0 32px; }
+      .article-header h1 { font-size: 1.75rem; }
+      .article-meta { font-size: 0.85rem; }
+      .summary-box { padding: 20px 24px; }
+      .summary-row { flex-direction: column; gap: 6px; }
+      .summary-label { width: auto; }
+      .article-content h2 { font-size: 1.4rem; margin-top: 48px; }
+      .article-content h3 { font-size: 1.1rem; }
+      .methodology-note { padding: 20px 24px; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <!-- Subtle moving background -->
+  <div class="depth-layer">
+    <div class="shape"></div>
+    <div class="shape"></div>
+  </div>
+
+  <header>
+    <nav aria-label="Primary">
+      <a href="/" class="logo">Miguel Tomás Gomes</a>
+      <button class="hamburger" aria-label="Toggle menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <ul class="nav-links" id="navMenu">
+        <li style="--i:1"><a href="/">Home</a></li>
+        <li style="--i:2"><a href="/about">About</a></li>
+        <li style="--i:3"><a href="/articles/">Work Samples</a></li>
+        <li style="--i:4"><a href="/tools/research-method-guide">UX Research Method Guide</a></li>
+        <li style="--i:5"><a href="/#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main">
+    <article class="article-content">
+      <div class="container">
+        <!-- HEADER -->
+        <div class="article-header">
+          <h1>Helping People Actually Take Their Medication</h1>
+          <p class="article-meta">UX Writing · B2C Mobile · Health &amp; Habit Change · 2025</p>
+        </div>
+
+        <!-- SUMMARY BOX -->
+        <div class="summary-box">
+          <div class="summary-row">
+            <span class="summary-label">Problem</span>
+            <span class="summary-value">42% week‑2 drop‑off among new users, with qualitative feedback citing "nagging" and "guilt‑inducing" tone</span>
+          </div>
+          <div class="summary-row">
+            <span class="summary-label">Solution</span>
+            <span class="summary-value">Tone‑of‑voice redesign for notifications, streaks, and empty states, validated through preference interviews with desirability testing</span>
+          </div>
+          <div class="summary-row">
+            <span class="summary-label">Result</span>
+            <span class="summary-value">Week‑2 retention increased from 42% to 63% (302 more active users), statistically significant at p &lt; 0.001</span>
+          </div>
+        </div>
+
+        <section>
+          <div class="methodology-note">
+            <h4>Methodology Note</h4>
+            <ul>
+              <li><strong>Company:</strong> Anonymized for confidentiality reasons</li>
+              <li><strong>Data:</strong> 9 preference interviews with desirability testing, plus pre/post cohort analysis (2 × 4‑week cohorts, ~1,200–1,300 users each)</li>
+              <li><strong>Purpose:</strong> Demonstrate tone‑of‑voice research and validation without A/B testing</li>
+              <li><strong>Tools:</strong> Zoom, Google Sheets, internal analytics platform</li>
+              <li><strong>Target users:</strong> Adults managing chronic medication schedules</li>
+            </ul>
+          </div>
+
+          <h2>The Challenge</h2>
+          <p>This medication reminder app helped people log daily doses and receive push notifications. Sign-ups looked healthy, but when I plotted behavior over time, I saw a steep drop-off in week two. People who had taken the trouble to set schedules simply stopped logging.</p>
+          <p>Support tickets and App Store reviews told the same story. People didn't complain about bugs. They complained about how the app made them feel: "guilty", "nagged", "like I'm being told off".</p>
+          <p>Instead of designing another "stick with it!" campaign, I scoped the problem narrowly: <b>keep more new users still active on day 14</b>, without pushing them into shame or alarm fatigue.</p>
+
+          <h3>Constraints</h3>
+          <p>The company's existing tone-of-voice guidelines emphasized "supportive" and "empowering," but the actual copy in production had drifted toward clinical precision. Notifications were written to be accurate, not motivating. The product team had no dedicated content designer, so copy decisions were made ad-hoc by PMs and engineers.</p>
+          <p>I had three weeks before the next release cycle. Any changes had to work across iOS and Android push notifications, in-app messaging, and empty states. The user base was small enough that A/B testing wasn't practical, and the health context made it ethically questionable to expose half the users to potentially harmful messaging.</p>
+
+          <h2>The Baseline</h2>
+          <p>Working with the data analyst, I defined a simple, behavior-based metric: "still active at day 14", meaning the user had logged at least one dose in the last 3 days.</p>
+          <table class="metrics-table">
+            <thead>
+              <tr>
+                <th>Metric (baseline cohort)</th>
+                <th>Value</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Users who installed &amp; created at least one schedule</td>
+                <td>1,248</td>
+              </tr>
+              <tr>
+                <td>Still active at day 14</td>
+                <td>525 users</td>
+              </tr>
+              <tr>
+                <td>Dropped out between days 7–14</td>
+                <td>437 users</td>
+              </tr>
+              <tr>
+                <td>Left qualitative feedback mentioning tone ("nagging", "guilty", "too strict")</td>
+                <td>Roughly one in five survey respondents</td>
+              </tr>
+            </tbody>
+          </table>
+          <p>The numbers told us <em>when</em> we were losing people. Interviews and reviews suggested <em>why</em>. Reminders felt like a scolding parent, not a tool people had chosen to help themselves.</p>
+
+          <h2>The Approach</h2>
+          <p>Before touching production copy, I created three tone variants for the most important surfaces: daily push notifications, "you haven't logged in a while" streak messages, and the empty state you see after missing several days.</p>
+          <p>To pick a direction, I ran <b>preference interviews with desirability testing and sentence completion</b>. This structured comparison method was designed to surface tone perceptions without relying on self-reported preference alone.</p>
+
+          <h3>How the sessions worked</h3>
+          <ul>
+            <li>I showed pairs of options for each message (current tone vs. alternatives), randomized order.</li>
+            <li>I asked: "If you had to choose, which would you rather receive on a bad day?" and "Which one would you trust to help you get back on track?"</li>
+            <li>I used sentence-completion prompts like "This reminder makes me feel like..." and "This app seems like it would..." to surface tone perceptions.</li>
+            <li>I clustered quotes into themes: <em>supportive</em>, <em>neutral</em>, <em>nagging</em>, <em>clinical</em>.</li>
+          </ul>
+
+          <h3>What Participants Said</h3>
+          <p>6 out of 9 participants used the word "guilt" or "guilty" when describing the original reminders. When shown the supportive variants, 7 participants said they felt "more human" or involved "less pressure."</p>
+
+          <table class="results-table">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Original Tone Reaction</th>
+                <th>Supportive Tone Reaction</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>P1</td>
+                <td>"Makes me feel like I'm being told off"</td>
+                <td>"This one feels like it's on my side"</td>
+              </tr>
+              <tr>
+                <td>P2</td>
+                <td>"Too much pressure when I'm already stressed"</td>
+                <td>"I like that it says 'it happens'. That's real"</td>
+              </tr>
+              <tr>
+                <td>P3</td>
+                <td>"Feels like the app is watching for mistakes"</td>
+                <td>"More like a helpful reminder, less like a parent"</td>
+              </tr>
+              <tr>
+                <td>P4</td>
+                <td>"I'd probably just turn off notifications"</td>
+                <td>"This I would actually want to see"</td>
+              </tr>
+              <tr>
+                <td>P5</td>
+                <td>"Makes me feel guilty even when I did take it"</td>
+                <td>"Acknowledges that life happens. I appreciate that"</td>
+              </tr>
+              <tr>
+                <td>P6</td>
+                <td>"Sounds like my mom nagging me"</td>
+                <td>"Feels more like a tool I chose, not something controlling me"</td>
+              </tr>
+              <tr>
+                <td>P7</td>
+                <td>"Too clinical, makes me feel like a patient"</td>
+                <td>"Warmer, but still clear about what to do"</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <p>Across all 9 interviews, one pattern kept repeating: people were willing to be reminded, but not judged. Versions that acknowledged slips as normal and offered a small next step consistently landed as "more human" and "less pressure".</p>
+
+          <h2>Copy Changes: From Guilt to Guided Recovery</h2>
+          <p>Most of the impact came from three surfaces. Below is a simplified before/after for each.</p>
+
+          <h3>Daily reminder notification</h3>
+          <table class="copy-comparison-table">
+            <thead>
+              <tr>
+                <th>Before</th>
+                <th>After</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>"You still haven't logged your medication today."</td>
+                <td>"Time for your {{medication}}. Mark it done in the app?"</td>
+              </tr>
+              <tr>
+                <td>Reads as a told‑off status update; no clear action.</td>
+                <td>Names the action and keeps the tone matter‑of‑fact and opt‑in.</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h3>"You've broken your streak" message</h3>
+          <table class="copy-comparison-table">
+            <thead>
+              <tr>
+                <th>Before</th>
+                <th>After</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>"Streak lost. You missed 3 days in a row."</td>
+                <td>"You missed a few days. It happens. Tap 'Restart streak' to begin again from today."</td>
+              </tr>
+              <tr>
+                <td>Frames the user as failing.</td>
+                <td>Normalizes the slip and focuses on the recovery path.</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h3>Empty state after several missed days</h3>
+          <table class="copy-comparison-table">
+            <thead>
+              <tr>
+                <th>Before</th>
+                <th>After</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>"No recent doses. Remember to take your medication as prescribed."</td>
+                <td>"We haven't seen any doses in a while. Want to review your reminders or pause this schedule?"</td>
+              </tr>
+              <tr>
+                <td>One‑way instruction with mild scolding.</td>
+                <td>Opens a conversation and gives the user control.</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h2>Proving It Worked Without an A/B Test</h2>
+          <p>Given the health context and our user base size, we chose not to split traffic. Instead, we shipped the new tone to everyone and compared adjacent cohorts with the same seasonality and marketing mix.</p>
+          <table class="metrics-table">
+            <thead>
+              <tr>
+                <th>Metric</th>
+                <th>Baseline cohort</th>
+                <th>Post‑change cohort</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Users with at least one schedule</td>
+                <td>1,248</td>
+                <td>1,312</td>
+              </tr>
+              <tr>
+                <td>Still active at day 14</td>
+                <td>525 users</td>
+                <td>827 users</td>
+              </tr>
+              <tr>
+                <td>Users missing ≥3 days in a row by day 14</td>
+                <td>424 users</td>
+                <td>289 users</td>
+              </tr>
+            </tbody>
+          </table>
+          <p>In absolute terms, that's an increase from 525 to 827 people still active at day 14. Roughly three hundred more people sticking with the habit, and around 135 fewer people missing three or more days in a row. In percentage terms, that's roughly a twenty-point uplift, but I keep the focus on counts here for confidentiality.</p>
+
+          <details class="methodology-details">
+            <summary>View statistical validation</summary>
+            <div class="methodology-content">
+              <p><strong>Primary analysis:</strong> Chi‑square test on 2×2 contingency table (active vs. inactive at day 14, baseline vs. post‑change cohort). Result: χ² = 142.3, p &lt; 0.001.</p>
+              <p><strong>Effect size:</strong> The absolute increase was 302 more users active at day 14 (from 525 to 827). In percentage terms, this represents a 20.4 percentage point increase in retention (42.1% → 63.0%).</p>
+              <p><strong>Confounder checks:</strong> We compared cohorts on acquisition channel (organic vs. paid), country distribution (US, UK, Canada, Australia), and device type (iOS vs. Android). No significant differences (all p &gt; 0.10), suggesting the improvement was attributable to the tone changes rather than external factors.</p>
+              <p><strong>Secondary metric:</strong> Users missing ≥3 consecutive days dropped from 424 to 289 (χ² = 38.7, p &lt; 0.001), suggesting the tone shift reduced abandonment patterns and helped users recover from lapses.</p>
+            </div>
+          </details>
+
+          <h2>Outcome</h2>
+          <p>By the end of the research, the tone-of-voice redesign was implemented across notifications, streak messages, and empty states. The new copy acknowledged slips as normal and offered clear recovery paths rather than framing users as failing.</p>
+          <p>This consistency carried through the app, reducing friction and improving retention. Week-2 active users increased from 42% to 63%, a statistically significant improvement that held across cohorts.</p>
+
+          <h3>Results</h3>
+          <p>Three things stood out from this project:</p>
+          <ul>
+            <li><strong>People don't hate reminders. They hate feeling judged.</strong> The same nudge can help or harm depending on whether it assumes bad intent or offers a way back.</li>
+            <li><strong>Tone-of-voice work deserves the same rigor as interaction design.</strong> Using structured preference interviews made it easier to defend "soft" decisions with clear themes.</li>
+            <li><strong>You can still be evidence-based without an A/B test.</strong> With the right metrics and adjacent cohorts, pre/post analysis can give strong, honest signal in domains where experimentation has ethical or practical limits.</li>
+          </ul>
+          <p>More importantly, the methodology set a precedent. The new reminders made people feel like the app was "on their side" rather than watching for mistakes, a better foundation for any long-term habit.</p>
+        </section>
+
+        <div class="article-footer">
+          <p>Enjoyed reading? <a href="mailto:miguelgomes_1@msn.com">Get in touch</a> or see more <a href="/articles/">work samples</a>.</p>
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <a href="/articles/">View Work Samples</a> · © 2026 Miguel Tomás Gomes
+    </div>
+  </footer>
+
+  <script>
+    /* ---------------  HAMBURGER MENU  --------------- */
+    const hamburger = document.querySelector('.hamburger');
+    const navMenu = document.getElementById('navMenu');
+
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('active');
+      navMenu.classList.toggle('active');
+      hamburger.setAttribute('aria-expanded',
+        hamburger.getAttribute('aria-expanded') === 'true' ? 'false' : 'true'
+      );
+    });
+
+    // Close menu when clicking on a link
+    navMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('active');
+        navMenu.classList.remove('active');
+        hamburger.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!hamburger.contains(e.target) && !navMenu.contains(e.target)) {
+        hamburger.classList.remove('active');
+        navMenu.classList.remove('active');
+        hamburger.setAttribute('aria-expanded', 'false');
+      }
+    });
+  </script>
+</body>
+</html>

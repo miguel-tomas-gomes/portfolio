@@ -11,66 +11,103 @@
   <meta property="og:url" content="https://migueltomasgomes.com/about">
   <meta property="og:title" content="About — Miguel Tomás Gomes">
   <meta property="og:description" content="Learn more about Miguel Tomás Gomes — UX Writer / Content Designer with 8+ years in tech, specializing in user research, statistical analysis, and cross-functional collaboration.">
-  <meta property="og:image" content="https://migueltomasgomes.com/assets/miguel-tomas-gomes-ux-writer.jpg">
+  <meta property="og:image" content="https://migueltomasgomes.com/assets/migueltomasgomes-uxwriter-lisbon.png">
+  <meta property="og:image:alt" content="Portrait of Miguel Tomás Gomes, Portuguese UX Writer and Content Designer based in Lisbon">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1085">
+  <meta property="og:image:height" content="1450">
 
   <!-- Twitter -->
   <meta property="twitter:card" content="summary_large_image">
   <meta property="twitter:url" content="https://migueltomasgomes.com/about">
   <meta property="twitter:title" content="About — Miguel Tomás Gomes">
   <meta property="twitter:description" content="Learn more about Miguel Tomás Gomes — UX Writer / Content Designer with 8+ years in tech, specializing in user research, statistical analysis, and cross-functional collaboration.">
-  <meta property="twitter:image" content="https://migueltomasgomes.com/assets/miguel-tomas-gomes-ux-writer.jpg">
+  <meta property="twitter:image" content="https://migueltomasgomes.com/assets/migueltomasgomes-uxwriter-lisbon.png">
+  <meta property="twitter:image:alt" content="Portrait of Miguel Tomás Gomes, Portuguese UX Writer and Content Designer based in Lisbon">
 
   <!-- Canonical URL -->
   <link rel="canonical" href="https://migueltomasgomes.com/about">
 
-  <!-- Schema.org structured data for Google Knowledge Panel -->
+  <!-- Schema.org structured data — references the canonical Person entity on the homepage -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Miguel Tomás Gomes",
-    "jobTitle": ["UX Writer", "Content Designer", "Technology Columnist"],
-    "description": "UX Writer and Content Designer based in Lisbon, Portugal. Published technology columnist for Público and Observador. Specializes in user research, statistical analysis, and data-driven content strategy.",
-    "url": "https://migueltomasgomes.com/about",
-    "image": "https://migueltomasgomes.com/assets/portrait-miguel-tomas-gomes.jpg",
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "Lisbon",
-      "addressCountry": "PT"
-    },
-    "sameAs": [
-      "https://www.wikidata.org/wiki/Q137996023",
-      "https://www.publico.pt/autor/miguel-tomas-gomes",
-      "https://observador.pt/opiniao/autor/mtgomes1/",
-      "https://www.linkedin.com/in/miguel-tomas-gomes",
-      "https://github.com/miguel-tomas-gomes"
-    ],
-    "knowsAbout": [
-      "UX Writing",
-      "Content Design",
-      "User Research",
-      "Statistical Analysis",
-      "A/B Testing",
-      "Usability Testing",
-      "Information Architecture",
-      "Content Strategy"
-    ],
-    "alumniOf": [
+    "@graph": [
       {
-        "@type": "EducationalOrganization",
-        "name": "Universidade Católica Portuguesa",
-        "sameAs": "https://www.ucp.pt"
+        "@type": "Person",
+        "@id": "https://migueltomasgomes.com/#miguel-tomas-gomes",
+        "name": "Miguel Tomás Gomes",
+        "alternateName": ["Miguel Tomas Gomes", "Miguel T. Gomes"],
+        "jobTitle": "Writer",
+        "description": "Miguel Tomás Gomes is a Portuguese writer and UX writer based in Lisbon, Portugal. Published technology columnist for Público and Observador. Specializes in user research, statistical analysis, and data-driven content strategy.",
+        "url": "https://migueltomasgomes.com",
+        "image": {
+          "@type": "ImageObject",
+          "url": "https://migueltomasgomes.com/assets/migueltomasgomes-uxwriter-lisbon.png",
+          "contentUrl": "https://migueltomasgomes.com/assets/migueltomasgomes-uxwriter-lisbon.png",
+          "caption": "Miguel Tomás Gomes, Writer"
+        },
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Lisbon",
+          "addressCountry": "Portugal"
+        },
+        "nationality": "Portuguese",
+        "knowsLanguage": ["pt-PT", "en"],
+        "identifier": {
+          "@type": "PropertyValue",
+          "propertyID": "Wikidata",
+          "value": "Q137996023"
+        },
+        "sameAs": [
+          "https://www.wikidata.org/wiki/Q137996023",
+          "https://www.publico.pt/autor/miguel-tomas-gomes",
+          "https://observador.pt/opiniao/autor/mtgomes1/",
+          "https://www.linkedin.com/in/miguel-tomas-gomes",
+          "https://github.com/miguel-tomas-gomes",
+          "https://medium.com/@miguel-tomas-gomes",
+          "https://instagram.com/migueltdpg"
+        ],
+        "hasOccupation": [
+          { "@type": "Occupation", "name": "UX Writer" },
+          { "@type": "Occupation", "name": "Content Designer" },
+          {
+            "@type": "Occupation",
+            "name": "Technology Columnist",
+            "description": "Writes opinion pieces about technology for Público and Observador, two of Portugal's leading newspapers"
+          }
+        ],
+        "knowsAbout": [
+          "UX writing",
+          "Content design",
+          "User research",
+          "A/B testing",
+          "Statistical analysis",
+          "Empty state design",
+          "Dark patterns",
+          "AI and UX"
+        ],
+        "alumniOf": {
+          "@type": "EducationalOrganization",
+          "name": "Universidade Católica Portuguesa",
+          "sameAs": "https://www.ucp.pt"
+        },
+        "affiliation": [
+          { "@type": "Organization", "name": "Booking.com", "sameAs": "https://www.booking.com" },
+          { "@type": "Organization", "name": "OutSystems", "sameAs": "https://www.outsystems.com" }
+        ],
+        "mainEntityOfPage": "https://migueltomasgomes.com"
       },
       {
-        "@type": "Organization",
-        "name": "Booking.com"
-      },
-      {
-        "@type": "Organization",
-        "name": "OutSystems"
+        "@type": "AboutPage",
+        "@id": "https://migueltomasgomes.com/about#webpage",
+        "url": "https://migueltomasgomes.com/about",
+        "name": "About — Miguel Tomás Gomes",
+        "isPartOf": { "@type": "WebSite", "url": "https://migueltomasgomes.com", "name": "Miguel Tomás Gomes" },
+        "about": { "@id": "https://migueltomasgomes.com/#miguel-tomas-gomes" },
+        "mainEntity": { "@id": "https://migueltomasgomes.com/#miguel-tomas-gomes" }
       }
-    ],
-    "mainEntityOfPage": "https://migueltomasgomes.com/about"
+    ]
   }
   </script>
 
@@ -524,7 +561,7 @@
       <div class="container">
         <div class="about-grid">
           <div class="about-image">
-            <img src="assets/portrait-miguel-tomas-gomes-ux.png" alt="Miguel Tomás Gomes - UX Writer and Content Designer" />
+            <img src="assets/migueltomasgomes-about.png" alt="Miguel Tomás Gomes — Portuguese UX Writer, Content Designer and technology columnist, based in Lisbon, Portugal." title="Miguel Tomás Gomes — UX Writer and Content Designer, Lisbon" width="782" height="1052" fetchpriority="high" decoding="async" />
           </div>
           <div class="about-content">
             <h1>Miguel Tomás Gomes</h1>
@@ -532,15 +569,11 @@
             <p class="about-location">Based in Lisbon, Portugal</p>
 
             <div class="about-story">
-              <p>I've always been drawn to how words can shape the way we think and act. That curiosity led me to Linguistics, where I spent years studying how language actually works.</p>
+              <p>My background in Linguistics stems from a core fascination: how words shape human behavior. In tech, I apply this to the intersection of language and scalable systems by designing experiences where good copy functions as the underlying architecture.</p>
 
-              <p>When I started working in tech, I realized I'd found the perfect intersection: words and systems. I quickly learned that good writing in product design is about helping users succeed. I just wasn't sure how to measure that.</p>
+              <p>I lead with a data-informed approach by leveraging user research and statistical validation, which replace guesswork with measurable impact. While many focus on making product copy sound clever, my goal is to make it seamless. I write to guide users, ensuring my copy is the kind they don't even realize they're reading.</p>
 
-              <p>That's when I discovered the power of user research and statistical validation. Testing terminology with real users, measuring impact, and letting data guide decisions transformed my approach.</p>
-
-              <p>I believe in clear, concise, and impactful writing. In a field where everyone wants their writing to sound good, I focus on guiding users without them even realizing it.</p>
-
-              <p>Outside of work, I write about technology for Observador and Público, two of Portugal's leading newspapers. I also enjoy exploring Lisbon's neighborhoods with my analog film camera, looking for moments worth capturing.</p>
+              <p>Beyond content design, you can also find my tech and ethics commentary in Observador and Público, two of the leading newspapers in Portugal.</p>
             </div>
 
             <div class="section-block scroll-reveal">
@@ -621,7 +654,7 @@
 
   <footer>
     <div class="container">
-      <p>© 2025 Miguel Tomás Gomes. All rights reserved.</p>
+      <p>© 2026 Miguel Tomás Gomes. All rights reserved.</p>
     </div>
   </footer>
 

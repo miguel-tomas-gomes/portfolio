@@ -192,13 +192,6 @@
       100% { transform: translate(10vw, -10vh) rotate(360deg); }
     }
 
-    @keyframes morphBlob {
-      0%, 100% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
-      25% { border-radius: 50% 50% 60% 40% / 40% 30% 70% 60%; }
-      50% { border-radius: 40% 60% 50% 50% / 50% 50% 50% 50%; }
-      75% { border-radius: 60% 40% 40% 60% / 35% 45% 55% 65%; }
-    }
-
     /* ---------------  ARTICLE HEADER  --------------- */
     .article-header {
       margin: 140px 0 48px;
@@ -215,31 +208,6 @@
     .article-meta {
       color: var(--muted);
       font-size: 0.9rem;
-    }
-
-    /* ---------------  HERO IMAGE  --------------- */
-    .article-hero {
-      position: relative;
-      margin-bottom: 48px;
-    }
-
-    /* Thin morphing blob behind image */
-    .article-hero::before {
-      content: '';
-      position: absolute;
-      inset: -3%;
-      background: linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%);
-      border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
-      animation: morphBlob 8s ease-in-out infinite;
-      opacity: 0.12;
-      z-index: -1;
-    }
-
-    .article-hero img {
-      position: relative;
-      width: 100%;
-      border-radius: var(--radius);
-      box-shadow: 0 15px 40px -15px rgba(0,0,0,.12);
     }
 
     /* ---------------  SUMMARY BOX (TL;DR)  --------------- */
@@ -475,12 +443,7 @@
         <!-- HEADER -->
         <div class="article-header">
           <h1>Simplifying Domain Configuration</h1>
-          <p class="article-meta">UX Writing · Work Sample · 2024</p>
-        </div>
-
-        <!-- HERO IMAGE -->
-        <div class="article-hero">
-          <img src="../assets/cover-domains.png" alt="Domain configuration UX writing work sample" />
+          <p class="article-meta">UX Writing · Work Sample · 2025</p>
         </div>
 
         <!-- SUMMARY BOX -->
@@ -561,7 +524,7 @@
 
   <footer class="site-footer">
     <div class="container">
-      <a href="/articles/">View Work Samples</a> · © 2025 Miguel Tomás Gomes
+      <a href="/articles/">View Work Samples</a> · © 2026 Miguel Tomás Gomes
     </div>
   </footer>
 
